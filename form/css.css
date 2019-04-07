@@ -1,0 +1,67 @@
+@font-face {
+font-family: DD;
+src:url("bebas_kai/BebasKai.otf");
+}
+#login {
+  width: 60%;
+  height: 60%;
+  font-family: DD;
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  align-content: center;
+  background-color: darkgrey;
+}
+#Username {
+  position: absolute;
+  width: 70%;
+  height: 15%;
+  top: 20%;
+  left: 15%;
+  font-size: auto;
+  text-align: center;
+}
+#Password {
+  position: absolute;
+  top: 40%;
+  left: 15%;
+  width: 70%;
+  height: 15%;
+  font-size: auto;
+  text-align: center;
+}
+#btn {
+  position: absolute;
+  top: 60%;
+  left: 15%;
+  width: 70%;
+  height: 10%;
+  font-size: auto;
+  text-align: center;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}
+input {
+  font-size: 30px;
+  color: white;
+  background-color: grey;
+}
+button {
+  font-size: 30px;
+  color: white;
+  background-color: #165ac9;
+  border: none;
+}
+body {
+  text-align: center;
+}
