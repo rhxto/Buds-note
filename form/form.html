@@ -9,12 +9,24 @@
     <link rel="stylesheet" type="text/css" href="css.css" />
   </head>
   <body>
+
+    <div class="warning">
+      <p id="Warning" name="Warning"></p>
+    </div>
+
     <div id="login">
-    <form name="form" action="write.php" method="post">
-      <input type="text" name="Username" placeholder="Username" id="Username" required/><br/>
-      <input type="password" name="Password" placeholder="Password" id="Password" required/>
-    </form>
-    <button onclick="testInput()" id="btn">Login</button>
+      <form name="form" action="write.php" method="post">
+        <div class="username">
+          <span class="icon">C</span>
+          <input type="text" name="Username" placeholder="Username" id="Username" required>
+          </input>
+        </div>
+        <div class="password">
+          <span class="icon">v</span>
+          <input type="password" name="Password" placeholder="Password" id="Password" required/>
+        </div>
+      </form>
+      <button onclick="testInput()" id="btn">LOGIN</button>
     </div>
   </body>
 </html>

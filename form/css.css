@@ -1,43 +1,118 @@
 @font-face {
-font-family: DD;
-src:url("bebas_kai/BebasKai.otf");
+font-family: font_text;
+src: url(fonts/Letters_for_Learners.ttf);
+}
+@font-face {
+font-family: font_icons;
+src: url(fonts/Icons_South_St.ttf);
+}
+
+.icon {
+  font-family:font_icons;
+  font-size:25px;
+  font-color:grey;
+  position: absolute;
+  left: -35px;
 }
 #login {
-  width: 60%;
-  height: 60%;
-  font-family: DD;
+  width: 30%;
+  height: 50%;
+  font-family: font_text;
+  position: absolute;
+  top: 15%;
+  left: 35%;
+  border-radius: 35px;
+  display: flex;
+  align-content: center;
+  background-color: #f0f8ff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.username {
+  font-family: font_text;
+  font-size: 35px;
+  line-height: 1.5;
+  color: grey;
+
   position: absolute;
   top: 10%;
-  left: 20%;
-  align-content: center;
-  background-color: darkgrey;
-}
-#Username {
-  position: absolute;
-  width: 70%;
-  height: 15%;
-  top: 20%;
   left: 15%;
-  font-size: auto;
-  text-align: center;
+  width: 60%;
+  height: 50px;
+  border-radius: 15px;
+  background: #A0D6FD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+  border-style: hidden;
 }
-#Password {
+.username:hover {
+  color: black;
+}
+.username:focus {
+  color: black;
+}
+#Username{
   position: absolute;
-  top: 40%;
+  left: 10px;
+  top: 5px;
+  height: 40px;
+  background-color: #A0D6FD;
+  border-style: hidden;
+  width: 90%;
+}
+
+.password {
+  font-family: font_text;
+  font-size: 35px;
+  line-height: 1.5;
+  color: grey;
+
+  position: absolute;
+  top: 30%;
   left: 15%;
-  width: 70%;
-  height: 15%;
-  font-size: auto;
-  text-align: center;
+  width: 60%;
+  height: 50px;
+  border-radius: 15px;
+  background: #A0D6FD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+  border-style: hidden;
+}
+.password:hover {
+  color: black;
+}
+.password:focus {
+  color: black;
+}
+#Password{
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  height: 40px;
+  background-color: #A0D6FD;
+  border-style: hidden;
+  width: 90%;
 }
 #btn {
   position: absolute;
-  top: 60%;
-  left: 15%;
-  width: 70%;
+  top: 50%;
+  left: 35%;
+  width: 30%;
   height: 10%;
   font-size: auto;
   text-align: center;
+  border-radius: 10px;
+}
+#Warning {
+  font-family: font_text;
+  font-size: 35px;
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: white;
@@ -52,11 +127,13 @@ src:url("bebas_kai/BebasKai.otf");
   color: white;
 }
 input {
+  font-family: font_text;
   font-size: 30px;
   color: white;
   background-color: grey;
 }
 button {
+  font-family: font_text;
   font-size: 30px;
   color: white;
   background-color: #165ac9;
@@ -64,4 +141,5 @@ button {
 }
 body {
   text-align: center;
+  background-image: linear-gradient(141deg, #A0D6FD, #f0f8ff);
 }

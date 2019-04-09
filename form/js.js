@@ -11,14 +11,14 @@ function testInput() {
 
   if(usr == null || pswd == null || usr == undefined || pswd == undefined || usr == "" || pswd == "") {
     if (errThrown == false) {
-      $("body").append("Inserire username e password validi");
+      $("#Warning").append("Inserire username e password validi!");
       errThrown = true;
     }
   } else if (hasWhiteSpace(usr) == false && hasWhiteSpace(pswd) == false) {
     submitform();
   } else {
     if (errThrown == false) {
-      $("body").append("Inserire username e password validi");
+      $("#Warning").append("Inserire username e password validi!");
       errThrown = true;
     }
   }
