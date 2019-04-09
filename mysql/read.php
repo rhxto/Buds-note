@@ -1,8 +1,8 @@
 <?php
 
 $mysqlServer = "localhost";
-$mysqlUser = "Federico";
-$mysqlPasswd = "mysqlPassDsk1000";
+$mysqlUser = "system";
+$mysqlPasswd = "the_best_admin_passwd";
 
 // Create connection
 try {
@@ -23,5 +23,4 @@ try {
 } finally {
   $conn = null;
 }
-
 ?>

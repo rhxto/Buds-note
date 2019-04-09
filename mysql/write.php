@@ -21,7 +21,9 @@
     }
 
     if (empty($_POST["Password"]) || $_POST["Password"] == "") {
-      error_log("POST password value null, ignoring.");
+      error_log("POST password valu finally {
+        $conn = null;
+      }e null, ignoring.");
       echo "Inserire username e password validi.";
       die("Invalid username or password");
     } else {
@@ -45,9 +47,9 @@
     echo "Database selected successfully!";
     $conn->exec("INSERT INTO Logins (Username, Password) VALUES ($UsernameDb, $PasswordDb)");
     echo "Done!";
-    $conn = null;
   } catch(PDOException $e) {
     echo "Connection failure: " . $e->getMessage();
+  } finally {
     $conn = null;
   }
 ?>
