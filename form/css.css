@@ -56,10 +56,11 @@ src: url(fonts/Icons_South_St.ttf);
 #Username{
   position: absolute;
   left: 10px;
-  top: 0px;
+  top: 5px;
+  height: 40px;
   background-color: #A0D6FD;
   border-style: hidden;
-  width: 80%;
+  width: 90%;
 }
 
 .password {
@@ -90,10 +91,11 @@ src: url(fonts/Icons_South_St.ttf);
 #Password{
   position: absolute;
   left: 10px;
-  top: 0px;
+  top: 5px;
+  height: 40px;
   background-color: #A0D6FD;
   border-style: hidden;
-  width: 80%;
+  width: 90%;
 }
 #btn {
   position: absolute;
