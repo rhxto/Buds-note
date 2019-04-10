@@ -6,7 +6,17 @@ function hasWhiteSpace(s) {
   return s.indexOf(' ') >= 0;
 }
 function testMail(m){
-  if(hasWhiteSpace(m) == false && m.indexOf('@') == 1 && m.indexOf('.') >=1){
+  var at = 0;
+  var dot = 0;
+  for(var i = 0, i <= m.lenght, i++){
+    if(m.charAt(i)==@){
+      at++;
+    }else if(m.charAt(i)==.){
+      dot++;
+    }
+
+  }
+  if(hasWhiteSpace(m) == false && at==1 && dot>=1){
     return true;
   }
 }
