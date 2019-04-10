@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Form di accesso</title>
     <script src="jquery.min.js"></script>
-    <script src="js.js"></script>
-    <link rel="stylesheet" type="text/css" href="css.css" />
+    <script src="login.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/css.css" />
   </head>
   <body>
 
@@ -18,15 +18,15 @@
       <form name="form" action="write.php" method="post">
         <div class="username">
           <span class="icon">C</span>
-          <input type="text" name="Username" placeholder="Username" id="Username" required>
-          </input>
+          <input type="text" name="Username" placeholder="Username" id="Username" required autocomplete="off"/>
         </div>
         <div class="password">
           <span class="icon">v</span>
-          <input type="password" name="Password" placeholder="Password" id="Password" required/>
+          <input type="password" name="Password" placeholder="Password" id="Password" required autocomplete="off"/>
         </div>
       </form>
       <button onclick="testInput()" id="btn">LOGIN</button>
+      <button onclick="window.location.href='register.html'" id="btn" style="top:70%; background-color:#A0D6FD">Crea un account</button>
     </div>
   </body>
 </html>

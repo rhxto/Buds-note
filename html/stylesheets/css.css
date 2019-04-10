@@ -41,7 +41,7 @@ div{
   position: absolute;
   top: 10%;
   left: 15%;
-  width: 60%;
+  width: 65%;
   height: 50px;
   border-radius: 15px;
   background: #A0D6FD;
@@ -76,7 +76,7 @@ div{
   position: absolute;
   top: 30%;
   left: 15%;
-  width: 60%;
+  width: 65%;
   height: 50px;
   border-radius: 15px;
   background: #A0D6FD;
@@ -92,7 +92,7 @@ div{
 .password:focus {
   color: black;
 }
-#Password{
+#Password, #Conferma_Password{
   position: absolute;
   left: 10px;
   top: 5px;
@@ -101,15 +101,54 @@ div{
   border-style: hidden;
   width: 90%;
 }
+
+.email {
+  font-family: font_text;
+  font-size: 35px;
+  line-height: 1.5;
+  color: grey;
+
+  position: absolute;
+  top: 70%;
+  left: 15%;
+  width: 65%;
+  height: 50px;
+  border-radius: 15px;
+  background: #A0D6FD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+  border-style: hidden;
+}
+.email:hover {
+  color: black;
+}
+.email:focus {
+  color: black;
+}
+#Email{
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  height: 40px;
+  background-color: #A0D6FD;
+  border-style: hidden;
+  width: 90%;
+}
+
 #btn {
   position: absolute;
   top: 50%;
-  left: 35%;
-  width: 30%;
+  left: 30%;
+  width: 40%;
   height: 10%;
   font-size: auto;
   text-align: center;
   border-radius: 10px;
+}
+#btn:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #Warning {
   font-family: font_text;

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form di registrazione</title>
+    <script src="jquery.min.js"></script>
+    <script src="register.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/css.css" />
+  </head>
+  <body>
+
+    <div class="warning">
+      <p id="Warning" name="Warning"></p>
+    </div>
+
+    <div id="login" style="height:50%">
+      <form name="form" action="write.php" method="post">
+        <div class="username">
+          <span class="icon">C</span>
+          <input type="text" name="Username" placeholder="Username" id="Username" required autocomplete="off"/>
+        </div>
+        <div class="password">
+          <span class="icon">v</span>
+          <input type="password" name="Password" placeholder="Password" id="Password" required autocomplete="off"/>
+        </div>
+        <div class="password" style="top:50%">
+          <span class="icon">v</span>
+          <input type="password" name="Conferma Password" placeholder="Conferma Password" id="Conferma_Password" required autocomplete="off"/>
+        </div>
+        <div class="email" >
+          <span class="icon" style="left: -45px">l</span>
+          <input type="email" name="Email" placeholder="Email" id="Email" required autocomplete="off">
+          </input>
+        </div>
+      </form>
+      <button onclick="testInput()" id="btn" style="top:85%">REGISTRATI</button>
+    </div>
+  </body>
+</html>
