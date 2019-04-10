@@ -8,10 +8,10 @@ function hasWhiteSpace(s) {
 function testMail(m){
   var at = 0;
   var dot = 0;
-  for(var i = 0, i <= m.lenght, i++){
-    if(m.charAt(i)==@){
+  for(var i = 0; i <= m.length; i++){
+    if(m.charAt(i)=="@"){
       at++;
-    }else if(m.charAt(i)==.){
+    }else if(m.charAt(i)=="."){
       dot++;
     }
 

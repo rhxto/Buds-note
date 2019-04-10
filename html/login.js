@@ -5,7 +5,6 @@ function submitform() {
 function hasWhiteSpace(s) {
   return s.indexOf(' ') >= 0;
 }
-}
 function testInput() {
   var usr = $("#Username").val();
   var pswd = $("#Password").val();
