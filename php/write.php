@@ -32,7 +32,6 @@ require 'funs.php';
   }
   $Username = hash("sha256", $Username);
   $Password = hash("sha256", $Password);
-  $Mail =     hash("sha256", $Mail);
   $LastLog =  date("Y-m-d");
   $UsernameDb = '"' . $Username . '"';
   $PasswordDb = '"' . $Password . '"';
