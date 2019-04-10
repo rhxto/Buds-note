@@ -7,6 +7,10 @@ font-family: font_icons;
 src: url(fonts/Icons_South_St.ttf);
 }
 
+div{
+  display: block;
+}
+
 .icon {
   font-family:font_icons;
   font-size:25px;
