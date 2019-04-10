@@ -26,6 +26,12 @@
       $Password = test_input($_POST["Password"]);
     }
   }
+  if ($_POST["Username"] != $Username) {
+    die("Invalid username");
+  }
+  if ($_POST["Password"] == $Password) {
+    die("Invalid password");
+  }
   $Username = hash("sha256", $Username);
   $Password = hash("sha256", $Password);
   mysqlRetrieveCrd("localhost", "system", "the_best_admin_passwd", $Username, $Password);
