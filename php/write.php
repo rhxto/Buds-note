@@ -28,6 +28,8 @@ require 'funs.php';
     if (empty($_POST["Mail"]) || $_POST["Mail"] == "") {
       error_log("Unvalid email");
       die("Invalid email");
+    } else {
+      $Mail = $_POST["Mail"];
     }
   }
   $Username = hash("sha256", $Username);
@@ -36,5 +38,5 @@ require 'funs.php';
   $UsernameDb = '"' . $Username . '"';
   $PasswordDb = '"' . $Password . '"';
   $accLvl = 0;
-  mysqlWriteCrd("localhost", "system", "the_best_admin_passwd", $UsernameDb, $PasswordDb, $mail, $accLvl, $LastLog);
+  mysqlWriteCrd("localhost", "system", "the_best_admin_passwd", $UsernameDb, $PasswordDb, $Mail, $accLvl, $LastLog);
 ?>
