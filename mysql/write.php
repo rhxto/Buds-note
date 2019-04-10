@@ -1,12 +1,12 @@
 <?php
-  require 'funs.php';
+require 'funs.php';
   function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     if ($data == "") {
-      error_log("Username or password invalid after script chars trim, ignoring.");
-      die("Invalid username or password");
+      error_log("Data invalid after script chars trim, ignoring.");
+      die("Invalid username, password or email");
     }
     return $data;
   }
@@ -25,9 +25,19 @@
     } else {
       $Password = test_input($_POST["Password"]);
     }
+    if (empty($_POST["Mail"]) || $_POST["Mail"] == "") {
+      error_log("Unvalid email");
+      die("Invalid email");
+    } else {
+      $Mail = test_input($_POST["Mail"]);
+    }
   }
-
+  $Username = hash("sha256", $Username);
+  $Password = hash("sha256", $Password);
+  $Mail =     hash("sha256", $Mail);
+  $LastLog =  date("Y-m-d");
   $UsernameDb = '"' . $Username . '"';
   $PasswordDb = '"' . $Password . '"';
-  mysqlUsr("localhost", "system", "the_best_admin_passwd", $usernameDb, $passwordDb);
+  $accLvl = 0;
+  mysqlUsr("localhost", "system", "the_best_admin_passwd", $UsernameDb, $PasswordDb, $mail, $accLvl, $LastLog);
 ?>
