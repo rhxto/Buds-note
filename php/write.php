@@ -28,8 +28,6 @@ require 'funs.php';
     if (empty($_POST["Mail"]) || $_POST["Mail"] == "") {
       error_log("Unvalid email");
       die("Invalid email");
-    } else {
-      $Mail = test_input($_POST["Mail"]);
     }
   }
   $Username = hash("sha256", $Username);
