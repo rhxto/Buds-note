@@ -35,6 +35,7 @@
           $cnfUsr = '"' . $cnfUsr . '"';
           $conn->exec("UPDATE user SET last_log = NOW() WHERE username = $cnfUsr");
         } else {
+          $conn->exec("UPDATE user SET fail_acc = fail_acc+1 WHERE username = $cnfUsr");
           echo "Incorrect username or password!";
         }
       } else {
