@@ -7,7 +7,7 @@ font-family: font_icons;
 src: url(fonts/Icons_South_St.ttf);
 }
 
-*:hover, *:focus{
+*:hover, *:focus {
   outline: none !important;
   //rimuove linee blu di selezione in chrome
 }
@@ -19,9 +19,46 @@ div{
 .icon {
   font-family:font_icons;
   font-size:25px;
-  font-color:grey;
   position: absolute;
   left: -35px;
+  color: grey;
+}
+.field {
+  font-family: font_text;
+  font-size: 35px;
+  line-height: 1.5;
+  color: white;
+
+  position: absolute;
+  height: 50px;
+  border-radius: 15px;
+  background: #A0D6FD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+  border-style: hidden;
+}
+.field:hover, .field:focus, .icon:hover, .icon:focus {
+  color: black;
+}
+.field:active{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.txtinput {
+  position: absolute;
+  width: 90%;
+  height: 50px;
+  border-radius: 15px;
+  background: #A0D6FD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+  border-style: hidden;
+}
+.txtinput:hover, .txtinput:focus {
+  color: black;
 }
 #login {
   width: 30%;
@@ -37,123 +74,19 @@ div{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.username {
-  font-family: font_text;
-  font-size: 35px;
-  line-height: 1.5;
-  color: grey;
-
+.button {
   position: absolute;
-  top: 10%;
-  left: 15%;
-  width: 65%;
-  height: 50px;
-  border-radius: 15px;
-  background: #A0D6FD;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 25px;
-  border-style: hidden;
-}
-.username:hover {
-  color: black;
-}
-.username:focus {
-  color: black;
-}
-#Username{
-  position: absolute;
-  left: 10px;
-  top: 5px;
-  height: 40px;
-  background-color: #A0D6FD;
-  border-style: hidden;
-  width: 90%;
-}
-
-.password {
-  font-family: font_text;
-  font-size: 35px;
-  line-height: 1.5;
-  color: grey;
-
-  position: absolute;
-  top: 30%;
-  left: 15%;
-  width: 65%;
-  height: 50px;
-  border-radius: 15px;
-  background: #A0D6FD;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 25px;
-  border-style: hidden;
-}
-.password:hover {
-  color: black;
-}
-.password:focus {
-  color: black;
-}
-#Password, #Conferma_Password{
-  position: absolute;
-  left: 10px;
-  top: 5px;
-  height: 40px;
-  background-color: #A0D6FD;
-  border-style: hidden;
-  width: 90%;
-}
-
-.email {
-  font-family: font_text;
-  font-size: 35px;
-  line-height: 1.5;
-  color: grey;
-
-  position: absolute;
-  top: 70%;
-  left: 15%;
-  width: 65%;
-  height: 50px;
-  border-radius: 15px;
-  background: #A0D6FD;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 25px;
-  border-style: hidden;
-}
-.email:hover {
-  color: black;
-}
-.email:focus {
-  color: black;
-}
-#Email{
-  position: absolute;
-  left: 10px;
-  top: 5px;
-  height: 40px;
-  background-color: #A0D6FD;
-  border-style: hidden;
-  width: 90%;
-}
-
-#btn {
-  position: absolute;
-  top: 50%;
-  left: 30%;
-  width: 40%;
-  height: 10%;
   font-size: auto;
   text-align: center;
   border-radius: 10px;
 }
-#btn:hover{
+.button:hover{
+  cursor: grab;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.button:active {
+  cursor: grabbing;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #Warning {
   font-family: font_text;

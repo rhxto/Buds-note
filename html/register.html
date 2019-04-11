@@ -6,7 +6,8 @@
     <title>Form di registrazione</title>
     <script src="jquery.min.js"></script>
     <script src="register.js"></script>
-    <link rel="stylesheet" type="text/css" href="stylesheets/css.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/form.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/positions.css" />
   </head>
   <body>
 
@@ -16,25 +17,25 @@
 
     <div id="login" style="height:50%">
       <form name="form" action="../php/write.php" method="post">
-        <div class="username">
+        <div class="field top10 left15 width65">
           <span class="icon">C</span>
-          <input type="text" name="Username" placeholder="Username" id="Username" required autocomplete="off"/>
+          <input type="text" name="Username" placeholder="Username" id="Username" class="txtinput" required autocomplete="off"/>
         </div>
-        <div class="password">
+        <div class="field top30 left15 width65">
           <span class="icon">v</span>
-          <input type="password" name="Password" placeholder="Password" id="Password" required autocomplete="off"/>
+          <input type="password" name="Password" placeholder="Password" id="Password" class="txtinput" required autocomplete="off"/>
         </div>
-        <div class="password" style="top:50%">
+        <div class="field top50 left15 width65">
           <span class="icon">v</span>
-          <input type="password" name="Conferma Password" placeholder="Conferma Password" id="Conferma_Password" required autocomplete="off"/>
+          <input type="password" name="Conferma Password" placeholder="Conferma Password" id="Conferma_Password" class="txtinput" required autocomplete="off"/>
         </div>
-        <div class="email" >
+        <div class="field top70 left15 width65" >
           <span class="icon" style="left: -45px">l</span>
-          <input type="email" name="Mail" placeholder="Email" id="Email" required autocomplete="off">
+          <input type="email" name="Mail" placeholder="Email" id="Email" class="txtinput" required autocomplete="off">
           </input>
         </div>
       </form>
-      <button onclick="testInput()" id="btn" style="top:85%">REGISTRATI</button>
+      <button onclick="testInput()" id="btn" class="button top85 left30 width40 height10">REGISTRATI</button>
     </div>
   </body>
 </html>

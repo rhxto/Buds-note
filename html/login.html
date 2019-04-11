@@ -6,7 +6,8 @@
     <title>Form di accesso</title>
     <script src="jquery.min.js"></script>
     <script src="login.js"></script>
-    <link rel="stylesheet" type="text/css" href="stylesheets/css.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/form.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/positions.css" />
   </head>
   <body>
 
@@ -16,17 +17,17 @@
 
     <div id="login">
       <form name="form" action="../php/read.php" method="post">
-        <div class="username">
+        <div class="field top10 left15 width65">
           <span class="icon">C</span>
-          <input type="text" name="Username" placeholder="Username" id="Username" required autocomplete="off"/>
+          <input type="text" name="Username" placeholder="Username" id="Username" class="txtinput" required autocomplete="off"/>
         </div>
-        <div class="password">
+        <div class="field top30 left15 width65">
           <span class="icon">v</span>
-          <input type="password" name="Password" placeholder="Password" id="Password" required autocomplete="off"/>
+          <input type="password" name="Password" placeholder="Password" id="Password" class="txtinput " required autocomplete="off"/>
         </div>
       </form>
-      <button onclick="testInput()" id="btn">LOGIN</button>
-      <button onclick="window.location.href='register.html'" id="btn" style="top:70%; background-color:#A0D6FD">Crea un account</button>
+      <button onclick="testInput()" id="btn" class="button top50 left30 width40 height10">LOGIN</button>
+      <button onclick="window.location.href='register.html'" id="btn" class="button top70 left30 width40 height10" style="background:#A0D6FD" background-color:#A0D6FD">Crea un account</button>
     </div>
   </body>
 </html>
