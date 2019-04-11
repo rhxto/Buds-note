@@ -36,5 +36,4 @@ require 'funs.php';
   $accLvl = 0;
   $fail_acc = 0;
   mysqlWriteCrd("localhost", "system", "the_best_admin_passwd", $UsernameDb, $PasswordDb, $Mail, $accLvl, $fail_acc, $LastLog);
-  echo '<script>window.location.href = "../html/login.html"</script>';
 ?>

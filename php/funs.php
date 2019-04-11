@@ -2,18 +2,6 @@
   function logD(String $s) {
     shell_exec("logger $s");
   }
-
-  function accLimit($usr, $pw, $conn){
-    $usr = '"' . $usr . '"';
-    $pw = '"' . $pw . '"';
-    $acc = $conn->exec("SELECT fail_acc FROM user WHERE (username = $usr) AND (pw = $pw)");
-    if(acc <= 5){
-      return true;
-    }else{
-      return false;
-    }
-  }
-
   function mysqlWriteCrd(String $server, String $username, String $password, String $usernameDb, String $passwordDb, String $Email, int $accLvl, int $fail_acc, String $date) {
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
@@ -25,9 +13,7 @@
       $conn->exec("INSERT INTO user (username, pw, mail, acc_lvl, fail_acc, last_log) VALUES ($usernameDb, $passwordDb, $Email,$accLvl, $fail_acc, $date)");
       //echo "Done!";
     } catch(PDOException $e) {
-      echo "<h1>Errore interno</h1>";
-      error_log($e->getMessage());
-      die();
+      echo "Connection failure: " . $e->getMessage();
     } finally {
       $conn = null;
     }
@@ -46,31 +32,20 @@
       $utenti = array();
       $passwords = array();
       foreach ($users as $user) {
-        array_push($utenti, $user['username']);
-        array_push($utenti, $user['pw']);
+	array_push($utenti, $user['username']);
+        array_push($passwords, $user['pw']);
       }
       if (in_array($cnfUsr, $utenti)) {
         if (in_array($cnfPw, $passwords)) {
-          if(accLimit($cnfUsr, $cnfPw, $conn)) {
-            echo "Logged in!";
-            $cnfUsr = '"' . $cnfUsr . '"';
-            $conn->exec("UPDATE user SET last_log = NOW() WHERE username = $cnfUsr");
-          } else {
-            error_log("**POSSIBILE ATTACCO BRUTE FORCE**");
-            die("<h3>Too many login attempts!</h3>");
-          }
+          echo "Logged in!";
         } else {
-          $cnfUsr = '"' . $cnfUsr . '"';
-          $conn->exec("UPDATE user SET fail_acc = fail_acc+1 WHERE username = $cnfUsr");
-          echo "Incorrect username or password!";
+          die("Incorrect username or password!");
         }
       } else {
-        echo "Incorrect username or password!";
+        die("Incorrect username or password!");
       }
     } catch(PDOException $e) {
-      echo "<h1>Errore interno</h1>";
-      error_log($e->getMessage());
-      die();
+      echo "Connection failure: " . $e->getMessage();
     } finally {
       $conn = null;
     }
