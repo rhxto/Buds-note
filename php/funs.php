@@ -13,7 +13,6 @@
     print_r($acc);
     $fail_acc = $acc[0];
     if($fail_acc['fail_acc'] <= 5){
-      echo "Nologin";
       return true;
     } else {
       return false;
@@ -64,6 +63,7 @@
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = $cnfUsr");
           } else {
+            $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET fail_acc = fail_acc+1 WHERE username = $cnfUsr");
             die("Incorrect username or password!");
           }
