@@ -6,8 +6,9 @@
   function accLimit($usr, $pw, $conn){
     $usr = '"' . $usr . '"';
     $pw = '"' . $pw . '"';
-    $acc = $conn->exec("SELECT fail_acc FROM user WHERE (username = $usr) AND (pw = $pw)");
-    if(acc <= 5){
+    $acc = $conn->query("SELECT fail_acc FROM user WHERE (username = $usr) AND (pw = $pw)");
+    $acc->fetchAll();
+    if(acc['fail_acc'] <= 5){
       return true;
     }else{
       return false;
