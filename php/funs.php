@@ -50,6 +50,7 @@
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET last_log = NOW() WHERE username = $cnfUsr");
           }else{
+            error_log("**POSSIBILE ATTACCO BRUTE FORCE**");
             die("<h3>Too many login attempts!</h3>");
           }
         } else {
