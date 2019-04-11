@@ -7,6 +7,11 @@ font-family: font_icons;
 src: url(fonts/Icons_South_St.ttf);
 }
 
+*:hover, *:focus{
+  outline: none !important;
+  //rimuove linee blu di selezione in chrome
+}
+
 div{
   display: block;
 }
