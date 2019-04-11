@@ -32,6 +32,7 @@
       if (in_array($cnfUsr, $users)) {
         if (in_array($cnfPw, $users)) {
           echo "Logged in!";
+          $cnfUsr = '"' . $cnfUsr . '"';
           $conn->exec("UPDATE user SET last_log = NOW() WHERE username = $cnfUsr");
         } else {
           echo "Incorrect username or password!";
