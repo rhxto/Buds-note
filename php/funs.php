@@ -14,7 +14,7 @@
     }
   }
 
-  function mysqlWriteCrd(String $server, String $username, String $password, String $usernameDb, String $passwordDb, String $mail, int $accLvl, String $date) {
+  function mysqlWriteCrd(String $server, String $username, String $password, String $usernameDb, String $passwordDb, String $Email, int $accLvl, int $fail_acc, String $date) {
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
       //echo "Connected successfully to mysql!";
@@ -22,7 +22,7 @@
       //echo "Excepion errmode set!";
       $conn->exec("USE Buds_db;");
       //echo "Database selected successfully!";
-      $conn->exec("INSERT INTO user (username, pw, mail, acc_lvl, last_log) VALUES ($usernameDb, $passwordDb, $mail, $accLvl, $date)");
+      $conn->exec("INSERT INTO user (username, pw, mail, acc_lvl, fail_acc, last_log) VALUES ($usernameDb, $passwordDb, $Email,$accLvl, $fail_acc, $date)");
       //echo "Done!";
     } catch(PDOException $e) {
       echo "<h1>Errore interno</h1>";
@@ -47,15 +47,15 @@
       $passwords = array();
       foreach ($users as $user) {
         array_push($utenti, $user['username']);
-        array_push($utenti, $user['passwords']);
+        array_push($utenti, $user['pw']);
       }
       if (in_array($cnfUsr, $utenti)) {
         if (in_array($cnfPw, $passwords)) {
-          if(accLimit($cnfUsr, $cnfPw, $conn)){
+          if(accLimit($cnfUsr, $cnfPw, $conn)) {
             echo "Logged in!";
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET last_log = NOW() WHERE username = $cnfUsr");
-          }else{
+          } else {
             error_log("**POSSIBILE ATTACCO BRUTE FORCE**");
             die("<h3>Too many login attempts!</h3>");
           }
