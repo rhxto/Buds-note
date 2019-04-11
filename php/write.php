@@ -39,4 +39,5 @@ require 'funs.php';
   $PasswordDb = '"' . $Password . '"';
   $accLvl = 0;
   mysqlWriteCrd("localhost", "system", "the_best_admin_passwd", $UsernameDb, $PasswordDb, $Mail, $accLvl, $LastLog);
+  echo "<script>window.location.href = ../html/login.html</script>";
 ?>
