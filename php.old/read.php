@@ -1,5 +1,5 @@
 <?php
-require 'funs.php';
+  require 'funs.php';
   function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -22,18 +22,14 @@ require 'funs.php';
     } else {
       $Password = test_input($_POST["Password"]);
     }
-    if (empty($_POST["Mail"]) || $_POST["Mail"] == "") {
-      die("Invalid email");
-    } else {
-      $Mail = '"' . $_POST["Mail"] . '"';
-    }
+  }
+  if ($_POST["Username"] != $Username) {
+    die("Invalid username");
+  }
+  if ($_POST["Password"] == $Password) {
+    die("Invalid password");
   }
   $Username = hash("sha256", $Username);
   $Password = hash("sha256", $Password);
-  $LastLog =  '"' . date("Y-m-d H:i:s") . '"';
-  $UsernameDb = '"' . $Username . '"';
-  $PasswordDb = '"' . $Password . '"';
-  $accLvl = 0;
-  $fail_acc = 0;
-  mysqlWriteCrd("localhost", "system", "the_best_admin_passwd", $UsernameDb, $PasswordDb, $Mail, $accLvl, $fail_acc, $LastLog);
+  mysqlRetrieveCrd("localhost", "system", "the_best_admin_passwd", $Username, $Password);
 ?>
