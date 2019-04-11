@@ -5,13 +5,13 @@
   function mysqlWriteCrd(String $server, String $username, String $password, String $usernameDb, String $passwordDb, String $mail, int $accLvl, String $date) {
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
-      echo "Connected successfully to mysql!";
+      //echo "Connected successfully to mysql!";
       $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      echo "Excepion errmode set!";
+      //echo "Excepion errmode set!";
       $conn->exec("USE Buds_db;");
-      echo "Database selected successfully!";
+      //echo "Database selected successfully!";
       $conn->exec("INSERT INTO user (username, pw, mail, acc_lvl, last_log) VALUES ($usernameDb, $passwordDb, $mail, $accLvl, $date)");
-      echo "Done!";
+      //echo "Done!";
     } catch(PDOException $e) {
       echo "Connection failure: " . $e->getMessage();
     } finally {
@@ -21,22 +21,23 @@
   function mysqlRetrieveCrd(String $server, String $username, String $password, String $cnfUsr, String $cnfPw) {
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
-      echo "Connected successfully to mysql!";
+      //echo "Connected successfully to mysql!";
       $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      echo "Excepion errmode set!";
+      //echo "Excepion errmode set!";
       $conn->exec("USE Buds_db;");
-      echo "Database selected successfully!";
+      //echo "Database selected successfully!";
       $getUsers = $conn->query("SELECT * FROM user ORDER BY username");
       $getUsers->setFetchMode(PDO::FETCH_ASSOC);
       $users = $getUsers->fetchAll();
       if (in_array($cnfUsr, $users)) {
         if (in_array($cnfPw, $users)) {
           echo "Logged in!";
+          $conn->exec("UPDATE user SET last_log = NOW() WHERE username = $cnfUsr");
         } else {
-          echo "Incorrect password!";
+          echo "Incorrect username or password!";
         }
       } else {
-        echo "Incorrect username!";
+        echo "Incorrect username or password!";
       }
     } catch(PDOException $e) {
       echo "Connection failure: " . $e->getMessage();
