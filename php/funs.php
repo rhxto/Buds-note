@@ -13,7 +13,7 @@
       $conn->exec("INSERT INTO user (username, pw, mail, acc_lvl, last_log) VALUES ($usernameDb, $passwordDb, $mail, $accLvl, $date)");
       //echo "Done!";
     } catch(PDOException $e) {
-      echo "Connection failure: " . $e->getMessage();
+      error_log($e->getMessage());
     } finally {
       $conn = null;
     }
@@ -41,7 +41,7 @@
         echo "Incorrect username or password!";
       }
     } catch(PDOException $e) {
-      echo "Connection failure: " . $e->getMessage();
+      error_log($e->getMessage());
     } finally {
       $conn = null;
     }
