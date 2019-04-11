@@ -43,8 +43,14 @@
       $getUsers = $conn->query("SELECT * FROM user ORDER BY username");
       $getUsers->setFetchMode(PDO::FETCH_ASSOC);
       $users = $getUsers->fetchAll();
-      if (in_array($cnfUsr, $users)) {
-        if (in_array($cnfPw, $users)) {
+      $utenti = array();
+      $passwords = array();
+      foreach ($users as $user) {
+        array_push($utenti, $user['username']);
+        array_push($utenti, $user['passwords']);
+      }
+      if (in_array($cnfUsr, $utenti)) {
+        if (in_array($cnfPw, $passwords)) {
           if(accLimit($cnfUsr, $cnfPw, $conn)){
             echo "Logged in!";
             $cnfUsr = '"' . $cnfUsr . '"';
