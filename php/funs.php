@@ -7,7 +7,7 @@
   function accLimit($usr, $pw, $conn){
     $usr = '"' . $usr . '"';
     $pw = '"' . $pw . '"';
-    $accs = $conn->query("SELECT fail_acc FROM user WHERE (username = $usr) AND (pw = $pw)");
+    $accs = $conn->query("SELECT fail_acc FROM user WHERE username = $usr");
     $accs->setFetchMode(PDO::FETCH_ASSOC);
     $acc = $accs->fetchAll();
     print_r($acc);
@@ -15,8 +15,8 @@
     if($fail_acc['fail_acc'] <= 5){
       return true;
     } else {
-      return false;
       error_log("**POSSIBILE ATTACCO BRUTE FORCE**");
+      return false;
     }
   }
 
