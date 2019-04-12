@@ -11,6 +11,7 @@
       $getIps = $conn->query("SELECT date FROM ban_ip WHERE ip = $ip");
       $getIps->setFetchMode(PDO::FETCH_ASSOC);
       $banDate = $getIps->fetchAll();
+      $banDate = $banDate[0];
       $diff = differenzaData($banDate, date("Y-m-d H:i:s"));
       if ($diff >= 600) {
         $valid = true;
