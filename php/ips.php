@@ -8,7 +8,7 @@
         $conn->exec("INSERT INTO ban_ip (ip, date) VALUES ($ip, $data)");
         if ($user != "null") {
           $user = '"' . $user . '"';
-          $conn->exec("INSERT INTO ban_ip (user) VALUES ($user)");
+          $conn->exec("UPDATE ban_ip SET user = $user WHERE ip = $ip");
         }
       } catch(PDOException $e) {
         require 'exceptions.php';
@@ -25,7 +25,7 @@
     function mysqlUnbanIp($conn, String $ip, String $user) {
       try {
         $ip = '"' . $ip . '"';
-        $conn->exec("DELETE FROM ban_ip (ip) WHERE ip = $ip");
+        $conn->exec("DELETE FROM ban_ip WHERE ip = $ip");
         if ($user != "null") {
           $conn->exec("UPDATE user SET fail_acc = 0 WHERE username = $user");
         }
@@ -50,17 +50,20 @@
         foreach ($ips as $tmp) {
   	      array_push($ip, $tmp['ip']);
         }
-        if (in_array($ip, $ipCnf)) {
+        if (in_array($ipCnf, $ip)) {
           $getIps = $conn->query("SELECT date FROM ban_ip WHERE ip = $ipCnf");
           $getIps->setFetchMode(PDO::FETCH_ASSOC);
           $banDate = $getIps->fetchAll();
           $diff = differenzaData($banDate, date("Y-m-d H:i:s"));
           if ($diff >= 600) {
+            echo "differenza valida";
             return true;
           } else {
+            echo "differenza non valida";
             return false;
           }
         } else {
+          echo "ip non listato";
           return false;
         }
       } catch(PDOException $e) {

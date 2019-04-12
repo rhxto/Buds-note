@@ -75,7 +75,7 @@
           require 'ips.php';
           $ip = $_SERVER['REMOTE_ADDR'];
           if (mysqlCheckIp($ip, $conn)) {
-            mysqlUnbanIp($conn, $ip);
+            mysqlUnbanIp($conn, $ip, $cnfUsr);
           } else {
             blockIp($ip, $conn, $cnfUsr);
             echo "<h3>Too many login attempts!</h3>";
