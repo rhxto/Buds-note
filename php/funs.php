@@ -1,5 +1,5 @@
 <?php
-//buono
+//buono3
   function logD(String $s) {
     shell_exec("logger $s");
   }
@@ -10,12 +10,10 @@
     $accs = $conn->query("SELECT fail_acc FROM user WHERE username = $usr");
     $accs->setFetchMode(PDO::FETCH_ASSOC);
     $acc = $accs->fetchAll();
-    print_r($acc);
     $fail_acc = $acc[0];
     if($fail_acc['fail_acc'] <= 5){
       return true;
     } else {
-      error_log("**POSSIBILE ATTACCO BRUTE FORCE**");
       return false;
     }
   }
@@ -68,7 +66,10 @@
             die("Incorrect username or password!");
           }
         } else {
-         die("<h3>Too many login attempts!</h3>");
+          require 'ips.php';
+          $ip = $_SERVER['REMOTE_ADDR'];
+          blockIp($ip, $conn);
+          die("<h3>Too many login attempts!</h3>");
           $cnfUsr = '"' . $cnfUsr . '"';
           die("Incorrect username or password!");
         }
@@ -83,7 +84,24 @@
     } finally {
       $conn = null;
     }
-
+  }
+  function mysqlRemoveIp(String $server, String $username, String $password, String $ip) {
+    try {
+      $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
+      //echo "Connected successfully to mysql!";
+      $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      //echo "Excepion errmode set!";
+      $conn->exec("USE Buds_db;");
+      //echo "Database selected successfully!";
+      $conn->exec("DELETE FROM blocked_ips (ip) WHERE ip = $ip");
+      //echo "Done!";
+    } catch(PDOException $e) {
+      echo "<h1>Errore interno</h1>";
+      error_log($e->getMessage());
+      die();
+    } finally {
+      $conn = null;
+    }
   }
 
 ?>
