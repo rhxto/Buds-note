@@ -1,14 +1,15 @@
 <?php
-  if ($_SERVER["REMOTE_ADDR"] != "localhost") {
-    logD("**ips.php VISITATA SENZA AUTORIZZAZIONE NECESSARIA**");
-    die("<h1>You aren't authorized to visit this page, this incident will be reported.</h1>");
-  }
-  function blockIp($ip, $conn) {
-      require 'funs.php';
+  require 'timeFuns.php';
+  function blockIp(String $ip, $conn, String $user) {
       try {
         $conn->exec("USE Buds_db;");
         $ip = '"' . $ip . '"';
-        $conn->exec("INSERT INTO blocked_ips (ip) VALUES ($ip)");
+        $data = '"' . date("Y-m-d H:i:s") . '"';
+        $conn->exec("INSERT INTO ban_ip (ip, date) VALUES ($ip, $data)");
+        if ($user != "null") {
+          $user = '"' . $user . '"';
+          $conn->exec("UPDATE ban_ip SET user = $user WHERE ip = $ip");
+        }
       } catch(PDOException $e) {
         require 'exceptions.php';
         $exist = err_handler($e->getCode(), $e->getMessage());
@@ -20,23 +21,61 @@
       } finally {
           $conn = null;
       }
-      echo "<script>setTimeout(unbanIp($ip), 10000*60);</script>";
+    }
+    function mysqlUnbanIp($conn, String $ip, String $user) {
+      try {
+        $ip = '"' . $ip . '"';
+        $conn->exec("DELETE FROM ban_ip WHERE ip = $ip");
+        if ($user != "null") {
+          $conn->exec("UPDATE user SET fail_acc = 0 WHERE username = $user");
+        }
+      } catch(PDOException $e) {
+        require 'exceptions.php';
+        $exist = err_handler($e->getCode(), $e->getMessage());
+        if (!$exist) {
+          die("<h1>Errore interno</h1>");
+        } else {
+          die();
+        }
+      } finally {
+        $conn = null;
+      }
+    }
+    function mysqlCheckIp(String $ipCnf, $conn) : bool {
+      try {
+        $getIps = $conn->query("SELECT * FROM ban_ip ORDER BY ip");
+        $getIps->setFetchMode(PDO::FETCH_ASSOC);
+        $ips = $getIps->fetchAll();
+        $ip = array();
+        foreach ($ips as $tmp) {
+  	      array_push($ip, $tmp['ip']);
+        }
+        if (in_array($ipCnf, $ip)) {
+          $getIps = $conn->query("SELECT date FROM ban_ip WHERE ip = $ipCnf");
+          $getIps->setFetchMode(PDO::FETCH_ASSOC);
+          $banDate = $getIps->fetchAll();
+          $diff = differenzaData($banDate, date("Y-m-d H:i:s"));
+          if ($diff >= 600) {
+            echo "differenza valida";
+            return true;
+          } else {
+            echo "differenza non valida";
+            return false;
+          }
+        } else {
+          echo "ip non listato";
+          return false;
+        }
+      } catch(PDOException $e) {
+        require 'exceptions.php';
+        $exist = err_handler($e->getCode(), $e->getMessage());
+        if (!$exist) {
+          die("<h1>Errore interno</h1>");
+        } else {
+          die();
+        }
+      } finally {
+        $conn = null;
+      }
     }
 ?>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <script>
-      function unbanIp(ip) {
-        document.getElementById["inpt"].value = ip;
-        document.forms["form"].submit();
-      }
-    </script>
-  </head>
-  <body>
-    <h1>You aren't authorized to visit this page, this incident will be reported.</h1>
-    <form name="form" action="unbanIp.php" method="post" hidden>
-      <input type="text" id="inpt" name="ip"/>
-    </form>
-  </body>
-</html>
