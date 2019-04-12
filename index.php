@@ -6,7 +6,7 @@
     $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->exec("USE Buds_db;");
     if (mysqlCheckIp($ip, $conn)) {
-      die("<h2>Too many login attempts, retry 10 minutes after your ban</h2>");
+      echo "<p>Too many login attempts, retry 10 minutes after your ban</p>";
     }
   } catch(PDOException $e) {
     require 'exceptions.php';
