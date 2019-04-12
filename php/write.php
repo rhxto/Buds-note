@@ -15,7 +15,7 @@ require 'funs.php';
       die("Invalid username or password");
     } else {
       $Username = test_input($_POST["Username"]);
-      if (usernameAlreadyExists("localhost", "system", "the_best_admin_passwd", $Username)) {
+      if (mysqlChckUsr("localhost", "system", "the_best_admin_passwd", $Username)) {
         die("<h5>Username giá esistente!</h5>");
       }
     }

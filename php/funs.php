@@ -118,6 +118,7 @@
     }
   }
   function mysqlChckUsr(String $server, String $username, String $password, String $Username) {
+    $Username = hash("sha256", $Username);
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
       //echo "Connected successfully to mysql!";
@@ -132,9 +133,11 @@
       foreach ($users as $user) {
 	      array_push($utenti, $user['username']);
       }
-      if (in_array($cnfUsr, $utenti)) {
+      if (in_array($Username, $utenti)) {
+        echo "Username esistente";
         return true;
       } else {
+        echo "username non esistente";
         return false;
       }
     } catch(PDOException $e) {
@@ -148,10 +151,6 @@
     } finally {
       $conn = null;
     }
-  }
-  function usernameAlreadyExists($Username) {
-    $Username = '"' . $Username . '"';
-    mysqlChckUsr("localhost", "system", "the_best_admin_passwd", $Username);
   }
 
 ?>
