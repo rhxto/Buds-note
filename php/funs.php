@@ -117,7 +117,7 @@
       $conn = null;
     }
   }
-  function mysqlChckUsr(String $server, String $username, String $passowrd, String $Username) {
+  function mysqlChckUsr(String $server, String $username, String $password, String $Username) {
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
       //echo "Connected successfully to mysql!";
