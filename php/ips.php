@@ -52,7 +52,6 @@
         if (in_array($ipCnf, $ip)) {
           return true;
         } else {
-          echo "ip non listato";
           return false;
         }
       } catch(PDOException $e) {
