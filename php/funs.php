@@ -149,7 +149,6 @@
       $conn = null;
     }
   }
-  }
   function usernameAlreadyExists($Username) {
     $Username = '"' . $Username . '"';
     mysqlChckUsr("localhost", "system", "the_best_admin_passwd", $Username);
