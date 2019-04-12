@@ -1,11 +1,25 @@
 <?php
   require '../php/ips.php';
+  require '../php/timeFuns.php';
   $ip = $_SERVER['REMOTE_ADDR'];
   try {
     $conn = new PDO("mysql:host=localhost;dbname=Buds_db", "checkBan", "bansEER");
     $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->exec("USE Buds_db;");
     if (mysqlCheckIp($ip, $conn)) {
+      $ip = '"' . $ip . '"';
+      $getIps = $conn->query("SELECT date FROM ban_ip WHERE ip = $ip");
+      $getIps->setFetchMode(PDO::FETCH_ASSOC);
+      $banDate = $getIps->fetchAll();
+      $diff = differenzaData($banDate, date("Y-m-d H:i:s"));
+      if ($diff >= 600) {
+        $valid = true;
+      } else {
+        $valid = false;
+      }
+      if($valid) {
+        mysqlUnbanIp($conn, $ip, $cnfUsr);
+      }
       die("<p>Too many login attempts, retry 10 minutes after your ban</p>");
     }
   } catch(PDOException $e) {
