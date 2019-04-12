@@ -1,5 +1,5 @@
 <?php
-  require 'ips.php'
+  require 'php/ips.php';
   $ip = $_SERVER['REMOTE_ADDR'];
   try {
     $conn = new PDO("mysql:host=localhost;dbname=Buds_db", "checkBan", "bansEER");
