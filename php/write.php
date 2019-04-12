@@ -15,6 +15,9 @@ require 'funs.php';
       die("Invalid username or password");
     } else {
       $Username = test_input($_POST["Username"]);
+      if (usernameAlreadyExists("localhost", "system", "the_best_admin_passwd", $Username)) {
+        die("<h5>Username giá esistente!</h5>");
+      }
     }
 
     if (empty($_POST["Password"]) || $_POST["Password"] == "") {
@@ -27,14 +30,14 @@ require 'funs.php';
     } else {
       $Mail = '"' . $_POST["Mail"] . '"';
     }
+    $Username = hash("sha256", $Username);
+    $Password = hash("sha256", $Password);
+    $LastLog =  '"' . date("Y-m-d H:i:s") . '"';
+    $UsernameDb = '"' . $Username . '"';
+    $PasswordDb = '"' . $Password . '"';
+    $accLvl = 0;
+    $fail_acc = 0;
+    mysqlWriteCrd("localhost", "system", "the_best_admin_passwd", $UsernameDb, $PasswordDb, $Mail, $accLvl, $fail_acc, $LastLog);
+    echo '<script>window.location.href = "../html/login.html"</script>';
   }
-  $Username = hash("sha256", $Username);
-  $Password = hash("sha256", $Password);
-  $LastLog =  '"' . date("Y-m-d H:i:s") . '"';
-  $UsernameDb = '"' . $Username . '"';
-  $PasswordDb = '"' . $Password . '"';
-  $accLvl = 0;
-  $fail_acc = 0;
-  mysqlWriteCrd("localhost", "system", "the_best_admin_passwd", $UsernameDb, $PasswordDb, $Mail, $accLvl, $fail_acc, $LastLog);
-  echo '<script>window.location.href = "../html/login.html"</script>';
-?>
+  ?>

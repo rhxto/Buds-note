@@ -2,7 +2,7 @@
   function err_handler($code, $msg) : bool {
     switch ($code) {
       case 23000:
-      echo "Username giá esistente!";
+      echo "Giá esistente!";
       return true;
       break;
       default:

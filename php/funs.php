@@ -64,21 +64,23 @@
             echo "Logged in!";
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = $cnfUsr");
+            return true;
           } else {
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET fail_acc = fail_acc+1 WHERE username = $cnfUsr");
-            die("Incorrect username or password!");
+            echo 'Incorrect username or password!';
+            return false;
           }
         } else {
           require 'ips.php';
           $ip = $_SERVER['REMOTE_ADDR'];
           blockIp($ip, $conn);
-          die("<h3>Too many login attempts!</h3>");
-          $cnfUsr = '"' . $cnfUsr . '"';
-          die("Incorrect username or password!");
+          echo "<h3>Too many login attempts!</h3>";
+          return false;
         }
       } else {
-        die("Incorrect username or password!");
+        echo 'Incorrect username or password!';
+        $cnfUsr = '"' . $cnfUsr . '"';
         $conn->exec("UPDATE user SET fail_acc = fail_acc+1 WHERE username = $cnfUsr");
       }
     } catch(PDOException $e) {
@@ -114,6 +116,43 @@
     } finally {
       $conn = null;
     }
+  }
+  function mysqlChckUsr(String $server, String $username, String $passowrd, String $Username) {
+    try {
+      $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
+      //echo "Connected successfully to mysql!";
+      $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      //echo "Excepion errmode set!";
+      $conn->exec("USE Buds_db;");
+      //echo "Database selected successfully!";
+      $getUsers = $conn->query("SELECT * FROM user ORDER BY username");
+      $getUsers->setFetchMode(PDO::FETCH_ASSOC);
+      $users = $getUsers->fetchAll();
+      $utenti = array();
+      foreach ($users as $user) {
+	      array_push($utenti, $user['username']);
+      }
+      if (in_array($cnfUsr, $utenti)) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch(PDOException $e) {
+      require 'exceptions.php';
+      $exist = err_handler($e->getCode(), $e->getMessage());
+      if (!$exist) {
+        die("<h1>Errore interno</h1>");
+      } else {
+        die();
+      }
+    } finally {
+      $conn = null;
+    }
+  }
+  }
+  function usernameAlreadyExists($Username) {
+    $Username = '"' . $Username . '"';
+    mysqlChckUsr("localhost", "system", "the_best_admin_passwd", $Username);
   }
 
 ?>
