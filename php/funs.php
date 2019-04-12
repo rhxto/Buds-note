@@ -112,7 +112,7 @@
       $conn = null;
     }
   }
-  function mysqlChckUsr(String $server, String $username, String $password, String $Username) {
+  function mysqlChckUsr(String $server, String $username, String $password, String $Username) : bool{
     $Username = hash("sha256", $Username);
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);

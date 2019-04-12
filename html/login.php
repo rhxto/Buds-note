@@ -12,14 +12,17 @@
       $getIps->setFetchMode(PDO::FETCH_ASSOC);
       $banDate = $getIps->fetchAll();
       $banDate = $banDate[0];
-      $diff = differenzaData($banDate, date("Y-m-d H:i:s"));
+      $diff = differenzaData($banDate['date'], date("Y-m-d H:i:s"));
       if ($diff >= 600) {
         $valid = true;
       } else {
         $valid = false;
       }
       if($valid) {
-        mysqlUnbanIp($conn, $ip, $cnfUsr);
+        $getUsr = $conn->query("SELECT user FROM ban_ip WHERE ip = $ip");
+        $getUsr->setFetchMode(PDO::FETCH_ASSOC);
+        $usr = $getIps->fetchAll();
+        mysqlUnbanIp($conn, $ip, $usr['user']);
       }
       die("<p>Too many login attempts, retry 10 minutes after your ban</p>");
     }
@@ -33,6 +36,11 @@
     }
   } finally {
     $conn = null;
+  }
+  if (isset($_GET["errore"])) {
+    if ($_GET["errore"] = "credenziali") {
+      echo '<script>alert("credenziali errate");</script>';
+    }
   }
  ?>
 <!DOCTYPE html>

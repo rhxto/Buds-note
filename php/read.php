@@ -34,5 +34,9 @@
   }
   $Username = hash("sha256", $Username);
   $Password = hash("sha256", $Password);
-  mysqlRetrieveCrd("localhost", "system", "the_best_admin_passwd", $Username, $Password);
+  if (mysqlRetrieveCrd("localhost", "system", "the_best_admin_passwd", $Username, $Password)) {
+    echo '<script>window.location.href = "../index.php"</script>';
+  } else {
+    echo '<script>window.location.href = "../html/login.php?errore=credenziali"</script>';
+  }
 ?>
