@@ -29,9 +29,13 @@
       $conn->exec("INSERT INTO user (username, pw, mail, acc_lvl, fail_acc, last_log) VALUES ($usernameDb, $passwordDb, $Email,$accLvl, $fail_acc, $date)");
       //echo "Done!";
     } catch(PDOException $e) {
-      echo "<h1>Errore interno</h1>";
-      error_log($e->getMessage());
-      die();
+      require 'exceptions.php';
+      $exist = err_handler($e->getCode(), $e->getMessage());
+      if (!$exist) {
+        die("<h1>Errore interno</h1>");
+      } else {
+        die();
+      }
     } finally {
       $conn = null;
     }
@@ -97,6 +101,7 @@
       //echo "Done!";
     } catch(PDOException $e) {
       echo "<h1>Errore interno</h1>";
+      err_handler($e->errorCode(), $e->getMessage());
       error_log($e->getMessage());
       die();
     } finally {
