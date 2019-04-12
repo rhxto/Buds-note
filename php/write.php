@@ -16,7 +16,7 @@ require 'funs.php';
     } else {
       $Username = test_input($_POST["Username"]);
       if (mysqlChckUsr("localhost", "system", "the_best_admin_passwd", $Username)) {
-        die("<h5>Username giá esistente!</h5>");
+        die("<h4>Username giá esistente!</h4>");
       }
     }
 

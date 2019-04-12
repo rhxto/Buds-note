@@ -134,10 +134,8 @@
 	      array_push($utenti, $user['username']);
       }
       if (in_array($Username, $utenti)) {
-        echo "Username esistente";
         return true;
       } else {
-        echo "username non esistente";
         return false;
       }
     } catch(PDOException $e) {
