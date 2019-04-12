@@ -7,6 +7,7 @@
         $data = '"' . date("Y-m-d H:i:s") . '"';
         $conn->exec("INSERT INTO ban_ip (ip, date) VALUES ($ip, $data)");
         if ($user != "null") {
+          $user = '"' . $user . '"';
           $conn->exec("INSERT INTO ban_ip (user) VALUES ($user)");
         }
       } catch(PDOException $e) {
