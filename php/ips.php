@@ -10,8 +10,13 @@
         $ip = '"' . $ip . '"';
         $conn->exec("INSERT INTO blocked_ips (ip) VALUES ($ip)");
       } catch(PDOException $e) {
-        error_log($e->getMessage());
-        die();
+        require 'exceptions.php';
+        $exist = err_handler($e->getCode(), $e->getMessage());
+        if (!$exist) {
+          die("<h1>Errore interno</h1>");
+        } else {
+          die();
+        }
       } finally {
           $conn = null;
       }

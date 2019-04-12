@@ -82,9 +82,13 @@
         $conn->exec("UPDATE user SET fail_acc = fail_acc+1 WHERE username = $cnfUsr");
       }
     } catch(PDOException $e) {
-      echo "<h1>Errore interno</h1>";
-      error_log($e->getMessage());
-      die();
+      require 'exceptions.php';
+      $exist = err_handler($e->getCode(), $e->getMessage());
+      if (!$exist) {
+        die("<h1>Errore interno</h1>");
+      } else {
+        die();
+      }
     } finally {
       $conn = null;
     }
@@ -100,10 +104,13 @@
       $conn->exec("DELETE FROM blocked_ips (ip) WHERE ip = $ip");
       //echo "Done!";
     } catch(PDOException $e) {
-      echo "<h1>Errore interno</h1>";
-      err_handler($e->errorCode(), $e->getMessage());
-      error_log($e->getMessage());
-      die();
+      require 'exceptions.php';
+      $exist = err_handler($e->getCode(), $e->getMessage());
+      if (!$exist) {
+        die("<h1>Errore interno</h1>");
+      } else {
+        die();
+      }
     } finally {
       $conn = null;
     }
