@@ -50,7 +50,7 @@
         </div>
       </form>
       <button onclick="testInput()" id="btn" class="button top50 left30 width40 height10">LOGIN</button>
-      <button onclick="window.location.href='register.html'" id="btn" class="button top70 left30 width40 height10">Crea un account</button>
+      <button onclick="window.location.href='register.php'" id="btn" class="button top70 left30 width40 height10">Crea un account</button>
     </div>
   </body>
 </html>
