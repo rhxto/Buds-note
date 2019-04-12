@@ -32,8 +32,8 @@
     <p style="position:sticky;top:0px;width:100%">
     <div class="navbar" id="navbar">
       <a href="index.html" class="navbar-left">HOME</a>
-      <a href="html/login.html" class="navbar-right">LOGIN</a>
-      <a href="html/register.html" class="navbar-right">REGISTER</a>
+      <a href="html/login.php" class="navbar-right">LOGIN</a>
+      <a href="html/register.php" class="navbar-right">REGISTER</a>
     </div>
       </p>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

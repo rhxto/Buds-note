@@ -1,3 +1,25 @@
+<?php
+  require 'php/ips.php';
+  $ip = $_SERVER['REMOTE_ADDR'];
+  try {
+    $conn = new PDO("mysql:host=localhost;dbname=Buds_db", "checkBan", "bansEER");
+    $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->exec("USE Buds_db;");
+    if (mysqlCheckIp($ip, $conn)) {
+      die"<p>Too many login attempts, retry 10 minutes after your ban</p>";
+    }
+  } catch(PDOException $e) {
+    require 'exceptions.php';
+    $exist = err_handler($e->getCode(), $e->getMessage());
+    if (!$exist) {
+      die("<h1>Errore interno</h1>");
+    } else {
+      die();
+    }
+  } finally {
+    $conn = null;
+  }
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
