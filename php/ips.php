@@ -1,5 +1,4 @@
 <?php
-  require 'timeFuns.php';
   function blockIp(String $ip, $conn, String $user) {
       try {
         $conn->exec("USE Buds_db;");
@@ -24,9 +23,9 @@
     }
     function mysqlUnbanIp($conn, String $ip, String $user) {
       try {
-        $ip = '"' . $ip . '"';
         $conn->exec("DELETE FROM ban_ip WHERE ip = $ip");
         if ($user != "null") {
+          $user = '"' . $user . '"';
           $conn->exec("UPDATE user SET fail_acc = 0 WHERE username = $user");
         }
       } catch(PDOException $e) {
@@ -51,17 +50,7 @@
   	      array_push($ip, $tmp['ip']);
         }
         if (in_array($ipCnf, $ip)) {
-          $getIps = $conn->query("SELECT date FROM ban_ip WHERE ip = $ipCnf");
-          $getIps->setFetchMode(PDO::FETCH_ASSOC);
-          $banDate = $getIps->fetchAll();
-          $diff = differenzaData($banDate, date("Y-m-d H:i:s"));
-          if ($diff >= 600) {
-            echo "differenza valida";
-            return true;
-          } else {
-            echo "differenza non valida";
-            return false;
-          }
+          return true;
         } else {
           echo "ip non listato";
           return false;

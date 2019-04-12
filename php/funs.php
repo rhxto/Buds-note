@@ -73,9 +73,22 @@
           }
         } else {
           require 'ips.php';
+          require 'timeFuns.php';
           $ip = $_SERVER['REMOTE_ADDR'];
           if (mysqlCheckIp($ip, $conn)) {
-            mysqlUnbanIp($conn, $ip, $cnfUsr);
+            $ip = '"' . $ip . '"';
+            $getIps = $conn->query("SELECT date FROM ban_ip WHERE ip = $ip");
+            $getIps->setFetchMode(PDO::FETCH_ASSOC);
+            $banDate = $getIps->fetchAll();
+            $diff = differenzaData($banDate, date("Y-m-d H:i:s"));
+            if ($diff >= 600) {
+              $valid = true;
+            } else {
+              $valid = false;
+            }
+            if($valid) {
+              mysqlUnbanIp($conn, $ip, $cnfUsr);
+            }
           } else {
             blockIp($ip, $conn, $cnfUsr);
             echo "<h3>Too many login attempts!</h3>";
