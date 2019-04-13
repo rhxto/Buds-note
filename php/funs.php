@@ -60,7 +60,7 @@
         array_push($passwords, $user['pw']);
       }
       if (in_array($cnfUsr, $utenti)) {
-        if(accLimit($cnfUsr, $cnfPw, $conn)){
+        if(accLimit($cnfUsr, $cnfPw, $conn)) {
           if (in_array($cnfPw, $passwords)) {
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = $cnfUsr");
@@ -72,30 +72,13 @@
           }
         } else {
           require 'ips.php';
-          require 'timeFuns.php';
           $ip = $_SERVER['REMOTE_ADDR'];
-          if (mysqlCheckIp($ip, $conn)) {
-            $ip = '"' . $ip . '"';
-            $getIps = $conn->query("SELECT date FROM ban_ip WHERE ip = $ip");
-            $getIps->setFetchMode(PDO::FETCH_ASSOC);
-            $banDate = $getIps->fetchAll();
-            $diff = differenzaData($banDate, date("Y-m-d H:i:s"));
-            if ($diff >= 600) {
-              $valid = true;
-            } else {
-              $valid = false;
-            }
-            if($valid) {
-              mysqlUnbanIp($conn, $ip, $cnfUsr);
-            }
-          } else {
-            blockIp($ip, $conn, $cnfUsr);
-            return 'bannato';
-          }
+          blockIp($ip, $conn, $cnfUsr);
+          return 'bannato';
         }
       } else {
-        $ip = $_SERVER['REMOTE_ADDR'];
         require 'ips.php';
+        $ip = $_SERVER['REMOTE_ADDR'];
         if(blockIpTmp($ip, $conn)) {
           return 'bannato';
         } else {
@@ -106,10 +89,10 @@
       require 'exceptions.php';
       $exist = err_handler($e->getCode(), $e->getMessage());
       if (!$exist) {
-        echo "internalError";
+        return "internalError";
         die("<h1>Errore interno</h1>");
       } else {
-        echo "internalError";
+        return "internalError";
         die();
       }
     } finally {
