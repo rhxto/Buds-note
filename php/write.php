@@ -5,28 +5,28 @@ require 'funs.php';
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     if ($data == "") {
-      die("Invalid username, password or email");
+      echo '<script>window.location.href = "../html/register.php?errore=nonAN"</script>';
     }
     return $data;
   }
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["Username"]) || $_POST["Username"] == "") {
-      die("Invalid username or password");
+      echo '<script>window.location.href = "../html/register.php?errore=nonAN"</script>';
     } else {
       $Username = test_input($_POST["Username"]);
       if (mysqlChckUsr("localhost", "system", "the_best_admin_passwd", $Username)) {
-        die("<h4>Username giá esistente!</h4>");
+        echo '<script>window.location.href = "../html/register.php?errore=usernameEsiste"</script>';
       }
     }
 
     if (empty($_POST["Password"]) || $_POST["Password"] == "") {
-      die("Invalid username or password");
+      echo '<script>window.location.href = "../html/register.php?errore=nonAN"</script>';
     } else {
       $Password = test_input($_POST["Password"]);
     }
     if (empty($_POST["Mail"]) || $_POST["Mail"] == "") {
-      die("Invalid email");
+      echo '<script>window.location.href = "../html/register.php?errore=nonAN"</script>';
     } else {
       $Mail = '"' . $_POST["Mail"] . '"';
     }

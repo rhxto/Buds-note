@@ -67,3 +67,13 @@
     </div>
   </body>
 </html>
+<?php
+  if (isset($_GET["errore"])) {
+    if ($_GET["errore"] == "usernameEsiste") {
+      echo '<script>errore("usernameEsiste");</script>';
+    }
+  if ($_GET["errore"] == "nonAN" /*non alfanumerico */) {
+    echo '<script>errore("nonAN");</script>';
+    }
+  }
+?>

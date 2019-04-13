@@ -11,14 +11,14 @@ function testInput() {
 
   if(usr == null || pswd == null|| usr == undefined || pswd == undefined || usr == "" || pswd == "") {
     if (errThrown == false) {
-      $("#Warning").append("Inserire dati validi!");
+      $("#Warning").html("Inserire dati validi!");
       errThrown = true;
     }
   } else if (hasWhiteSpace(usr) == false && hasWhiteSpace(pswd) == false) {
     submitform();
   } else {
     if (errThrown == false) {
-      $("#Warning").append("Inserire dati validi!");
+      $("#Warning").html("Inserire dati validi!");
       errThrown = true;
     }
   }
@@ -26,7 +26,7 @@ function testInput() {
 function errore(err) {
   switch (err) {
     case "credenziali":
-    $("#Warning").append("Username o password non corretti!");
+    $("#Warning").html("Username o password non corretti!");
     break;
     default:
     break;

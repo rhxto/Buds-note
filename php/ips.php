@@ -102,6 +102,7 @@
       }
     }
     function checkBannedIps($conn) {
+      //per avere la differenza fra le date servirebbe timeFuns ma il require é giá eseguito su login.php
       try {
         $getIps = $conn->query("SELECT ip FROM ban_ext_ip ORDER BY ip");
         $getIps->setFetchMode(PDO::FETCH_ASSOC);
