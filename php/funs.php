@@ -64,11 +64,11 @@
           if (in_array($cnfPw, $passwords)) {
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = $cnfUsr");
-            return true;
+            return "true";
           } else {
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET fail_acc = fail_acc+1 WHERE username = $cnfUsr");
-            return false;
+            return "false";
           }
         } else {
           require 'ips.php';
@@ -82,7 +82,7 @@
         if(blockIpTmp($ip, $conn)) {
           return 'bannato';
         } else {
-          return false;
+          return "false";
         }
       }
     } catch(PDOException $e) {

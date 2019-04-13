@@ -32,10 +32,11 @@
   $Username = hash("sha256", $Username);
   $Password = hash("sha256", $Password);
   $status = mysqlRetrieveCrd("localhost", "system", "the_best_admin_passwd", $Username, $Password);
-  if ($status == true) {
+  if ($status == "true") {
     $_SESSION['logged_in'] = '1'; //1 = loggato, NULL no.
+    error_log("sessione attivata!");
     echo 'passed';
-  } else if ($status == false){
+  } else if ($status == "false"){
     $_SESSION['logged_in'] = '0';
     echo 'credenziali';
   } else if ($status == 'bannato') {
