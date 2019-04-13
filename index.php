@@ -17,29 +17,26 @@
   </head>
   <body>
     <p style="position:sticky;top:0px;width:100%">
-    <div class="navbar" id="navbar">
-      <a href="index.php" class="navbar-left">HOME</a>
-      <a href="html/login.php" class="navbar-right">LOGIN</a>
-      <a href="html/register.php" class="navbar-right">REGISTER</a>
-      <button id="logout" class="navbar-right">LOGOUT</button>
-    </div>
-      </p>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <div class="navbar" id="navbar">
+        <a href="index.php" class="navbar-left">HOME</a>
+        <a href="html/login.php" class="navbar-right log">LOGIN</a>
+        <a href="html/register.php" class="navbar-right log">REGISTER</a>
+        <button id="logout" class="navbar-right logout">LOGOUT</button>
+      </div>
+    </p>
   </body>
 </html>
 <?php
   if (isset($_SESSION['logged_in'])) {
     if ($_SESSION['logged_in'] == '1') {
-      echo "loggato!";
+      echo "<script>$('.log').attr('hidden', true);</script>";
     } else {
-      echo 'Esegui il login per accedere al sito.';
       session_unset();  //quando si esegue il logout logged_in é settato e != da 1 quindi sappiamo che é stato eseguito il logout
       session_destroy();
+      echo "<script>$('.logout').attr('hidden', true);</script>";
     }
   } else {
-    echo 'Esegui il login per accedere al sito.';
+    echo "<script>$('.logout').attr('hidden', true);</script>";
     //se chiudiamo la sessione anche quando uno non é loggato, non riusciamo a settare logged_in a 1
   }
  ?>
