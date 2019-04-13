@@ -1,6 +1,17 @@
 var errThrown = false;
 function submitform() {
-  document.forms["form"].submit();
+    var username = $("#Username").val();
+    var password = $("#Password").val();
+    var ajaxurl = '../php/read.php',
+    data =  {'Username': username,
+             'Password' : password};
+    $.post(ajaxurl, data, function (response) {
+    if (response) {
+      window.location.href = "../index.php";
+    } else {
+      errore("credenziali");
+    }
+  });
 }
 function hasWhiteSpace(s) {
   return s.indexOf(' ') >= 0;
