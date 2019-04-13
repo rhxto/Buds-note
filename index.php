@@ -21,7 +21,7 @@
       <a href="index.php" class="navbar-left">HOME</a>
       <a href="html/login.php" class="navbar-right">LOGIN</a>
       <a href="html/register.php" class="navbar-right">REGISTER</a>
-      <button id="logout">LOGOUT</button>
+      <button id="logout" class="navbar-right">LOGOUT</button>
     </div>
       </p>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
