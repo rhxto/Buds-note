@@ -21,7 +21,8 @@
       if($valid) {
         $getUsr = $conn->query("SELECT user FROM ban_ip WHERE ip = $ip");
         $getUsr->setFetchMode(PDO::FETCH_ASSOC);
-        $usr = $getIps->fetchAll();
+        $usr = $getUsr->fetchAll();
+        $usr = $usr[0];
         mysqlUnbanIp($conn, $ip, $usr['user']);
       }
       die("<p>Too many login attempts, retry 10 minutes after your ban</p>");
@@ -39,7 +40,7 @@
   }
   if (isset($_GET["errore"])) {
     if ($_GET["errore"] = "credenziali") {
-      echo '<script>alert("credenziali errate");</script>';
+      echo '<script src="jquery.min.js">$(function() { errore("crendenziali"); });</script>';
     }
   }
  ?>

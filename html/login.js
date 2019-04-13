@@ -23,3 +23,12 @@ function testInput() {
     }
   }
 }
+function errore(err) {
+  switch (err) {
+    case "credenziali":
+    $("#Warning").append("Username o password non corretti!");
+    break;
+    default:
+    break;
+  }
+}
