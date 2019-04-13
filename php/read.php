@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
   require 'funs.php';
   function test_input($data) {
     $data = trim($data);
@@ -33,6 +33,7 @@
   $Password = hash("sha256", $Password);
   if (mysqlRetrieveCrd("localhost", "system", "the_best_admin_passwd", $Username, $Password)) {
     echo '<script>window.location.href = "../index.php"</script>';
+    $_SESSION['logged_in'] = '1'; //1 = loggato, NULL no.
   } else {
     echo '<script>window.location.href = "../html/login.php?errore=credenziali"</script>';
   }
