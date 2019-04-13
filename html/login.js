@@ -6,10 +6,10 @@ function submitform() {
     data =  {'Username': username,
              'Password' : password};
     $.post(ajaxurl, data, function (response) {
-    if (response) {
+    if (response == "passed") {
       window.location.href = "../index.php";
     } else {
-      errore("credenziali");
+      errore(response);
     }
   });
 }
@@ -39,7 +39,14 @@ function errore(err) {
     case "credenziali":
     $("#Warning").html("Username o password non corretti!");
     break;
+    case "nonAN":
+    $("#Warning").html("Inserire dati validi!");
+    break;
+    case "internalError":
+    $("#Warning").html("Errore interno");
+    break;
     default:
+    $("#Warning").html("Errore interno");
     break;
   }
 }

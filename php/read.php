@@ -12,29 +12,29 @@
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["Username"]) || $_POST["Username"] == "") {
-      echo 'false';
+      echo 'nonAN';
     } else {
       $Username = test_input($_POST["Username"]);
     }
 
     if (empty($_POST["Password"]) || $_POST["Password"] == "") {
-      echo 'false';
+      echo 'nonAN';
     } else {
       $Password = test_input($_POST["Password"]);
     }
   }
   if($_POST["Username"] != $Username) {
-    echo 'false';
+    echo 'nonAN';
   }
   if ($_POST["Password"] != $Password) {
-    echo 'false';
+    echo 'nonAN';
   }
   $Username = hash("sha256", $Username);
   $Password = hash("sha256", $Password);
   if (mysqlRetrieveCrd("localhost", "system", "the_best_admin_passwd", $Username, $Password)) {
-    echo 'true';
+    echo 'passed';
     $_SESSION['logged_in'] = '1'; //1 = loggato, NULL no.
   } else {
-    echo 'false';
+    echo 'credenziali';
   }
 ?>

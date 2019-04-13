@@ -33,15 +33,16 @@
       $exist = err_handler($e->getCode(), $e->getMessage());
       if (!$exist) {
         die("<h1>Errore interno</h1>");
+        return true;
       } else {
-        die();
+        return false;
       }
     } finally {
       $conn = null;
     }
   }
 
-  function mysqlRetrieveCrd(String $server, String $username, String $password, String $cnfUsr, String $cnfPw) {
+  function mysqlRetrieveCrd(String $server, String $username, String $password, String $cnfUsr, String $cnfPw) : bool {
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
       //echo "Connected successfully to mysql!";
@@ -103,15 +104,17 @@
       require 'exceptions.php';
       $exist = err_handler($e->getCode(), $e->getMessage());
       if (!$exist) {
+        echo "internalError";
         die("<h1>Errore interno</h1>");
       } else {
+        echo "internalError";
         die();
       }
     } finally {
       $conn = null;
     }
   }
-  function mysqlChckUsr(String $server, String $username, String $password, String $Username) : bool{
+  function mysqlChckUsr(String $server, String $username, String $password, String $Username) : bool {
     $Username = hash("sha256", $Username);
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);

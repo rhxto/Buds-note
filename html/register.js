@@ -1,6 +1,19 @@
 var errThrown = false;
 function submitform() {
-  document.forms["form"].submit();
+    var username = $("#Username").val();
+    var password = $("#Password").val();
+    var mail = $("#Email").val();
+    var ajaxurl = '../php/write.php',
+    data =  {'Username': username,
+             'Password' : password,
+             'Mail' : mail};
+    $.post(ajaxurl, data, function (response) {
+    if (response == "passed") {
+      window.location.href = "login.php";
+    } else {
+      errore(response);
+    }
+  });
 }
 function hasWhiteSpace(s) {
   return s.indexOf(' ') >= 0;
@@ -45,7 +58,11 @@ function errore(err) {
     case "usernameEsiste":
     $("#Warning").html("Username giá esistente!");
     break;
+    case "nonAN":
+    $("#Warning").html("Username o password non validi!");
+    break;
     default:
+    $("#Warning").html("Errore");
     break;
   }
 }
