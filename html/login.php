@@ -29,6 +29,9 @@
         $getUsr->setFetchMode(PDO::FETCH_ASSOC);
         $usr = $getUsr->fetchAll();
         $usr = $usr[0];
+        if ($usr == NULL) {
+          $usr = "null";
+        }
         mysqlUnbanIp($conn, $ip, $usr['user']);
       }
       die("<p>Too many login attempts, retry 10 minutes after your ban</p>");
