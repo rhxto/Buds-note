@@ -6,7 +6,7 @@
   header("Pragma: no-cache");
   //se il broswer mette il login in cache l'accesso non é bloccato, questo disabilita il caching.
   require '../php/ips.php';
-  require '../php/timeFuns.php';
+  require_once '../php/timeFuns.php';
   $ip = $_SERVER['REMOTE_ADDR'];
   try {
     $conn = new PDO("mysql:host=localhost;dbname=Buds_db", "checkBan", "bansEER");
@@ -29,9 +29,15 @@
         $getUsr->setFetchMode(PDO::FETCH_ASSOC);
         $usr = $getUsr->fetchAll();
         $usr = $usr[0];
-        mysqlUnbanIp($conn, $ip, $usr['user']);
+        if ($usr['user'] == NULL) {
+          $user = "null";
+        } else {
+          $user = $usr['user'];
+        }
+        mysqlUnbanIp($conn, $ip, $user);
+      } else {
+        die("<p>Too many login attempts, retry 10 minutes after your ban</p>");
       }
-      die("<p>Too many login attempts, retry 10 minutes after your ban</p>");
     }
   } catch(PDOException $e) {
     require 'exceptions.php';
@@ -42,6 +48,7 @@
       die();
     }
   } finally {
+    checkBannedIps($conn);
     $conn = null;
   }
  ?>

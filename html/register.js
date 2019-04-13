@@ -28,15 +28,24 @@ function testInput() {
 
   if(usr == null || pswd == null|| rpswd == null || mail == null || usr == undefined || pswd == undefined || rpswd == undefined || mail == undefined || usr == "" || pswd == "" || rpswd == "" || mail == "") {
     if (errThrown == false) {
-      $("#Warning").append("Inserire dati validi!");
+      $("#Warning").html("Inserire dati validi!");
       errThrown = true;
     }
   } else if (hasWhiteSpace(usr) == false && hasWhiteSpace(pswd) == false && testMail(mail) && pswd == rpswd) {
     submitform();
   } else {
     if (errThrown == false) {
-      $("#Warning").append("Inserire dati validi!");
+      $("#Warning").html("Inserire dati validi!");
       errThrown = true;
     }
+  }
+}
+function errore(err) {
+  switch (err) {
+    case "usernameEsiste":
+    $("#Warning").html("Username giá esistente!");
+    break;
+    default:
+    break;
   }
 }

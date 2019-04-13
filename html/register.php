@@ -1,4 +1,9 @@
 <?php
+  header("Expires: 0");
+  header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+  header("Cache-Control: no-store, no-cache, must-revalidate");
+  header("Cache-Control: post-check=0, pre-check=0", false);
+  header("Pragma: no-cache");
   require '../php/ips.php';
   $ip = $_SERVER['REMOTE_ADDR'];
   try {
@@ -62,3 +67,13 @@
     </div>
   </body>
 </html>
+<?php
+  if (isset($_GET["errore"])) {
+    if ($_GET["errore"] == "usernameEsiste") {
+      echo '<script>errore("usernameEsiste");</script>';
+    }
+  if ($_GET["errore"] == "nonAN" /*non alfanumerico */) {
+    echo '<script>errore("nonAN");</script>';
+    }
+  }
+?>

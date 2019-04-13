@@ -96,7 +96,7 @@
       } else {
         $ip = $_SERVER['REMOTE_ADDR'];
         require 'ips.php';
-        blockIp($ip, $conn, "null");
+        blockIpTmp($ip, $conn);
         return false;
       }
     } catch(PDOException $e) {
