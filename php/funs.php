@@ -42,7 +42,7 @@
     }
   }
 
-  function mysqlRetrieveCrd(String $server, String $username, String $password, String $cnfUsr, String $cnfPw) : bool {
+  function mysqlRetrieveCrd(String $server, String $username, String $password, String $cnfUsr, String $cnfPw) {
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
       //echo "Connected successfully to mysql!";
@@ -90,15 +90,17 @@
             }
           } else {
             blockIp($ip, $conn, $cnfUsr);
-            echo "<h3>Too many login attempts!</h3>";
-            return false;
+            return 'bannato';
           }
         }
       } else {
         $ip = $_SERVER['REMOTE_ADDR'];
         require 'ips.php';
-        blockIpTmp($ip, $conn);
-        return false;
+        if(blockIpTmp($ip, $conn)) {
+          return 'bannato';
+        } else {
+          return false;
+        }
       }
     } catch(PDOException $e) {
       require 'exceptions.php';

@@ -84,6 +84,7 @@
           $trys = $trys[0];
           if ($trys['try'] >= 5) {
             blockIp($ipCnf, $conn, "null");
+            return true;
           }
         } else {
           $d = '"' . date("Y-m-d H:i:s") . '"';

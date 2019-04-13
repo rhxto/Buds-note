@@ -45,6 +45,9 @@ function errore(err) {
     case "internalError":
     $("#Warning").html("Errore interno");
     break;
+    case "bannato":
+    window.location.href = "../index.php";
+    break;
     default:
     $("#Warning").html("Errore interno");
     break;

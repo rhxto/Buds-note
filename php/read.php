@@ -5,7 +5,7 @@
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     if ($data == "") {
-      echo 'false';
+      echo 'nonAN';
     }
     return $data;
   }
@@ -31,10 +31,18 @@
   }
   $Username = hash("sha256", $Username);
   $Password = hash("sha256", $Password);
-  if (mysqlRetrieveCrd("localhost", "system", "the_best_admin_passwd", $Username, $Password)) {
-    echo 'passed';
+  $status = mysqlRetrieveCrd("localhost", "system", "the_best_admin_passwd", $Username, $Password);
+  if ($status == true) {
     $_SESSION['logged_in'] = '1'; //1 = loggato, NULL no.
-  } else {
+    echo 'passed';
+  } else if ($status == false){
+    $_SESSION['logged_in'] = '0';
     echo 'credenziali';
+  } else if ($status == 'bannato') {
+    $_SESSION['logged_in'] = '0';
+    echo 'bannato';
+  } else {
+    $_SESSION['logged_in'] = '0';
+    echo 'internalError';
   }
 ?>
