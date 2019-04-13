@@ -1,4 +1,10 @@
 <?php
+  header("Expires: 0");
+  header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+  header("Cache-Control: no-store, no-cache, must-revalidate");
+  header("Cache-Control: post-check=0, pre-check=0", false);
+  header("Pragma: no-cache");
+  //se il broswer mette il login in cache l'accesso non é bloccato, questo disabilita il caching.
   require '../php/ips.php';
   require '../php/timeFuns.php';
   $ip = $_SERVER['REMOTE_ADDR'];
@@ -38,11 +44,6 @@
   } finally {
     $conn = null;
   }
-  if (isset($_GET["errore"])) {
-    if ($_GET["errore"] = "credenziali") {
-      echo '<script src="jquery.min.js">$(function() { errore("crendenziali"); });</script>';
-    }
-  }
  ?>
 <!DOCTYPE html>
 <html>
@@ -78,3 +79,10 @@
     </div>
   </body>
 </html>
+<?php
+  if (isset($_GET["errore"])) {
+    if ($_GET["errore"] = "credenziali") {
+      echo '<script>errore("credenziali");</script>';
+    }
+  }
+?>

@@ -61,14 +61,12 @@
       if (in_array($cnfUsr, $utenti)) {
         if(accLimit($cnfUsr, $cnfPw, $conn)){
           if (in_array($cnfPw, $passwords)) {
-            echo "Logged in!";
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = $cnfUsr");
             return true;
           } else {
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET fail_acc = fail_acc+1 WHERE username = $cnfUsr");
-            echo 'Incorrect username or password!';
             return false;
           }
         } else {
@@ -96,9 +94,10 @@
           }
         }
       } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
         require 'ips.php';
-        echo 'Incorrect username or password!';
         blockIp($ip, $conn, "null");
+        return false;
       }
     } catch(PDOException $e) {
       require 'exceptions.php';
