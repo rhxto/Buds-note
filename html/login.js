@@ -1,6 +1,17 @@
 var errThrown = false;
 function submitform() {
-  document.forms["form"].submit();
+    var username = $("#Username").val();
+    var password = $("#Password").val();
+    var ajaxurl = '../php/read.php',
+    data =  {'Username': username,
+             'Password' : password};
+    $.post(ajaxurl, data, function (response) {
+    if (response == "passed") {
+      window.location.href = "../index.php";
+    } else {
+      errore(response);
+    }
+  });
 }
 function hasWhiteSpace(s) {
   return s.indexOf(' ') >= 0;
@@ -28,7 +39,14 @@ function errore(err) {
     case "credenziali":
     $("#Warning").html("Username o password non corretti!");
     break;
+    case "nonAN":
+    $("#Warning").html("Inserire dati validi!");
+    break;
+    case "internalError":
+    $("#Warning").html("Errore interno");
+    break;
     default:
+    $("#Warning").html("Errore interno");
     break;
   }
 }

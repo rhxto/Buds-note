@@ -5,28 +5,33 @@ require 'funs.php';
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     if ($data == "") {
-      echo '<script>window.location.href = "../html/register.php?errore=nonAN"</script>';
+      echo 'nonAN';
+      die();
     }
     return $data;
   }
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["Username"]) || $_POST["Username"] == "") {
-      echo '<script>window.location.href = "../html/register.php?errore=nonAN"</script>';
+      echo 'nonAN';
+      die();
     } else {
       $Username = test_input($_POST["Username"]);
       if (mysqlChckUsr("localhost", "system", "the_best_admin_passwd", $Username)) {
-        echo '<script>window.location.href = "../html/register.php?errore=usernameEsiste"</script>';
+        echo 'usernameEsiste';
+        die();
       }
     }
 
     if (empty($_POST["Password"]) || $_POST["Password"] == "") {
-      echo '<script>window.location.href = "../html/register.php?errore=nonAN"</script>';
+      echo 'nonAN';
+      die();
     } else {
       $Password = test_input($_POST["Password"]);
     }
     if (empty($_POST["Mail"]) || $_POST["Mail"] == "") {
-      echo '<script>window.location.href = "../html/register.php?errore=nonAN"</script>';
+      echo 'nonAN';
+      die();
     } else {
       $Mail = '"' . $_POST["Mail"] . '"';
     }
@@ -37,7 +42,13 @@ require 'funs.php';
     $PasswordDb = '"' . $Password . '"';
     $accLvl = 0;
     $fail_acc = 0;
-    mysqlWriteCrd("localhost", "system", "the_best_admin_passwd", $UsernameDb, $PasswordDb, $Mail, $accLvl, $fail_acc, $LastLog);
-    echo '<script>window.location.href = "../html/login.php"</script>';
+    $status = mysqlWriteCrd("localhost", "system", "the_best_admin_passwd", $UsernameDb, $PasswordDb, $Mail, $accLvl, $fail_acc, $LastLog);
+    if ($status == NULL) {
+      echo 'passed';
+    } else if ($status){
+      echo 'internalError';
+    } else {
+      echo 'usernameEsiste';
+    }
   }
   ?>

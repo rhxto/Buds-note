@@ -86,10 +86,3 @@
     </div>
   </body>
 </html>
-<?php
-  if (isset($_GET["errore"])) {
-    if ($_GET["errore"] = "credenziali") {
-      echo '<script>errore("credenziali");</script>';
-    }
-  }
-?>

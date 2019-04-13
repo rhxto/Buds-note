@@ -32,7 +32,7 @@ body {
   text-decoration: none !important;
   color: white;
 }
-.navbar a:hover, a:active, a:focus{
+.navbar a:hover, a:active, a:focus {
   background-color: black;
 }
 .stickyNavbar {   //da implementare
