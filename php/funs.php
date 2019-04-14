@@ -73,7 +73,9 @@
         } else {
           //se un utente é sbannato ma i tentativi di login sono 6 allora non puó funzionare il reset di fail_acc
           if (in_array($cnfPw, $passwords)) {
+            $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = $cnfUsr");
+            return "true";
           } else {
             require 'ips.php';
             $ip = $_SERVER['REMOTE_ADDR'];
