@@ -71,10 +71,15 @@
             return "false";
           }
         } else {
-          require 'ips.php';
-          $ip = $_SERVER['REMOTE_ADDR'];
-          blockIp($ip, $conn, $cnfUsr);
-          return 'bannato';
+          //se un utente é sbannato ma i tentativi di login sono 6 allora non puó funzionare il reset di fail_acc
+          if (in_array($cnfPw, $passwords)) {
+            $conn->exec("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = $cnfUsr");
+          } else {
+            require 'ips.php';
+            $ip = $_SERVER['REMOTE_ADDR'];
+            blockIp($ip, $conn, $cnfUsr);
+            return 'bannato';
+          }
         }
       } else {
         require 'ips.php';
