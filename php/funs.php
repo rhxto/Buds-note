@@ -75,8 +75,8 @@
           if (in_array($cnfPw, $passwords)) {
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = $cnfUsr");
-	    return "true";
-	  } else {
+	          return "true";
+	        } else {
             require 'ips.php';
             $ip = $_SERVER['REMOTE_ADDR'];
             blockIp($ip, $conn, $cnfUsr);
