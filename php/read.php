@@ -25,9 +25,15 @@
   }
   if($_POST["Username"] != $Username) {
     echo 'nonAN';
+    //se non fermiamo, lo script prova di
+    //scrivere su mysql comunque
+    die();
   }
   if ($_POST["Password"] != $Password) {
     echo 'nonAN';
+    //se non fermiamo, lo script prova di
+    //scrivere su mysql comunque 
+    die();
   }
   $Username = hash("sha256", $Username);
   $Password = hash("sha256", $Password);
