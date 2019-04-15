@@ -42,7 +42,7 @@
     }
   }
 
-  function mysqlRetrieveCrd(String $server, String $username, String $password, String $cnfUsr, String $cnfPw) {
+  function mysqlRetrieveCrd(String $server, String $username, String $password, String $cnfUsr, String $cnfPw) : String {
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
       //echo "Connected successfully to mysql!";
@@ -75,8 +75,8 @@
           if (in_array($cnfPw, $passwords)) {
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = $cnfUsr");
-            return "true";
-          } else {
+	    return "true";
+	  } else {
             require 'ips.php';
             $ip = $_SERVER['REMOTE_ADDR'];
             blockIp($ip, $conn, $cnfUsr);
