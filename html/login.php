@@ -6,7 +6,7 @@
   header("Pragma: no-cache");
   //se il broswer mette il login in cache l'accesso non é bloccato, questo disabilita il caching.
   require '../php/ips.php';
-  require_once '../php/timeFuns.php';
+  require_once '../php/funs.php';
   $ip = $_SERVER['REMOTE_ADDR'];
   try {
     $conn = new PDO("mysql:host=localhost;dbname=Buds_db", "checkBan", "bansEER");
