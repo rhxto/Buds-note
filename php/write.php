@@ -12,7 +12,7 @@ require 'funs.php';
   }
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["Username"]) || $_POST["Username"] == "") {
+    if (empty($_POST["Username"]) || $_POST["Username"] == "" || strlen($_POST["Username"]) > 30) {
       echo 'nonAN';
       die();
     } else {
@@ -23,17 +23,18 @@ require 'funs.php';
       }
     }
 
-    if (empty($_POST["Password"]) || $_POST["Password"] == "") {
+    if (empty($_POST["Password"]) || $_POST["Password"] == "" || strlen($_POST["Password"]) > 30) {
       echo 'nonAN';
       die();
     } else {
       $Password = test_input($_POST["Password"]);
     }
-    if (empty($_POST["Mail"]) || $_POST["Mail"] == "") {
+    if (empty($_POST["Mail"]) || $_POST["Mail"] == "" || strlen($_POST["Mail"]) > 50) {
       echo 'nonAN';
       die();
     } else {
-      $Mail = '"' . $_POST["Mail"] . '"';
+      //@ e . non sono html special chars
+      $Mail = test_input($_POST["Mail"]);
     }
     if($Password != $_POST["Password"] || $Username != $_POST["Username"] || $Mail != $_POST["Mail"]) {
       echo 'nonAN';
