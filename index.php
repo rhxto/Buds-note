@@ -10,17 +10,17 @@
   <head>
     <meta charset="utf-8">
     <title>Buds_note</title>
-    <script src="html/jquery.min.js"></script>
-    <script src="html/session.js"></script>
-    <link rel="stylesheet" type="text/css" href="html/stylesheets/positions.css" />
-    <link rel="stylesheet" type="text/css" href="html/stylesheets/main.css" />
+    <script src="jquery/jquery.min.js"></script>
+    <script src="main/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="main/stylesheets/positions.css" />
+    <link rel="stylesheet" type="text/css" href="main/stylesheets/main.css" />
   </head>
   <body>
     <p style="position:sticky;top:0px;width:100%">
       <div class="navbar" id="navbar">
-        <a href="index.php" class="navbar-left">HOME</a>
-        <a href="html/login.php" class="navbar-right log">LOGIN</a>
-        <a href="html/register.php" class="navbar-right log">REGISTER</a>
+        <a href="" class="navbar-left">HOME</a>
+        <a href="login/" class="navbar-right log">LOGIN</a>
+        <a href="register/" class="navbar-right log">REGISTER</a>
         <a id="logout" href="" class="navbar-right logout">LOGOUT</button>
       </div>
     </p>
