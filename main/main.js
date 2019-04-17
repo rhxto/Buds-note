@@ -15,7 +15,7 @@ $(document).ready(function(){
         });
     });
 });
-error(err) {
+function error(err) {
   switch (err) {
     case "sessione":
       $("#error").attr("hidden", false);
