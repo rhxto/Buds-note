@@ -9,7 +9,7 @@ function submitform() {
              'Mail' : mail};
     $.post(ajaxurl, data, function (response) {
     if (response == "passed") {
-      window.location.href = "../login";
+      window.location.href = "../login/";
     } else {
       errore(response);
     }

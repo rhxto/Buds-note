@@ -7,7 +7,7 @@ function submitform() {
              'Password' : password};
     $.post(ajaxurl, data, function (response) {
     if (response == "passed") {
-      window.location.href = "../index.php";
+      window.location.href = "../";
     } else {
       errore(response);
     }
@@ -46,7 +46,7 @@ function errore(err) {
     $("#Warning").html("Errore interno");
     break;
     case "bannato":
-    window.location.href = "../index.php";
+    window.location.href = "../";
     break;
     default:
     $("#Warning").html("Errore interno");
