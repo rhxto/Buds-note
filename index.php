@@ -16,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="main/stylesheets/main.css" />
   </head>
   <body>
+    <div id="warn">
+    </div>
     <p style="position:sticky;top:0px;width:100%">
       <div class="navbar" id="navbar">
         <a href="" class="navbar-left">HOME</a>
