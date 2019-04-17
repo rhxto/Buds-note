@@ -35,6 +35,10 @@ require 'funs.php';
     } else {
       $Mail = '"' . $_POST["Mail"] . '"';
     }
+    if($Password != $_POST["Password"] || $Username != $_POST["Username"] || $Mail != $_POST["Mail"]) {
+      echo 'nonAN';
+      die();
+    }
     $Username = hash("sha256", $Username);
     $Password = hash("sha256", $Password);
     $LastLog =  '"' . date("Y-m-d H:i:s") . '"';

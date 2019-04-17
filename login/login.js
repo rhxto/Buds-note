@@ -20,7 +20,7 @@ function testInput() {
   var usr = $("#Username").val();
   var pswd = $("#Password").val();
 
-  if(usr == null || pswd == null|| usr == undefined || pswd == undefined || usr == "" || pswd == "") {
+  if(usr == null || pswd == null|| usr == undefined || pswd == undefined || usr == "" || pswd == "" || usr.length > 30 || pswd.length > 30) {
     if (errThrown == false) {
       $("#Warning").html("Inserire dati validi!");
       errThrown = true;
