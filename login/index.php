@@ -58,7 +58,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Form di accesso</title>
-    <script src="jquery.min.js"></script>
+    <script src="../jquery/jquery.min.js"></script>
     <script src="login.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/form.css" />
     <link rel="stylesheet" type="text/css" href="stylesheets/positions.css" />
@@ -82,7 +82,7 @@
         </div>
       </form>
       <button onclick="testInput()" id="btn" class="button top50 left30 width40 height10">LOGIN</button>
-      <button onclick="window.location.href='register.php'" id="btn" class="button top70 left30 width40 height10">Crea un account</button>
+      <button onclick="window.location.href='../register/'" id="btn" class="button top70 left30 width40 height10">Crea un account</button>
     </div>
   </body>
 </html>

@@ -1,0 +1,61 @@
+@font-face {
+font-family: font_text;
+src: url(fonts/Letters_for_Learners.ttf);
+}
+@font-face {
+font-family: font_icons;
+src: url(fonts/Icons_South_St.ttf);
+}
+*:hover, *:focus {
+  outline: none !important;
+  //rimuove linee blu di selezione in chrome
+}
+
+div{
+  display: block;
+}
+body {
+  background-color: #F4F1F1;
+}
+
+.navbar {
+  position:relative;
+  font-size:30px;
+  background-color:#5f5f5f;
+  color:white;
+  width:98.5%;
+  padding:10px 15px 60px 15px !important;
+  font-family: font_text;
+}
+.navbar a {
+  padding:10px 15px 10px 15px !important;
+  text-decoration: none !important;
+  color: white;
+}
+.navbar a:hover, a:active, a:focus {
+  background-color: black;
+}
+.stickyNavbar {   //da implementare
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  position: -webkit-sticky; // for iOS
+}
+.navbar-right {
+  float: right !important;
+}
+.navbar-left {
+  float: left !important;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}

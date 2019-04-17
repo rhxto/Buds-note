@@ -31,7 +31,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Form di registrazione</title>
-    <script src="jquery.min.js"></script>
+    <script src="../jquery/jquery.min.js"></script>
     <script src="register.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/form.css" />
     <link rel="stylesheet" type="text/css" href="stylesheets/positions.css" />
