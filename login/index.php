@@ -36,7 +36,7 @@
         }
         mysqlUnbanIp($conn, $ip, $user);
       } else {
-        die("<p>Too many login attempts, retry 10 minutes after your ban</p>");
+        die("<script>window.location.href = '../ban/'</script>");
       }
     }
   } catch(PDOException $e) {
