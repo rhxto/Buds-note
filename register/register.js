@@ -59,7 +59,7 @@ function errore(err) {
     $("#Warning").html("Username giá esistente!");
     break;
     case "nonAN":
-    $("#Warning").html("Username o password non validi!");
+    $("#Warning").html("Inserire dati validi (senza caratteri speciali e meno di 30 caratteri)!");
     break;
     default:
     $("#Warning").html("Errore");
