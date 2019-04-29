@@ -40,7 +40,7 @@ function errore(err) {
     $("#Warning").html("Username o password non corretti!");
     break;
     case "nonAN":
-    $("#Warning").html("Inserire dati validi (senza caratteri speciali e meno di 30 caratteri)!");
+    $("#Warning").html("Inserire dati validi (senza caratteri speciali)!");
     break;
     case "internalError":
     $("#Warning").html("Errore interno");

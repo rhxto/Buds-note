@@ -8,7 +8,7 @@ src: url(fonts/Icons_South_St.ttf);
 }
 *:hover, *:focus {
   outline: none !important;
-  //rimuove linee blu di selezione in chrome
+  /*rimuove linee blu di selezione in chrome*/
 }
 
 div{
@@ -35,18 +35,34 @@ body {
 .navbar a:hover, a:active, a:focus {
   background-color: black;
 }
-.stickyNavbar {   //da implementare
+
+
+/*.stickyNavbar {   da implementare
   position: sticky;
   top: 0px;
   width: 100%;
   position: -webkit-sticky; // for iOS
-}
+}*/
 .navbar-right {
   float: right !important;
 }
 .navbar-left {
   float: left !important;
 }
+
+.err404 {
+  font-family: font_text;
+  color:black;
+  text-align: center;
+}
+
+.err404 h1 {
+  font-size: 50%;
+}
+.err404 h2 {
+  font-size: 25px;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: white;
   opacity: 1; /* Firefox */

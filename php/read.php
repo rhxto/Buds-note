@@ -11,13 +11,13 @@
   }
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["Username"]) || $_POST["Username"] == "" || strlen($_POST["Username"]) > 30) {
+    if (empty($_POST["Username"]) || $_POST["Username"] == "") {
       echo 'nonAN';
     } else {
       $Username = test_input($_POST["Username"]);
     }
 
-    if (empty($_POST["Password"]) || $_POST["Password"] == "" || strlen($_POST["Password"]) > 30) {
+    if (empty($_POST["Password"]) || $_POST["Password"] == "") {
       echo 'nonAN';
     } else {
       $Password = test_input($_POST["Password"]);
@@ -25,7 +25,7 @@
   }
   if($_POST["Username"] != $Username) {
     echo 'nonAN';
-    die();
+    die(); 
   }
   if ($_POST["Password"] != $Password) {
     echo 'nonAN';
