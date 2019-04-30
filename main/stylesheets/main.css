@@ -56,11 +56,11 @@ body {
   text-align: center;
 }
 
-.err404 h1 {
-  font-size: 50%;
+h1.err404 {
+  font-size: 75px;
 }
-.err404 h2 {
-  font-size: 25px;
+h2.err404 {
+  font-size: 50px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
