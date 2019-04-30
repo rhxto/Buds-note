@@ -32,17 +32,10 @@ body {
   text-decoration: none !important;
   color: white;
 }
-.navbar a:hover, a:active, a:focus {
+a.navbar:hover, a.navbar:active, a.navbar:focus, .button:hover, .button:focus, .button:active {
   background-color: black;
 }
 
-
-/*.stickyNavbar {   da implementare
-  position: sticky;
-  top: 0px;
-  width: 100%;
-  position: -webkit-sticky; // for iOS
-}*/
 .navbar-right {
   float: right !important;
 }
@@ -50,17 +43,28 @@ body {
   float: left !important;
 }
 
-.err404 {
+.err404, .ban {
   font-family: font_text;
   color:black;
   text-align: center;
 }
 
-h1.err404 {
-  font-size: 75px;
-}
-h2.err404 {
+h1.err404, h1.ban {
   font-size: 50px;
+}
+h2.err404, h2.ban {
+  font-size: 35px;
+}
+.button {
+  font-family: font_text;
+  font-size: 35px;
+  height: 50px;
+  color: white;
+  background-color: #5f5f5f;
+  border: none;
+  text-align: center;
+  position: center;
+  border-radius: 25px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
