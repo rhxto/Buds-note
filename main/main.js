@@ -27,3 +27,22 @@ function error(err) {
     break
   }
 }
+<<<<<<< HEAD
+function cerca() {
+  var arg = $("#search").val();
+  var ajaxurl = "../php/ricerca.php";
+  if ($("#deptNum").prop("checked") == true) {
+    type = "deptNum";
+  } else if ($("#deptName").prop("checked") == true) {
+    type = "deptName";
+  } else {
+    $("#risultati").html("Inserisci un criterio di ricerca!");
+  }
+  data =  {'phrase': arg,
+  'type': type};
+  $.post(ajaxurl, data, function (response) {
+    $("#risultati").html(response);
+  });
+}
+=======
+>>>>>>> 35ff0e909c4c2e7e0dea59b2644026a07772ba25
