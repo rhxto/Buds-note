@@ -1,21 +1,33 @@
 <?php
 
 //Definisco una volta per tutte le credenziali di accesso al DB
-define("DBHOST", "localhost");
-define("DBNAME", "Buds_db");
-define("DBUSRN", "username");
-define("DBPW", "password");
 
 //La libreria contiene funzioni che eseguono query
 
 //La funzione apre una connessione e ritorna un'oggetto PDO
 function connectDb(){
+  $DBHOST = "localhost";
+  $DBNAME = "Buds_db";
+  $DBUSRN = "system";
+  $DBPW = "the_best_admin_passwd";
 
-  $conn = new PDO("mysql:host=$DBHOST;dbname=$DBNAME, $DBUSRN, $DBPW");
-  $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $conn->exec("USE Buds_db;");
-  return $conn;
-}
+  try {
+    $conn = new PDO("mysql:host=$DBHOST;dbname=$DBNAME, $DBUSRN, $DBPW");
+    $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->exec("USE Buds_db;");
+  } catch(PDOException $e) {            //Sistemare esteticamente le prossime 10 righe (fai una function)
+    require 'exceptions.php';
+    $exist = err_handler($e->getCode(), $e->getMessage());
+    if (!$exist) {
+      die("<h1>Errore interno</h1>");
+      return true;
+    } else {
+      return false;
+    }
+  } finally {
+    return $conn;
+    $conn = null;
+  }
 
 //La funzione ritorna una matrice con nome e id del dept, se $db è null allora ritorna -1
 function dept(PDOStatement $db, String $name, int $id){
