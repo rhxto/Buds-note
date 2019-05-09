@@ -83,6 +83,20 @@ h2.err404, h2.ban {
   border-radius: 25px;
 }
 
+.warn {
+  font-family: font_text;
+  font-size: 35px;
+  color: black;
+  padding: 10px 15px 10px 15px;
+  background-color: #C15D5D;
+  border: none;
+  text-align: center;
+  border-radius: 25px;
+  position: absolute;
+  bottom: 5px;
+  right: 0%;
+}
+
 .search {
   font-family: font_text;
   color: white;
@@ -95,13 +109,41 @@ h2.err404, h2.ban {
   display: none;
 }
 .search_text {
-  font-size: 35px;
+  font-family: font_text;
+  font-size: 40px;
   padding: 10px 15px 10px 15px;
   border: none;
   border-radius: 25px;
   height: 50px;
   background-color: whitesmoke;
   color: black;
+  width: 70%;
+  position: absolute;
+  left: 15%;
+}
+.search_checkbox {
+  font-size: 35px;
+  padding: 10px 15px 10px 15px;
+  color: whitesmoke;
+  width: 50%;
+  position: absolute;
+}
+
+.search_button {
+  font-family: font_text;
+  font-size: 35px;
+  padding: 10px 15px 10px 15px;
+  background-color: whitesmoke;
+  color: black;
+  position: absolute;
+  align: center;
+  border: none;
+  border-radius: 25px;
+}
+
+.search_button:hover, .search_button:active, .search_button:focus,
+.search_text:hover, .search_text:active, .search_text:focus {
+  background-color: #c4c4c4
 }
 
 .overlay {

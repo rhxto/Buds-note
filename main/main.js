@@ -16,14 +16,19 @@ function logout() {
 function error(err) {
   switch (err) {
     case "sessione":
-      $("#warn").html("Errore nel logout, se stai vedendo questo messaggio riferiscilo agli amministratori.");
+      $("#warn").show();
+      $("#warn").html("Errore nel logout, se hai visto questo messaggio riferiscilo agli amministratori.");
     break;
     default:
+    $("#warn").show();
     $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori.");
     break;
   }
+  setTimeout(function(){$("#warn").hide();}, 10000);
 }
 function cerca() {
+  document.getElementById("Search").style.display = "none";
+  document.getElementById("SearchDiv").style.display = "none";
   var arg = $("#search").val();
   var ajaxurl = "../php/research.php";
   if (arg == "") {

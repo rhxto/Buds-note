@@ -20,14 +20,22 @@
   <div class="overlay" id="SearchDiv">
     <div class='search' id="Search">
       <input id="search" type="text" class="search_text"/>
-      <input type="checkbox" id="deptNum">Indirizzo per numero</input>
-      <input type="checkbox" id="deptName">Indirizzo per nome</input>
-      <input type="checkbox" id="subjNum">Materia per numero</input>
-      <input type="checkbox" id="subjName">Materia per nome</input>
-      <button onclick="cerca()">Cerca</button>
+      <span class="search_checkbox top20 left40">
+        <input type="checkbox" id="deptNum" >Indirizzo per numero</input>
+      </span>
+      <span class="search_checkbox top30 left40">
+        <input type="checkbox" id="deptName">Indirizzo per nome</input>
+      </span>
+      <span class="search_checkbox top40 left40">
+        <input type="checkbox" id="subjNum">Materia per numero</input>
+      </span>
+      <span class="search_checkbox top50 left40">
+        <input type="checkbox" id="subjName">Materia per nome</input>
+      </span>
+      <button onclick="cerca()" class="search_button top65 left48">Cerca</button>
     </div>
   </div>
-    <div id="warn">
+    <div id="warn" class="warn" style="display:none">
     </div>
     <p style="position:sticky;top:0px;width:100%">
       <div class="navbar" id="navbar">
