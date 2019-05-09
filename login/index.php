@@ -6,51 +6,8 @@
   header("Pragma: no-cache");
   //se il broswer mette il login in cache l'accesso non é bloccato, questo disabilita il caching.
   require '../php/ips.php';
-  require_once '../php/funs.php';
   $ip = $_SERVER['REMOTE_ADDR'];
-  try {
-    $conn = new PDO("mysql:host=localhost;dbname=Buds_db", "checkBan", "bansEER");
-    $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->exec("USE Buds_db;");
-    if (mysqlCheckIp($ip, $conn)) {
-      $ip = '"' . $ip . '"';
-      $getIps = $conn->query("SELECT date FROM ban_ip WHERE ip = $ip");
-      $getIps->setFetchMode(PDO::FETCH_ASSOC);
-      $banDate = $getIps->fetchAll();
-      $banDate = $banDate[0];
-      $diff = differenzaData($banDate['date'], date("Y-m-d H:i:s"));
-      if ($diff >= 600) {
-        $valid = true;
-      } else {
-        $valid = false;
-      }
-      if($valid) {
-        $getUsr = $conn->query("SELECT user FROM ban_ip WHERE ip = $ip");
-        $getUsr->setFetchMode(PDO::FETCH_ASSOC);
-        $usr = $getUsr->fetchAll();
-        $usr = $usr[0];
-        if ($usr['user'] == NULL) {
-          $user = "null";
-        } else {
-          $user = $usr['user'];
-        }
-        mysqlUnbanIp($conn, $ip, $user);
-      } else {
-        die("<script>window.location.href = '../ban/'</script>");
-      }
-    }
-  } catch(PDOException $e) {
-    require 'exceptions.php';
-    $exist = err_handler($e->getCode(), $e->getMessage());
-    if (!$exist) {
-      die("<h1>Errore interno</h1>");
-    } else {
-      die();
-    }
-  } finally {
-    checkBannedIps($conn);
-    $conn = null;
-  }
+  loginCheck($ip);
  ?>
 <!DOCTYPE html>
 <html>

@@ -6,24 +6,7 @@
   header("Pragma: no-cache");
   require '../php/ips.php';
   $ip = $_SERVER['REMOTE_ADDR'];
-  try {
-    $conn = new PDO("mysql:host=localhost;dbname=Buds_db", "checkBan", "bansEER");
-    $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->exec("USE Buds_db;");
-    if (mysqlCheckIp($ip, $conn)) {
-      die("<script>window.location.href = '../ban/'</script>");
-    }
-  } catch(PDOException $e) {
-    require 'exceptions.php';
-    $exist = err_handler($e->getCode(), $e->getMessage());
-    if (!$exist) {
-      die("<h1>Errore interno</h1>");
-    } else {
-      die();
-    }
-  } finally {
-    $conn = null;
-  }
+  loginCheck($ip);
  ?>
 <!DOCTYPE html>
 <html>

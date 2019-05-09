@@ -61,6 +61,8 @@ function errore(err) {
     case "nonAN":
     $("#Warning").html("Username o password non validi!");
     break;
+    case "internalError":
+    $("#Warning").html("Errore interno");
     default:
     $("#Warning").html("Errore");
     break;

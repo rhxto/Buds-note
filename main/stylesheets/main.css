@@ -32,7 +32,7 @@ body {
   text-decoration: none !important;
   color: white;
 }
-a.navbar:hover, a.navbar:active, a.navbar:focus, .button:hover, .button:focus, .button:active {
+.navbar a:hover, a:active, a:focus {
   background-color: black;
 }
 

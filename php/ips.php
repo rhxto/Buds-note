@@ -136,20 +136,67 @@
         $conn = null;
       }
     }
-      function mysqlUnbanExtIp($conn, String $ip) {
-        try {
-          $ip = '"' . $ip . '"';
-          $conn->exec("DELETE FROM ban_ext_ip WHERE ip = $ip");
-        } catch(PDOException $e) {
-          require 'exceptions.php';
-          $exist = err_handler($e->getCode(), $e->getMessage());
-          if (!$exist) {
-            die("<h1>Errore interno</h1>");
-          } else {
-            die();
-          }
-        } finally {
-          $conn = null;
+    function mysqlUnbanExtIp($conn, String $ip) {
+      try {
+        $ip = '"' . $ip . '"';
+        $conn->exec("DELETE FROM ban_ext_ip WHERE ip = $ip");
+      } catch(PDOException $e) {
+        require 'exceptions.php';
+        $exist = err_handler($e->getCode(), $e->getMessage());
+        if (!$exist) {
+          die("<h1>Errore interno</h1>");
+        } else {
+          die();
         }
+      } finally {
+        $conn = null;
       }
+    }
+    function loginCheck($ip) {
+      //triggerato a login e register per controllare il ban dell'ip
+      require "funs.php";
+      try {
+        $conn = new PDO("mysql:host=localhost;dbname=Buds_db", "checkBan", "bansEER");
+        $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->exec("USE Buds_db;");
+        if (mysqlCheckIp($ip, $conn)) {
+          $ip = '"' . $ip . '"';
+          $getIps = $conn->query("SELECT date FROM ban_ip WHERE ip = $ip");
+          $getIps->setFetchMode(PDO::FETCH_ASSOC);
+          $banDate = $getIps->fetchAll();
+          $banDate = $banDate[0];
+          $diff = differenzaData($banDate['date'], date("Y-m-d H:i:s"));
+          if ($diff >= 600) {
+            $valid = true;
+          } else {
+            $valid = false;
+          }
+          if($valid) {
+            $getUsr = $conn->query("SELECT user FROM ban_ip WHERE ip = $ip");
+            $getUsr->setFetchMode(PDO::FETCH_ASSOC);
+            $usr = $getUsr->fetchAll();
+            $usr = $usr[0];
+            if ($usr['user'] == NULL) {
+              $user = "null";
+            } else {
+              $user = $usr['user'];
+            }
+            mysqlUnbanIp($conn, $ip, $user);
+          } else {
+            die("<script>window.location.href = '../ban/'</script>");
+          }
+        }
+      } catch(PDOException $e) {
+        require 'exceptions.php';
+        $exist = err_handler($e->getCode(), $e->getMessage());
+        if (!$exist) {
+          die("<h1>Errore interno</h1>");
+        } else {
+          die();
+        }
+      } finally {
+        checkBannedIps($conn);
+        $conn = null;
+      }
+    }
 ?>

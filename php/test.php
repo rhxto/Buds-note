@@ -2,6 +2,6 @@
 require "query_funs.php";
 
 $conn = connectDb();
-$r = dept($conn, NULL, NULL);
+$r = subj($conn, NULL, "5");
 print_r($r);
 ?>

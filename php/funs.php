@@ -22,13 +22,9 @@
     $Email = '"' . $Email . '"';
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
-      //echo "Connected successfully to mysql!";
       $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      //echo "Excepion errmode set!";
       $conn->exec("USE Buds_db;");
-      //echo "Database selected successfully!";
-      $conn->exec("INSERT INTO user (username, pw, mail, acc_lvl, fail_acc, last_log) VALUES ($usernameDb, $passwordDb, $Email,$accLvl, $fail_acc, $date)");
-      //echo "Done!";
+      $conn->exec("INSERT INTO user (username, pw, mail, acc_lvl, fail_acc, last_log) VALUES ($usernameDb, $passwordDb, $Email, $accLvl, $fail_acc, $date)");
     } catch(PDOException $e) {
       require 'exceptions.php';
       $exist = err_handler($e->getCode(), $e->getMessage());
@@ -46,11 +42,8 @@
   function mysqlRetrieveCrd(String $server, String $username, String $password, String $cnfUsr, String $cnfPw) : String {
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
-      //echo "Connected successfully to mysql!";
       $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      //echo "Excepion errmode set!";
       $conn->exec("USE Buds_db;");
-      //echo "Database selected successfully!";
       $getUsers = $conn->query("SELECT * FROM user ORDER BY username");
       $getUsers->setFetchMode(PDO::FETCH_ASSOC);
       $users = $getUsers->fetchAll();
@@ -108,14 +101,10 @@
     }
   }
   function mysqlChckUsr(String $server, String $username, String $password, String $Username) : bool {
-    $Username = hash("sha256", $Username);
     try {
       $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
-      //echo "Connected successfully to mysql!";
       $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      //echo "Excepion errmode set!";
       $conn->exec("USE Buds_db;");
-      //echo "Database selected successfully!";
       $getUsers = $conn->query("SELECT * FROM user ORDER BY username");
       $getUsers->setFetchMode(PDO::FETCH_ASSOC);
       $users = $getUsers->fetchAll();

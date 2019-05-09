@@ -25,13 +25,12 @@
   }
   if($_POST["Username"] != $Username) {
     echo 'nonAN';
-    die(); 
+    die();
   }
   if ($_POST["Password"] != $Password) {
     echo 'nonAN';
     die();
   }
-  $Username = hash("sha256", $Username);
   $Password = hash("sha256", $Password);
   $status = mysqlRetrieveCrd("localhost", "system", "the_best_admin_passwd", $Username, $Password);
   if ($status == "true") {

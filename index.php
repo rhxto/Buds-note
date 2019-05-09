@@ -17,12 +17,10 @@
   </head>
   <body>
     <div id="warn">
-<<<<<<< HEAD
     </div>
     <p style="position:sticky;top:0px;width:100%">
       <div class="navbar" id="navbar">
         <a href="" class="navbar-left">HOME</a>
-
         <a href="login/" class="navbar-right log">LOGIN</a>
         <a href="register/" class="navbar-right log">REGISTER</a>
         <a id="logout" href="" class="navbar-right logout">LOGOUT</a>
@@ -32,21 +30,12 @@
       <input id="search" type="text" class="navbar-right"/>
       <input type="checkbox" id="deptNum">Indirizzo per numero</input>
       <input type="checkbox" id="deptName">Indirizzo per nome</input>
+      <input type="checkbox" id="subjNum">Materia per numero</input>
+      <input type="checkbox" id="subjName">Materia per nome</input>
       <button onclick="cerca()">Cerca</button>
     </div>
     <div id="risultati">
     </div>
-=======
-    </div>
-    <p style="position:sticky;top:0px;width:100%">
-      <div class="navbar" id="navbar">
-        <a href="" class="navbar-left">HOME</a>
-        <a href="login/" class="navbar-right log">LOGIN</a>
-        <a href="register/" class="navbar-right log">REGISTER</a>
-        <a id="logout" href="" class="navbar-right logout">LOGOUT</button>
-      </div>
-    </p>
->>>>>>> 35ff0e909c4c2e7e0dea59b2644026a07772ba25
   </body>
 </html>
 <?php
