@@ -30,6 +30,7 @@
     //echo 'nonAN';
     die();
   }
+  require "core.php";
   require "query_funs.php";
   $conn = connectDb();
   if ($type == "deptName") {

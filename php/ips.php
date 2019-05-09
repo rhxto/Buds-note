@@ -10,13 +10,7 @@
           $conn->exec("UPDATE ban_ip SET user = $user WHERE ip = $ip");
         }
       } catch(PDOException $e) {
-        require 'exceptions.php';
-        $exist = err_handler($e->getCode(), $e->getMessage());
-        if (!$exist) {
-          die("<h1>Errore interno</h1>");
-        } else {
-          die();
-        }
+        PDOError($e);
       } finally {
           $conn = null;
       }
@@ -29,13 +23,7 @@
           $conn->exec("UPDATE user SET fail_acc = 0 WHERE username = $user");
         }
       } catch(PDOException $e) {
-        require 'exceptions.php';
-        $exist = err_handler($e->getCode(), $e->getMessage());
-        if (!$exist) {
-          die("<h1>Errore interno</h1>");
-        } else {
-          die();
-        }
+        PDOError($e);
       } finally {
         $conn = null;
       }
@@ -55,13 +43,7 @@
           return false;
         }
       } catch(PDOException $e) {
-        require 'exceptions.php';
-        $exist = err_handler($e->getCode(), $e->getMessage());
-        if (!$exist) {
-          die("<h1>Errore interno</h1>");
-        } else {
-          die();
-        }
+        PDOError($e);
       } finally {
         $conn = null;
       }
@@ -91,13 +73,7 @@
           $conn->exec("INSERT INTO ban_ext_ip (ip, date, try) VALUES ($ipd, $d, 1)");
         }
       } catch(PDOException $e) {
-        require 'exceptions.php';
-        $exist = err_handler($e->getCode(), $e->getMessage());
-        if (!$exist) {
-          die("<h1>Errore interno</h1>");
-        } else {
-          die();
-        }
+        PDOError($e);
       } finally {
         $conn = null;
       }
@@ -127,11 +103,7 @@
       } catch(PDOException $e) {
         require 'exceptions.php';
         $exist = err_handler($e->getCode(), $e->getMessage());
-        if (!$exist) {
-          die("<h1>Errore interno</h1>");
-        } else {
-          die();
-        }
+        PDOError($e);
       } finally {
         $conn = null;
       }
@@ -141,13 +113,7 @@
         $ip = '"' . $ip . '"';
         $conn->exec("DELETE FROM ban_ext_ip WHERE ip = $ip");
       } catch(PDOException $e) {
-        require 'exceptions.php';
-        $exist = err_handler($e->getCode(), $e->getMessage());
-        if (!$exist) {
-          die("<h1>Errore interno</h1>");
-        } else {
-          die();
-        }
+        PDOError($e);
       } finally {
         $conn = null;
       }
@@ -187,13 +153,7 @@
           }
         }
       } catch(PDOException $e) {
-        require 'exceptions.php';
-        $exist = err_handler($e->getCode(), $e->getMessage());
-        if (!$exist) {
-          die("<h1>Errore interno</h1>");
-        } else {
-          die();
-        }
+        PDOError($e);
       } finally {
         checkBannedIps($conn);
         $conn = null;

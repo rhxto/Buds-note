@@ -17,28 +17,28 @@
     <link rel="stylesheet" type="text/css" href="main/stylesheets/main.css" />
   </head>
   <body id="Body">
-  <div class="" id="SearchDiv">
-
-  </div>
-    <div id="warn">
-    </div>
-    <p style="position:sticky;top:0px;width:100%">
-      <div class="navbar" id="navbar">
-        <a href="" class="navbar-left">HOME</a>
-		    <button onclick="openSearch()" class="navbar-left">CERCA</button>
-        <a href="login/" class="navbar-right log">LOGIN</a>
-        <a href="register/" class="navbar-right log">REGISTER</a>
-        <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
-      </div>
-    </p>
+  <div class="overlay" id="SearchDiv">
     <div class='search' id="Search">
-      <input id="search" type="text" class="navbar-right"/>
+      <input id="search" type="text" class="search_text"/>
       <input type="checkbox" id="deptNum">Indirizzo per numero</input>
       <input type="checkbox" id="deptName">Indirizzo per nome</input>
       <input type="checkbox" id="subjNum">Materia per numero</input>
       <input type="checkbox" id="subjName">Materia per nome</input>
       <button onclick="cerca()">Cerca</button>
     </div>
+  </div>
+    <div id="warn">
+    </div>
+    <p style="position:sticky;top:0px;width:100%">
+      <div class="navbar" id="navbar">
+        <a href="" class="navbar-left">HOME</a>
+		    <button onclick="openSearch()" class="navbar-left"> A</button>
+        <a href="login/" class="navbar-right log">LOGIN</a>
+        <a href="register/" class="navbar-right log">REGISTER</a>
+        <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
+      </div>
+    </p>
+
     <div id="risultati">
     </div>
   </body>

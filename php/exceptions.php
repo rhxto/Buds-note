@@ -3,6 +3,7 @@
     switch ($code) {
       case 23000:
       echo "Giá esistente!";
+      error_log("Giá esistente, " . $msg);
       return true;
       break;
       default:

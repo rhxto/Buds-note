@@ -48,12 +48,10 @@ require 'funs.php';
     $accLvl = 0;
     $fail_acc = 0;
     $status = mysqlWriteCrd("localhost", "system", "the_best_admin_passwd", $UsernameDb, $PasswordDb, $Mail, $accLvl, $fail_acc, $LastLog);
-    if ($status == NULL) {
+    if ($status == "passed") {
       echo 'passed';
-    } else if ($status){
-      echo 'internalError';
     } else {
-      echo 'usernameEsiste';
+      echo 'internalError';
     }
   }
   ?>

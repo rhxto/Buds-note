@@ -1,5 +1,6 @@
 <?php
 //buono3
+  require "core.php";
   function logD(String $s) {
     shell_exec("logger $s");
   }
@@ -21,19 +22,12 @@
   function mysqlWriteCrd(String $server, String $username, String $password, String $usernameDb, String $passwordDb, String $Email, int $accLvl, int $fail_acc, String $date) {
     $Email = '"' . $Email . '"';
     try {
-      $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
-      $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $conn->exec("USE Buds_db;");
+      $conn = connectDb();
       $conn->exec("INSERT INTO user (username, pw, mail, acc_lvl, fail_acc, last_log) VALUES ($usernameDb, $passwordDb, $Email, $accLvl, $fail_acc, $date)");
+      return "passed";
     } catch(PDOException $e) {
-      require 'exceptions.php';
-      $exist = err_handler($e->getCode(), $e->getMessage());
-      if (!$exist) {
-        die("<h1>Errore interno</h1>");
-        return true;
-      } else {
-        return false;
-      }
+      PDOError($e);
+      return "internalError";
     } finally {
       $conn = null;
     }
@@ -41,9 +35,7 @@
 
   function mysqlRetrieveCrd(String $server, String $username, String $password, String $cnfUsr, String $cnfPw) : String {
     try {
-      $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
-      $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $conn->exec("USE Buds_db;");
+      $conn = connectDb();
       $getUsers = $conn->query("SELECT * FROM user ORDER BY username");
       $getUsers->setFetchMode(PDO::FETCH_ASSOC);
       $users = $getUsers->fetchAll();
@@ -87,24 +79,15 @@
         }
       }
     } catch(PDOException $e) {
-      require 'exceptions.php';
-      $exist = err_handler($e->getCode(), $e->getMessage());
-      if (!$exist) {
-        return "internalError";
-        die("<h1>Errore interno</h1>");
-      } else {
-        return "internalError";
-        die();
-      }
+      PDOError($e);
+      return "internalError";
     } finally {
       $conn = null;
     }
   }
   function mysqlChckUsr(String $server, String $username, String $password, String $Username) : bool {
     try {
-      $conn = new PDO("mysql:host=$server;dbname=Buds_db", $username, $password);
-      $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $conn->exec("USE Buds_db;");
+      $conn = connectDb();
       $getUsers = $conn->query("SELECT * FROM user ORDER BY username");
       $getUsers->setFetchMode(PDO::FETCH_ASSOC);
       $users = $getUsers->fetchAll();
@@ -118,13 +101,7 @@
         return false;
       }
     } catch(PDOException $e) {
-      require 'exceptions.php';
-      $exist = err_handler($e->getCode(), $e->getMessage());
-      if (!$exist) {
-        die("<h1>Errore interno</h1>");
-      } else {
-        die();
-      }
+      PDOError($e);
     } finally {
       $conn = null;
     }

@@ -1,34 +1,9 @@
 <?php
 
-//Definisco una volta per tutte le credenziali di accesso al DB
-
 //La libreria contiene funzioni che eseguono query
 
 //La funzione apre una connessione e ritorna un'oggetto PDO
-function connectDb(){
-  $DBHOST = "localhost";
-  $DBNAME = "Buds_db";
-  $DBUSRN = "system";
-  $DBPW = "the_best_admin_passwd";
 
-  try {
-    $conn = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSRN, $DBPW);
-    $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->exec("USE Buds_db;");
-  } catch(PDOException $e) {            //Sistemare esteticamente le prossime 10 righe (fai una function)
-    require 'exceptions.php';
-    $exist = err_handler($e->getCode(), $e->getMessage());
-    if (!$exist) {
-      die("<h1>Errore interno</h1>");
-      return true;
-    } else {
-      return false;
-    }
-  } finally {
-    return $conn;
-    $conn = null;
-  }
-}
 
 //La funzione ritorna una matrice con nome e id del dept, se $conn è null allora ritorna -1
 function dept($conn, $name, $id){
@@ -49,14 +24,7 @@ function dept($conn, $name, $id){
     $query->setFetchMode(PDO::FETCH_ASSOC);
     $result = $query->fetchAll();
   } catch(PDOException $e) {
-    require 'exceptions.php';
-    $exist = err_handler($e->getCode(), $e->getMessage());
-    if (!$exist) {
-      die("<h1>Errore interno</h1>");
-      return true;
-    } else {
-      return false;
-    }
+    PDOError($e);
   } finally {
     $conn = null;
   }
@@ -89,14 +57,7 @@ function subj($conn, $name, $id){
     $query->setFetchMode(PDO::FETCH_ASSOC);
     $result = $query->fetchAll();
   } catch(PDOException $e) {
-    require 'exceptions.php';
-    $exist = err_handler($e->getCode(), $e->getMessage());
-    if (!$exist) {
-      die("<h1>Errore interno</h1>");
-      return true;
-    } else {
-      return false;
-    }
+    PDOError($e);
   } finally {
     $conn = null;
   }
@@ -145,14 +106,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     $query->setFetchMode(PDO::FETCH_ASSOC);
     $result = $query->fetchAll();
   } catch(PDOException $e) {
-    require 'exceptions.php';
-    $exist = err_handler($e->getCode(), $e->getMessage());
-    if (!$exist) {
-      die("<h1>Errore interno</h1>");
-      return true;
-    } else {
-      return false;
-    }
+    PDOError($e);
   } finally {
     $conn = null;
   }

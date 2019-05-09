@@ -6,6 +6,11 @@ src: url(fonts/Letters_for_Learners.ttf);
 font-family: font_icons;
 src: url(fonts/Icons_South_St.ttf);
 }
+@font-face {
+font-family: font_icons2;
+src: url(fonts/MyFont-normal.otf);
+}
+
 *:hover, *:focus {
   outline: none !important;
   /*rimuove linee blu di selezione in chrome*/
@@ -34,12 +39,13 @@ body {
   font-size:30px;
 }
 .navbar button {
-  font-family: font_icons;
+  font-family: font_icons2;
   height: 50px;
   background-color: #5f5f5f;
   border: none;
+  border-radius: 25px;
   color:white;
-  font-size: 30px;
+  font-size: 50px;
 
 }
 .navbar a:hover, a:active, a:focus, button:hover, button:focus, button:active {
@@ -87,6 +93,15 @@ h2.err404, h2.ban {
   height: 50%;
   z-index: 101;
   display: none;
+}
+.search_text {
+  font-size: 35px;
+  padding: 10px 15px 10px 15px;
+  border: none;
+  border-radius: 25px;
+  height: 50px;
+  background-color: whitesmoke;
+  color: black;
 }
 
 .overlay {
