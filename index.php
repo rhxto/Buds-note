@@ -12,21 +12,26 @@
     <title>Buds_note</title>
     <script src="jquery/jquery.min.js"></script>
     <script src="main/main.js"></script>
+	  <script src="main/search.js"></script>
     <link rel="stylesheet" type="text/css" href="main/stylesheets/positions.css" />
     <link rel="stylesheet" type="text/css" href="main/stylesheets/main.css" />
   </head>
-  <body>
+  <body id="Body">
+  <div class="" id="SearchDiv">
+
+  </div>
     <div id="warn">
     </div>
     <p style="position:sticky;top:0px;width:100%">
       <div class="navbar" id="navbar">
         <a href="" class="navbar-left">HOME</a>
+		    <button onclick="openSearch()" class="navbar-left">CERCA</button>
         <a href="login/" class="navbar-right log">LOGIN</a>
         <a href="register/" class="navbar-right log">REGISTER</a>
-        <a id="logout" href="" class="navbar-right logout">LOGOUT</a>
+        <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
       </div>
     </p>
-    <div id="searchSpan">
+    <div class='search' id="Search">
       <input id="search" type="text" class="navbar-right"/>
       <input type="checkbox" id="deptNum">Indirizzo per numero</input>
       <input type="checkbox" id="deptName">Indirizzo per nome</input>

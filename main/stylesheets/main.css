@@ -31,8 +31,18 @@ body {
   padding:10px 15px 10px 15px !important;
   text-decoration: none !important;
   color: white;
+  font-size:30px;
 }
-.navbar a:hover, a:active, a:focus {
+.navbar button {
+  font-family: font_icons;
+  height: 50px;
+  background-color: #5f5f5f;
+  border: none;
+  color:white;
+  font-size: 30px;
+
+}
+.navbar a:hover, a:active, a:focus, button:hover, button:focus, button:active {
   background-color: black;
 }
 
@@ -67,6 +77,31 @@ h2.err404, h2.ban {
   border-radius: 25px;
 }
 
+.search {
+  font-family: font_text;
+  color: white;
+  position: fixed;
+  top: 25%;
+  left: 10%;
+  width: 80%;
+  height: 50%;
+  z-index: 101;
+  display: none;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0, 0.9);
+}
+
+
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: white;
   opacity: 1; /* Firefox */
@@ -78,4 +113,9 @@ h2.err404, h2.ban {
 
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: white;
+}
+#span {
+  position: absolute;
+  right: 32%;
+  top: 28%;
 }

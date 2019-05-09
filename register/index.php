@@ -16,9 +16,9 @@
     <title>Form di registrazione</title>
     <script src="../jquery/jquery.min.js"></script>
     <script src="register.js"></script>
-    <link rel="stylesheet" type="text/css" href="stylesheets/form.css" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/positions.css" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
+    <link rel="stylesheet" type="text/css" href="../main/stylesheets/form.css" />
+    <link rel="stylesheet" type="text/css" href="../main/stylesheets/positions.css" />
+    <link rel="stylesheet" type="text/css" href="../main/stylesheets/main.css" />
   </head>
   <body>
 

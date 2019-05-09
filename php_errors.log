@@ -2,3 +2,19 @@
 Stack trace:
 #0 {main}
   thrown in /var/www/html/login/index.php on line 10
+[09-May-2019 19:22:55 Europe/Berlin] sessione attivata!
+[09-May-2019 19:24:38 Europe/Berlin] sessione attivata!
+[09-May-2019 19:25:58 Europe/Berlin] sessione attivata!
+[09-May-2019 19:26:24 Europe/Berlin] sessione attivata!
+[09-May-2019 19:26:35 Europe/Berlin] sessione attivata!
+[09-May-2019 19:26:57 Europe/Berlin] sessione attivata!
+[09-May-2019 19:41:33 Europe/Berlin] sessione attivata!
+[09-May-2019 19:41:57 Europe/Berlin] sessione attivata!
+[09-May-2019 19:42:38 Europe/Berlin] sessione attivata!
+[09-May-2019 19:44:10 Europe/Berlin] sessione attivata!
+[09-May-2019 19:45:15 Europe/Berlin] sessione attivata!
+[09-May-2019 19:46:59 Europe/Berlin] sessione attivata!
+[09-May-2019 19:47:47 Europe/Berlin] sessione attivata!
+[09-May-2019 19:48:03 Europe/Berlin] sessione attivata!
+[09-May-2019 19:50:58 Europe/Berlin] test triggerato!
+[09-May-2019 19:53:32 Europe/Berlin] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'Buds_db.uer' doesn't exist

@@ -34,7 +34,7 @@
   $Password = hash("sha256", $Password);
   $status = mysqlRetrieveCrd("localhost", "system", "the_best_admin_passwd", $Username, $Password);
   if ($status == "true") {
-    $_SESSION['logged_in'] = '1'; //1 = loggato, NULL no.
+    $_SESSION['logged_in'] = '1'; //1 = loggato, NULL o 0 no.
     error_log("sessione attivata!");
     echo 'passed';
   } else if ($status == "false"){

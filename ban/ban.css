@@ -53,3 +53,7 @@ body {
   background-color: black;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
 }
+#span {
+  position: absolute;
+  top: 40%;
+}

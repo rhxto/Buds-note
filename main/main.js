@@ -1,30 +1,26 @@
-$(document).ready(function(){
-    $('#logout').click(function(){
-        var clickBtnValue = "logout";
-        var ajaxurl = '../php/sessionDestroyer.php',
-        data =  {'action': clickBtnValue};
-        $.post(ajaxurl, data, function (response) {
-          if (response) {
-            $('.logout').attr('hidden', true);
-            $('.log').attr('hidden', false);
-          } else {
-              $('.logout').attr('hidden', true);
-              $('.log').attr('hidden', false);
-              error("sessione");
-          }
-        });
-    });
-});
+function logout() {
+  var clickBtnValue = "logout";
+  var ajaxurl = '../php/sessionDestroyer.php',
+  data =  {'action': clickBtnValue};
+  $.post(ajaxurl, data, function (response) {
+  if (response) {
+      $('.logout').attr('hidden', true);
+      $('.log').attr('hidden', false);
+    } else {
+      $('.logout').attr('hidden', true);
+      $('.log').attr('hidden', false);
+      error("sessione");
+    }
+  });
+}
 function error(err) {
   switch (err) {
     case "sessione":
-      $("#error").attr("hidden", false);
-      $("#error").html("Errore nel logout, se stai vedendo questo messaggio riferiscilo agli amministratori.");
+      $("#warn").html("Errore nel logout, se stai vedendo questo messaggio riferiscilo agli amministratori.");
     break;
     default:
-    $("#error").attr("hidden", false);
-    $("#error").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori.");
-    break
+    $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori.");
+    break;
   }
 }
 function cerca() {
@@ -56,3 +52,11 @@ function cerca() {
   arg = null;
   type = null;
 }
+$(document).ready(function(){
+  document.getElementById("search").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+     event.preventDefault();
+     cerca();
+    }
+  });
+});
