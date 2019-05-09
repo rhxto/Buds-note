@@ -100,9 +100,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     $query->bindParam(':failacc', $fail_acc);
     $query->bindParam(':lastlogfrom', $last_log_from);
     $query->bindParam(':lastlogto', $last_log_to);
-
     $query->execute();
-
     $query->setFetchMode(PDO::FETCH_ASSOC);
     $result = $query->fetchAll();
   } catch(PDOException $e) {
@@ -117,4 +115,60 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
 
   return $results;
 }
+  function searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $teacher, $date) {
+    if ($title == NULL) {
+      $title = "%";
+    }
+    if ($dir == NULL) {
+      $dir = "%";
+    }
+    if ($user == NULL) {
+      $user = "%";
+    }
+    if ($subj == NULL) {
+      $subj = "%";
+    }
+    if ($year == NULL) {
+      $year = "%";
+    }
+    if ($dept == NULL) {
+      $dept = "%";
+    }
+    if ($teacher == NULL) {
+      $teacher = "%";
+    }
+    if ($date == NULL) {
+      $date = "%";
+    }
+    try {
+      $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND (year LIKE :year) AND (dept LIKE :dept) AND (teacher LIKE :teacher) AND (date LIKE :date)");
+      $query->bindParam(":ttl", $title);
+      $query->bindParam(":dir", $dir);
+      $query->bindParam(":usr", $user);
+      $query->bindParam(":subj", $subj);
+      $query->bindParam(":year", $year);
+      $query->bindParam(":dept", $dept);
+      $query->bindParam(":teacher", $teacher);
+      $query->bindParam(":date", $date);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $result = $query->fetchAll();
+      $results = array(array(), array(), array(), array(), array(), array(), array(), array());
+      foreach ($result as $row){
+        array_push($results[0], $row["title"]);
+        array_push($results[1], $row["dir"]);
+        array_push($results[2], $row["user"]);
+        array_push($results[3], $row["subj"]);
+        array_push($results[4], $row["year"]);
+        array_push($results[5], $row["dept"]);
+        array_push($results[6], $row["teacher"]);
+        array_push($results[7], $row["date"]);
+      }
+      return $results;
+    } catch(PDOException $e) {
+      PDOError($e);
+    } finally {
+      $conn = null;
+    }
+  }
 ?>

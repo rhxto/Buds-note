@@ -38,28 +38,50 @@
     if (empty($response[1][0])) {
       echo "Nessun risultato trovato.";
     } else {
-      echo $response[1][0];
+      foreach ($response as $attr) {
+        echo $attr[0];
+        echo "<br/>";
+      }
     }
   } elseif ($type == "deptNum") {
     $response = dept($conn, NULL, $phrase);
     if (empty($response[0][0])) {
       echo "Nessun risultato trovato.";
     } else {
-      echo $response[1][0];
+      foreach ($response as $attr) {
+        echo $attr[0];
+        echo "<br/>";
+      }
     }
   } elseif ($type == "subjName") {
     $response = subj($conn, $phrase, NULL);
     if (empty($response[0][0])) {
       echo "Nessun risultato trovato.";
     } else {
-      echo $response[1][0];
+      foreach ($response as $attr) {
+        echo $attr[0];
+        echo "<br/>";
+      }
     }
   } elseif ($type == "subjNum") {
     $response = subj($conn, NULL, $phrase);
     if (empty($response[0][0])) {
       echo "Nessun risultato trovato.";
     } else {
-      echo $response[1][0];
+      foreach ($response as $attr) {
+        echo $attr[0];
+        echo "<br/>";
+      }
+    }
+  } elseif ($type = "noteTtl") {
+    $response = searchNote($conn, $phrase, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+    if (empty($response[0][0])) {
+      echo "Nessun risultato trovato.";
+    } else {
+      foreach ($response as $attr) {
+        echo $attr[0];
+        echo "<br/>";
+      }
     }
   } else {
     die("Invalid search type");

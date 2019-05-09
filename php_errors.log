@@ -57,3 +57,44 @@ Stack trace:
 [09-May-2019 21:08:49 Europe/Berlin] sessione attivata!
 [09-May-2019 21:09:32 Europe/Berlin] sessione attivata!
 [09-May-2019 21:09:42 Europe/Berlin] sessione attivata!
+[09-May-2019 21:14:51 Europe/Berlin] sessione attivata!
+[09-May-2019 21:35:44 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function searchNote() in /var/www/html/php/test.php:5
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/php/test.php on line 5
+[09-May-2019 21:51:32 Europe/Berlin] PHP Notice:  Undefined index: ttl in /var/www/html/php/query_funs.php on line 158
+[09-May-2019 21:51:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[09-May-2019 21:51:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[09-May-2019 21:51:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[09-May-2019 21:51:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[09-May-2019 21:51:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[09-May-2019 21:51:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[09-May-2019 21:52:03 Europe/Berlin] PHP Notice:  Undefined index: ttl in /var/www/html/php/query_funs.php on line 159
+[09-May-2019 21:52:03 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[09-May-2019 21:52:03 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[09-May-2019 21:52:03 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[09-May-2019 21:52:03 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[09-May-2019 21:52:03 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[09-May-2019 21:52:03 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[09-May-2019 21:52:48 Europe/Berlin] PHP Notice:  Undefined index: ttl in /var/www/html/php/query_funs.php on line 158
+[09-May-2019 21:52:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[09-May-2019 21:52:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[09-May-2019 21:52:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[09-May-2019 21:52:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[09-May-2019 21:52:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[09-May-2019 21:52:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[09-May-2019 21:53:14 Europe/Berlin] PHP Notice:  Undefined index: ttl in /var/www/html/php/query_funs.php on line 159
+[09-May-2019 21:53:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[09-May-2019 21:53:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[09-May-2019 21:53:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[09-May-2019 21:53:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[09-May-2019 21:53:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[09-May-2019 21:53:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[09-May-2019 21:53:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[09-May-2019 21:53:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[09-May-2019 21:53:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[09-May-2019 21:53:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[09-May-2019 21:53:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[09-May-2019 21:53:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[09-May-2019 21:57:23 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /var/www/html/php/research.php on line 72
+[09-May-2019 21:57:27 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /var/www/html/php/research.php on line 72

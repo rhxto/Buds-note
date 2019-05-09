@@ -42,6 +42,8 @@ function cerca() {
     type = "subjName";
   } else if ($("#subjNum").prop("checked") == true) {
     type = "subjNum";
+  } else if ($("#noteTtl").prop("checked") == true) {
+    type = "noteTtl";
   } else {
     $("#risultati").html("Inserisci un criterio di ricerca!");
     type = null;

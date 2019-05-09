@@ -32,7 +32,10 @@
       <span class="search_checkbox top50 left40">
         <input type="checkbox" id="subjName">Materia per nome</input>
       </span>
-      <button onclick="cerca()" class="search_button top65 left48">Cerca</button>
+      <span class="search_checkbox top60 left40">
+        <input type="checkbox" id="noteTtl">Appunti per titolo</input>
+      </span>
+      <button onclick="cerca()" class="search_button top75 left48">Cerca</button>
     </div>
   </div>
     <div id="warn" class="warn" style="display:none">
