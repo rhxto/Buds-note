@@ -1,6 +1,6 @@
 <?php
 //buono3
-  require "core.php";
+  require_once "core.php";
   function logD(String $s) {
     shell_exec("logger $s");
   }
@@ -105,6 +105,14 @@
     } finally {
       $conn = null;
     }
+  }
+  function getAcclvl($user) {
+    $conn = connectDb();
+    $getLvl = $conn->prepare("SELECT acc_lvl FROM user WHERE username = :usr");
+    $getLvl->bindParam(":usr", $user);
+    $getLvl->execute();
+    $result = $getLvl->fetchAll();
+    return $result[0]["acc_lvl"];
   }
   function differenzaData($inzio, $fine){
     $inzio = strtotime($inzio);

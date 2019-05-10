@@ -115,7 +115,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
 
   return $results;
 }
-  function searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $teacher, $date) {
+  function searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $teacher, $date, $order, $v) {
     if ($title == NULL) {
       $title = "%";
     }
@@ -140,8 +140,19 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     if ($date == NULL) {
       $date = "%";
     }
+    if ($order == NULL) {
+      return NULL;
+    }
+    if ($v == NULL) {
+      $v = "DESC";
+    } elseif ($v == "asc") {
+      $v = "ASC";
+    } else {
+      $v = "DESC";
+    }
     try {
-      $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND (year LIKE :year) AND (dept LIKE :dept) AND (teacher LIKE :teacher) AND (date LIKE :date)");
+      $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND (year LIKE :year) AND (dept LIKE :dept) AND (teacher LIKE :teacher) AND (date LIKE :date) ORDER BY :order :v");
+      //ci serve ORDER BY date DESC per avere le note dalla piú recente
       $query->bindParam(":ttl", $title);
       $query->bindParam(":dir", $dir);
       $query->bindParam(":usr", $user);
@@ -150,19 +161,24 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $query->bindParam(":dept", $dept);
       $query->bindParam(":teacher", $teacher);
       $query->bindParam(":date", $date);
+      $query->bindParam(":order", $order);
+      $query->bindParam(":v", $v);
       $query->execute();
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $result = $query->fetchAll();
-      $results = array(array(), array(), array(), array(), array(), array(), array(), array());
+      $results = array();
+      $i = 0;
       foreach ($result as $row){
-        array_push($results[0], $row["title"]);
-        array_push($results[1], $row["dir"]);
-        array_push($results[2], $row["user"]);
-        array_push($results[3], $row["subj"]);
-        array_push($results[4], $row["year"]);
-        array_push($results[5], $row["dept"]);
-        array_push($results[6], $row["teacher"]);
-        array_push($results[7], $row["date"]);
+        array_push($results, array());
+        $results[$i]["title"] = $row["title"];
+        $results[$i]["dir"] = $row["dir"];
+        $results[$i]["user"] = $row["user"];
+        $results[$i]["subj"] = $row["subj"];
+        $results[$i]["year"] = $row["year"];
+        $results[$i]["dept"] = $row["dept"];
+        $results[$i]["teacher"] = $row["teacher"];
+        $results[$i]["date"] = $row["date"];
+        $i++;
       }
       return $results;
     } catch(PDOException $e) {

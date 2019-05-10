@@ -1,7 +1,8 @@
 <?php
-require "core.php";
-require "query_funs.php";
+require_once "core.php";
+require_once "funs.php";
+require_once 'query_funs.php';
 $conn = connectDb();
-$r = searchNote($conn, "ttl", NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-print_r($r);
+$response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, "date", "desc");
+print_r($response);
 ?>

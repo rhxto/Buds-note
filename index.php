@@ -20,44 +20,71 @@
   <div class="overlay" id="SearchDiv">
     <div class='search' id="Search">
       <input id="search" type="text" class="search_text"/>
-      <span class="search_checkbox top20 left40">
-        <input type="checkbox" id="deptNum" >Indirizzo per numero</input>
+      <span class="search_checkbox top20 left40 a" hidden>
+        <input type="checkbox" class="a" id="deptNum" >Indirizzo per numero</input>
       </span>
-      <span class="search_checkbox top30 left40">
+      <span class="search_checkbox top30 left40" hidden>
         <input type="checkbox" id="deptName">Indirizzo per nome</input>
       </span>
-      <span class="search_checkbox top40 left40">
-        <input type="checkbox" id="subjNum">Materia per numero</input>
+      <span class="search_checkbox top40 left40 a" hidden>
+        <input type="checkbox" class="a" id="subjNum">Materia per numero</input>
       </span>
-      <span class="search_checkbox top50 left40">
+      <span class="search_checkbox top50 left40" hidden>
         <input type="checkbox" id="subjName">Materia per nome</input>
       </span>
-      <span class="search_checkbox top60 left40">
+      <span class="search_checkbox top60 left40" hidden>
         <input type="checkbox" id="noteTtl">Appunti per titolo</input>
+      </span>
+      <span class="top15 left40 filtro">
+	       Filtro per materia: <input id="Materie" list="materie" placeholder="Materia..."/>
+	        <datalist id="materie">
+	          <option value="Italiano">
+	          <option value="Matematica">
+	          <option value="Inglese">
+	          <option value="Scienze">
+	          <option value="Informatica">
+    	      <option value="Latino">
+    	      <option value="Religione">
+    	      <option value="Storia">
+     	      <option value="Geografia">
+    	      <option value="Ed. fisica">
+    	      <option value="Storia dell'arte">
+    	      <option value="Disegno tecnico">
+    	      <option value="Fisica">
+    	      <option value="Filosofia">
+    	   </datalist>
+      </span>
+      <span>
+        <button onclick="getDepts();">Indirizzi</button><br/>
+        <button onclick="getSubjs();">Materie</button><br/>
+        <button onclick="getNotes();">Appunti</button>
       </span>
       <button onclick="cerca()" class="search_button top75 left48">Cerca</button>
     </div>
   </div>
-    <div id="warn" class="warn" style="display:none">
+  <div id="warn" class="warn" style="display:none">
+  </div>
+  <p style="position:sticky;top:0px;width:100%">
+    <div class="navbar" id="navbar">
+      <a href="" class="navbar-left">HOME</a>
+	    <button onclick="openSearch()" class="navbar-left"> A</button>
+      <a href="login/" class="navbar-right log">LOGIN</a>
+      <a href="register/" class="navbar-right log">REGISTER</a>
+      <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
     </div>
-    <p style="position:sticky;top:0px;width:100%">
-      <div class="navbar" id="navbar">
-        <a href="" class="navbar-left">HOME</a>
-		    <button onclick="openSearch()" class="navbar-left"> A</button>
-        <a href="login/" class="navbar-right log">LOGIN</a>
-        <a href="register/" class="navbar-right log">REGISTER</a>
-        <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
-      </div>
-    </p>
-
-    <div id="risultati">
-    </div>
+  </p>
+  <div id="risultati">
+  </div>
   </body>
 </html>
 <?php
   if (isset($_SESSION['logged_in'])) {
     if ($_SESSION['logged_in'] == '1') {
       echo "<script>$('.log').attr('hidden', true);</script>";
+      /*require_once "php/funs.php";
+      if(getAcclvl($_SESSION["username"]) == 1) {
+        echo "<script>$('.a').show();</script>";
+      } per ora possiamo tenere tutti i tipi di richerche, che fastidio danno?*/
     } else {
       session_unset();  //quando si esegue il logout logged_in é settato e != da 1 quindi sappiamo che é stato eseguito il logout
       session_destroy();

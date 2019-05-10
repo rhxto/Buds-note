@@ -98,3 +98,1381 @@ Stack trace:
 [09-May-2019 21:53:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
 [09-May-2019 21:57:23 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /var/www/html/php/research.php on line 72
 [09-May-2019 21:57:27 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /var/www/html/php/research.php on line 72
+[10-May-2019 13:46:22 Europe/Berlin] sessione attivata!
+[10-May-2019 13:46:27 Europe/Berlin] PHP Fatal error:  Cannot redeclare PDOError() (previously declared in /var/www/html/php/core.php:19) in /var/www/html/php/core.php on line 19
+[10-May-2019 13:51:27 Europe/Berlin] sessione attivata!
+[10-May-2019 13:59:59 Europe/Berlin] sessione attivata!
+[10-May-2019 13:59:59 Europe/Berlin] PHP Warning:  require_once(funs.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 61
+[10-May-2019 13:59:59 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'funs.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 61
+[10-May-2019 14:00:31 Europe/Berlin] sessione attivata!
+[10-May-2019 14:00:31 Europe/Berlin] PHP Warning:  require_once(funs.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 61
+[10-May-2019 14:00:31 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'funs.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 61
+[10-May-2019 14:01:09 Europe/Berlin] PHP Warning:  require_once(funs.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 61
+[10-May-2019 14:01:09 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'funs.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 61
+[10-May-2019 14:01:14 Europe/Berlin] sessione attivata!
+[10-May-2019 14:01:14 Europe/Berlin] PHP Warning:  require_once(funs.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 61
+[10-May-2019 14:01:14 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'funs.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 61
+[10-May-2019 14:01:27 Europe/Berlin] PHP Parse error:  syntax error, unexpected '$_SESSION' (T_VARIABLE), expecting ',' or ';' in /var/www/html/index.php on line 62
+[10-May-2019 14:01:40 Europe/Berlin] PHP Warning:  require_once(funs.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 61
+[10-May-2019 14:01:40 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'funs.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 61
+[10-May-2019 14:01:44 Europe/Berlin] sessione attivata!
+[10-May-2019 14:01:44 Europe/Berlin] PHP Warning:  require_once(funs.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 61
+[10-May-2019 14:01:44 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'funs.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 61
+[10-May-2019 14:02:55 Europe/Berlin] sessione attivata!
+[10-May-2019 14:05:22 Europe/Berlin] sessione attivata!
+[10-May-2019 14:06:02 Europe/Berlin] sessione attivata!
+[10-May-2019 14:06:10 Europe/Berlin] sessione attivata!
+[10-May-2019 14:27:41 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function subj() in /var/www/html/php/test.php:5
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/php/test.php on line 5
+[10-May-2019 14:28:16 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/test.php on line 6
+[10-May-2019 14:36:09 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:09 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:09 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:09 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:36:11 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:11 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:11 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:11 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:36:12 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:12 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:12 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:12 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:36:13 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:13 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:13 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:13 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:36:15 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:15 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:15 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:15 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:36:15 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:15 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:15 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:36:15 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:38:10 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:10 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:10 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:10 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:38:11 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:11 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:11 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:11 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:38:12 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:12 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:12 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:12 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:38:13 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:13 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:13 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:13 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:38:14 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:14 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:14 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:38:14 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:40:34 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:40:34 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:40:34 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:40:34 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:40:35 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:40:35 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:40:35 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:40:35 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:40:40 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:40:40 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:40:40 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:40:40 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:43:03 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:43:03 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:43:03 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:43:03 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:43:03 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 97
+[10-May-2019 14:44:42 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:44:42 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:44:42 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:44:42 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:44:42 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 97
+[10-May-2019 14:45:16 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:45:16 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:45:16 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:45:16 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:45:17 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:45:17 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:45:17 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:45:17 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:45:17 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:45:17 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:45:17 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:45:17 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:45:17 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 97
+[10-May-2019 14:45:59 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:45:59 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:45:59 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 14:45:59 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 14:49:37 Europe/Berlin] sessione attivata!
+[10-May-2019 14:57:13 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/test.php on line 6
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:01:35 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:01:36 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:02:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:02:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:03:32 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:03:33 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:03:39 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:05:28 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:01 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:25 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:40 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:47 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:07:48 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:11 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:12 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:15 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:16 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:17 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:19 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:20 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:26 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:08:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:09:49 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:11:09 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:11:30 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:11:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:12:22 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:12:45 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 159
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:12:57 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 168
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:14:55 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:14:56 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:14:58 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:17:10 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:18:24 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:19:13 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 161
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 162
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 163
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 164
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 165
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, string given in /var/www/html/php/query_funs.php on line 166
+[10-May-2019 15:19:14 Europe/Berlin] PHP Warning:  array_push() expects parameter 1 to be array, null given in /var/www/html/php/query_funs.php on line 167
+[10-May-2019 15:20:14 Europe/Berlin] PHP Parse error:  syntax error, unexpected ',' in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:20:15 Europe/Berlin] PHP Parse error:  syntax error, unexpected ',' in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:21:32 Europe/Berlin] PHP Parse error:  syntax error, unexpected '"title"' (T_CONSTANT_ENCAPSED_STRING) in /var/www/html/php/query_funs.php on line 160
+[10-May-2019 15:23:13 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:23:13 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:23:14 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:23:14 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:16 Europe/Berlin] PHP Notice:  Undefined variable: attr in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:16 Europe/Berlin] PHP Notice:  Undefined variable: attr in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:16 Europe/Berlin] PHP Notice:  Undefined variable: attr in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:16 Europe/Berlin] PHP Notice:  Undefined variable: attr in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:16 Europe/Berlin] PHP Notice:  Undefined variable: attr in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:16 Europe/Berlin] PHP Notice:  Undefined variable: attr in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:16 Europe/Berlin] PHP Notice:  Undefined variable: attr in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:16 Europe/Berlin] PHP Notice:  Undefined variable: attr in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:16 Europe/Berlin] PHP Notice:  Undefined variable: attr in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:16 Europe/Berlin] PHP Notice:  Undefined variable: attr in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:24 Europe/Berlin] PHP Notice:  Undefined index: title in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:24 Europe/Berlin] PHP Notice:  Undefined index: title in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:24 Europe/Berlin] PHP Notice:  Undefined index: title in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:24 Europe/Berlin] PHP Notice:  Undefined index: title in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:24 Europe/Berlin] PHP Notice:  Undefined index: title in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:24 Europe/Berlin] PHP Notice:  Undefined index: title in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:24 Europe/Berlin] PHP Notice:  Undefined index: title in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:24 Europe/Berlin] PHP Notice:  Undefined index: title in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:24 Europe/Berlin] PHP Notice:  Undefined index: title in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:24 Europe/Berlin] PHP Notice:  Undefined index: title in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:37 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:37 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:37 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:37 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:37 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:37 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:37 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:24:37 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:18 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:19 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:19 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:19 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:19 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:19 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:19 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:19 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:19 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:26:39 Europe/Berlin] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ttl' in 'order clause'
+[10-May-2019 15:27:05 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:05 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:05 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:05 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:05 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:05 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:05 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:05 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:31 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:31 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:31 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:31 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:31 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:31 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:31 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:27:31 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:30:51 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:30:51 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:30:51 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:30:51 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:30:51 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:30:51 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:30:51 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:30:51 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:26 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:26 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:26 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:26 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:26 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:26 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:26 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:26 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:50 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:50 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:50 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:50 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:50 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:50 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:50 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:50 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:31:51 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:32:48 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[10-May-2019 15:32:58 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:32:58 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:32:58 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:32:58 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:32:58 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:32:58 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:32:58 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:32:58 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:33:14 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:33:14 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:33:14 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:33:14 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:33:14 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:33:14 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:33:14 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:33:14 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:33:29 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[10-May-2019 15:33:39 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[10-May-2019 15:33:46 Europe/Berlin] SQLSTATE[HY000]: General error: 1525 Incorrect DATE value: 'DESC'
+[10-May-2019 15:34:48 Europe/Berlin] SQLSTATE[HY000]: General error: 1525 Incorrect DATE value: 'DESC'
+[10-May-2019 15:35:20 Europe/Berlin] PHP Warning:  Use of undefined constant DESC - assumed 'DESC' (this will throw an Error in a future version of PHP) in /var/www/html/php/query_funs.php on line 151
+[10-May-2019 15:35:20 Europe/Berlin] SQLSTATE[HY000]: General error: 1525 Incorrect DATE value: 'DESC'
+[10-May-2019 15:35:56 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[10-May-2019 15:36:06 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:36:06 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:36:06 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:36:06 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:36:06 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:36:06 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:36:06 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:36:06 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:03 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:07 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:07 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:07 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:07 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:07 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:07 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:07 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:07 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:37:23 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function searchNote(), 9 passed in /var/www/html/php/test.php on line 6 and exactly 11 expected in /var/www/html/php/query_funs.php:118
+Stack trace:
+#0 /var/www/html/php/test.php(6): searchNote(Object(PDO), NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL)
+#1 {main}
+  thrown in /var/www/html/php/query_funs.php on line 118
+[10-May-2019 15:37:34 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:41:47 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:42:00 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:42:00 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:42:00 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:42:00 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:42:00 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:42:00 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:42:00 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:42:00 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:42:05 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:42:05 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:42:05 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:42:05 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:42:07 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:42:07 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:42:07 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:42:07 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:42:07 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function note() in /var/www/html/php/research.php:117
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/php/research.php on line 117
+[10-May-2019 15:42:09 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:42:09 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:42:09 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:42:09 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:42:12 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:42:12 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:42:12 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:42:12 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:42:12 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function note() in /var/www/html/php/research.php:117
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/php/research.php on line 117
+[10-May-2019 15:43:00 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:00 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:00 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:00 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:43:02 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:02 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:02 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:02 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:43:20 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:20 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:20 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:20 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:43:20 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:43:20 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:43:20 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:43:20 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:43:20 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:43:20 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:43:20 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:43:20 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:43:43 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:43 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:43 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:43 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:43:44 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:44 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:44 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:43:44 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:43:51 Europe/Berlin] PHP Notice:  Undefined offset: 1 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:43:51 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:43:51 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:43:51 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:43:51 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:43:51 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:43:51 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:43:51 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:43:51 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:45:39 Europe/Berlin] PHP Notice:  Undefined offset: 1 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:45:39 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:45:39 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:45:39 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:45:39 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:45:39 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:45:39 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:45:39 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:45:39 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 102
+[10-May-2019 15:45:50 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:45:50 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:45:50 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:45:50 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:45:50 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:45:50 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:45:50 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:45:50 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:46:27 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:46:27 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:46:27 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:46:27 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:46:27 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:46:27 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:46:27 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:46:27 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 112
+[10-May-2019 15:50:24 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:50:24 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:50:24 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:50:24 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:51:20 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:51:20 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:51:20 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:51:20 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:51:20 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:51:20 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:51:20 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:51:20 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:51:20 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:51:20 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:51:20 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:51:20 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 122
+[10-May-2019 15:51:21 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:51:21 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:51:21 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:51:21 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:51:30 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:51:30 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:51:30 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:51:30 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:52:07 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:52:07 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:52:07 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:52:07 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:53:50 Europe/Berlin] **VISITA A dept/index.php da: 192.168.1.7
+[10-May-2019 15:54:22 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:54:22 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:54:22 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:54:22 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:55:16 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:55:16 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:55:16 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:55:16 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 15:55:20 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:55:21 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:55:21 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 15:55:21 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:04:30 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:04:30 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:04:30 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:04:30 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:04:46 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:04:46 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:04:46 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:04:46 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:06:24 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:06:24 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:06:24 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:06:24 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:06:26 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:06:26 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:06:26 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:06:26 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:08:53 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:08:53 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:08:53 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:08:53 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:09:00 Europe/Berlin] **VISITA A dept/index.php da: 192.168.1.7
+[10-May-2019 16:09:42 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:09:42 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:09:42 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:09:42 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:10:15 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:10:15 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:10:15 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:10:15 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:10:27 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:10:27 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:10:27 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:10:27 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:11:44 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:11:44 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:11:44 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:11:44 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:11:51 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:11:51 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:11:51 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:11:51 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:12:12 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:12:12 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:12:12 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:12:12 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:14:46 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:14:46 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:14:46 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:14:46 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:15:05 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:15:05 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:15:05 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:15:05 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:15:21 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:15:21 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:15:21 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:15:21 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:15:51 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:15:51 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:15:51 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:15:51 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:16:29 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:16:29 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:16:29 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:16:29 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:16:36 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:16:36 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:16:36 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:16:36 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:16:50 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:16:50 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:16:50 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:16:50 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:16:56 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:16:56 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:16:56 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:16:56 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:17:19 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:17:19 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:17:19 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:17:19 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:17:39 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:17:39 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:17:39 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:17:39 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:17:57 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:17:57 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:17:57 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:17:57 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:18:36 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:18:36 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:18:36 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:18:36 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:19:24 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:19:24 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:19:24 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:19:24 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:19:46 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:19:46 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:19:46 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:19:46 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:19:51 Europe/Berlin] **VISITA A dept/index.php da: 192.168.1.7
+[10-May-2019 16:20:29 Europe/Berlin] **VISITA A dept/index.php da: 192.168.1.7
+[10-May-2019 16:20:39 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:20:39 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:20:39 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:20:39 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:21:08 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:21:08 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:21:08 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:21:08 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:21:15 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:21:15 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:21:15 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:21:15 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:21:15 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 104
+[10-May-2019 16:21:15 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 104
+[10-May-2019 16:21:15 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 104
+[10-May-2019 16:21:15 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 104
+[10-May-2019 16:21:15 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 104
+[10-May-2019 16:21:15 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 104
+[10-May-2019 16:21:15 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 104
+[10-May-2019 16:21:15 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 104
+[10-May-2019 16:22:18 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:22:18 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:22:18 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:22:18 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:22:39 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:22:39 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:22:39 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:22:39 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:23:37 Europe/Berlin] PHP Notice:  Undefined offset: 1 in /var/www/html/php/research.php on line 84
+[10-May-2019 16:23:37 Europe/Berlin] PHP Notice:  Undefined offset: 2 in /var/www/html/php/research.php on line 84
+[10-May-2019 16:23:37 Europe/Berlin] PHP Notice:  Undefined offset: 3 in /var/www/html/php/research.php on line 84
+[10-May-2019 16:23:37 Europe/Berlin] PHP Notice:  Undefined offset: 4 in /var/www/html/php/research.php on line 84
+[10-May-2019 16:23:37 Europe/Berlin] PHP Notice:  Undefined offset: 5 in /var/www/html/php/research.php on line 84
+[10-May-2019 16:23:37 Europe/Berlin] PHP Notice:  Undefined offset: 6 in /var/www/html/php/research.php on line 84
+[10-May-2019 16:23:37 Europe/Berlin] PHP Notice:  Undefined offset: 7 in /var/www/html/php/research.php on line 84
+[10-May-2019 16:23:37 Europe/Berlin] PHP Notice:  Undefined offset: 8 in /var/www/html/php/research.php on line 84
+[10-May-2019 16:23:37 Europe/Berlin] PHP Notice:  Undefined offset: 9 in /var/www/html/php/research.php on line 84
+[10-May-2019 16:24:44 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:24:44 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:24:44 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:24:44 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 16:25:59 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:25:59 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:25:59 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 13
+[10-May-2019 16:25:59 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 25
+[10-May-2019 17:55:12 Europe/Berlin] **VISITA A dept/index.php da: 217.58.39.62
+[10-May-2019 17:55:37 Europe/Berlin] **VISITA A dept/index.php da: 217.58.39.62
+[10-May-2019 17:56:52 Europe/Berlin] sessione attivata!
+[10-May-2019 17:59:35 Europe/Berlin] sessione attivata!
+[10-May-2019 21:30:52 Europe/Berlin] PHP Notice:  Undefined variable: phrase in /var/www/html/php/research.php on line 24
+[10-May-2019 21:49:07 Europe/Berlin] PHP Parse error:  syntax error, unexpected '.' in /var/www/html/php/research.php on line 29
+[10-May-2019 21:50:08 Europe/Berlin] PHP Parse error:  syntax error, unexpected '.' in /var/www/html/php/research.php on line 38
+[10-May-2019 21:50:34 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /var/www/html/php/research.php on line 176
+[10-May-2019 21:51:00 Europe/Berlin] PHP Notice:  Undefined index: phrase in /var/www/html/php/research.php on line 93
+[10-May-2019 22:04:46 Europe/Berlin] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /var/www/html/php/research.php on line 166
+[10-May-2019 22:05:32 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 166
+[10-May-2019 22:05:44 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 166
+[10-May-2019 22:41:20 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/research.php on line 166

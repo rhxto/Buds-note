@@ -156,7 +156,10 @@ h2.err404, h2.ban {
   left: 0;
   background-color: rgba(0,0,0, 0.9);
 }
-
+.filtro {
+  position: absolute;
+  font-size: 35px;
+}
 
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
