@@ -36,7 +36,6 @@
   if ($status == "true") {
     $_SESSION['logged_in'] = '1'; //1 = loggato, NULL o 0 no.
     $_SESSION["username"] = $Username;
-    error_log("sessione attivata!");
     echo 'passed';
   } else if ($status == "false"){
     $_SESSION['logged_in'] = '0';

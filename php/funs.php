@@ -114,6 +114,50 @@
     $result = $getLvl->fetchAll();
     return $result[0]["acc_lvl"];
   }
+  function setManStatus($val) {
+    if (getManStatus() == "true" && $val == "true") {
+      return "MANAA";
+    } elseif (getManStatus() == "false" && $val != "true") {
+      return "MANAT";
+    } else {
+      try {
+        $conn = connectDb();
+        $query = $conn->prepare("UPDATE manutenzione SET VAL = :val");
+        if ($val == "true") {
+          $v = 1;
+          //usare un bindParam con 1 qui e 0 nell'else da errore perché bindParam vuole una variabile
+        } else {
+          $v = 0;
+        }
+        $query->bindParam(':val', $v);
+        $query->execute();
+        return "done";
+      } catch(PDOException $e) {
+        PDOError($e);
+        return "IEMANS";
+      } finally {
+        $conn = null;
+      }
+    }
+  }
+  function getManStatus() {
+    try {
+      $conn = connectDb();
+      $query = $conn->query("SELECT VAL FROM manutenzione");
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $result = $query->fetchAll();
+      if ($result[0]["VAL"] == 1) {
+        return "true";
+      } else {
+        return "false";
+      }
+    } catch(PDOException $e) {
+      PDOError($e);
+      return "IEMANR";
+    } finally {
+      $conn = null;
+    }
+  }
   function differenzaData($inzio, $fine){
     $inzio = strtotime($inzio);
     $fine = strtotime($fine);

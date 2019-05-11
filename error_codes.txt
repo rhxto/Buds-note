@@ -1,0 +1,8 @@
+codicie:
+IE = errore interno generico
+IES = errore nella ricerca
+IEMAN = errore  generico manutenzione
+IEMANR = errore nella lettura della manutenzione
+IEMANS = errore nella scrittura della manutenzione
+NOMAN = utente non autorizzato a impostare lo stato della manutenzione
+MANAA = manutenzione giá attiva

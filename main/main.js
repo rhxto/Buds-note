@@ -21,20 +21,48 @@ function error(err) {
     break;
     case "IES":
       $("#warn").show();
-      $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
+      $("#warn").html("Abbiamo riscontrato un errore nella ricerca, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
+      break;
+    case "man":
+      $("#warn").show();
+      $("#warn").html("Il server é in manutenzione, certe funzionalità potrebbero essere bloccate.");
+      break;
+    case "IEMAN":
+      $("#warn").show();
+      $("#warn").html("Errore nell'impostazione della manutenzione, controlla il log degli errori." + " Codice: " + err);
+      break;
+    case "IEMANS":
+      $("#warn").show();
+      $("#warn").html("Errore nell'impostazione della manutenzione, controlla il log degli errori." + " Codice: " + err);
+      break;
+    case "IEMANR":
+      $("#warn").show();
+      $("#warn").html("Errore nella lettura dello stato della manutenzione, controlla il log degli errori." + " Codice: " + err);
+      break;
+    case "NOMAN":
+      $("#warn").show();
+      $("#warn").html("Non sei autorizzato a modificare lo stato della manutenzione. Questo incidente é stato segnalato.");
+      break;
+    case "MANAA":
+      $("#warn").show();
+      $("#warn").html("Manutenzione giá attiva!");
+      break;
+    case "MANAT":
+      $("#warn").show();
+      $("#warn").html("Manutenzione giá terminata!");
+      break;
     default:
-    $("#warn").show();
-    $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
+      $("#warn").show();
+      $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
     break;
   }
   setTimeout(function(){$("#warn").hide();}, 10000);
 }
 function cerca() {
-  document.getElementById("Search").style.display = "none";
-  document.getElementById("SearchDiv").style.display = "none";
+  hideSearch();
   var arg = $("#search").val();
   var ajaxurl = "../php/research.php";
-  if ($("#Materie").val() == "" && $("#Indirizzo").val() == "") {
+  if ($("#filtroMateria").val() == "" && $("#filtroIndirizzo").val() == "" && $("#filtroUtente").val() == "") {
     var filtro = false;
   } else {
     var filtro = true;
@@ -77,9 +105,9 @@ function cerca() {
   } else if (type == "note"){
     var title = arg;
     var user = $("#filtroUtente").val();
-    var subj = $("#Materie").val();
+    var subj = $("#filtroMateria").val();
     var year = $("#Anno").val();
-    var dept = $("#Indirizzo").val();
+    var dept = $("#filtroIndirizzo").val();
     var teacher = $("#Insegnante").val();
     var date = $("#Data").val();
     data = {
@@ -112,6 +140,7 @@ function cerca() {
   type = null;
 }
 function hideSearch() {
+  $("greet").hide();
   document.getElementById("Search").style.display = "none";
   document.getElementById("SearchDiv").style.display = "none";
 }
@@ -177,6 +206,45 @@ function getNotes() {
         }
       }
       });
+}
+function man(c) {
+  if (c == "on") {
+   var ajaxurl = "../php/manutenzione.php";
+   var manutenzione = "true";
+   data = {
+     'valman': manutenzione
+   }
+   $.post(ajaxurl, data, function(response) {
+     response = JSON.parse(response);
+     if (response == "done") {
+       $("#warn").show();
+       $("#warn").html("fatto");
+       setTimeout(function(){
+         $("#warn").hide()
+       }, 5000);
+     } else {
+       error(response);
+     }
+   });
+  } else {
+    var ajaxurl = "../php/manutenzione.php";
+    var manutenzione = "false";
+    data = {
+      'valman': manutenzione
+    }
+    $.post(ajaxurl, data, function(response) {
+      response = JSON.parse(response);
+      if (response == "done") {
+        $("#warn").show();
+        $("#warn").html("fatto");
+        setTimeout(function(){
+          $("#warn").hide()
+        }, 5000);
+      } else {
+        error(response);
+      }
+    });
+  }
 }
 $(document).ready(function(){
   document.getElementById("search").addEventListener("keyup", function(event) {

@@ -1481,3 +1481,85 @@ Stack trace:
 [11-May-2019 12:42:24 Europe/Berlin] sessione attivata!
 [11-May-2019 12:42:47 Europe/Berlin] sessione attivata!
 [11-May-2019 12:43:20 Europe/Berlin] sessione attivata!
+[11-May-2019 13:14:19 Europe/Berlin] PHP Notice:  Undefined index: manutenzione in /var/www/html/index.php on line 110
+[11-May-2019 13:14:20 Europe/Berlin] PHP Notice:  Undefined index: manutenzione in /var/www/html/index.php on line 110
+[11-May-2019 13:14:21 Europe/Berlin] PHP Notice:  Undefined index: manutenzione in /var/www/html/index.php on line 110
+[11-May-2019 13:22:40 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function getAcclvl() in /var/www/html/php/manutenzione.php:2
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/php/manutenzione.php on line 2
+[11-May-2019 13:22:57 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/manutenzione.php on line 3
+[11-May-2019 13:22:57 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/funs.php on line 115
+[11-May-2019 13:23:06 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/manutenzione.php on line 3
+[11-May-2019 13:23:06 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/funs.php on line 115
+[11-May-2019 13:46:54 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function apc_store() in /var/www/html/php/test.php:2
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/php/test.php on line 2
+[11-May-2019 14:26:15 Europe/Berlin] could not find driver
+[11-May-2019 14:26:17 Europe/Berlin] could not find driver
+[11-May-2019 14:26:35 Europe/Berlin] could not find driver
+[11-May-2019 14:29:04 Europe/Berlin] could not find driver
+[11-May-2019 14:29:05 Europe/Berlin] could not find driver
+[11-May-2019 14:29:57 Europe/Berlin] PHP Notice:  Undefined variable: manutenzione in /var/www/html/php/manutenzione.php on line 18
+[11-May-2019 14:29:57 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/manutenzione.php on line 18
+[11-May-2019 14:29:57 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/manutenzione.php on line 18
+[11-May-2019 14:29:57 Europe/Berlin] PHP Warning:  file_put_contents(/var/www/html/php/manutenzioneVal.php): failed to open stream: Permission denied in /var/www/html/php/manutenzione.php on line 18
+[11-May-2019 14:34:51 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/manutenzione.php on line 3
+[11-May-2019 14:34:51 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/funs.php on line 115
+[11-May-2019 14:34:51 Europe/Berlin] **VISITA A MANUTENZIONE NON AUTORIZZATA** ip:192.168.1.7
+[11-May-2019 14:34:55 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/manutenzione.php on line 3
+[11-May-2019 14:34:55 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/funs.php on line 115
+[11-May-2019 14:34:55 Europe/Berlin] **VISITA A MANUTENZIONE NON AUTORIZZATA** ip:192.168.1.7
+[11-May-2019 14:35:22 Europe/Berlin] PHP Notice:  Undefined variable: manutenzione in /var/www/html/php/manutenzione.php on line 18
+[11-May-2019 14:35:22 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/manutenzione.php on line 18
+[11-May-2019 14:35:22 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/manutenzione.php on line 18
+[11-May-2019 14:35:22 Europe/Berlin] PHP Warning:  file_put_contents(/var/www/html/php/manutenzioneVal.php): failed to open stream: Permission denied in /var/www/html/php/manutenzione.php on line 18
+[11-May-2019 14:50:35 Europe/Berlin] PHP Notice:  Object of class PDOStatement could not be converted to int in /var/www/html/php/funs.php on line 130
+[11-May-2019 14:50:47 Europe/Berlin] PHP Notice:  Object of class PDOStatement could not be converted to int in /var/www/html/php/funs.php on line 130
+[11-May-2019 14:50:48 Europe/Berlin] PHP Notice:  Object of class PDOStatement could not be converted to int in /var/www/html/php/funs.php on line 130
+[11-May-2019 14:50:48 Europe/Berlin] PHP Notice:  Object of class PDOStatement could not be converted to int in /var/www/html/php/funs.php on line 130
+[11-May-2019 14:50:49 Europe/Berlin] PHP Notice:  Object of class PDOStatement could not be converted to int in /var/www/html/php/funs.php on line 130
+[11-May-2019 14:50:49 Europe/Berlin] PHP Notice:  Object of class PDOStatement could not be converted to int in /var/www/html/php/funs.php on line 130
+[11-May-2019 14:51:09 Europe/Berlin] PHP Notice:  Object of class PDOStatement could not be converted to int in /var/www/html/php/funs.php on line 130
+[11-May-2019 14:51:33 Europe/Berlin] PHP Notice:  Object of class PDOStatement could not be converted to int in /var/www/html/php/funs.php on line 130
+[11-May-2019 14:51:55 Europe/Berlin] PHP Notice:  Object of class PDOStatement could not be converted to int in /var/www/html/php/funs.php on line 130
+[11-May-2019 14:52:09 Europe/Berlin] PHP Notice:  Object of class PDOStatement could not be converted to int in /var/www/html/php/funs.php on line 131
+[11-May-2019 14:52:33 Europe/Berlin] PHP Notice:  Object of class PDOStatement could not be converted to int in /var/www/html/php/funs.php on line 131
+[11-May-2019 14:54:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function getManStatus() in /var/www/html/index.php:111
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/index.php on line 111
+[11-May-2019 14:54:28 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function getManStatus() in /var/www/html/index.php:111
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/index.php on line 111
+[11-May-2019 14:54:56 Europe/Berlin] PHP Warning:  require_once(funs.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 111
+[11-May-2019 14:54:56 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'funs.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 111
+[11-May-2019 14:54:58 Europe/Berlin] PHP Warning:  require_once(funs.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 111
+[11-May-2019 14:54:58 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'funs.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 111
+[11-May-2019 15:03:45 Europe/Berlin] PHP Parse error:  syntax error, unexpected '{' in /var/www/html/php/manutenzione.php on line 2
+[11-May-2019 15:04:28 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function getAcclvl() in /var/www/html/php/manutenzione.php:2
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/php/manutenzione.php on line 2
+[11-May-2019 15:04:46 Europe/Berlin] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /var/www/html/php/funs.php:122
+Stack trace:
+#0 /var/www/html/php/manutenzione.php(23): setManStatus('true')
+#1 {main}
+  thrown in /var/www/html/php/funs.php on line 122
+[11-May-2019 15:05:26 Europe/Berlin] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /var/www/html/php/funs.php:122
+Stack trace:
+#0 /var/www/html/php/manutenzione.php(23): setManStatus('true')
+#1 {main}
+  thrown in /var/www/html/php/funs.php on line 122
+[11-May-2019 15:07:01 Europe/Berlin] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /var/www/html/php/funs.php:122
+Stack trace:
+#0 /var/www/html/php/manutenzione.php(23): setManStatus('true')
+#1 {main}
+  thrown in /var/www/html/php/funs.php on line 122
+[11-May-2019 15:08:45 Europe/Berlin] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /var/www/html/php/funs.php:127
+Stack trace:
+#0 /var/www/html/php/manutenzione.php(23): setManStatus('true')
+#1 {main}
+  thrown in /var/www/html/php/funs.php on line 127
