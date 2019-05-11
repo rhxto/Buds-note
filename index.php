@@ -52,7 +52,15 @@
     	      <option value="Disegno tecnico">
     	      <option value="Fisica">
     	      <option value="Filosofia">
-    	   </datalist>
+	   </datalist>
+           Filtra per indirizzo: <input id="Indirizzo" list="Indirizzi" placeholder="Indirizzo..." />
+           <datalist id="Indirizzi">
+             <option value="Liceo scientifico">
+             <option value="Liceo scientifico opz. scienze applicate">
+             <option value="Liceo linguistico">
+             <option value="Liceo scienze umane">
+             <option value="Liceo classico">
+           </datalist>
       </span>
       <span>
         <button onclick="getDepts();">Indirizzi</button><br/>

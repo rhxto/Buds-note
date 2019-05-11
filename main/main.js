@@ -31,7 +31,7 @@ function cerca() {
   document.getElementById("SearchDiv").style.display = "none";
   var arg = $("#search").val();
   var ajaxurl = "../php/research.php";
-  if ($("#Materie").val() == "") {
+  if ($("#Materie").val() == "" && $("#Indirizzo").val() == "") {
     var filtro = false;
   } else {
     var filtro = true;
@@ -56,6 +56,7 @@ function cerca() {
   } else {
     type = "note";
   }
+  console.log("tipo: " + type);
   if (type != null && arg != null && type != "note") {
     data =  {'phrase': arg,
     'type': type};

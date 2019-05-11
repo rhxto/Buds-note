@@ -1476,3 +1476,5 @@ Stack trace:
 [10-May-2019 22:05:32 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 166
 [10-May-2019 22:05:44 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 166
 [10-May-2019 22:41:20 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/research.php on line 166
+[11-May-2019 12:29:19 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 166
+[11-May-2019 12:29:44 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 166
