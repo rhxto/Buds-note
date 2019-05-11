@@ -93,6 +93,9 @@
   $conn = connectDb();
   if ($type == "deptName") {
     $response = dept($conn, $phrase, NULL);
+    if ($response == "internalError") {
+      die(json_encode("IES"));
+    }
     if (empty($response[1][0])) {
       echo json_encode("Nrt.");
     } else {
@@ -100,6 +103,9 @@
     }
   } elseif ($type == "deptNum") {
     $response = dept($conn, NULL, $phrase);
+    if ($response == "internalError") {
+      die(json_encode("IES"));
+    }
     if (empty($response[0][0])) {
       echo json_encode("Nrt.");
     } else {
@@ -107,6 +113,9 @@
     }
   } elseif ($type == "depts") {
     $response = dept($conn, NULL, NULL);
+    if ($response == "internalError") {
+      die(json_encode("IES"));
+    }
     if (empty($response[0][0])) {
       echo json_encode("Nrt.");
     } else {
@@ -114,6 +123,9 @@
     }
    }  elseif ($type == "subjName") {
     $response = subj($conn, $phrase, NULL);
+    if ($response == "internalError") {
+      die(json_encode("IES"));
+    }
     if (empty($response[0][0])) {
       echo json_encode("Nrt.");
     } else {
@@ -121,6 +133,9 @@
     }
   } elseif ($type == "subjNum") {
     $response = subj($conn, NULL, $phrase);
+    if ($response == "internalError") {
+      die(json_encode("IES"));
+    }
     if (empty($response[0][0])) {
       echo json_encode("Nrt.");
     } else {
@@ -128,6 +143,9 @@
     }
   } elseif ($type == "subjs") {
     $response = subj($conn, NULL, NULL);
+    if ($response == "internalError") {
+      die(json_encode("IES"));
+    }
     if (empty($response[0][0])) {
       echo json_encode("Nrt.");
     } else {
@@ -135,6 +153,9 @@
     }
   } elseif ($type == "noteTtl") {
     $response = searchNote($conn, $phrase, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "date", "desc");
+    if ($response == "internalError") {
+      die(json_encode("IES"));
+    }
     if (empty($response[0]["title"])) {
       echo json_encode("Nrt.");
     } else {
@@ -142,6 +163,9 @@
     }
   } elseif ($type == "noteDept") {
     $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, $phrase, NULL, NULL, "date", "desc");
+    if ($response == "internalError") {
+      die(json_encode("IES"));
+    }
     if (empty($response[0]["title"])) {
       echo json_encode("Nrt.");
     } else {
@@ -149,6 +173,9 @@
     }
   } elseif ($type == "notes") {
     $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "date", "desc");
+    if ($response == "internalError") {
+      die(json_encode("IES"));
+    }
     if (empty($response[0]["title"])) {
       echo json_encode("Nrt.");
     } else {
@@ -156,6 +183,9 @@
     }
   } elseif ($type == "note") {
     $response = searchNote($conn, $title, NULL, $user, $subj, $year, $dept, $teacher, $date, "date", "desc");
+    if ($response == "internalError") {
+      die(json_encode("IES"));
+    }
     logD("Title: ". $title);
     logD("user: ". $user);
     logD("subj: ". $subj);

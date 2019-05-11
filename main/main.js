@@ -17,11 +17,14 @@ function error(err) {
   switch (err) {
     case "sessione":
       $("#warn").show();
-      $("#warn").html("Errore nel logout, se hai visto questo messaggio riferiscilo agli amministratori.");
+      $("#warn").html("Errore nel logout, se hai visto questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
     break;
+    case "IES":
+      $("#warn").show();
+      $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
     default:
     $("#warn").show();
-    $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori.");
+    $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
     break;
   }
   setTimeout(function(){$("#warn").hide();}, 10000);
@@ -56,7 +59,6 @@ function cerca() {
   } else {
     type = "note";
   }
-  console.log("tipo: " + type);
   if (type != null && arg != null && type != "note") {
     data =  {'phrase': arg,
     'type': type};
@@ -65,6 +67,8 @@ function cerca() {
       var response = JSON.parse(response);
       if (response == "Nrt") {
         $("#risultati").html("Nessun risultato trovato")
+      } else if (response == "IES") {
+        error(reponse);
       }
       for (i = 0; i < response[1].length; i++) {
         $("#risultati").append(response[1][i] + "<br/>");
@@ -93,6 +97,8 @@ function cerca() {
       var response = JSON.parse(response);
       if (response == "Nrt") {
         $("#risultati").html("Nessun risultato trovato");
+      } else if (response == "IES") {
+        error(response);
       } else {
         for (i = 0; i < response.length; i++) {
           $("#risultati").append(response[i]["title"] + "<br/>");
@@ -121,6 +127,8 @@ function getSubjs() {
       var response = JSON.parse(response);
       if (response == "Nrt") {
         $("#risultati").html("Nessun risultato trovato");
+      }  else if (response == "IES") {
+        error(response);
       } else {
         for (i = 0; i < response[1].length; i++) {
           $("#risultati").append("<a href='subj/" + i + "/'>" + response[1][i] + "</a><br/>");
@@ -140,6 +148,8 @@ function getDepts() {
       var response = JSON.parse(response);
       if (response == "Nrt") {
         $("#risultati").html("Nessun risultato trovato");
+      } else if (response == "IES") {
+        error(response);
       } else {
         for (i = 0; i < response[1].length; i++) {
           $("#risultati").append("<a href='dept/" + i + "/'>" + response[1][i] + "</a><br/>");
@@ -159,6 +169,8 @@ function getNotes() {
       $("#risultati").empty();
       if (response == "Nrt") {
         $("#risultati").html("Nessun risultato trovato");
+      } else if (response == "IES") {
+        error(response);
       } else {
         for (i = 0; i < response.length; i++) {
           $("#risultati").append(response[i]["title"] + "<br/>");

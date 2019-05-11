@@ -1478,3 +1478,6 @@ Stack trace:
 [10-May-2019 22:41:20 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/research.php on line 166
 [11-May-2019 12:29:19 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 166
 [11-May-2019 12:29:44 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 166
+[11-May-2019 12:42:24 Europe/Berlin] sessione attivata!
+[11-May-2019 12:42:47 Europe/Berlin] sessione attivata!
+[11-May-2019 12:43:20 Europe/Berlin] sessione attivata!

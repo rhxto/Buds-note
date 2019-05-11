@@ -21,8 +21,10 @@
     $exist = err_handler($e->getCode(), $e->getMessage());
     if (!$exist) {
       die("<h1>Errore interno</h1>");
+      return true;
     } else {
       die();
+      return false;
     }
   }
 ?>

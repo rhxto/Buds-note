@@ -17,14 +17,16 @@ function dept($conn, $name, $id){
     $id = "%";
   }
   try {
-    $query = $conn->prepare("SELECT * FROM dept WHERE (name LIKE :dept_name) AND (code  LIKE :id)");
+    $query = $conn->prepare("SELECT * FROM dept WHERE (name LIKE :dept_name) AND (code  LIKE :id) ORDER BY code");
     $query->bindParam(':dept_name', $name);
     $query->bindParam(':id', $id);
     $query->execute();
     $query->setFetchMode(PDO::FETCH_ASSOC);
     $result = $query->fetchAll();
   } catch(PDOException $e) {
-    PDOError($e);
+    if (PDOError($e)) {
+      return "internalError";
+    }
   } finally {
     $conn = null;
   }
@@ -50,14 +52,16 @@ function subj($conn, $name, $id){
     $id = "%";
   }
   try {
-    $query = $conn->prepare("SELECT * FROM subj WHERE (name LIKE :subj_name) AND (code LIKE :id)");
+    $query = $conn->prepare("SELECT * FROM subj WHERE (name LIKE :subj_name) AND (code LIKE :id) ORDER BY code");
     $query->bindParam(':subj_name', $name);
     $query->bindParam(':id', $id);
     $query->execute();
     $query->setFetchMode(PDO::FETCH_ASSOC);
     $result = $query->fetchAll();
   } catch(PDOException $e) {
-    PDOError($e);
+    if (PDOError($e)) {
+      return "internalError";
+    }
   } finally {
     $conn = null;
   }
@@ -104,7 +108,9 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     $query->setFetchMode(PDO::FETCH_ASSOC);
     $result = $query->fetchAll();
   } catch(PDOException $e) {
-    PDOError($e);
+    if (PDOError($e)) {
+      return "internalError";
+    }
   } finally {
     $conn = null;
   }
@@ -182,7 +188,9 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       }
       return $results;
     } catch(PDOException $e) {
-      PDOError($e);
+      if (PDOError($e)) {
+        return "internalError";
+      }
     } finally {
       $conn = null;
     }

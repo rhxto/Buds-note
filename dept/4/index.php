@@ -28,7 +28,7 @@
     </p>
     <div id="risultati">
     </div>
-    Pagina per tutte le note del liceo scienze umane.
+    Pagina per tutte le note del liceo classico.
   </body>
 </html>
 <?php
