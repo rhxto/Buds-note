@@ -121,7 +121,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
 
   return $results;
 }
-  function searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $teacher, $date, $order, $v) {
+  function searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $teacher, $datefrom, $dateto, $order, $v) {
     if ($title == NULL) {
       $title = "%";
     }
@@ -143,21 +143,29 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     if ($teacher == NULL) {
       $teacher = "%";
     }
-    if ($date == NULL) {
-      $date = "%";
+    if ($datefrom == NULL) {
+      $datefrom = "%";
+    } else {
+      //$datefrom = str_replace("/", "-", $datefrom) . "0:0:0";
+    }
+    if ($dateto == NULL) {
+      $dateto = date("Y-m-d H:i:s");
+    } else {
+      //$dateto = str_replace("/", "-", $dateto) . "0:0:0";
     }
     if ($order == NULL) {
-      return NULL;
+      $order = "date";
     }
     if ($v == NULL) {
       $v = "DESC";
-    } elseif ($v == "asc") {
-      $v = "ASC";
-    } else {
+    } elseif ($v == "discendente") {
       $v = "DESC";
+    } else {
+      $v = "ASC";
     }
+
     try {
-      $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND (year LIKE :year) AND (dept LIKE :dept) AND (teacher LIKE :teacher) AND (date LIKE :date) ORDER BY :order :v");
+      $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND (year LIKE :year) AND (dept LIKE :dept) AND (teacher LIKE :teacher) AND (date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
       //ci serve ORDER BY date DESC per avere le note dalla piú recente
       $query->bindParam(":ttl", $title);
       $query->bindParam(":dir", $dir);
@@ -166,15 +174,16 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $query->bindParam(":year", $year);
       $query->bindParam(":dept", $dept);
       $query->bindParam(":teacher", $teacher);
-      $query->bindParam(":date", $date);
-      $query->bindParam(":order", $order);
-      $query->bindParam(":v", $v);
+      $query->bindParam(":datefrom", $datefrom);
+      $query->bindParam(":dateto", $dateto);
       $query->execute();
+      logD("datefrom: " . $datefrom);
+      logD("dateto: " . $dateto);
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $result = $query->fetchAll();
       $results = array();
       $i = 0;
-      foreach ($result as $row){
+      foreach ($result as $row) {
         array_push($results, array());
         $results[$i]["title"] = $row["title"];
         $results[$i]["dir"] = $row["dir"];

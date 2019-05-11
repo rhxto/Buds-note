@@ -122,7 +122,7 @@
     } else {
       try {
         $conn = connectDb();
-        $query = $conn->prepare("UPDATE manutenzione SET VAL = :val");
+        $query = $conn->prepare("UPDATE manutenzione SET val = :val");
         if ($val == "true") {
           $v = 1;
           //usare un bindParam con 1 qui e 0 nell'else da errore perché bindParam vuole una variabile
@@ -143,10 +143,10 @@
   function getManStatus() {
     try {
       $conn = connectDb();
-      $query = $conn->query("SELECT VAL FROM manutenzione");
+      $query = $conn->query("SELECT val FROM manutenzione");
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $result = $query->fetchAll();
-      if ($result[0]["VAL"] == 1) {
+      if ($result[0]["val"] == 1) {
         return "true";
       } else {
         return "false";

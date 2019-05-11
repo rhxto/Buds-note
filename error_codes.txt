@@ -1,4 +1,4 @@
-codicie:
+codici:
 IE = errore interno generico
 IES = errore nella ricerca
 IEMAN = errore  generico manutenzione

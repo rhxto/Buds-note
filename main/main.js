@@ -12,6 +12,8 @@ function logout() {
       error("sessione");
     }
   });
+  $('.adminTools').empty();
+  $("greet").empty();
 }
 function error(err) {
   switch (err) {
@@ -62,7 +64,7 @@ function cerca() {
   hideSearch();
   var arg = $("#search").val();
   var ajaxurl = "../php/research.php";
-  if ($("#filtroMateria").val() == "" && $("#filtroIndirizzo").val() == "" && $("#filtroUtente").val() == "") {
+  if ($("#filtroMateria").val() == "" && $("#filtroIndirizzo").val() == "" && $("#filtroUtente").val() == "" && $("#filtroAnno").val() == "" &&$("#filtroDatefrom").val() == "" &&$("#filtroDateto").val() == "" &&$("#filtroOrdine").val() == "" && $("#filtroOrderBy").val() == "") {
     var filtro = false;
   } else {
     var filtro = true;
@@ -95,7 +97,7 @@ function cerca() {
       var response = JSON.parse(response);
       if (response == "Nrt") {
         $("#risultati").html("Nessun risultato trovato")
-      } else if (response == "IES") {
+      } else if (response == "IES" || response == "IE") {
         error(reponse);
       }
       for (i = 0; i < response[1].length; i++) {
@@ -106,10 +108,13 @@ function cerca() {
     var title = arg;
     var user = $("#filtroUtente").val();
     var subj = $("#filtroMateria").val();
-    var year = $("#Anno").val();
+    var year = $("#filtroAnno").val();
     var dept = $("#filtroIndirizzo").val();
     var teacher = $("#Insegnante").val();
-    var date = $("#Data").val();
+    var datefrom = $("#filtroDatefrom").val();
+    var dateto = $("#filtroDateto").val();
+    var orderby = $("#filtroOrderBy").val();
+    var order = $("#filtroOrdine").val();
     data = {
       "type": type,
       "title": title,
@@ -118,14 +123,17 @@ function cerca() {
       "year": year,
       "dept": dept,
       "teacher": teacher,
-      "date": date
+      "datefrom": datefrom,
+      "dateto": dateto,
+      "orderby": orderby,
+      "order": order
     }
     $.post(ajaxurl, data, function (response) {
       $("#risultati").empty();
       var response = JSON.parse(response);
       if (response == "Nrt") {
         $("#risultati").html("Nessun risultato trovato");
-      } else if (response == "IES") {
+      } else if (response == "IES" || response == "IE") {
         error(response);
       } else {
         for (i = 0; i < response.length; i++) {
@@ -156,7 +164,7 @@ function getSubjs() {
       var response = JSON.parse(response);
       if (response == "Nrt") {
         $("#risultati").html("Nessun risultato trovato");
-      }  else if (response == "IES") {
+      }  else if (response == "IES" || response == "IE") {
         error(response);
       } else {
         for (i = 0; i < response[1].length; i++) {
@@ -177,14 +185,14 @@ function getDepts() {
       var response = JSON.parse(response);
       if (response == "Nrt") {
         $("#risultati").html("Nessun risultato trovato");
-      } else if (response == "IES") {
+      } else if (response == "IES" || response == "IE") {
         error(response);
       } else {
         for (i = 0; i < response[1].length; i++) {
           $("#risultati").append("<a href='dept/" + i + "/'>" + response[1][i] + "</a><br/>");
         }
       }
-      });
+    });
 }
 function getNotes() {
   hideSearch();
@@ -198,15 +206,16 @@ function getNotes() {
       $("#risultati").empty();
       if (response == "Nrt") {
         $("#risultati").html("Nessun risultato trovato");
-      } else if (response == "IES") {
+      } else if (response == "IES" || response == "IE") {
         error(response);
       } else {
         for (i = 0; i < response.length; i++) {
           $("#risultati").append(response[i]["title"] + "<br/>");
         }
       }
-      });
+    });
 }
+
 function man(c) {
   if (c == "on") {
    var ajaxurl = "../php/manutenzione.php";

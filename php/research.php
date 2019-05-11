@@ -10,20 +10,20 @@
   }
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["type"]) || $_POST["type"] == "") {
-      //echo 'nonAN';
+    if (!isset($_POST["type"]) || $_POST["type"] == "") {
+      die();
     } else {
       $type = test_input($_POST["type"]);
     }
   }
-  if ((empty($_POST["phrase"]) || $_POST["phrase"] == "") && $type != "subjs" && $type != "notes" && $type != "depts") {
+  if ((!isset($_POST["phrase"]) || $_POST["phrase"] == "") && $type != "subjs" && $type != "notes" && $type != "depts") {
     $phrase = NULL;
   } else {
     $phrase = test_input($_POST["phrase"]);
   }
 
   if ($type == "note"){
-    if ((empty($_POST["title"]) || $_POST["title"] == "") || $_POST["title"] == "undefined") {
+    if ((!isset($_POST["title"]) || $_POST["title"] == "") || $_POST["title"] == "undefined") {
       $title =  NULL;
     } else {
       $title = test_input($_POST["title"]);
@@ -32,7 +32,7 @@
         die();
       }
     }
-    if ((empty($_POST["user"]) || $_POST["user"] == "") || $_POST["user"] == "undefined") {
+    if ((!isset($_POST["user"]) || $_POST["user"] == "") || $_POST["user"] == "undefined") {
       $user =  NULL;
     } else {
       $user = test_input($_POST["user"]);
@@ -41,7 +41,7 @@
         die();
       }
     }
-    if ((empty($_POST["subj"]) || $_POST["subj"] == "") || $_POST["subj"] == "undefined") {
+    if ((!isset($_POST["subj"]) || $_POST["subj"] == "") || $_POST["subj"] == "undefined") {
       $subj =  NULL;
     } else {
       $subj = test_input($_POST["subj"]);
@@ -50,7 +50,7 @@
         die();
       }
     }
-    if ((empty($_POST["year"]) || $_POST["year"] == "") || $_POST["year"] == "undefined") {
+    if ((!isset($_POST["year"]) || $_POST["year"] == "") || $_POST["year"] == "undefined") {
       $year =  NULL;
     } else {
       $year = test_input($_POST["year"]);
@@ -59,7 +59,7 @@
         die();
       }
     }
-    if ((empty($_POST["dept"]) || $_POST["dept"] == "") || $_POST["dept"] == "undefined") {
+    if ((!isset($_POST["dept"]) || $_POST["dept"] == "") || $_POST["dept"] == "undefined") {
       $dept =  NULL;
     } else {
       $dept = test_input($_POST["dept"]);
@@ -68,7 +68,7 @@
         die();
       }
     }
-    if ((empty($_POST["teacher"]) || $_POST["teacher"] == "") || $_POST["teacher"] == "undefined") {
+    if ((!isset($_POST["teacher"]) || $_POST["teacher"] == "") || $_POST["teacher"] == "undefined") {
       $teacher =  NULL;
     } else {
       $teacher = test_input($_POST["teacher"]);
@@ -77,14 +77,59 @@
         die();
       }
     }
-    if ((empty($_POST["date"]) || $_POST["date"] == "") || $_POST["date"] == "undefined") {
-      $date =  NULL;
+    if ((!isset($_POST["datefrom"]) || $_POST["datefrom"] == "") || $_POST["datefrom"] == "undefined") {
+      $datefrom =  NULL;
     } else {
-      $date = test_input($_POST["date"]);
-      if ($_POST["date"] != $date) {
+      $datefrom = test_input($_POST["datefrom"]);
+      if ($_POST["datefrom"] != $datefrom) {
         //echo 'nonAN';
         die();
       }
+    }
+    if ((!isset($_POST["dateto"]) || $_POST["dateto"] == "") || $_POST["dateto"] == "undefined") {
+      $dateto =  NULL;
+    } else {
+      $dateto = test_input($_POST["dateto"]);
+      if ($_POST["dateto"] != $dateto) {
+        //echo 'nonAN';
+        die();
+      }
+    }
+    if ((!isset($_POST["order"]) || $_POST["order"] == "") || $_POST["order"] == "undefined") {
+      $order =  NULL;
+    } else {
+      $order = test_input($_POST["order"]);
+      if ($_POST["order"] != $order) {
+        //echo 'nonAN';
+        die();
+      }
+    }
+    if ((!isset($_POST["orderby"]) || $_POST["orderby"] == "") || $_POST["orderby"] == "undefined") {
+      $orderby =  NULL;
+    } else {
+      $orderby = test_input($_POST["orderby"]);
+      if ($_POST["orderby"] != $orderby) {
+        //echo 'nonAN';
+        die();
+      }
+      if ($orderby == "Titolo") {
+        $orderby = "title";
+      } elseif ($orderby == "Username") {
+        $orderby = "user";
+      } elseif ($orderby == "Materia") {
+        $orderby = "subj";
+      } elseif ($orderby == "Anno") {
+        $orderby = "year";
+      } elseif ($orderby == "Indirizzo") {
+        $orderby = "dept";
+      } elseif ($orderby == "Insegnante") {
+        $orderby = "teacher";
+      } elseif ($orderby == "Data") {
+        $orderby = "date";
+      } else {
+        $orderby = NULL;
+      }
+      error_log("Ordine: " . $orderby);
     }
   }
   require_once "core.php";
@@ -96,7 +141,7 @@
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
-    if (empty($response[1][0])) {
+    if (!isset($response[1][0])) {
       echo json_encode("Nrt.");
     } else {
       echo json_encode($response);
@@ -106,7 +151,7 @@
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
-    if (empty($response[0][0])) {
+    if (!isset($response[0][0])) {
       echo json_encode("Nrt.");
     } else {
       echo json_encode($response);
@@ -116,7 +161,7 @@
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
-    if (empty($response[0][0])) {
+    if (!isset($response[0][0])) {
       echo json_encode("Nrt.");
     } else {
       echo json_encode($response);
@@ -126,7 +171,7 @@
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
-    if (empty($response[0][0])) {
+    if (!isset($response[0][0])) {
       echo json_encode("Nrt.");
     } else {
       echo json_encode($response);
@@ -136,7 +181,7 @@
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
-    if (empty($response[0][0])) {
+    if (!isset($response[0][0])) {
       echo json_encode("Nrt.");
     } else {
       echo json_encode($response);
@@ -146,7 +191,7 @@
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
-    if (empty($response[0][0])) {
+    if (!isset($response[0][0])) {
       echo json_encode("Nrt.");
     } else {
         echo json_encode($response);
@@ -156,36 +201,37 @@
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
-    if (empty($response[0]["title"])) {
+    if (!isset($response[0]["title"])) {
       echo json_encode("Nrt.");
     } else {
       echo json_encode($response);
     }
   } elseif ($type == "noteDept") {
-    $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, $phrase, NULL, NULL, "date", "desc");
+    $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, $phrase, NULL, NULL, NULL, "date", "desc");
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
-    if (empty($response[0]["title"])) {
+    if (!isset($response[0]["title"])) {
       echo json_encode("Nrt.");
     } else {
       echo json_encode($response);
     }
   } elseif ($type == "notes") {
-    $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "date", "desc");
+    $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "date", "desc");
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
-    if (empty($response[0]["title"])) {
-      echo json_encode("Nrt.");
+    if (!isset($response[0]["title"])) {
+      echo json_encode("Nrt");
     } else {
       echo json_encode($response);
     }
   } elseif ($type == "note") {
-    $response = searchNote($conn, $title, NULL, $user, $subj, $year, $dept, $teacher, $date, "date", "desc");
+    $response = searchNote($conn, $title, NULL, $user, $subj, $year, $dept, $teacher, $datefrom, $dateto, $orderby, $order);
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
+    /*
     logD("Title: ". $title);
     logD("user: ". $user);
     logD("subj: ". $subj);
@@ -193,13 +239,13 @@
     logD("dept: ". $dept);
     logD("teacher: ". $teacher);
     logD("date: ". $date);
-    logD("Result:" . $response[0]["title"]);
-    if (empty($response[0]["title"])) {
+    logD("Result:" . $response[0]["title"]);*/
+    if (!isset($response[0]["title"])) {
       echo json_encode("Nrt");
     } else {
       echo json_encode($response);
     }
   } else {
-    die("Invalid search type");
+    die(json_encode("Invalid search type"));
   }
 ?>

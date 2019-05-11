@@ -11,8 +11,10 @@
     <meta charset="utf-8">
     <title>Buds_note</title>
     <script src="jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery-ui/jquery-ui.js"></script>
     <script src="main/main.js"></script>
 	  <script src="main/search.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery/jquery-ui/jquery-ui.css"/>
     <link rel="stylesheet" type="text/css" href="main/stylesheets/positions.css" />
     <link rel="stylesheet" type="text/css" href="main/stylesheets/main.css" />
   </head>
@@ -36,39 +38,62 @@
         <input type="checkbox" id="noteTtl">Appunti per titolo</input>
       </span>
       <span class="top15 left35 filtro">
+        Filtra per utente: <input id="filtroUtente" placeholder="Nome utente..." /><br/>
 	      Filtro per materia: <input id="filtroMateria" list="materie" placeholder="Materia..."/><br/>
-	      <datalist id="materie">
-	        <option value="Italiano">
-	        <option value="Matematica">
-	        <option value="Inglese">
-	        <option value="Scienze">
-	        <option value="Informatica">
-    	    <option value="Latino">
-    	    <option value="Religione">
-    	    <option value="Storia">
-     	    <option value="Geografia">
-    	    <option value="Ed. fisica">
-    	    <option value="Storia dell'arte">
-    	    <option value="Disegno tecnico">
-    	    <option value="Fisica">
-    	    <option value="Filosofia">
-	      </datalist>
+	      <?php
+          require_once 'php/core.php';
+          require_once 'php/query_funs.php';
+          $r = subj(connectDb(), NULL, NULL);
+          echo "<datalist id='materie'>";
+          foreach ($r[1] as $res) {
+            echo "<option value='" . $res . "'>";
+          }
+          echo "</datalist>";
+         ?>
         Filtra per indirizzo: <input id="filtroIndirizzo" list="Indirizzi" placeholder="Indirizzo..." /><br/>
-        <datalist id="Indirizzi">
-          <option value="Liceo scientifico">
-          <option value="Liceo scientifico opz. scienze applicate">
-          <option value="Liceo linguistico">
-          <option value="Liceo scienze umane">
-          <option value="Liceo classico">
+        <?php
+          require_once 'php/core.php';
+          require_once 'php/query_funs.php';
+          $r = dept(connectDb(), NULL, NULL);
+          echo "<datalist id='Indirizzi'>";
+          foreach ($r[1] as $res) {
+            echo "<option value='" . $res . "'>";
+          }
+          echo "</datalist>";
+         ?>
+        Filtra per anno: <input type="number" id="filtroAnno"/><br/>
+        Data d'inizio: <input id="filtroDatefrom" /><br/>
+        Data di fine:  <input id="filtroDateto"/><br/>
+        <script type="text/javascript">
+          $("#filtroDatefrom").datepicker({
+            dateFormat : 'yy-mm-dd'
+          });
+          $("#filtroDateto").datepicker({
+            dateFormat : 'yy-mm-dd'
+          });
+        </script>
+        Ordina per: <input list="tipoOrdine" id="filtroOrderBy"/><br/>
+        <datalist id="tipoOrdine">
+          <option value="Titolo">
+          <option value="Username">
+          <option value="Materia">
+          <option value="Anno">
+          <option value="Indirizzo">
+          <option value="Insegnante">
+          <option value="Data">
         </datalist>
-        Filtra per utente: <input id="filtroUtente" placeholder="Nome utente..." />
+        Ordine: <input list="ordini" id="filtroOrdine"/>
+        <datalist id="ordini">
+          <option value="ascendente">
+          <option value="discendente">
+        </datalist>
       </span>
       <span>
         <button onclick="getDepts();">Indirizzi</button><br/>
         <button onclick="getSubjs();">Materie</button><br/>
         <button onclick="getNotes();">Appunti</button>
       </span>
-      <button onclick="cerca()" class="search_button top75 left48">Cerca</button>
+      <button onclick="cerca()" class="search_button top95 left48">Cerca</button>
     </div>
   </div>
   <div id="warn" class="warn" style="display:none">
@@ -84,20 +109,29 @@
   </p>
   <div id="risultati">
   </div>
-  <div class="adminTools">
+  <div class="adminTools" style="display: none;">
     <button onclick="man('on')">Avvia manutenzione</button>
     <button onclick="man('off')">Termina manutenzione</button>
   </div>
   </body>
 </html>
 <?php
+  require_once "php/funs.php";
+  $s = getManStatus();
+  if($s == "true") {
+    echo "<script>error('man');</script>";
+  } elseif ($s == "false") {
+
+  } else {
+    $s = "'" . $s . "'";
+    echo "<script>error($s);</script>";
+  }
   if (isset($_SESSION['logged_in'])) {
     if ($_SESSION['logged_in'] == '1') {
       echo "<script>$('.log').attr('hidden', true);</script>";
-      /*require_once "php/funs.php";
       if(getAcclvl($_SESSION["username"]) == 1) {
-        echo "<script>$('.a').show();</script>";
-      } per ora possiamo tenere tutti i tipi di richerche, che fastidio danno?*/
+        echo "<script>$('.adminTools').show();</script>";
+      }
       echo "<greet>Benvenuto, " . $_SESSION["username"] . "</greet>";
     } else {
       session_unset();  //quando si esegue il logout logged_in é settato e != da 1 quindi sappiamo che é stato eseguito il logout
@@ -108,14 +142,5 @@
     echo "<script>$('.logout').attr('hidden', true);</script>";
     //se chiudiamo la sessione anche quando uno non é loggato, non riusciamo a settare logged_in a 1
   }
-  require_once "php/funs.php";
-  $s = getManStatus();
-  if($s == "true") {
-    echo "<script>error('man')</script>";
-  } elseif ($s == "false") {
 
-  } else {
-    $s = "'" . $s . "'";
-    echo "<script>error($s);</script>";
-  }
  ?>

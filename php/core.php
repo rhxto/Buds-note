@@ -20,7 +20,7 @@
     require 'exceptions.php';
     $exist = err_handler($e->getCode(), $e->getMessage());
     if (!$exist) {
-      die("<h1>Errore interno</h1>");
+      die(json_encode("IE"));
       return true;
     } else {
       die();

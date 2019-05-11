@@ -1563,3 +1563,169 @@ Stack trace:
 #0 /var/www/html/php/manutenzione.php(23): setManStatus('true')
 #1 {main}
   thrown in /var/www/html/php/funs.php on line 127
+[11-May-2019 15:37:21 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/research.php on line 196
+[11-May-2019 16:05:23 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:23 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:24 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:25 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:26 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:27 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:41 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:41 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:42 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:43 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:43 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:43 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:43 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:45 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:05:45 Europe/Berlin] PHP Notice:  Undefined index: VAL in /var/www/html/php/funs.php on line 149
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 1 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 2 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 3 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 4 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 5 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 6 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 7 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 8 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 9 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 10 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 11 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 12 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:31 Europe/Berlin] PHP Notice:  Uninitialized string offset: 13 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:46 Europe/Berlin] PHP Notice:  Uninitialized string offset: 7 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:46 Europe/Berlin] PHP Notice:  Uninitialized string offset: 12 in /var/www/html/index.php on line 49
+[11-May-2019 16:28:46 Europe/Berlin] PHP Notice:  Uninitialized string offset: 13 in /var/www/html/index.php on line 49
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined index: phrase in /var/www/html/php/research.php on line 19
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 19
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 19
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 19
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 25
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 103
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 113
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 123
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 133
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 143
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 153
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 163
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 173
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 183
+[11-May-2019 16:34:49 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 193
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 19
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 19
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 19
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 25
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 103
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 113
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 123
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 133
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 143
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 153
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 163
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 173
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 183
+[11-May-2019 16:34:54 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/research.php on line 193
+[11-May-2019 17:00:55 Europe/Berlin] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '/'desc'//DESC' at line 1
+[11-May-2019 17:00:57 Europe/Berlin] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '/'desc'//DESC' at line 1
+[11-May-2019 17:01:00 Europe/Berlin] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '/'desc'//DESC' at line 1
+[11-May-2019 17:01:02 Europe/Berlin] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '/'desc'//DESC' at line 1
+[11-May-2019 17:02:20 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:02:24 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:02:34 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:02:56 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:02:58 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:03:28 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:04:00 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:04:12 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:04:21 Europe/Berlin] SQLSTATE[HY000]: General error: 1525 Incorrect DATE value: 'DESC'
+[11-May-2019 17:04:52 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:05:00 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:06:20 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:07:11 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:09:18 Europe/Berlin] PHP Parse error:  syntax error, unexpected ')' in /var/www/html/php/query_funs.php on line 162
+[11-May-2019 17:09:30 Europe/Berlin] PHP Parse error:  syntax error, unexpected ')' in /var/www/html/php/query_funs.php on line 162
+[11-May-2019 17:09:31 Europe/Berlin] PHP Parse error:  syntax error, unexpected ')' in /var/www/html/php/query_funs.php on line 162
+[11-May-2019 17:09:33 Europe/Berlin] PHP Parse error:  syntax error, unexpected ')' in /var/www/html/php/query_funs.php on line 162
+[11-May-2019 17:09:36 Europe/Berlin] PHP Parse error:  syntax error, unexpected ')', expecting variable (T_VARIABLE) or '{' or '$' in /var/www/html/php/query_funs.php on line 162
+[11-May-2019 17:09:58 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+[11-May-2019 17:19:06 Europe/Berlin] PHP Notice:  Undefined index: phrase in /var/www/html/php/research.php on line 19
+[11-May-2019 17:19:06 Europe/Berlin] PHP Notice:  Undefined index: year in /var/www/html/php/research.php on line 53
+[11-May-2019 17:19:06 Europe/Berlin] PHP Notice:  Undefined index: teacher in /var/www/html/php/research.php on line 71
+[11-May-2019 17:19:06 Europe/Berlin] PHP Notice:  Undefined index: datefrom in /var/www/html/php/research.php on line 80
+[11-May-2019 17:19:06 Europe/Berlin] PHP Notice:  Undefined index: dateto in /var/www/html/php/research.php on line 89
+[11-May-2019 17:19:06 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 194
+[11-May-2019 17:19:06 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 194
+[11-May-2019 17:19:10 Europe/Berlin] PHP Notice:  Undefined index: phrase in /var/www/html/php/research.php on line 19
+[11-May-2019 17:19:10 Europe/Berlin] PHP Notice:  Undefined index: year in /var/www/html/php/research.php on line 53
+[11-May-2019 17:19:10 Europe/Berlin] PHP Notice:  Undefined index: teacher in /var/www/html/php/research.php on line 71
+[11-May-2019 17:19:10 Europe/Berlin] PHP Notice:  Undefined index: datefrom in /var/www/html/php/research.php on line 80
+[11-May-2019 17:19:10 Europe/Berlin] PHP Notice:  Undefined index: dateto in /var/www/html/php/research.php on line 89
+[11-May-2019 17:19:10 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 194
+[11-May-2019 17:19:10 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 194
+[11-May-2019 17:21:54 Europe/Berlin] PHP Notice:  Undefined index: phrase in /var/www/html/php/research.php on line 19
+[11-May-2019 17:21:54 Europe/Berlin] PHP Notice:  Undefined index: year in /var/www/html/php/research.php on line 53
+[11-May-2019 17:21:54 Europe/Berlin] PHP Notice:  Undefined index: teacher in /var/www/html/php/research.php on line 71
+[11-May-2019 17:21:54 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 194
+[11-May-2019 17:21:54 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 194
+[11-May-2019 17:21:59 Europe/Berlin] PHP Notice:  Undefined index: phrase in /var/www/html/php/research.php on line 19
+[11-May-2019 17:21:59 Europe/Berlin] PHP Notice:  Undefined index: year in /var/www/html/php/research.php on line 53
+[11-May-2019 17:21:59 Europe/Berlin] PHP Notice:  Undefined index: teacher in /var/www/html/php/research.php on line 71
+[11-May-2019 17:21:59 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 194
+[11-May-2019 17:21:59 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 194
+[11-May-2019 17:22:21 Europe/Berlin] PHP Notice:  Undefined index: phrase in /var/www/html/php/research.php on line 19
+[11-May-2019 17:22:21 Europe/Berlin] PHP Notice:  Undefined index: teacher in /var/www/html/php/research.php on line 71
+[11-May-2019 17:22:21 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 194
+[11-May-2019 17:22:21 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 194
+[11-May-2019 17:23:06 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 194
+[11-May-2019 17:23:06 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 194
+[11-May-2019 17:23:09 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 194
+[11-May-2019 17:23:09 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 194
+[11-May-2019 17:23:12 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 194
+[11-May-2019 17:23:12 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 194
+[11-May-2019 17:24:00 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 194
+[11-May-2019 17:24:00 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 194
+[11-May-2019 17:24:08 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 194
+[11-May-2019 17:24:08 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 194
+[11-May-2019 17:26:06 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 203
+[11-May-2019 17:26:06 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 203
+[11-May-2019 17:26:56 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 203
+[11-May-2019 17:26:56 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 203
+[11-May-2019 17:27:01 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 203
+[11-May-2019 17:27:01 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 203
+[11-May-2019 17:28:14 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 212
+[11-May-2019 17:28:14 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 212
+[11-May-2019 17:28:18 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 212
+[11-May-2019 17:28:18 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 212
+[11-May-2019 17:28:24 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 212
+[11-May-2019 17:28:24 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 212
+[11-May-2019 17:28:29 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 212
+[11-May-2019 17:28:29 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 212
+[11-May-2019 17:30:05 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 212
+[11-May-2019 17:30:05 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 212
+[11-May-2019 17:30:08 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 212
+[11-May-2019 17:30:08 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 212
+[11-May-2019 17:30:08 Europe/Berlin] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'datea' in 'order clause'
+[11-May-2019 17:34:36 Europe/Berlin] PHP Parse error:  syntax error, unexpected end of file in /var/www/html/php/research.php on line 250
+[11-May-2019 17:35:32 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 229
+[11-May-2019 17:35:32 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 229
+[11-May-2019 17:35:38 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 229
+[11-May-2019 17:35:38 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 229
+[11-May-2019 17:35:47 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 229
+[11-May-2019 17:35:47 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 229
+[11-May-2019 17:35:52 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 229
+[11-May-2019 17:35:52 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 229
+[11-May-2019 17:35:54 Europe/Berlin] PHP Notice:  Undefined variable: datefrom in /var/www/html/php/research.php on line 229
+[11-May-2019 17:35:54 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 229
+[11-May-2019 17:37:41 Europe/Berlin] Ordine: user
+[11-May-2019 17:39:18 Europe/Berlin] Ordine: user
+[11-May-2019 17:41:52 Europe/Berlin] Ordine: title
+[11-May-2019 17:41:56 Europe/Berlin] Ordine: title
+[11-May-2019 17:41:59 Europe/Berlin] Ordine: title
+[11-May-2019 17:42:05 Europe/Berlin] Ordine: user
+[11-May-2019 17:42:10 Europe/Berlin] Ordine: user
+[11-May-2019 19:30:32 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 93
+[11-May-2019 19:38:41 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 93
+[11-May-2019 19:39:25 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 93
+[11-May-2019 19:39:36 Europe/Berlin] PHP Notice:  Undefined variable: dateto in /var/www/html/php/research.php on line 93
+[11-May-2019 20:03:10 Europe/Berlin] Ordine: date
+[11-May-2019 20:03:24 Europe/Berlin] Ordine: date
+[11-May-2019 20:03:27 Europe/Berlin] Ordine: date
