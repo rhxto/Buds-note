@@ -1729,3 +1729,134 @@ Stack trace:
 [11-May-2019 20:03:10 Europe/Berlin] Ordine: date
 [11-May-2019 20:03:24 Europe/Berlin] Ordine: date
 [11-May-2019 20:03:27 Europe/Berlin] Ordine: date
+[12-May-2019 16:05:06 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'break' (T_BREAK) in /var/www/html/php/note.php on line 29
+[12-May-2019 16:06:15 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'break' (T_BREAK) in /var/www/html/php/note.php on line 32
+[12-May-2019 16:07:10 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'break' (T_BREAK) in /var/www/html/php/note.php on line 32
+[12-May-2019 16:08:44 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'break' (T_BREAK) in /var/www/html/php/note.php on line 32
+[12-May-2019 16:23:06 Europe/Berlin] PHP Fatal error:  Cannot use try without catch or finally in /var/www/html/php/query_funs.php on line 208
+[12-May-2019 16:23:07 Europe/Berlin] PHP Fatal error:  Cannot use try without catch or finally in /var/www/html/php/query_funs.php on line 208
+[12-May-2019 16:23:12 Europe/Berlin] PHP Fatal error:  Cannot use try without catch or finally in /var/www/html/php/query_funs.php on line 208
+[12-May-2019 16:23:24 Europe/Berlin] PHP Fatal error:  Cannot use try without catch or finally in /var/www/html/php/query_funs.php on line 208
+[12-May-2019 16:23:41 Europe/Berlin] PHP Fatal error:  Cannot use try without catch or finally in /var/www/html/php/query_funs.php on line 208
+[12-May-2019 16:26:55 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function connectDb() in /var/www/html/php/query_funs.php:209
+Stack trace:
+#0 /var/www/html/php/note.php(21): writeNote('d', 'd')
+#1 {main}
+  thrown in /var/www/html/php/query_funs.php on line 209
+[12-May-2019 16:27:49 Europe/Berlin] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /var/www/html/php/query_funs.php:210
+Stack trace:
+#0 /var/www/html/php/note.php(22): writeNote(Object(PDO), 'd', 'd')
+#1 {main}
+  thrown in /var/www/html/php/query_funs.php on line 210
+[12-May-2019 16:28:15 Europe/Berlin] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /var/www/html/php/query_funs.php:210
+Stack trace:
+#0 /var/www/html/php/note.php(22): writeNote(Object(PDO), 'd', 'd')
+#1 {main}
+  thrown in /var/www/html/php/query_funs.php on line 210
+[12-May-2019 16:43:00 Europe/Berlin] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /var/www/html/php/note.php on line 19
+[12-May-2019 16:44:13 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 211
+[12-May-2019 16:44:13 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 214
+[12-May-2019 16:44:13 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 216
+[12-May-2019 16:44:13 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 217
+[12-May-2019 16:44:45 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 211
+[12-May-2019 16:44:45 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 214
+[12-May-2019 16:44:45 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 216
+[12-May-2019 16:44:45 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 217
+[12-May-2019 16:48:42 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 211
+[12-May-2019 16:48:42 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 214
+[12-May-2019 16:48:42 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 216
+[12-May-2019 16:48:42 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 217
+[12-May-2019 16:50:20 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 215
+[12-May-2019 16:50:20 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 217
+[12-May-2019 16:50:20 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 218
+[12-May-2019 16:51:22 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in /var/www/html/php/query_funs.php on line 220
+[12-May-2019 16:52:57 Europe/Berlin] scrittura completata
+[12-May-2019 16:53:41 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 16:53:41 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 16:53:41 Europe/Berlin] PHP Warning:  fopen(0Fede/a.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 16:53:41 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:53:41 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:53:41 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:53:41 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:54:35 Europe/Berlin] PHP Warning:  fopen(/notedb/Fede/a.txt): failed to open stream: Permission denied in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 16:54:35 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:54:35 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:54:35 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:54:35 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:55:51 Europe/Berlin] PHP Warning:  fopen(/notedb/Fede/a.txt): failed to open stream: Permission denied in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 16:55:51 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:55:51 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:55:51 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:55:51 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:56:41 Europe/Berlin] PHP Warning:  fopen(/notedb/Fede/a.txt): failed to open stream: Permission denied in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 16:56:41 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:56:41 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:56:41 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:56:41 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:57:28 Europe/Berlin] PHP Warning:  fopen(notedb/Fede/a.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 16:57:28 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:57:28 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:57:28 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:57:28 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:57:45 Europe/Berlin] PHP Warning:  fopen(./notedb/Fede/a.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 16:57:45 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:57:45 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:57:45 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:57:45 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:57:54 Europe/Berlin] PHP Warning:  fopen(./notedb/Fede/a.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 16:57:54 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:57:54 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:57:54 Europe/Berlin] PHP Notice:  Undefined variable: noteFile in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:57:54 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, null given in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:58:22 Europe/Berlin] PHP Warning:  fopen(./notedb/Fede/da.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 16:58:22 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/php/query_funs.php on line 223
+[12-May-2019 16:58:22 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/php/query_funs.php on line 224
+[12-May-2019 16:59:44 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN) in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 17:01:27 Europe/Berlin] PHP Warning:  fopen(./notedb/Fede/a.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 17:04:58 Europe/Berlin] PHP Warning:  fopen(./notedb/Fede/a.txt): failed to open stream: Success in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 17:05:29 Europe/Berlin] PHP Warning:  fopen(../notedb/Fede/a.txt): failed to open stream: Success in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 17:06:46 Europe/Berlin] PHP Warning:  fopen(../notedb/Fede/d.txt): failed to open stream: Permission denied in /var/www/html/php/test.php on line 2
+[12-May-2019 17:06:46 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 3
+[12-May-2019 17:06:46 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 4
+[12-May-2019 17:07:26 Europe/Berlin] PHP Warning:  fopen(../notedb/Fede/d.txt): failed to open stream: Permission denied in /var/www/html/php/test.php on line 2
+[12-May-2019 17:07:26 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 3
+[12-May-2019 17:07:26 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 4
+[12-May-2019 17:11:36 Europe/Berlin] PHP Warning:  fopen(../notedb/Fede/d.txt): failed to open stream: Permission denied in /var/www/html/php/test.php on line 2
+[12-May-2019 17:11:36 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 3
+[12-May-2019 17:11:36 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 4
+[12-May-2019 17:11:53 Europe/Berlin] PHP Warning:  fopen(../notedb/Fede/da.txt): failed to open stream: Permission denied in /var/www/html/php/test.php on line 2
+[12-May-2019 17:11:53 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 3
+[12-May-2019 17:11:53 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 4
+[12-May-2019 17:11:54 Europe/Berlin] PHP Warning:  fopen(../notedb/Fede/da.txt): failed to open stream: Permission denied in /var/www/html/php/test.php on line 2
+[12-May-2019 17:11:54 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 3
+[12-May-2019 17:11:54 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 4
+[12-May-2019 17:12:02 Europe/Berlin] PHP Warning:  fopen(../notedb/Fede/da.txt): failed to open stream: Permission denied in /var/www/html/php/test.php on line 2
+[12-May-2019 17:12:02 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 3
+[12-May-2019 17:12:02 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 4
+[12-May-2019 17:15:59 Europe/Berlin] PHP Warning:  fopen(../notedb/Fede/da.txt): failed to open stream: Permission denied in /var/www/html/php/test.php on line 2
+[12-May-2019 17:15:59 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 3
+[12-May-2019 17:15:59 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/php/test.php on line 4
+[12-May-2019 17:21:03 Europe/Berlin] PHP Warning:  require_once(/var/www/html/php/core.php): failed to open stream: Permission denied in /var/www/html/index.php on line 44
+[12-May-2019 17:21:03 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required '/var/www/html/php/core.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 44
+[12-May-2019 17:21:22 Europe/Berlin] PHP Warning:  require_once(php/core.php): failed to open stream: Permission denied in /var/www/html/index.php on line 44
+[12-May-2019 17:21:22 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'php/core.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 44
+[12-May-2019 17:21:28 Europe/Berlin] PHP Warning:  require_once(php/core.php): failed to open stream: Permission denied in /var/www/html/index.php on line 44
+[12-May-2019 17:21:28 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'php/core.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 44
+[12-May-2019 17:21:47 Europe/Berlin] PHP Warning:  require_once(php/core.php): failed to open stream: Permission denied in /var/www/html/index.php on line 44
+[12-May-2019 17:21:47 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'php/core.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 44
+[12-May-2019 17:22:28 Europe/Berlin] PHP Warning:  require_once(/var/www/html/php/core.php): failed to open stream: Permission denied in /var/www/html/index.php on line 44
+[12-May-2019 17:22:28 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required '/var/www/html/php/core.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 44
+[12-May-2019 17:22:29 Europe/Berlin] PHP Warning:  require_once(php/core.php): failed to open stream: Permission denied in /var/www/html/index.php on line 44
+[12-May-2019 17:22:29 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'php/core.php' (include_path='.:/usr/share/php') in /var/www/html/index.php on line 44
+[12-May-2019 17:24:58 Europe/Berlin] PHP Warning:  fopen(../d.txt): failed to open stream: Permission denied in /var/www/html/php/test.php on line 2
+[12-May-2019 17:25:44 Europe/Berlin] PHP Warning:  fopen(../notedb/..//d.txt): failed to open stream: Permission denied in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 17:42:51 Europe/Berlin] PHP Notice:  Undefined variable: mail in /var/www/html/php/write.php on line 7
+[12-May-2019 17:42:52 Europe/Berlin] PHP Notice:  Undefined variable: mail in /var/www/html/php/write.php on line 7
+[12-May-2019 17:42:59 Europe/Berlin] PHP Notice:  Undefined variable: mail in /var/www/html/php/write.php on line 7
+[12-May-2019 17:44:05 Europe/Berlin] PHP Warning:  fopen(../notedb/d/d.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 17:45:30 Europe/Berlin] PHP Warning:  fopen(../notedb/d/d.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 222
+[12-May-2019 17:48:36 Europe/Berlin] Ordine: title
+[12-May-2019 17:51:28 Europe/Berlin] PHP Parse error:  syntax error, unexpected ';' in /var/www/html/php/note.php on line 13
+[12-May-2019 17:59:34 Europe/Berlin] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /var/www/html/index.php on line 142
+[12-May-2019 18:31:59 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}', expecting ';' in /var/www/html/php/query_funs.php on line 200
+[12-May-2019 18:32:01 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}', expecting ';' in /var/www/html/php/query_funs.php on line 200

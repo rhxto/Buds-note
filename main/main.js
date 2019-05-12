@@ -13,45 +13,52 @@ function logout() {
     }
   });
   $('.adminTools').empty();
-  $("greet").empty();
+  $(".adminTools").hide();
+  $("#greet").empty();
+  $(".scriviNota").empty();
+  $("#scriviNotaBtn").hide();
 }
 function error(err) {
+  $("#warn").show();
   switch (err) {
     case "sessione":
-      $("#warn").show();
       $("#warn").html("Errore nel logout, se hai visto questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
     break;
     case "IES":
-      $("#warn").show();
       $("#warn").html("Abbiamo riscontrato un errore nella ricerca, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
       break;
     case "man":
-      $("#warn").show();
       $("#warn").html("Il server é in manutenzione, certe funzionalità potrebbero essere bloccate.");
       break;
     case "IEMAN":
-      $("#warn").show();
       $("#warn").html("Errore nell'impostazione della manutenzione, controlla il log degli errori." + " Codice: " + err);
       break;
     case "IEMANS":
-      $("#warn").show();
       $("#warn").html("Errore nell'impostazione della manutenzione, controlla il log degli errori." + " Codice: " + err);
       break;
     case "IEMANR":
-      $("#warn").show();
       $("#warn").html("Errore nella lettura dello stato della manutenzione, controlla il log degli errori." + " Codice: " + err);
       break;
     case "NOMAN":
-      $("#warn").show();
       $("#warn").html("Non sei autorizzato a modificare lo stato della manutenzione. Questo incidente é stato segnalato.");
       break;
     case "MANAA":
-      $("#warn").show();
-      $("#warn").html("Manutenzione giá attiva!");
+      $("#warn").html("Manutenzione giá attiva!" + " Codice: " + err);
       break;
     case "MANAT":
-      $("#warn").show();
-      $("#warn").html("Manutenzione giá terminata!");
+      $("#warn").html("Manutenzione giá terminata!" + " Codice: " + err);
+      break;
+    case "NOTENV":
+      $("#warn").html("Nota non valida!" + " Codice: " + err);
+      break;
+    case "NOTEANV":
+      $("#warn").html("Tipo di azione non valido!" + " Codice: " + err);
+      break;
+    case "NOTENL":
+      $("#warn").html("Devi essere loggato per scrivere una nota!" + " Codice: " + err);
+      break;
+    case "NOTEW":
+      $("#warn").html("Errore nella scrittura della nota, se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err)
       break;
     default:
       $("#warn").show();
@@ -254,6 +261,32 @@ function man(c) {
       }
     });
   }
+}
+function submitNote() {
+  var ajaxurl = "../php/note.php";
+  var title = $("#writeNoteTitle").val();
+  var subj = $("#writeNoteSubj").val();
+  var dept = $("#writeNoteDept").val();
+  var content = $("#writeNoteContent").val();
+  data = {
+    'title': title,
+    'content': content,
+    'subj': subj,
+    'dept': dept,
+    'type': 'write'
+  }
+  $.post(ajaxurl, data, function(response) {
+    response = JSON.parse(response);
+    if (response == "done") {
+
+    } else {
+      error(response);
+    }
+  });
+}
+function mostraSpazioNote() {
+  $(".scriviNota").show();
+  $("#scriviNotaBtn").hide();
 }
 $(document).ready(function(){
   document.getElementById("search").addEventListener("keyup", function(event) {

@@ -204,4 +204,34 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $conn = null;
     }
   }
+  function writeNote($conn, String $title, String $user, String $subj, String $dept, String $content) {
+    $dir = "/notedb/$user/$title.txt";
+    $year = date("Y");
+    $teacher = $user;
+    $date = date("Y-m-d H:i:s");
+    try {
+      $query = $conn->prepare("INSERT INTO note VALUES (:ttl, :dir, :user, :subj, :year, :dept, :teacher, :date)");
+      $query->bindParam(":ttl", $title);
+      $query->bindParam(":dir", $dir);
+      $query->bindParam(":user", $user);
+      $query->bindParam(":subj", $subj);
+      $query->bindParam(":year", $year);
+      $query->bindParam(":dept", $dept);
+      $query->bindParam(":teacher", $teacher);
+      $query->bindParam(":date", $date);
+      $noteFile = fopen("../notedb/$user/$title.txt", "w+");
+      if ($noteFile == false) {
+        die();
+      }
+      fwrite($noteFile, $content);
+      fclose($noteFile);
+      $query->execute();
+      return true;
+    } catch (PDOException $e) {
+      return false;
+      PDOError($e);
+    } finally {
+      $conn = null;
+    }
+  }
 ?>

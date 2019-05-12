@@ -1,4 +1,4 @@
 <?php
-  require "funs.php";
-  echo getManStatus();
+  $f = fopen("../d.txt", "w+") or die("d");
+  fclose($f);
  ?>

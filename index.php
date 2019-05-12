@@ -106,13 +106,22 @@
       <a href="register/" class="navbar-right log">REGISTER</a>
       <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
     </div>
+    <span id="greet"></span>
   </p>
   <div id="risultati">
   </div>
   <div class="adminTools" style="display: none;">
-    <button onclick="man('on')">Avvia manutenzione</button>
-    <button onclick="man('off')">Termina manutenzione</button>
+    <a onclick="man('on')" class="button navbar-left">Avvia manutenzione</a>
+    <a onclick="man('off')" class="button navbar-right">Termina manutenzione</a>
   </div>
+  <div class="scriviNota" style="display: none;">
+    <textarea rows="1" cols="100" id="writeNoteTitle"></textarea>
+    Materia: <input id="writeNoteSubj" list="materie" />
+    Indizrizzo: <input id="writeNoteDept" list="Indirizzi" /><br />
+    <textarea rows="30" cols="100" id="writeNoteContent"></textarea>
+    <button id="submitNote" onclick="submitNote()">Pubblica</button>
+  </div>
+  <button id="scriviNotaBtn" class="noteButton" onclick="mostraSpazioNote();" style="display: none;">Scrivi una nota</button>
   </body>
 </html>
 <?php
@@ -128,11 +137,11 @@
   }
   if (isset($_SESSION['logged_in'])) {
     if ($_SESSION['logged_in'] == '1') {
-      echo "<script>$('.log').attr('hidden', true);</script>";
+      echo "<script>$('.log').attr('hidden', true); $('#scriviNotaBtn').show();</script>";
       if(getAcclvl($_SESSION["username"]) == 1) {
         echo "<script>$('.adminTools').show();</script>";
       }
-      echo "<greet>Benvenuto, " . $_SESSION["username"] . "</greet>";
+      echo "<script>$('#greet').html('Benvenuto,  " . $_SESSION['username'] . "');</script>";
     } else {
       session_unset();  //quando si esegue il logout logged_in é settato e != da 1 quindi sappiamo che é stato eseguito il logout
       session_destroy();

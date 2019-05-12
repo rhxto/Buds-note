@@ -49,7 +49,7 @@ function errore(err) {
     window.location.href = "../";
     break;
     default:
-    $("#Warning").html("Errore interno");
+    $("#Warning").html("Errore interno codice sconosciuto (se vedi questo messaggio riferiscilo agli amministratori)");
     break;
   }
 }

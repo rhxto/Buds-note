@@ -2,6 +2,7 @@
 if (isset($_POST['action']) && $_POST['action'] == "logout") {
   if ($_SESSION['logged_in'] = '1') {
     $_SESSION['logged_in'] = '0';
+    unset($_SESSION["username"]);
     echo true;
   } else {
     $ipL = $_SERVER['REMOTE_ADDR'];
