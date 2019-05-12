@@ -123,7 +123,7 @@ function cerca() {
     var subj = $("#filtroMateria").val();
     var year = $("#filtroAnno").val();
     var dept = $("#filtroIndirizzo").val();
-    var teacher = $("#Insegnante").val();
+    var teacher = user;
     var datefrom = $("#filtroDatefrom").val();
     var dateto = $("#filtroDateto").val();
     var orderby = $("#filtroOrderBy").val();
@@ -269,6 +269,8 @@ function man(c) {
   }
 }
 function submitNote() {
+  $(".scriviNota").hide();
+  $("#scriviNotaBtn").show();
   var ajaxurl = "../php/note.php";
   var title = $("#writeNoteTitle").val();
   var subj = $("#writeNoteSubj").val();
@@ -284,7 +286,6 @@ function submitNote() {
   $.post(ajaxurl, data, function(response) {
     response = JSON.parse(response);
     if (response == "done") {
-
     } else {
       error(response);
     }
@@ -294,6 +295,7 @@ function deleteNote() {
   $(".delNote").show();
 }
 function delNote() {
+  $(".delNote").hide();
   var ajaxurl = "../php/note.php";
   var title = $("#delNoteTtl").val();
   data = {

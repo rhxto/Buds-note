@@ -1882,3 +1882,68 @@ Stack trace:
 [12-May-2019 19:24:26 Europe/Berlin] Deleting: d_d
 [12-May-2019 19:44:35 Europe/Berlin] Deleting: Nota_di_Edo.
 [12-May-2019 19:47:30 Europe/Berlin] Deleting: Prova_con_spazi
+[12-May-2019 20:46:44 Europe/Berlin] Deleting: Titolo_degli_appunti
+[12-May-2019 20:59:18 Europe/Berlin] Deleting: Prova
+[12-May-2019 20:59:18 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::prepare() in /var/www/html/php/query_funs.php:249
+Stack trace:
+#0 /var/www/html/php/note.php(42): delNote(Object(PDO), 'Prova', 'Fede')
+#1 {main}
+  thrown in /var/www/html/php/query_funs.php on line 249
+[12-May-2019 21:02:52 Europe/Berlin] Deleting: Titolo_della_nota
+[12-May-2019 21:02:52 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 254
+[12-May-2019 21:04:56 Europe/Berlin] Deleting: Titolo_della_nota
+[12-May-2019 21:04:56 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/query_funs.php on line 255
+[12-May-2019 21:05:19 Europe/Berlin] Deleting: Titolo_della_nota
+[12-May-2019 21:05:19 Europe/Berlin] PHP Warning:  error_log() expects parameter 1 to be string, array given in /var/www/html/php/query_funs.php on line 254
+[12-May-2019 21:05:19 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/query_funs.php on line 255
+[12-May-2019 21:05:32 Europe/Berlin] Deleting: Titolo_della_nota
+[12-May-2019 21:05:32 Europe/Berlin] PHP Warning:  error_log() expects parameter 1 to be string, array given in /var/www/html/php/query_funs.php on line 254
+[12-May-2019 21:05:32 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/query_funs.php on line 255
+[12-May-2019 21:05:54 Europe/Berlin] Deleting: Titolo_della_nota
+[12-May-2019 21:05:54 Europe/Berlin] PHP Notice:  Undefined index: name in /var/www/html/php/query_funs.php on line 254
+[12-May-2019 21:05:54 Europe/Berlin] 
+[12-May-2019 21:05:54 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/query_funs.php on line 255
+[12-May-2019 21:06:31 Europe/Berlin] Deleting: Titolo_della_nota
+[12-May-2019 21:06:31 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 254
+[12-May-2019 21:06:31 Europe/Berlin] 
+[12-May-2019 21:06:31 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/query_funs.php on line 255
+[12-May-2019 21:07:18 Europe/Berlin] Deleting: Titolo_della_nota
+[12-May-2019 21:07:18 Europe/Berlin] Array
+(
+)
+
+[12-May-2019 21:07:18 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/query_funs.php on line 255
+[12-May-2019 21:08:18 Europe/Berlin] Deleting: Tippeti
+[12-May-2019 21:08:18 Europe/Berlin] Array
+(
+)
+
+[12-May-2019 21:08:18 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/query_funs.php on line 255
+[12-May-2019 21:10:20 Europe/Berlin] Deleting: d
+[12-May-2019 21:10:20 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/query_funs.php on line 255
+[12-May-2019 21:11:24 Europe/Berlin] Deleting: d
+[12-May-2019 21:11:24 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/query_funs.php on line 255
+[12-May-2019 21:12:27 Europe/Berlin] Deleting: d
+[12-May-2019 21:14:30 Europe/Berlin] Deleting: File_di_prova
+[12-May-2019 21:16:10 Europe/Berlin] Deleting: Nota_di_prova
+[12-May-2019 21:16:10 Europe/Berlin] PHP Notice:  Undefined variable: dir in /var/www/html/php/query_funs.php on line 251
+[12-May-2019 21:17:47 Europe/Berlin] Deleting: Nota_di_prova
+[12-May-2019 21:20:47 Europe/Berlin] Deleting: Nota_di_prova
+[12-May-2019 21:21:28 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/research.php on line 246
+[12-May-2019 21:23:34 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/research.php on line 237
+[12-May-2019 21:23:41 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/research.php on line 237
+[12-May-2019 21:25:33 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function logD() in /var/www/html/php/query_funs.php:181
+Stack trace:
+#0 /var/www/html/php/test.php(4): searchNote(Object(PDO), 'Nota_di_prova', '%', '%', '%', '%', '%', '%', '%', '2019-05-12 21:2...', 'date', 'ASC')
+#1 {main}
+  thrown in /var/www/html/php/query_funs.php on line 181
+[12-May-2019 21:26:49 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/research.php on line 237
+[12-May-2019 21:28:30 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/research.php on line 237
+[12-May-2019 21:28:38 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/research.php on line 237
+[12-May-2019 21:31:59 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/research.php on line 237
+[12-May-2019 21:32:22 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/research.php on line 237
+[12-May-2019 21:32:33 Europe/Berlin] PHP Notice:  Array to string conversion in /var/www/html/php/research.php on line 237
+[12-May-2019 21:33:13 Europe/Berlin] PHP Notice:  Undefined variable: techer in /var/www/html/php/research.php on line 75
+[12-May-2019 21:33:34 Europe/Berlin] PHP Notice:  Undefined variable: techer in /var/www/html/php/research.php on line 75
+[12-May-2019 21:36:13 Europe/Berlin] Ordine: title
+[12-May-2019 21:36:33 Europe/Berlin] Deleting: Nota_di_prova

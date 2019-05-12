@@ -39,7 +39,7 @@
         break;
       case 'delete':
         if (getAcclvl($_SESSION["username"]) == 1) {
-          if (delNote(connectDb(), $title, $_SESSION["username"])) {
+          if (delNote(connectDb(), $title)) {
             echo json_encode("done");
           } else {
             echo json_encode("NOTEDE");

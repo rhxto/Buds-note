@@ -167,6 +167,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     try {
       $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND (year LIKE :year) AND (dept LIKE :dept) AND (teacher LIKE :teacher) AND (date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
       //ci serve ORDER BY date DESC per avere le note dalla piú recente
+      $title = str_replace(" ", "_", $title);
       $query->bindParam(":ttl", $title);
       $query->bindParam(":dir", $dir);
       $query->bindParam(":usr", $user);
@@ -177,8 +178,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $query->bindParam(":datefrom", $datefrom);
       $query->bindParam(":dateto", $dateto);
       $query->execute();
-      logD("datefrom: " . $datefrom);
-      logD("dateto: " . $dateto);
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $result = $query->fetchAll();
       $results = array();
@@ -237,15 +236,22 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $conn = null;
     }
   }
-  function delNote($conn, String $title, String $username) {
+  function delNote($conn, String $title) {
     //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
     $title = str_replace(" ", "_", $title);
     error_log("Deleting: $title");
     try {
+      $query = $conn->prepare("SELECT dir FROM note WHERE title = :ttl");
+      $query->bindParam(":ttl", $title);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $dir = $query->fetchAll();
+      $dir = $dir[0]["dir"];
+      exec("rm ..$dir");
       $query = $conn->prepare("DELETE FROM note WHERE title = :ttl");
       $query->bindParam(":ttl", $title);
       $query->execute();
-      exec("rm ../notedb/$username/$title.txt");
+
       return true;
     } catch (PDOException $e) {
       PDOError($e);

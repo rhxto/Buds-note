@@ -72,7 +72,7 @@
       $teacher =  NULL;
     } else {
       $teacher = test_input($_POST["teacher"]);
-      if ($_POST["teacher"] != $techer) {
+      if ($_POST["teacher"] != $teacher) {
         //echo 'nonAN';
         die();
       }
@@ -231,15 +231,6 @@
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
-    /*
-    logD("Title: ". $title);
-    logD("user: ". $user);
-    logD("subj: ". $subj);
-    logD("year: ". $year);
-    logD("dept: ". $dept);
-    logD("teacher: ". $teacher);
-    logD("date: ". $date);
-    logD("Result:" . $response[0]["title"]);*/
     if (!isset($response[0]["title"])) {
       echo json_encode("Nrt");
     } else {
