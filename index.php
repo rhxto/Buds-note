@@ -111,8 +111,9 @@
   <div id="risultati">
   </div>
   <div class="adminTools" style="display: none;">
-    <a onclick="man('on')" class="button navbar-left">Avvia manutenzione</a>
-    <a onclick="man('off')" class="button navbar-right">Termina manutenzione</a>
+    <a onclick="man('on')" class="button">Avvia manutenzione</a>
+    <a onclick="man('off')" class="button">Termina manutenzione</a>
+    <a onclick="deleteNote()" class="button" style="position: fixed; right: 1%;">Rimuovi nota</a>
   </div>
   <div class="scriviNota" style="display: none;">
     <textarea rows="1" cols="100" id="writeNoteTitle"></textarea>
@@ -122,6 +123,10 @@
     <button id="submitNote" onclick="submitNote()">Pubblica</button>
   </div>
   <button id="scriviNotaBtn" class="noteButton" onclick="mostraSpazioNote();" style="display: none;">Scrivi una nota</button>
+  <div class="delNote" style="display: none;">
+    <input id="delNoteTtl" />
+    <button id="delNoteConfirm" onclick="delNote()">Conferma</button>
+  </div>
   </body>
 </html>
 <?php

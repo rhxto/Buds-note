@@ -1860,3 +1860,25 @@ Stack trace:
 [12-May-2019 17:59:34 Europe/Berlin] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /var/www/html/index.php on line 142
 [12-May-2019 18:31:59 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}', expecting ';' in /var/www/html/php/query_funs.php on line 200
 [12-May-2019 18:32:01 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}', expecting ';' in /var/www/html/php/query_funs.php on line 200
+[12-May-2019 18:51:41 Europe/Berlin] PHP Parse error:  syntax error, unexpected ';' in /var/www/html/php/note.php on line 15
+[12-May-2019 18:53:07 Europe/Berlin] PHP Notice:  Undefined variable: type in /var/www/html/php/note.php on line 14
+[12-May-2019 18:53:07 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/note.php on line 18
+[12-May-2019 19:01:20 Europe/Berlin] PHP Parse error:  syntax error, unexpected ';' in /var/www/html/php/note.php on line 16
+[12-May-2019 19:02:51 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/note.php on line 19
+[12-May-2019 19:03:58 Europe/Berlin] delete: d
+[12-May-2019 19:04:48 Europe/Berlin] delete: d
+[12-May-2019 19:04:55 Europe/Berlin] delete: d
+[12-May-2019 19:11:47 Europe/Berlin] PHP Parse error:  syntax error, unexpected ':', expecting ',' or ')' in /var/www/html/php/query_funs.php on line 240
+[12-May-2019 19:11:55 Europe/Berlin] PHP Fatal error:  Cannot use try without catch or finally in /var/www/html/php/query_funs.php on line 238
+[12-May-2019 19:11:56 Europe/Berlin] PHP Fatal error:  Cannot use try without catch or finally in /var/www/html/php/query_funs.php on line 238
+[12-May-2019 19:17:29 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function delNote(), 1 passed in /var/www/html/php/note.php on line 42 and exactly 2 expected in /var/www/html/php/query_funs.php:237
+Stack trace:
+#0 /var/www/html/php/note.php(42): delNote('DD')
+#1 {main}
+  thrown in /var/www/html/php/query_funs.php on line 237
+[12-May-2019 19:18:03 Europe/Berlin] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'title' in 'where clause'
+[12-May-2019 19:21:19 Europe/Berlin] Deleting: 'D'
+[12-May-2019 19:22:14 Europe/Berlin] Deleting: D
+[12-May-2019 19:24:26 Europe/Berlin] Deleting: d_d
+[12-May-2019 19:44:35 Europe/Berlin] Deleting: Nota_di_Edo.
+[12-May-2019 19:47:30 Europe/Berlin] Deleting: Prova_con_spazi

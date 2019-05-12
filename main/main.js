@@ -60,6 +60,12 @@ function error(err) {
     case "NOTEW":
       $("#warn").html("Errore nella scrittura della nota, se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err)
       break;
+    case "NOTEDNA":
+      $("#warn").html("Non sei autorizzato a cancellare le note, questo incidente é stato segnalato");
+      break;
+    case "NOTEDE":
+      $("#warn").html("C'é stato un errore nella rimozione della nota, controlla il log delgi erroi.");
+      break;
     default:
       $("#warn").show();
       $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
@@ -279,6 +285,29 @@ function submitNote() {
     response = JSON.parse(response);
     if (response == "done") {
 
+    } else {
+      error(response);
+    }
+  });
+}
+function deleteNote() {
+  $(".delNote").show();
+}
+function delNote() {
+  var ajaxurl = "../php/note.php";
+  var title = $("#delNoteTtl").val();
+  data = {
+    'title': title,
+    'type': 'delete'
+  }
+  $.post(ajaxurl, data, function(response) {
+    response = JSON.parse(response);
+    if (response == "done") {
+      $("#warn").show();
+      $("#warn").html("Fatto");
+      setTimeout(function(){
+        $("#warn").hide()
+      }, 5000);
     } else {
       error(response);
     }

@@ -185,7 +185,8 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $i = 0;
       foreach ($result as $row) {
         array_push($results, array());
-        $results[$i]["title"] = $row["title"];
+        //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
+        $results[$i]["title"] = str_replace("_", " ", $row["title"]);
         $results[$i]["dir"] = $row["dir"];
         $results[$i]["user"] = $row["user"];
         $results[$i]["subj"] = $row["subj"];
@@ -205,6 +206,8 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     }
   }
   function writeNote($conn, String $title, String $user, String $subj, String $dept, String $content) {
+    //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
+    $title = str_replace(" ", "_", $title);
     $dir = "/notedb/$user/$title.txt";
     $year = date("Y");
     $teacher = $user;
@@ -228,8 +231,25 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $query->execute();
       return true;
     } catch (PDOException $e) {
-      return false;
       PDOError($e);
+      return false;
+    } finally {
+      $conn = null;
+    }
+  }
+  function delNote($conn, String $title, String $username) {
+    //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
+    $title = str_replace(" ", "_", $title);
+    error_log("Deleting: $title");
+    try {
+      $query = $conn->prepare("DELETE FROM note WHERE title = :ttl");
+      $query->bindParam(":ttl", $title);
+      $query->execute();
+      exec("rm ../notedb/$username/$title.txt");
+      return true;
+    } catch (PDOException $e) {
+      PDOError($e);
+      return false;
     } finally {
       $conn = null;
     }

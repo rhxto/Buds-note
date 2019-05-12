@@ -11,4 +11,6 @@ NOTEW = errore nella scrittura della nota
 NOTENL = scrittura nota senza essere loggati
 NOTENV = testo della nota non valido
 NOTEIE = errore interno generico nel settore note
+NOTEDE = erroe nella cancellazione della nota
 NOTEANV = azione della nota non valida (tipi: write, update e delete)
+NOTEDNA = tentativo di cancellare una nota non autorizzato
