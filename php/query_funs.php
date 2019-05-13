@@ -260,4 +260,42 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $conn = null;
     }
   }
+
+  function checkNote($conn, String $title) {
+    $title = str_replace(" ", "_", $title);
+    try {
+      $query = $conn->prepare("SELECT user FROM note WHERE title = :ttl");
+      $query->bindParam(":ttl", $title);
+      $query->execute();
+      $result = $query->fetchAll();
+      $result = $result[0]["user"];
+      if (empty($result)) {
+        return false;
+      } else {
+	return true;
+      }
+    } catch (PDOException $e) {
+      PDOError($e);
+      return false;
+    } finally {
+      $conn = null;
+    }
+  }
+  function getNote($conn, String $title) {
+    $title = str_replace(" ", "_", $title);
+    try {
+      $query = $conn->prepare("SELECT dir FROM note WHERE title = :ttl");
+      $query->bindParam(":ttl", $title);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $dir = $query->fetchAll();
+      $dir = $dir[0]["dir"];
+      return file_get_contents("../$dir");
+    } catch (PDOException $e) {
+      PDOError($e);
+      return false;
+    } finally {
+      $conn = null;
+    }
+  }
 ?>

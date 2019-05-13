@@ -1947,3 +1947,19 @@ Stack trace:
 [12-May-2019 21:33:34 Europe/Berlin] PHP Notice:  Undefined variable: techer in /var/www/html/php/research.php on line 75
 [12-May-2019 21:36:13 Europe/Berlin] Ordine: title
 [12-May-2019 21:36:33 Europe/Berlin] Deleting: Nota_di_prova
+[13-May-2019 14:46:37 Europe/Berlin] Deleting: ../Nota_di_prova.
+[13-May-2019 14:50:21 Europe/Berlin] Deleting: ../n
+[13-May-2019 16:19:16 Europe/Berlin] PHP Parse error:  syntax error, unexpected end of file in /var/www/html/php/query_funs.php on line 284
+[13-May-2019 16:19:17 Europe/Berlin] PHP Parse error:  syntax error, unexpected end of file in /var/www/html/php/query_funs.php on line 284
+[13-May-2019 16:20:57 Europe/Berlin] PHP Warning:  Use of undefined constant connectDb - assumed 'connectDb' (this will throw an Error in a future version of PHP) in /var/www/html/php/note.php on line 46
+[13-May-2019 16:20:57 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on string in /var/www/html/php/query_funs.php:267
+Stack trace:
+#0 /var/www/html/php/note.php(46): checkNote('connectDb', 'Eeee')
+#1 {main}
+  thrown in /var/www/html/php/query_funs.php on line 267
+[13-May-2019 16:22:46 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 271
+[13-May-2019 16:23:24 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 271
+[13-May-2019 16:24:52 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 271
+[13-May-2019 16:27:37 Europe/Berlin] Deleting: Titolo_della_nota_acc_prova
+[13-May-2019 20:28:23 Europe/Berlin] Ordine: title
+[13-May-2019 22:13:37 Europe/Berlin] PHP Warning:  file_get_contents(/notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 293

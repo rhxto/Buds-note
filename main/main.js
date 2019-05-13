@@ -52,10 +52,10 @@ function error(err) {
       $("#warn").html("Nota non valida!" + " Codice: " + err);
       break;
     case "NOTEANV":
-      $("#warn").html("Tipo di azione non valido!" + " Codice: " + err);
+      $("#warn").html("Tipo di azione non valido (se vedi questo messaggio riferiscilo agli amministratori)!" + " Codice: " + err);
       break;
     case "NOTENL":
-      $("#warn").html("Devi essere loggato per scrivere una nota!" + " Codice: " + err);
+      $("#warn").html("Devi essere loggato per scrivere una nota!");
       break;
     case "NOTEW":
       $("#warn").html("Errore nella scrittura della nota, se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err)
@@ -66,8 +66,13 @@ function error(err) {
     case "NOTEDE":
       $("#warn").html("C'é stato un errore nella rimozione della nota, controlla il log delgi erroi.");
       break;
+    case "NOTESC":
+      $("#warn").html("Non si possono usare caratteri speciali in una nota! (. e / non supportati)")
+      break;
+    case "NOTEDNF":
+      $("#warn").html("Nota non trovata!");
+      break;
     default:
-      $("#warn").show();
       $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
     break;
   }
@@ -223,7 +228,7 @@ function getNotes() {
         error(response);
       } else {
         for (i = 0; i < response.length; i++) {
-          $("#risultati").append(response[i]["title"] + "<br/>");
+          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + "</a><br/>");
         }
       }
     });

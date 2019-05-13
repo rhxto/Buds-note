@@ -28,10 +28,14 @@
     }
     switch ($type) {
       case 'write':
-        if(writeNote(connectDb(), $title, $_SESSION["username"], $subj, $dept, $content)) {
-          echo json_encode("done");
+        if (strpos($title, ".") !== false || strpos($title, "/") !== false) {
+          die(json_encode("NOTESC"));
         } else {
-          die(json_encode("NOTEW"));
+          if(writeNote(connectDb(), $title, $_SESSION["username"], $subj, $dept, $content)) {
+            echo json_encode("done");
+          } else {
+            die(json_encode("NOTEW"));
+          }
         }
         break;
       case 'update':
@@ -39,11 +43,15 @@
         break;
       case 'delete':
         if (getAcclvl($_SESSION["username"]) == 1) {
-          if (delNote(connectDb(), $title)) {
-            echo json_encode("done");
-          } else {
-            echo json_encode("NOTEDE");
-          }
+	  if (checkNote(connectDb(), $title)) {	
+	    if (delNote(connectDb(), $title)) {
+              echo json_encode("done");
+            } else {
+              echo json_encode("NOTEDE");
+            }
+	  } else {
+	    die(json_encode("NOTEDNF"));
+	  }
         } else {
           error_log("**TENTATIVO DI CANCELLARE UNA NOTA NON AUTORIZZATO** ip: " . $_SERVER["REMOTE_ADDR"]);
           die(json_encode("NOTEDNA"));
