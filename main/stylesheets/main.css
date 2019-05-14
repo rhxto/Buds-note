@@ -204,6 +204,8 @@ h2.err404, h2.ban {
 }
 .delCommentBtn {
   display: none;
+  position: absolute;
+  left: 87%;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: white;

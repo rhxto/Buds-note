@@ -40,7 +40,6 @@ function dept($conn, $name, $id){
 }
 
 function subj($conn, $name, $id){
-
   if($conn == "null"){
     return -1;
   }
@@ -120,7 +119,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
 
   return $results;
 }
-  function searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $teacher, $datefrom, $dateto, $order, $v) {
+  function searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $datefrom, $dateto, $order, $v) {
     if ($title == NULL) {
       $title = "%";
     }
@@ -138,9 +137,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     }
     if ($dept == NULL) {
       $dept = "%";
-    }
-    if ($teacher == NULL) {
-      $teacher = "%";
     }
     if ($datefrom == NULL) {
       $datefrom = "%";
@@ -164,7 +160,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     }
 
     try {
-      $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND (year LIKE :year) AND (dept LIKE :dept) AND (teacher LIKE :teacher) AND (date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
+      $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND (year LIKE :year) AND (dept LIKE :dept) AND (date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
       //ci serve ORDER BY date DESC per avere le note dalla piú recente
       $title = str_replace(" ", "_", $title);
       $query->bindParam(":ttl", $title);
@@ -173,7 +169,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $query->bindParam(":subj", $subj);
       $query->bindParam(":year", $year);
       $query->bindParam(":dept", $dept);
-      $query->bindParam(":teacher", $teacher);
       $query->bindParam(":datefrom", $datefrom);
       $query->bindParam(":dateto", $dateto);
       $query->execute();
@@ -190,7 +185,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
         $results[$i]["subj"] = $row["subj"];
         $results[$i]["year"] = $row["year"];
         $results[$i]["dept"] = $row["dept"];
-        $results[$i]["teacher"] = $row["teacher"];
         $results[$i]["date"] = $row["date"];
         $i++;
       }
@@ -208,17 +202,15 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     $title = str_replace(" ", "_", $title);
     $dir = "/notedb/$user/$title.txt";
     $year = date("Y");
-    $teacher = $user;
     $date = date("Y-m-d H:i:s");
     try {
-      $query = $conn->prepare("INSERT INTO note VALUES (:ttl, :dir, :user, :subj, :year, :dept, :teacher, :date)");
+      $query = $conn->prepare("INSERT INTO note VALUES (:ttl, :dir, :user, :subj, :year, :dept, :date)");
       $query->bindParam(":ttl", $title);
       $query->bindParam(":dir", $dir);
       $query->bindParam(":user", $user);
       $query->bindParam(":subj", $subj);
       $query->bindParam(":year", $year);
       $query->bindParam(":dept", $dept);
-      $query->bindParam(":teacher", $teacher);
       $query->bindParam(":date", $date);
       $noteFile = fopen("../notedb/$user/$title.txt", "w+");
       if ($noteFile == false) {
@@ -289,7 +281,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $dir = $query->fetchAll();
       $dir = $dir[0]["dir"];
-      return file_get_contents("../$dir");
+      return file_get_contents("..$dir");
     } catch (PDOException $e) {
       PDOError($e);
       return false;
@@ -297,7 +289,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $conn = null;
     }
   }
-
   function searchMark($conn, $id, $user, $title, $mark, $datefrom, $dateto, $code){
 
     if($conn == "null"){
@@ -311,6 +302,8 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     }
     if($title == NULL){
       $title = "%";
+    } else {
+      $title = str_replace(" ", "_", $title);
     }
     if($mark == NULL){
       $mark = "%";
@@ -326,7 +319,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $dateto = date("Y-m-d H:i:s");
     }
     if($code == NULL){
-      $code = "title"
+      $code = "title";
     }
 
 
@@ -378,6 +371,8 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     }
     if($title == NULL){
       $title = "%";
+    } else {
+      $title = str_replace(" ", "_", $title);
     }
     if($text == NULL){
       $text = "%";
@@ -389,7 +384,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $dateto = date("Y-m-d H:i:s");
     }
     if($code == NULL){
-      $code = "title"
+      $code = "title";
     }
 
 
@@ -428,7 +423,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     }
   }
 
-  function searchRevw($conn, $id, $user, $title, $review, $datefrom, $dateto, $code){
+  function searchRevw($conn, $id, $user, $title, $review, $datefrom, $dateto, $order, $v){
 
     if($conn == "null"){
       return -1;
@@ -441,6 +436,8 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     }
     if($title == NULL){
       $title = "%";
+    } else {
+      $title = str_replace(" ", "_", $title);
     }
     if($review == NULL){
       $review = "%";
@@ -451,21 +448,26 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     if ($dateto == NULL) {
       $dateto = date("Y-m-d H:i:s");
     }
-    if($code == NULL){
-      $code = "title"
+    if($order == NULL){
+      $order = "date";
+    }
+    if ($v == NULL) {
+      $v = "DESC";
+    } elseif ($v == "discendente") {
+      $v = "DESC";
+    } else {
+      $v = "ASC";
     }
 
 
-
     try {
-      $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :code");
+      $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
       $query->bindParam(':id', $id);
       $query->bindParam(':user', $user);
       $query->bindParam(':title', $title);
       $query->bindParam(':review', $review);
       $query->bindParam(':datefrom', $datefrom);
       $query->bindParam(':dateto', $dateto);
-      $query->bindParam(':code', $code);
       $query->execute();
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $result = $query->fetchAll();
@@ -490,5 +492,96 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $conn = null;
     }
   }
-
+  function postComment($conn, String $user, String $title, String $content) {
+    if ($user == NULL || $content == NULL || $conn == "null" || $conn == NULL) {
+      return false;
+    }
+    $title = str_replace(" ", "_", $title);
+    try {
+      $query = $conn->prepare("INSERT INTO revw (user, title, review, date) VALUES (:user, :title, :review, NOW())");
+      $query->bindParam(":user", $user);
+      $query->bindParam(":title", $title);
+      $query->bindParam(":review", $content);
+      $query->execute();
+      $query = $conn->prepare("SELECT id FROM revw WHERE review LIKE :content");
+      $query->bindParam(":content", $content);
+      $query->execute();
+      $id = $query->fetchAll();
+      $response = array();
+      $response["state"] = true;
+      $response["id"] = $id[0]["id"];
+      return $response;
+    } catch(PDOException $e) {
+      if (PDOError($e)) {
+        return "internalError";
+      }
+    } finally {
+      $conn = null;
+    }
+  }
+  function delComment($conn, $id) {
+    if ($id == "" || $id == "%" || $id == NULL || $conn == "null" || $conn == NULL) {
+      return false;
+    }
+    try {
+      $query = $conn->prepare("DELETE FROM revw WHERE id = :id");
+      $query->bindParam(":id", $id);
+      $query->execute();
+      return true;
+    } catch(PDOException $e) {
+      if (PDOError($e)) {
+        return "internalError";
+      }
+    } finally {
+      $conn = null;
+    }
+  }
+  function isNoteOwner($conn, $title, $user) {
+    if ($conn == "null" || $conn == NULL || $title == NULL || $user == NULL) {
+      return false;
+    }
+    try {
+      $title = str_replace(" ", "_", $title);
+      $query = $conn->prepare("SELECT user FROM note WHERE title LIKE :ttl");
+      $query->bindParam(":ttl", $title);
+      $query->execute();
+      if ($query->fetchAll()[0]["user"] == $user) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch(PDOException $e) {
+      if (PDOError($e)) {
+        return "internalError";
+      }
+    } finally {
+      $conn = null;
+    }
+  }
+  function updateNote($conn, $title, $newTitle, $newContent) {
+    $title = str_replace(" ", "_", $title);
+    $newTitle = str_replace(" ", "_", $newTitle);
+    try {
+      $query = $conn->prepare("UPDATE note SET title = :newTtl WHERE title = :ttl");
+      $query->bindParam(":newTtl", $newTitle);
+      $query->bindParam(":ttl", $title);
+      $query->execute();
+      $query = $conn->prepare("SELECT dir FROM note WHERE title = :ttl");
+      $query->bindParam(":ttl", $newTitle);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $dir = $query->fetchAll();
+      $dir = $dir[0]["dir"];
+      $content = fopen("..$dir", "r+");
+      fwrite($content, $newContent);
+      fclose($content);
+      return true;
+    } catch(PDOException $e) {
+      if (PDOError($e)) {
+        return false;
+      }
+    } finally {
+      $conn = null;
+    }
+  }
 ?>

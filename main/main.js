@@ -58,7 +58,7 @@ function error(err) {
       $("#warn").html("Devi essere loggato per scrivere una nota!");
       break;
     case "NOTEW":
-      $("#warn").html("Errore nella scrittura della nota, se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err)
+      $("#warn").html("Errore nella scrittura della nota, se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
       break;
     case "NOTEDNA":
       $("#warn").html("Non sei autorizzato a cancellare le note, questo incidente é stato segnalato");
@@ -67,10 +67,19 @@ function error(err) {
       $("#warn").html("C'é stato un errore nella rimozione della nota, controlla il log delgi erroi.");
       break;
     case "NOTESC":
-      $("#warn").html("Non si possono usare caratteri speciali in una nota! (. e / non supportati)")
+      $("#warn").html("Non si possono usare caratteri speciali in una nota! (. e / non supportati)");
       break;
     case "NOTEDNF":
       $("#warn").html("Nota non trovata!");
+      break;
+    case "NOTEUNV":
+      $("#warn").html("Testo della nota non valido");
+      break;
+    case "NOTEUNA":
+      $("#warn").html("Non sei autorizzato a modificare questa nota, l'incidendte é stato segnalato");
+      break;
+    case "NOTEUNE":
+      $("#warn").html("La nota che volevi aggiornare non é stata trovata, copia le modifiche e prova a ricaricare la pagina. Se il problema persiste contatta gli amministratori.");
       break;
     default:
       $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
@@ -155,7 +164,7 @@ function cerca() {
         error(response);
       } else {
         for (i = 0; i < response.length; i++) {
-          $("#risultati").append(response[i]["title"] + "<br/>");
+          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + "</a><br/>");
         }
       }
     });
@@ -166,7 +175,6 @@ function cerca() {
   type = null;
 }
 function hideSearch() {
-  $("greet").hide();
   document.getElementById("Search").style.display = "none";
   document.getElementById("SearchDiv").style.display = "none";
 }
@@ -276,7 +284,7 @@ function man(c) {
 function submitNote() {
   $(".scriviNota").hide();
   $("#scriviNotaBtn").show();
-  var ajaxurl = "../php/note.php";
+  var ajaxurl = "../php/noteManager.php";
   var title = $("#writeNoteTitle").val();
   var subj = $("#writeNoteSubj").val();
   var dept = $("#writeNoteDept").val();
@@ -298,10 +306,11 @@ function submitNote() {
 }
 function deleteNote() {
   $(".delNote").show();
+  $("#everythingAboutNote").hide();
 }
 function delNote() {
   $(".delNote").hide();
-  var ajaxurl = "../php/note.php";
+  var ajaxurl = "../php/noteManager.php";
   var title = $("#delNoteTtl").val();
   data = {
     'title': title,
@@ -319,6 +328,7 @@ function delNote() {
       error(response);
     }
   });
+  $("#everythingAboutNote").show();
 }
 function mostraSpazioNote() {
   $(".scriviNota").show();

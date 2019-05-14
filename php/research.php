@@ -68,15 +68,7 @@
         die();
       }
     }
-    if ((!isset($_POST["teacher"]) || $_POST["teacher"] == "") || $_POST["teacher"] == "undefined") {
-      $teacher =  NULL;
-    } else {
-      $teacher = test_input($_POST["teacher"]);
-      if ($_POST["teacher"] != $teacher) {
-        //echo 'nonAN';
-        die();
-      }
-    }
+
     if ((!isset($_POST["datefrom"]) || $_POST["datefrom"] == "") || $_POST["datefrom"] == "undefined") {
       $datefrom =  NULL;
     } else {
@@ -122,14 +114,11 @@
         $orderby = "year";
       } elseif ($orderby == "Indirizzo") {
         $orderby = "dept";
-      } elseif ($orderby == "Insegnante") {
-        $orderby = "teacher";
       } elseif ($orderby == "Data") {
         $orderby = "date";
       } else {
         $orderby = NULL;
       }
-      error_log("Ordine: " . $orderby);
     }
   }
   require_once "core.php";
@@ -197,7 +186,7 @@
         echo json_encode($response);
     }
   } elseif ($type == "noteTtl") {
-    $response = searchNote($conn, $phrase, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "date", "desc");
+    $response = searchNote($conn, $phrase, NULL, NULL, NULL, NULL, NULL, NULL, "date", "desc");
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
@@ -207,7 +196,7 @@
       echo json_encode($response);
     }
   } elseif ($type == "noteDept") {
-    $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, $phrase, NULL, NULL, NULL, "date", "desc");
+    $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, $phrase, NULL, NULL, "date", "desc");
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
@@ -217,7 +206,7 @@
       echo json_encode($response);
     }
   } elseif ($type == "notes") {
-    $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "date", "desc");
+    $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "date", "desc");
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
@@ -227,7 +216,7 @@
       echo json_encode($response);
     }
   } elseif ($type == "note") {
-    $response = searchNote($conn, $title, NULL, $user, $subj, $year, $dept, $teacher, $datefrom, $dateto, $orderby, $order);
+    $response = searchNote($conn, $title, NULL, $user, $subj, $year, $dept, $datefrom, $dateto, $orderby, $order);
     if ($response == "internalError") {
       die(json_encode("IES"));
     }

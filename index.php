@@ -17,7 +17,8 @@
     <link rel="stylesheet" type="text/css" href="main/stylesheets/datePicker.css" />
     <!--<link rel="stylesheet" type="text/css" href="jquery/jquery-ui/jquery-ui.css"/>-->
     <link rel="stylesheet" type="text/css" href="main/stylesheets/positions.css" />
-    <link rel="stylesheet" type="text/css" href="main/stylesheets/main.css" />
+    <link rel="stylesheet/less" type="text/css" href="main/stylesheets/main.less" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
   </head>
   <body id="Body">
   <div class="overlay" id="SearchDiv">
@@ -117,21 +118,23 @@
       <a href="register/" class="navbar-right log">REGISTER</a>
       <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
     </div>
-    <span id="greet"></span>
-  </p>
-  <div id="risultati">
-  </div>
+      <span id="greet"></span>
+    </p>
+    <div id="everythingAboutNote">
+      <div id="risultati">
+      </div>
+      <div class="scriviNota" style="display: none;">
+        <textarea rows="1" cols="100" id="writeNoteTitle"></textarea>
+        Materia: <input id="writeNoteSubj" list="materie" />
+        Indizrizzo: <input id="writeNoteDept" list="Indirizzi" /><br />
+        <textarea rows="30" cols="100" id="writeNoteContent"></textarea>
+        <button id="submitNote" onclick="submitNote()">Pubblica</button>
+      </div>
+    </div>
   <div class="navbar adminTools" style="position:absolute;bottom:5px;padding:10px 15px 10px 15px;display:none">
     <a onclick="man('on')" class="navbar-left">Avvia manutenzione</a>
     <a onclick="man('off')" class="navbar-left">Termina manutenzione</a>
     <a onclick="deleteNote()" class="navbar-right">Rimuovi nota</a>
-  </div>
-  <div class="scriviNota" style="display: none;">
-    <textarea rows="1" cols="100" id="writeNoteTitle"></textarea>
-    Materia: <input id="writeNoteSubj" list="materie" />
-    Indizrizzo: <input id="writeNoteDept" list="Indirizzi" /><br />
-    <textarea rows="30" cols="100" id="writeNoteContent"></textarea>
-    <button id="submitNote" onclick="submitNote()">Pubblica</button>
   </div>
   <button id="scriviNotaBtn" class="noteButton" onclick="mostraSpazioNote();" style="display: none;">Scrivi una nota</button>
   <div class="delNote" style="display: none;">

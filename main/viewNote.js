@@ -1,0 +1,255 @@
+function logout() {
+  var clickBtnValue = "logout";
+  var ajaxurl = '../php/sessionDestroyer.php',
+  data =  {'action': clickBtnValue};
+  $.post(ajaxurl, data, function (response) {
+  if (response) {
+      $('.logout').attr('hidden', true);
+      $('.log').attr('hidden', false);
+    } else {
+      $('.logout').attr('hidden', true);
+      $('.log').attr('hidden', false);
+      error("sessione");
+    }
+  });
+  $('.adminTools').empty();
+  $(".adminTools").hide();
+  $("#greet").empty();
+  $(".scriviNota").empty();
+  $("#scriviNotaBtn").hide();
+}
+function error(err) {
+  $("#warn").show();
+  switch (err) {
+    case "sessione":
+      $("#warn").html("Errore nel logout, se hai visto questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
+    break;
+    case "IES":
+      $("#warn").html("Abbiamo riscontrato un errore nella ricerca, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
+      break;
+    case "man":
+      $("#warn").html("Il server é in manutenzione, certe funzionalità potrebbero essere bloccate.");
+      break;
+    case "IEMAN":
+      $("#warn").html("Errore nell'impostazione della manutenzione, controlla il log degli errori." + " Codice: " + err);
+      break;
+    case "IEMANS":
+      $("#warn").html("Errore nell'impostazione della manutenzione, controlla il log degli errori." + " Codice: " + err);
+      break;
+    case "IEMANR":
+      $("#warn").html("Errore nella lettura dello stato della manutenzione, controlla il log degli errori." + " Codice: " + err);
+      break;
+    case "NOMAN":
+      $("#warn").html("Non sei autorizzato a modificare lo stato della manutenzione. Questo incidente é stato segnalato.");
+      break;
+    case "MANAA":
+      $("#warn").html("Manutenzione giá attiva!" + " Codice: " + err);
+      break;
+    case "MANAT":
+      $("#warn").html("Manutenzione giá terminata!" + " Codice: " + err);
+      break;
+    case "NOTENV":
+      $("#warn").html("Nota non valida!" + " Codice: " + err);
+      break;
+    case "NOTEANV":
+      $("#warn").html("Tipo di azione non valido (se vedi questo messaggio riferiscilo agli amministratori)!" + " Codice: " + err);
+      break;
+    case "NOTENL":
+      $("#warn").html("Devi essere loggato per scrivere una nota!");
+      break;
+    case "NOTEW":
+      $("#warn").html("Errore nella scrittura della nota, se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err)
+      break;
+    case "NOTEDNA":
+      $("#warn").html("Non sei autorizzato a cancellare le note, questo incidente é stato segnalato");
+      break;
+    case "NOTEDE":
+      $("#warn").html("C'é stato un errore nella rimozione della nota, controlla il log delgi erroi." + " Codice: " + err);
+      break;
+    case "NOTESC":
+      $("#warn").html("Non si possono usare caratteri speciali in una nota! (. e / non supportati)")
+      break;
+    case "NOTEDNF":
+      $("#warn").html("Nota non trovata!");
+      break;
+    case "NOTEUNV":
+      $("#warn").html("Testo della nota non valido" + " Codice: " + err);
+      break;
+    case "NOTEUNA":
+      $("#warn").html("Non sei autorizzato a modificare questa nota, l'incidendte é stato segnalato");
+      break;
+    case "NOTEUNE":
+      $("#warn").html("La nota che volevi aggiornare non é stata trovata, copia le modifiche e prova a ricaricare la pagina. Se il problema persiste contatta gli amministratori." + " Codice: " + err);
+      break;
+    case "NOTEUUF":
+      $("#warn").html("Errore nell'aggiornamento della nota, se vedi questo messaggio contatta gli amministratori." + " Codice: " + err);
+      break;
+    case "COMMENTNV":
+      $("#warn").html("Commento non valido!" + " Codice: " + err);
+      break;
+    case "COMMENTANV":
+      $("#warn").html("Tipo di azione non valido (se vedi questo messaggio riferiscilo agli amministratori)!" + " Codice: " + err);
+      break;
+    case "COMMENTNL":
+      $("#warn").html("Devi essere loggato per scrivere un commento!");
+      break;
+    case "COMMENTW":
+      $("#warn").html("Errore nella scrittura del commento, se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
+      break;
+    case "COMMENTDNA":
+      $("#warn").html("Non sei autorizzato a cancellare i commenti, questo incidente é stato segnalato");
+      break;
+    case "COMMENTDE":
+      $("#warn").html("C'é stato un errore nella rimozione del commento, controlla il log delgi erroi.");
+      break;
+    case "COMMENTDNF":
+      $("#warn").html("Commento non trovato!");
+      break;
+    default:
+      $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
+    break;
+  }
+  setTimeout(function(){$("#warn").hide();}, 10000);
+}
+function postComment() {
+  var action = "write";
+  var title = localStorage.getItem("title");
+  var ajaxurl = '../php/commentManager.php',
+  data =  {
+    'type': action,
+    'title': title,
+    'content': $("#commentText").val()
+  };
+  $.post(ajaxurl, data, function (response) {
+    response = JSON.parse(response);
+  if (response["state"] == "done") {
+      $(".localSpawn").append('<br/><span id="' + response["id"] +  '">' + $("#commentText").val() + '<button class=delCommentBtn onclick="delComment(' + response["id"] + ');">Elimina commento</button></span>');
+      $("#commentText").val("");
+    } else {
+      error(response);
+    }
+  });
+}
+function man(c) {
+  if (c == "on") {
+   var ajaxurl = "../php/manutenzione.php";
+   var manutenzione = "true";
+   data = {
+     'valman': manutenzione
+   }
+   $.post(ajaxurl, data, function(response) {
+     response = JSON.parse(response);
+     if (response == "done") {
+       $("#warn").show();
+       $("#warn").html("fatto");
+       setTimeout(function(){
+         $("#warn").hide()
+       }, 5000);
+     } else {
+       error(response);
+     }
+   });
+  } else {
+    var ajaxurl = "../php/manutenzione.php";
+    var manutenzione = "false";
+    data = {
+      'valman': manutenzione
+    }
+    $.post(ajaxurl, data, function(response) {
+      response = JSON.parse(response);
+      if (response == "done") {
+        $("#warn").show();
+        $("#warn").html("fatto");
+        setTimeout(function(){
+          $("#warn").hide()
+        }, 5000);
+      } else {
+        error(response);
+      }
+    });
+  }
+}
+function deleteNote() {
+  $("#everythingAboutNote").hide();
+  $(".delNote").show();
+}
+function delNote() {
+  $(".delNote").hide();
+  var ajaxurl = "../php/noteManager.php";
+  var title = $("#delNoteTtl").val();
+  data = {
+    'title': title,
+    'type': 'delete'
+  }
+  $.post(ajaxurl, data, function(response) {
+    response = JSON.parse(response);
+    if (response == "done") {
+      $("#warn").show();
+      $("#warn").html("Fatto");
+      setTimeout(function(){
+        $("#warn").hide()
+      }, 5000);
+    } else {
+      error(response);
+    }
+    $("#everythingAboutNote").show();
+  });
+}
+var commentCodes = [];
+function delCommentShow() {
+  $(".delNote").hide();
+  $("#everythingAboutNote").show();
+  $(".delCommentBtn").show();
+}
+function delComment(id) {
+  var ajaxurl = "../php/commentManager.php";
+  id = id.toString(10);
+  data = {
+    'id': id,
+    'type': 'delete'
+  }
+  $.post(ajaxurl, data, function(response) {
+    response = JSON.parse(response);
+    if (response == "done") {
+      $("#warn").show();
+      $("#warn").html("Fatto");
+      setTimeout(function(){
+        $("#warn").hide()
+      }, 5000);
+    } else {
+      error(response);
+    }
+    $("#" + id).remove();
+    $("#everythingAboutNote").show();
+  });
+}
+function showNoteEditor() {
+  $("#modifyNoteBtn").hide();
+  $(".spawnTtl").replaceWith("<textarea id='modifyTtlTxtH' rows='1' cols='100'>" + $(".spawnTtl").html() + "</textarea>");
+  $(".spawnContent").replaceWith("<textarea id='modifyContentTxtH' cols='100' rows='10'>" + $(".spawnContent").html() + "</textarea>");
+  $("#modifyNoteConfirm").show();
+}
+function modifyNote() {
+  $("#modifyNoteConfirm").hide();
+  $("#modifyNoteBtn").show();
+  $("#modifyTtlTxtH").replaceWith("<span class='spawnTtl'>" + $("#modifyTtlTxtH").val() + "</span>");
+  $("#modifyContentTxtH").replaceWith("<span class='spawnContent'>" + $("#modifyContentTxtH").val() + "</span>");
+  var ajaxurl = "../php/noteManager.php";
+  data = {
+    'title': localStorage.getItem("title"),
+    'newTitle': $(".spawnTtl").html(),
+    'newContent': $(".spawnContent").html(),
+    'type': 'update'
+  }
+  $.post(ajaxurl, data, function(response) {
+    response = JSON.parse(response);
+    if (response == "done") {
+      url = $(".spawnTtl").html();
+      localStorage.setItem('title', url);
+      //in questo modo aggiorniamo il link della pagina senza doverla ricaricare con window.location.href, i primi due parametri della funzione servono ad altre cose
+      window.history.pushState("", "", "http://server/php/viewNote.php?title=" + url.replace(" ", "%20"));
+    } else {
+      error(response);
+    }
+  });
+}

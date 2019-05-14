@@ -1963,3 +1963,267 @@ Stack trace:
 [13-May-2019 16:27:37 Europe/Berlin] Deleting: Titolo_della_nota_acc_prova
 [13-May-2019 20:28:23 Europe/Berlin] Ordine: title
 [13-May-2019 22:13:37 Europe/Berlin] PHP Warning:  file_get_contents(/notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 293
+[14-May-2019 13:23:03 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/viewNote.php on line 22
+[14-May-2019 13:23:03 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/viewNote.php on line 24
+[14-May-2019 13:23:03 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/viewNote.php on line 25
+[14-May-2019 13:23:03 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/viewNote.php on line 26
+[14-May-2019 13:23:03 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/viewNote.php on line 27
+[14-May-2019 13:23:03 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/viewNote.php on line 28
+[14-May-2019 14:25:01 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 271
+[14-May-2019 14:25:08 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 271
+[14-May-2019 14:25:32 Europe/Berlin] Deleting: Seconda_nota_di_prova
+[14-May-2019 14:29:35 Europe/Berlin] Deleting: Ciao
+[14-May-2019 15:06:19 Europe/Berlin] PHP Parse error:  syntax error, unexpected end of file, expecting '`' in /var/www/html/php/query_funs.php on line 295
+[14-May-2019 15:07:48 Europe/Berlin] PHP Parse error:  syntax error, unexpected end of file in /var/www/html/php/research.php on line 231
+[14-May-2019 15:07:51 Europe/Berlin] PHP Parse error:  syntax error, unexpected end of file in /var/www/html/php/research.php on line 231
+[14-May-2019 15:37:25 Europe/Berlin] PHP Warning:  require_once(php/funs.php): failed to open stream: No such file or directory in /var/www/html/php/viewNote.php on line 75
+[14-May-2019 15:37:25 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'php/funs.php' (include_path='.:/usr/share/php') in /var/www/html/php/viewNote.php on line 75
+[14-May-2019 15:43:35 Europe/Berlin] Deleting: prova
+[14-May-2019 15:43:35 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`Buds_db`.`mark`, CONSTRAINT `mark_ibfk_2` FOREIGN KEY (`title`) REFERENCES `note` (`title`))
+[14-May-2019 15:45:09 Europe/Berlin] Deleting: prova
+[14-May-2019 15:45:09 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`Buds_db`.`repo`, CONSTRAINT `repo_ibfk_2` FOREIGN KEY (`title`) REFERENCES `note` (`title`))
+[14-May-2019 15:45:55 Europe/Berlin] Deleting: prova
+[14-May-2019 15:45:59 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`Buds_db`.`note`, CONSTRAINT `subj_pri` FOREIGN KEY (`subj`) REFERENCES `subj` (`name`))
+[14-May-2019 15:55:53 Europe/Berlin] Deleting: Nota_di_prova
+[14-May-2019 15:55:53 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`Buds_db`.`revw`, CONSTRAINT `revw_ibfk_2` FOREIGN KEY (`title`) REFERENCES `note` (`title`))
+[14-May-2019 15:55:57 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 286
+[14-May-2019 16:17:33 Europe/Berlin] Deleting: prova
+[14-May-2019 16:24:54 Europe/Berlin] Deleting: prova
+[14-May-2019 17:05:23 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 286
+[14-May-2019 17:12:05 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/php/query_funs.php on line 321
+[14-May-2019 17:12:07 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/php/query_funs.php on line 321
+[14-May-2019 17:12:15 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/php/query_funs.php on line 321
+[14-May-2019 17:12:16 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/php/query_funs.php on line 321
+[14-May-2019 17:12:21 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/php/query_funs.php on line 321
+[14-May-2019 17:12:38 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/php/query_funs.php on line 321
+[14-May-2019 17:12:58 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/php/query_funs.php on line 321
+[14-May-2019 17:13:25 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/php/query_funs.php on line 321
+[14-May-2019 17:13:54 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/php/query_funs.php on line 384
+[14-May-2019 17:14:04 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/php/query_funs.php on line 447
+[14-May-2019 17:14:17 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:38:46 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:39:47 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:39:52 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:44:45 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 445
+[14-May-2019 17:47:19 Europe/Berlin] PHP Parse error:  syntax error, unexpected '$comments' (T_VARIABLE), expecting '(' in /var/www/html/php/viewNote.php on line 44
+[14-May-2019 17:47:41 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function connectDb() in /var/www/html/php/viewNote.php:43
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/php/viewNote.php on line 43
+[14-May-2019 17:48:05 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:48:05 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:48:22 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:48:22 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:48:51 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:48:51 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:48:55 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:48:55 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:49:11 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:49:11 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:49:21 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:49:21 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:49:31 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:49:31 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:49:39 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:49:39 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:49:45 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:49:45 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:50:22 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:50:22 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:50:27 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:50:27 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:52:59 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:52:59 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 17:56:24 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 17:56:24 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:01:56 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:01:56 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:02:16 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:02:16 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:04:50 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:04:50 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:05:03 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:05:03 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:06:10 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:06:10 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:06:23 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:06:23 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:07:35 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:07:35 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:08:16 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:08:16 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:08:35 Europe/Berlin] PHP Parse error:  syntax error, unexpected ')' in /var/www/html/php/commentManager.php on line 14
+[14-May-2019 18:10:34 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:10:34 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:10:36 Europe/Berlin] PHP Notice:  Undefined index: type in /var/www/html/php/commentManager.php on line 15
+[14-May-2019 18:11:06 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:11:06 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:11:11 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:11:11 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:11:24 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:11:24 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:11:51 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:11:51 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 18:12:40 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 18:12:40 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 19:02:02 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 19:02:02 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 19:02:11 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 19:02:11 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 19:04:29 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'default' (T_DEFAULT) in /var/www/html/php/commentManager.php on line 46
+[14-May-2019 19:05:03 Europe/Berlin] PHP Notice:  Undefined variable: title in /var/www/html/php/commentManager.php on line 28
+[14-May-2019 19:05:03 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to postComment() must be of the type string, null given, called in /var/www/html/php/commentManager.php on line 28 and defined in /var/www/html/php/query_funs.php:490
+Stack trace:
+#0 /var/www/html/php/commentManager.php(28): postComment(Object(PDO), 'Fede', NULL, 'Commento icsdi')
+#1 {main}
+  thrown in /var/www/html/php/query_funs.php on line 490
+[14-May-2019 19:06:02 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 19:06:02 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 19:06:05 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 19:06:05 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 19:08:42 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 19:08:42 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 19:08:43 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 19:08:43 Europe/Berlin] PHP Warning:  file_get_contents(..//notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 19:09:21 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 19:09:21 Europe/Berlin] PHP Warning:  file_get_contents(../notedb/Fede/Nota_di_prova.txt): failed to open stream: No such file or directory in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 19:11:53 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 19:12:05 Europe/Berlin] Deleting: Nota_di_prova
+[14-May-2019 19:12:38 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 19:12:46 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 19:13:06 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 19:13:20 Europe/Berlin] PHP Notice:  Undefined variable: code in /var/www/html/php/query_funs.php on line 451
+[14-May-2019 19:14:21 Europe/Berlin] PHP Notice:  Undefined variable: title in /var/www/html/php/commentManager.php on line 28
+[14-May-2019 19:14:21 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to postComment() must be of the type string, null given, called in /var/www/html/php/commentManager.php on line 28 and defined in /var/www/html/php/query_funs.php:490
+Stack trace:
+#0 /var/www/html/php/commentManager.php(28): postComment(Object(PDO), 'Fede', NULL, 'Noice')
+#1 {main}
+  thrown in /var/www/html/php/query_funs.php on line 490
+[14-May-2019 19:15:40 Europe/Berlin] SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[14-May-2019 19:58:51 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:51 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:51 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:51 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:51 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:51 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:51 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:53 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:53 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:53 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:53 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:53 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:53 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:58:53 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:59:03 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:59:03 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:59:03 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:59:03 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:59:03 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:59:03 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 19:59:03 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:01:14 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:01:14 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:01:14 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:01:14 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:01:14 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:01:14 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:01:14 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:04:00 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:04:00 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:04:00 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:04:00 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:04:00 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:04:00 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:04:00 Europe/Berlin] PHP Notice:  Undefined index: code in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:04:30 Europe/Berlin] PHP Parse error:  syntax error, unexpected '"</script>"' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:04:32 Europe/Berlin] PHP Parse error:  syntax error, unexpected '"</script>"' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:08:15 Europe/Berlin] PHP Parse error:  syntax error, unexpected '"');</script>"' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /var/www/html/php/viewNote.php on line 48
+[14-May-2019 20:40:33 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:40:33 Europe/Berlin] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'content' in 'where clause'
+[14-May-2019 20:40:36 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:40:36 Europe/Berlin] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'content' in 'where clause'
+[14-May-2019 20:42:24 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:42:24 Europe/Berlin] PHP Notice:  Undefined variable: content in /var/www/html/php/query_funs.php on line 516
+[14-May-2019 20:42:58 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:44:01 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:44:13 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:50:04 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:53:13 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:53:37 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:54:47 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:55:31 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:58:09 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:58:10 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:58:10 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:58:11 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:58:11 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:59:27 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:59:30 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 20:59:31 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:07:05 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:12:43 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:12:43 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:12:51 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:12:51 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:13:00 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:13:00 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:22:47 Europe/Berlin] PHP Parse error:  syntax error, unexpected ')' in /var/www/html/php/commentManager.php on line 33
+[14-May-2019 21:23:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDO::fetchAll() in /var/www/html/php/query_funs.php:509
+Stack trace:
+#0 /var/www/html/php/commentManager.php(29): postComment(Object(PDO), 'Fede', 'Nota_di_prova', 'Ciaa')
+#1 {main}
+  thrown in /var/www/html/php/query_funs.php on line 509
+[14-May-2019 21:30:07 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:30:07 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:30:08 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:30:08 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:30:22 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:30:42 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:31:08 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:33:26 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:33:31 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:36:39 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:38:04 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:38:12 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:38:17 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 21:38:34 Europe/Berlin] Deleting: Nota_di_prova
+[14-May-2019 22:19:16 Europe/Berlin] PHP Notice:  Undefined index: user in /var/www/html/php/viewNote.php on line 132
+[14-May-2019 22:19:26 Europe/Berlin] PHP Notice:  Undefined index: user in /var/www/html/php/viewNote.php on line 132
+[14-May-2019 22:38:55 Europe/Berlin] PHP Notice:  Undefined index: netContent in /var/www/html/php/noteManager.php on line 30
+[14-May-2019 22:39:04 Europe/Berlin] PHP Notice:  Undefined index: netContent in /var/www/html/php/noteManager.php on line 30
+[14-May-2019 22:40:13 Europe/Berlin] PHP Notice:  Undefined index: netContent in /var/www/html/php/noteManager.php on line 30
+[14-May-2019 22:41:55 Europe/Berlin] PHP Notice:  Undefined index: netContent in /var/www/html/php/noteManager.php on line 32
+[14-May-2019 22:41:55 Europe/Berlin] Nota non valida test_input
+[14-May-2019 22:55:33 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/php/noteManager.php on line 62
+[14-May-2019 22:56:23 Europe/Berlin] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE note SET title = 'Nota di prova' WHERE title = 'Nota_di_prova'' at line 1
+[14-May-2019 22:56:54 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`Buds_db`.`revw`, CONSTRAINT `revw_ibfk_2` FOREIGN KEY (`title`) REFERENCES `note` (`title`) ON DELETE CASCADE)
+[14-May-2019 22:59:05 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[14-May-2019 22:59:14 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 573
+[14-May-2019 22:59:14 Europe/Berlin] PHP Warning:  fopen(): Filename cannot be empty in /var/www/html/php/query_funs.php on line 574
+[14-May-2019 22:59:14 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/php/query_funs.php on line 575
+[14-May-2019 22:59:14 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/php/query_funs.php on line 576
+[14-May-2019 23:02:57 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 283
+[14-May-2019 23:03:09 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 283
+[14-May-2019 23:03:10 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 283
+[14-May-2019 23:04:22 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 283
+[14-May-2019 23:04:48 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 23:05:09 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 284
+[14-May-2019 23:06:00 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 283
+[14-May-2019 23:06:53 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 574
+[14-May-2019 23:06:53 Europe/Berlin] PHP Warning:  fopen(..): failed to open stream: Is a directory in /var/www/html/php/query_funs.php on line 575
+[14-May-2019 23:06:53 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/php/query_funs.php on line 576
+[14-May-2019 23:06:53 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/php/query_funs.php on line 577
+[14-May-2019 23:07:20 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:08:27 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 574
+[14-May-2019 23:08:27 Europe/Berlin] PHP Warning:  fopen(..): failed to open stream: Is a directory in /var/www/html/php/query_funs.php on line 575
+[14-May-2019 23:08:27 Europe/Berlin] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/php/query_funs.php on line 576
+[14-May-2019 23:08:27 Europe/Berlin] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/php/query_funs.php on line 577
+[14-May-2019 23:14:44 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:15:17 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:15:24 Europe/Berlin] Upd8ttl: Nota_di_prova_modificato2
+[14-May-2019 23:15:24 Europe/Berlin] Niuvttl: Contenuto della nota di prova2
+[14-May-2019 23:15:24 Europe/Berlin] 0ldttl: Nota_di_prova_modificato2
+[14-May-2019 23:20:13 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:24:24 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`Buds_db`.`revw`, CONSTRAINT `revw_ibfk_2` FOREIGN KEY (`title`) REFERENCES `note` (`title`) ON DELETE CASCADE)
+[14-May-2019 23:39:58 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:43:16 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 132
