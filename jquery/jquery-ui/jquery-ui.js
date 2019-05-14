@@ -9646,8 +9646,8 @@ function Datepicker() {
 	this.regional = []; // Available regional settings, indexed by language code
 	this.regional[ "" ] = { // Default regional settings
 		closeText: "Done", // Display text for close link
-		prevText: "Prev", // Display text for previous month link
-		nextText: "Next", // Display text for next month link
+		prevText: "T", // Display text for previous month link //font cambiato EDO
+		nextText: "S", // Display text for next month link //font cambiato EDO
 		currentText: "Today", // Display text for current month link
 		monthNames: [ "January","February","March","April","May","June",
 			"July","August","September","October","November","December" ], // Names of months for drop-down and formatting
