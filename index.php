@@ -14,7 +14,8 @@
     <script type="text/javascript" src="jquery/jquery-ui/jquery-ui.js"></script>
     <script src="main/main.js"></script>
 	  <script src="main/search.js"></script>
-    <link rel="stylesheet" type="text/css" href="jquery/jquery-ui/jquery-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="main/stylesheets/datePicker.css" />
+    <!--<link rel="stylesheet" type="text/css" href="jquery/jquery-ui/jquery-ui.css"/>-->
     <link rel="stylesheet" type="text/css" href="main/stylesheets/positions.css" />
     <link rel="stylesheet" type="text/css" href="main/stylesheets/main.css" />
   </head>
@@ -65,6 +66,16 @@
         Data d'inizio: <input id="filtroDatefrom" /><br/>
         Data di fine:  <input id="filtroDateto"/><br/>
         <script type="text/javascript">
+          $('#filtroDatefrom').datepicker({
+              constrainInput: true,   // prevent letters in the input field
+              altFormat: 'dd-mm-yy',  // Date Format used
+              firstDay: 1 // Start with Monday
+          })
+          $('#filtroDateto').datepicker({
+              constrainInput: true,   // prevent letters in the input field
+              altFormat: 'dd-mm-yy',  // Date Format used
+              firstDay: 1 // Start with Monday
+          })
           $("#filtroDatefrom").datepicker({
             dateFormat : 'yy-mm-dd'
           });
@@ -110,10 +121,10 @@
   </p>
   <div id="risultati">
   </div>
-  <div class="adminTools" style="display: none;">
-    <a onclick="man('on')" class="button">Avvia manutenzione</a>
-    <a onclick="man('off')" class="button">Termina manutenzione</a>
-    <a onclick="deleteNote()" class="button" style="position: fixed; right: 1%;">Rimuovi nota</a>
+  <div class="navbar adminTools" style="position:absolute;bottom:5px;padding:10px 15px 10px 15px;display:none">
+    <a onclick="man('on')" class="navbar-left">Avvia manutenzione</a>
+    <a onclick="man('off')" class="navbar-left">Termina manutenzione</a>
+    <a onclick="deleteNote()" class="navbar-right">Rimuovi nota</a>
   </div>
   <div class="scriviNota" style="display: none;">
     <textarea rows="1" cols="100" id="writeNoteTitle"></textarea>
@@ -124,8 +135,8 @@
   </div>
   <button id="scriviNotaBtn" class="noteButton" onclick="mostraSpazioNote();" style="display: none;">Scrivi una nota</button>
   <div class="delNote" style="display: none;">
-    <input id="delNoteTtl" />
-    <button id="delNoteConfirm" onclick="delNote()">Conferma</button>
+    <input id="delNoteTtl" class="textInput"/>
+    <button id="delNoteConfirm" onclick="delNote()" class="delNoteButton" style="position:absolute;left:330px;">Conferma</button>
   </div>
   </body>
 </html>
