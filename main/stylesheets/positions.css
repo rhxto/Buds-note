@@ -3,6 +3,7 @@
 .relative {position: relative;}
 .sticky {position: sticky;}
 .center {align-items: center;}
+.invisible{display:none;}
 
 .top0 {top: 0%;}
 .top1 {top: 1%;}
