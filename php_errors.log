@@ -2227,3 +2227,32 @@ Stack trace:
 [14-May-2019 23:24:24 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`Buds_db`.`revw`, CONSTRAINT `revw_ibfk_2` FOREIGN KEY (`title`) REFERENCES `note` (`title`) ON DELETE CASCADE)
 [14-May-2019 23:39:58 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
 [14-May-2019 23:43:16 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 132
+[14-May-2019 23:56:20 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:56:37 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:56:37 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:58:28 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:58:30 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:58:32 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:58:33 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:58:35 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:58:36 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:58:38 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:58:39 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:58:41 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:58:42 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[14-May-2019 23:58:44 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 00:09:23 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[15-May-2019 00:09:50 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[15-May-2019 00:10:05 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[15-May-2019 00:14:38 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[15-May-2019 00:14:58 Europe/Berlin] PHP Notice:  Undefined index: content in /var/www/html/php/commentManager.php on line 16
+[15-May-2019 00:28:32 Europe/Berlin] Nota non valida delete
+[15-May-2019 00:30:01 Europe/Berlin] PHP Parse error:  syntax error, unexpected '&&' (T_BOOLEAN_AND) in /var/www/html/php/commentManager.php on line 16
+[15-May-2019 00:30:07 Europe/Berlin] PHP Parse error:  syntax error, unexpected '&&' (T_BOOLEAN_AND) in /var/www/html/php/commentManager.php on line 16
+[15-May-2019 00:30:24 Europe/Berlin] Nota non valida delete
+[15-May-2019 00:30:26 Europe/Berlin] PHP Parse error:  syntax error, unexpected '&&' (T_BOOLEAN_AND) in /var/www/html/php/commentManager.php on line 16
+[15-May-2019 00:36:21 Europe/Berlin] Deleting: Titolo_modificato
+[15-May-2019 00:36:24 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 00:36:47 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 00:47:02 Europe/Berlin] Nota non valida delete
+[15-May-2019 00:47:21 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 283

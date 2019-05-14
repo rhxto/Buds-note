@@ -1,3 +1,12 @@
+@font-face {
+	font-family: font_text;
+	src: url(fonts/Letters_for_Learners.ttf);
+}
+@font-face {
+	font-family: font_icons;
+	src: url(fonts/Icons_South_St.ttf);
+}
+
 .ui-datepicker {
   background: #F4F1F1;
   font-family: font_text;

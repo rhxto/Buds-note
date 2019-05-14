@@ -23,7 +23,7 @@
       $subj = test_input($_POST["subj"]);
       $dept = test_input($_POST["dept"]);
     }
-    if (isNoteOwner(connectDb(), $_POST["title"], $_SESSION["username"])) {
+    if ((isNoteOwner(connectDb(), $_POST["title"], $_SESSION["username"])) && $type == "update") {
       if ((empty($_POST["title"]) || empty($_POST["newTitle"]) || empty($_POST["newContent"])) && $type == "update") {
         die(json_encode("NOTEUNV"));
       } else {
@@ -31,9 +31,9 @@
         $newTitle = test_input($_POST["newTitle"]);
         $newContent = test_input($_POST["newContent"]);
       }
-    } else {
-      die(json_encode("NOTEUNA"));
+    } elseif ($type == "update") {
       error_log("**TENTATIVO DI AGGIORNAMENTO NOTA NON AUTORIZZATO DA: " . $_SERVER["REMOTE_ADDR"] . "**");
+      die(json_encode("NOTEUNA"));
     }
     if ((empty($_POST["type"]) || empty($_POST["title"])) && $type == "delete") {
       error_log("Nota non valida delete");

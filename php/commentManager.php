@@ -13,7 +13,7 @@
   }
   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["username"]) && $_SESSION['logged_in'] == '1') {
     $type = test_input($_POST["type"]);
-    if (empty($_POST["content"] || empty($_POST["title"])) && $type == "write")  {
+    if ((empty($_POST["content"]) || empty($_POST["title"])) && $type == "write")  {
       die(json_encode("COMMENTNV"));
     } elseif ($type == "write") {
       $content = test_input($_POST["content"]);

@@ -15,7 +15,6 @@
     <script src="main/main.js"></script>
 	  <script src="main/search.js"></script>
     <link rel="stylesheet" type="text/css" href="main/stylesheets/datePicker.css" />
-    <!--<link rel="stylesheet" type="text/css" href="jquery/jquery-ui/jquery-ui.css"/>-->
     <link rel="stylesheet" type="text/css" href="main/stylesheets/positions.css" />
     <link rel="stylesheet/less" type="text/css" href="main/stylesheets/main.less" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
@@ -69,19 +68,13 @@
         <script type="text/javascript">
           $('#filtroDatefrom').datepicker({
               constrainInput: true,   // prevent letters in the input field
-              altFormat: 'dd-mm-yy',  // Date Format used
+              dateFormat: 'yy-mm-dd',  // Date Format used
               firstDay: 1 // Start with Monday
-          })
+          });
           $('#filtroDateto').datepicker({
               constrainInput: true,   // prevent letters in the input field
-              altFormat: 'dd-mm-yy',  // Date Format used
+              dateFormat: 'yy-mm-dd',  // Date Format used
               firstDay: 1 // Start with Monday
-          })
-          $("#filtroDatefrom").datepicker({
-            dateFormat : 'yy-mm-dd'
-          });
-          $("#filtroDateto").datepicker({
-            dateFormat : 'yy-mm-dd'
           });
         </script>
         Ordina per: <input list="tipoOrdine" id="filtroOrderBy"/><br/>
@@ -113,7 +106,7 @@
   <p style="position:sticky;top:0px;width:100%">
     <div class="navbar" id="navbar">
       <a href="" class="navbar-left">HOME</a>
-	    <button onclick="openSearch()" class="navbar-left"> A</button>
+	    <button onclick="openSearch()" class="buttonIcon navbar-left">A</button>
       <a href="login/" class="navbar-right log">LOGIN</a>
       <a href="register/" class="navbar-right log">REGISTER</a>
       <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>

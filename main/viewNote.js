@@ -123,7 +123,8 @@ function postComment() {
   $.post(ajaxurl, data, function (response) {
     response = JSON.parse(response);
   if (response["state"] == "done") {
-      $(".localSpawn").append('<br/><span id="' + response["id"] +  '">' + $("#commentText").val() + '<button class=delCommentBtn onclick="delComment(' + response["id"] + ');">Elimina commento</button></span>');
+      $(".localSpawn").append('<br/><span id="' + response["id"] +  '"></span>');
+      $("#" + response["id"]).html($("#commentText").val() + '<button class="delCommentBtn" onclick="delComment(' + response["id"] + ');">Elimina commento</button>');
       $("#commentText").val("");
     } else {
       error(response);
