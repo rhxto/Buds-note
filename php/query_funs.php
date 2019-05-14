@@ -40,8 +40,7 @@ function dept($conn, $name, $id){
 }
 
 function subj($conn, $name, $id){
-  unset($results);
-  unset($result);
+
   if($conn == "null"){
     return -1;
   }
@@ -298,4 +297,198 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $conn = null;
     }
   }
+
+  function searchMark($conn, $id, $user, $title, $mark, $datefrom, $dateto, $code){
+
+    if($conn == "null"){
+      return -1;
+    }
+    if($id == NULL){
+      $id = "%";
+    }
+    if($user == NULL){
+      $user = '%';
+    }
+    if($title == NULL){
+      $title = "%";
+    }
+    if($mark == NULL){
+      $mark = "%";
+    }elseif($mark<1){
+      $mark = 1;
+    }elseif($mark>5){
+      $mark = 5;
+    }
+    if ($datefrom == NULL) {
+      $datefrom = "%";
+    }
+    if ($dateto == NULL) {
+      $dateto = date("Y-m-d H:i:s");
+    }
+    if($code == NULL){
+      $code = "title"
+    }
+
+
+
+    try {
+      $query = $conn->prepare("SELECT * FROM mark WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (mark LIKE :mark) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :code");
+      $query->bindParam(':id', $id);
+      $query->bindParam(':user', $user);
+      $query->bindParam(':title', $title);
+      $query->bindParam(':mark', $mark);
+      $query->bindParam(':datefrom', $datefrom);
+      $query->bindParam(':dateto', $dateto);
+      $query->bindParam(':code', $code);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $result = $query->fetchAll();
+      $results = array();
+      $i = 0;
+      foreach ($result as $row) {
+        array_push($results, array());
+        //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
+        $results[$i]["id"] = $row["id"];
+        $results[$i]["user"] = $row["user"];
+        $results[$i]["title"] = str_replace("_", " ", $row["title"]);
+        $results[$i]["mark"] = $row["mark"];
+        $results[$i]["date"] = $row["date"];
+        $i++;
+      }
+      return $results;
+    } catch(PDOException $e) {
+      if (PDOError($e)) {
+        return "internalError";
+      }
+    } finally {
+      $conn = null;
+    }
+  }
+
+  function searchRepo($conn, $id, $user, $title, $text, $datefrom, $dateto, $code){
+
+    if($conn == "null"){
+      return -1;
+    }
+    if($id == NULL){
+      $id = "%";
+    }
+    if($user == NULL){
+      $user = '%';
+    }
+    if($title == NULL){
+      $title = "%";
+    }
+    if($text == NULL){
+      $text = "%";
+    }
+    if ($datefrom == NULL) {
+      $datefrom = "%";
+    }
+    if ($dateto == NULL) {
+      $dateto = date("Y-m-d H:i:s");
+    }
+    if($code == NULL){
+      $code = "title"
+    }
+
+
+
+    try {
+      $query = $conn->prepare("SELECT * FROM repo WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (text LIKE :text) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :code");
+      $query->bindParam(':id', $id);
+      $query->bindParam(':user', $user);
+      $query->bindParam(':title', $title);
+      $query->bindParam(':text', $text);
+      $query->bindParam(':datefrom', $datefrom);
+      $query->bindParam(':dateto', $dateto);
+      $query->bindParam(':code', $code);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $result = $query->fetchAll();
+      $results = array();
+      $i = 0;
+      foreach ($result as $row) {
+        array_push($results, array());
+        //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
+        $results[$i]["id"] = $row["id"];
+        $results[$i]["user"] = $row["user"];
+        $results[$i]["title"] = str_replace("_", " ", $row["title"]);
+        $results[$i]["text"] = $row["text"];
+        $results[$i]["date"] = $row["date"];
+        $i++;
+      }
+      return $results;
+    } catch(PDOException $e) {
+      if (PDOError($e)) {
+        return "internalError";
+      }
+    } finally {
+      $conn = null;
+    }
+  }
+
+  function searchRevw($conn, $id, $user, $title, $review, $datefrom, $dateto, $code){
+
+    if($conn == "null"){
+      return -1;
+    }
+    if($id == NULL){
+      $id = "%";
+    }
+    if($user == NULL){
+      $user = '%';
+    }
+    if($title == NULL){
+      $title = "%";
+    }
+    if($review == NULL){
+      $review = "%";
+    }
+    if ($datefrom == NULL) {
+      $datefrom = "%";
+    }
+    if ($dateto == NULL) {
+      $dateto = date("Y-m-d H:i:s");
+    }
+    if($code == NULL){
+      $code = "title"
+    }
+
+
+
+    try {
+      $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :code");
+      $query->bindParam(':id', $id);
+      $query->bindParam(':user', $user);
+      $query->bindParam(':title', $title);
+      $query->bindParam(':review', $review);
+      $query->bindParam(':datefrom', $datefrom);
+      $query->bindParam(':dateto', $dateto);
+      $query->bindParam(':code', $code);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $result = $query->fetchAll();
+      $results = array();
+      $i = 0;
+      foreach ($result as $row) {
+        array_push($results, array());
+        //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
+        $results[$i]["id"] = $row["id"];
+        $results[$i]["user"] = $row["user"];
+        $results[$i]["title"] = str_replace("_", " ", $row["title"]);
+        $results[$i]["review"] = $row["review"];
+        $results[$i]["date"] = $row["date"];
+        $i++;
+      }
+      return $results;
+    } catch(PDOException $e) {
+      if (PDOError($e)) {
+        return "internalError";
+      }
+    } finally {
+      $conn = null;
+    }
+  }
+
 ?>
