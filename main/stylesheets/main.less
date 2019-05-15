@@ -131,12 +131,13 @@ button {
 	text-align: center;
 	border-radius: 15px;
 }
-.ban {
-	@{font}: text;
-	color: @color_2;
+
+.ban:extend(.txt) {
 	text-align: center;
 }
-
+h1.ban {
+	font-size: 50px;
+}
 .err404:extend(.txt) {
 	text-align: center;
 }
@@ -145,13 +146,6 @@ h1.err404 {
 		font-weight: bold;
 }
 
-h1.ban {
-	font-size: 50px;
-}
-
-h2.ban {
-	font-size: 35px;
-}
 .button:extend(.btn) {
 	color: @color_1;
 	position: center;
