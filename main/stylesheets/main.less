@@ -156,18 +156,10 @@ h2.ban {
 	color: @color_1;
 	position: center;
 }
-.noteButton {
-	@{font}: text;
-	font-size: 30px;
-	color: @color_1;
-	background-color: @element_color;
-	border: none;
-	text-align: center;
-	border-radius: 15px;
+.noteButton:extend(.btn) {
 	position: fixed;
 	bottom: 85px;
 	right: 5px;
-	padding: 10px 15px 10px 15px;
 }
 .warn:extend(.txt) {
 	background-color: @error_color;
