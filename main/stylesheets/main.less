@@ -249,6 +249,33 @@ h1.err404 {
 	padding: 1px 7px 1px 7px;
 }
 
+.scriviNota {
+	@{font}: text;
+	font-size: 35px;
+}
+.scriviNotaText:extend(.txt) {
+	width: 70%;
+	border-radius: 15px;
+	background-color: darken(whitesmoke, 10%);
+	&:hover{background-color: @element_colorL}
+	&:focus{background-color: @element_colorL}
+	&:active{background-color: @element_colorL}
+}
+.scriviNotaElenco:extend(.scriviNotaText) {
+	width: 50%;
+	&:hover{background-color: @element_colorL}
+	&:focus{background-color: @element_colorL}
+	&:active{background-color: @element_colorL}
+}
+.scriviNotaTextArea:extend(.scriviNotaText) {
+	width: 90%;
+	font-size: 20px;
+	&:hover{background-color: @element_colorL}
+	&:focus{background-color: @element_colorL}
+	&:active{background-color: @element_colorL}
+}
+
+
 &::placeholder {
 	color: @color_1;
 	opacity: 1;

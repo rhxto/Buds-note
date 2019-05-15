@@ -120,11 +120,11 @@
       <div id="risultati">
       </div>
       <div class="scriviNota" style="display: none;">
-        <textarea rows="1" cols="100" id="writeNoteTitle"></textarea>
-        Materia: <input id="writeNoteSubj" list="materie" />
-        Indizrizzo: <input id="writeNoteDept" list="Indirizzi" /><br />
-        <textarea rows="30" cols="100" id="writeNoteContent"></textarea>
-        <button id="submitNote" onclick="submitNote()">Pubblica</button>
+        Titolo: <textarea rows="1" cols="100" id="writeNoteTitle" class="scriviNotaText"></textarea><br/>
+        Materia: <input id="writeNoteSubj" list="materie" class="scriviNotaElenco"/><br/>
+        Indizrizzo: <input id="writeNoteDept" list="Indirizzi" class="scriviNotaElenco"/><br/>
+        <textarea rows="25" cols="100" id="writeNoteContent" class="scriviNotaTextArea"></textarea><br/>
+        <button id="submitNote" class="btn" onclick="submitNote()">Pubblica</button>
       </div>
     </div>
   <div class="navbar adminTools" style="position:absolute;bottom:5px;padding:10px 15px 10px 15px;display:none">
