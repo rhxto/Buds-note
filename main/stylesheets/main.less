@@ -5,7 +5,7 @@
 @background_color: #F4F1F1;
 @element_color: #5f5f5f;
 @element_colorD: darken(@element_color, 50%);
-@element_colorL: lighten(@element_color, 50%);
+@element_colorL: lighten(@element_color, 30%);
 @error_color: desaturate(red, 50%);
 @background_color_5: whitesmoke;
 @background_color_7: rgba(0,0,0, 0.9);
@@ -223,16 +223,10 @@ h2.ban {
 	width: 50%;
 	position: absolute;
 }
-.search_button {
-	@{font}: text;
-	font-size: 35px;
-	padding: 10px 15px 10px 15px;
+.search_button:extend(.btn) {
 	background-color: @background_color_5;
 	color: @color_2;
 	position: absolute;
-	/*align: center;*/
-	border: none;
-	border-radius: 25px;
 	&:hover {
 		background-color: @element_colorL;
 	}
