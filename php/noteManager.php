@@ -55,7 +55,7 @@
         break;
       case 'update':
         if (checkNote(connectDb(), $title)) {
-          if (updateNote(connectDb(), $title, $newTitle, $newContent)) {
+          if (updateNote(connectDb(), $_SESSION["username"], $title, $newTitle, $newContent)) {
             echo json_encode("done");
           } else {
             die(json_encode("NOTEUUF"));

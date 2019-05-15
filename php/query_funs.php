@@ -558,28 +558,39 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $conn = null;
     }
   }
-  function updateNote($conn, $title, $newTitle, $newContent) {
+  function updateNote($conn, $user, $title, $newTitle, $newContent) {
     $title = str_replace(" ", "_", $title);
     $newTitle = str_replace(" ", "_", $newTitle);
+    $newDir = "/notedb/$user/$newTitle.txt";
     try {
-      $query = $conn->prepare("UPDATE note SET title = :newTtl WHERE title = :ttl");
-      $query->bindParam(":newTtl", $newTitle);
-      $query->bindParam(":ttl", $title);
-      $query->execute();
       $query = $conn->prepare("SELECT dir FROM note WHERE title = :ttl");
-      $query->bindParam(":ttl", $newTitle);
+      $query->bindParam(":ttl", $title);
       $query->execute();
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $dir = $query->fetchAll();
       $dir = $dir[0]["dir"];
-      $content = fopen("..$dir", "r+");
-      fwrite($content, $newContent);
-      fclose($content);
-      return true;
-    } catch(PDOException $e) {
-      if (PDOError($e)) {
+      if ($dir !== $newDir) {
+        exec("mv ..$dir ..$newDir");
+      }
+      if ($content = fopen("..$newDir", "w+")) {
+        //se usiamo r+ non possiamo eliminare caratteri, con w+ il file viene distrutto e riscritto.
+        fwrite($content, $newContent);
+        fclose($content);
+        $query = $conn->prepare("UPDATE note SET title = :newTtl WHERE title = :ttl");
+        $query->bindParam(":newTtl", $newTitle);
+        $query->bindParam(":ttl", $title);
+        $query->execute();
+        $query = $conn->prepare("UPDATE note SET dir = :newDir WHERE title = :newTtl");
+        $query->bindParam(":newTtl", $newTitle);
+        $query->bindParam(":newDir", $newDir);
+        $query->execute();
+        return true;
+      } else {
         return false;
       }
+    } catch(PDOException $e) {
+      PDOError($e);
+      return false;
     } finally {
       $conn = null;
     }
