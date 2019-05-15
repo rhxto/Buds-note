@@ -40,29 +40,28 @@
       </span>
       <span class="top15 left35 filtro">
         Filtra per utente: <input id="filtroUtente" placeholder="Nome utente..." /><br/>
-        Filtra per materia: <select class="opzM" id="filtroMateria">
-        <?php
+	      Filtro per materia: <input id="filtroMateria" list="materie" placeholder="Materia..."/><br/>
+	      <?php
           require_once 'php/core.php';
           require_once 'php/query_funs.php';
           $r = subj(connectDb(), NULL, NULL);
+          echo "<datalist id='materie'>";
           foreach ($r[1] as $res) {
-            if (strpos($res, "'") !== false) {
-              $res = str_replace("'", "&#39", $res);
-            }
-            echo "<option class='opz' value='" . $res . "'>$res</option>";
+            echo "<option value='" . $res . "'>";
           }
+          echo "</datalist>";
          ?>
-       </select><br/>
-        Filtra per indirizzo: <select class='opzM' id="filtroIndirizzo"/><br/>
+        Filtra per indirizzo: <input id="filtroIndirizzo" list="Indirizzi" placeholder="Indirizzo..." /><br/>
         <?php
           require_once 'php/core.php';
           require_once 'php/query_funs.php';
           $r = dept(connectDb(), NULL, NULL);
+          echo "<datalist id='Indirizzi'>";
           foreach ($r[1] as $res) {
-            echo "<option class='opz' value='" . $res . "'>$res</option>";
+            echo "<option value='" . $res . "'>";
           }
+          echo "</datalist>";
          ?>
-       </select><br/>
         Filtra per anno: <input type="number" id="filtroAnno"/><br/>
         Data d'inizio: <input id="filtroDatefrom" /><br/>
         Data di fine:  <input id="filtroDateto"/><br/>
@@ -121,11 +120,11 @@
       <div id="risultati">
       </div>
       <div class="scriviNota" style="display: none;">
-        Titolo: <textarea rows="1" cols="100" id="writeNoteTitle" class="scriviNotaText"></textarea><br/>
-        Materia: <input id="writeNoteSubj" list="materie" class="scriviNotaElenco"/><br/>
-        Indizrizzo: <input id="writeNoteDept" list="Indirizzi" class="scriviNotaElenco"/><br/>
-        <textarea rows="25" cols="100" id="writeNoteContent" class="scriviNotaTextArea"></textarea><br/>
-        <button id="submitNote" class="btn" onclick="submitNote()">Pubblica</button>
+        <textarea rows="1" cols="100" id="writeNoteTitle"></textarea>
+        Materia: <input id="writeNoteSubj" list="materie" />
+        Indizrizzo: <input id="writeNoteDept" list="Indirizzi" /><br />
+        <textarea rows="30" cols="100" id="writeNoteContent"></textarea>
+        <button id="submitNote" onclick="submitNote()">Pubblica</button>
       </div>
     </div>
   <div class="navbar adminTools" style="position:absolute;bottom:5px;padding:10px 15px 10px 15px;display:none">

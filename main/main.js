@@ -17,7 +17,6 @@ function logout() {
   $("#greet").empty();
   $(".scriviNota").empty();
   $("#scriviNotaBtn").hide();
-  localStorage.setItem("logged_in", false);
 }
 
 function error(err) {
@@ -82,9 +81,6 @@ function error(err) {
       break;
     case "NOTEUNE":
       $("#warn").html("La nota che volevi aggiornare non é stata trovata, copia le modifiche e prova a ricaricare la pagina. Se il problema persiste contatta gli amministratori.");
-      break;
-    case "FIREFOX":
-      $("#warn").html("A causa di errori nel broswer, alcuni elementi del sito potrebbero non funzionare correttamente in Firefox. Vedi: https://support.mozilla.org/en-US/questions/1191898");
       break;
     default:
       $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
@@ -352,7 +348,4 @@ $(document).ready(function(){
     $("#SearchLens").hide();
     $("#SearchLensMoz").show();
   }
-  if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
-     error("FIREFOX");
-   }
 });

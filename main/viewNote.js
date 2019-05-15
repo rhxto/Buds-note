@@ -1,3 +1,8 @@
+$(document).ready(function(){
+  if (localStorage.getItem("title") != null) {
+    $(".comments").show();
+  }
+});
 function logout() {
   var clickBtnValue = "logout";
   var ajaxurl = '../php/sessionDestroyer.php',
@@ -17,7 +22,6 @@ function logout() {
   $("#greet").empty();
   $(".scriviNota").empty();
   $("#scriviNotaBtn").hide();
-  localStorage.setItem("logged_in", false);
 }
 function error(err) {
   $("#warn").show();
