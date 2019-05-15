@@ -149,7 +149,7 @@ function man(c) {
        $("#warn").show();
        $("#warn").html("fatto");
        setTimeout(function(){
-         $("#warn").hide()
+         $("#warn").hide();
        }, 5000);
      } else {
        error(response);
@@ -167,7 +167,7 @@ function man(c) {
         $("#warn").show();
         $("#warn").html("fatto");
         setTimeout(function(){
-          $("#warn").hide()
+          $("#warn").hide();
         }, 5000);
       } else {
         error(response);
@@ -199,7 +199,7 @@ function delNote() {
       $("#warn").show();
       $("#warn").html("Fatto");
       setTimeout(function(){
-        $("#warn").hide()
+        $("#warn").hide();
       }, 5000);
     } else {
       error(response);
@@ -237,7 +237,7 @@ function delComment(id) {
       $("#warn").show();
       $("#warn").html("Fatto");
       setTimeout(function(){
-        $("#warn").hide()
+        $("#warn").hide();
       }, 5000);
     } else {
       error(response);
