@@ -18,6 +18,7 @@ function logout() {
   $(".scriviNota").empty();
   $("#scriviNotaBtn").hide();
 }
+
 function error(err) {
   $("#warn").show();
   switch (err) {
@@ -341,4 +342,10 @@ $(document).ready(function(){
      cerca();
     }
   });
+  var FIREFOX = /Firefox/i.test(navigator.userAgent);
+
+  if (FIREFOX) {
+    $("#SearchLens").hide();
+    $("#SearchLensMoz").show();
+  }
 });

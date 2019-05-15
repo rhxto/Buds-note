@@ -1,26 +1,30 @@
+
 @color_1: white;
 @color_2: black;
 @color_3: whitesmoke;
 @background_color: #F4F1F1;
-@background_color_2: #5f5f5f;
-@background_color_3: black;
-@background_color_4: #C15D5D;
+@element_color: #5f5f5f;
+@element_colorD: darken(@element_color, 50%);
+@element_colorL: lighten(@element_color, 50%);
+@error_color: desaturate(red, 50%);
 @background_color_5: whitesmoke;
-@background_color_6: #c4c4c4;
 @background_color_7: rgba(0,0,0, 0.9);
 
+@font: font-family;
+
 @font-face {
-	font-family: font_text;
+	@{font}: text;
 	src: url(fonts/Letters_for_Learners.ttf);
 }
 @font-face {
-	font-family: font_icons;
+	@{font}: icons;
 	src: url(fonts/Icons_South_St.ttf);
 }
 @font-face {
-	font-family: font_icons2;
+	@{font}: icons2;
 	src: url(fonts/MyFont-normal.otf);
 }
+
 * {
 	&:hover {
 		outline: none !important;
@@ -29,72 +33,107 @@
 		outline: none !important;
 	}
 }
+
 div {
 	display: block;
 }
 body {
 	background-color: @background_color;
 }
-.navbar {
-	position: relative;
-	font-size: 30px;
-	background-color: @background_color_2;
-	color: @color_1;
-	width: 96%;
-	padding: 10px 15px 60px 15px;
-	font-family: font_text;
-	a {
-		padding: 10px 15px 10px 15px !important;
-		text-decoration: none !important;
+
+
+
+	.btn {
+		@{font}: text;
+		font-size: 35px;
+		background-color: @element_color;
+		border: none;
+		border-radius: 15px;
 		color: @color_1;
-		font-size: 30px;
-		&:hover {
-			background-color: @background_color_3;
-		}
+		text-align: center;
+		padding: 10px 15px 10px 15px;
 	}
-	button {
-		font-family: font_icons2;
+	.txt {
+		@{font}: text;
+		font-size: 35px;
+		color: @color_2;
+		border: none;
+	}
+
+	/*button {
+		@{font}: icons2;
 		height: 50px;
-		background-color: @background_color_2;
+		background-color: @element_color;
 		border: none;
 		border-radius: 25px;
 		color: @color_1;
 		font-size: 50px;
 	}
+}*/
+.buttonIcon:extend(.btn) {
+	@{font}: icons2;
+	border-radius: 0px;
+	font-size: 50px !important;
+	padding: 0px 15px 0px 15px !important;
 }
-a {
-	&:active {
-		background-color: @background_color_3;
-	}
-	&:focus {
-		background-color: @background_color_3;
-	}
+.searchLensMoz {
+	display:none;
+	padding: none !important;
 }
+@-moz-document url-prefix() { //mozzilla only
+}
+	.navbar {
+		position: relative;
+		font-size: 30px;
+		background-color: @element_color;
+		color: @color_1;
+		width: 98.5%;
+		padding: 10px 15px 60px 15px;
+		@{font}: text;
+		a {
+			padding: 10px 15px 10px 15px;
+			text-decoration: none !important;
+			color: @color_1;
+			font-size: 30px;
+			&:hover {
+				background-color: @element_colorD;
+			}
+			&:focus {
+				background-color: @element_colorD;
+			}
+			&:active {
+				background-color: @element_colorD;
+			}
+		}
+	}
+
 button {
 	&:hover {
-		background-color: @background_color_3;
+		background-color: @element_colorD;
 	}
 	&:focus {
-		background-color: @background_color_3;
+		background-color: @element_colorD;
 	}
 	&:active {
-		background-color: @background_color_3;
+		background-color: @element_colorD;
 	}
 }
-.textInput {
+
+
+.textInput:extend(.txt) {
 	&:hover {
-		background-color: @background_color_3;
+		background-color: @element_colorD;
 	}
 	&:active {
-		background-color: @background_color_3;
+		background-color: @element_colorD;
 	}
 	&:focus {
-		background-color: @background_color_3;
+		background-color: @element_colorD;
 	}
-	font-family: font_text;
+	@{font}: text;
 	font-size: 35px;
 	color: @color_1;
-	background-color: @background_color_2;
+	background-color: @element_color;
 	border: none;
 	text-align: center;
 	border-radius: 15px;
@@ -107,12 +146,12 @@ button {
 	float: left !important;
 }
 .err404 {
-	font-family: font_text;
+	@{font}: text;
 	color: @color_2;
 	text-align: center;
 }
 .ban {
-	font-family: font_text;
+	@{font}: text;
 	color: @color_2;
 	text-align: center;
 }
@@ -129,21 +168,21 @@ h2.ban {
 	font-size: 35px;
 }
 .button {
-	font-family: font_text;
+	@{font}: text;
 	font-size: 35px;
 	height: 50px;
 	color: @color_1;
-	background-color: @background_color_2;
+	background-color: @element_color;
 	border: none;
 	text-align: center;
 	position: center;
 	border-radius: 25px;
 }
 .noteButton {
-	font-family: font_text;
+	@{font}: text;
 	font-size: 30px;
 	color: @color_1;
-	background-color: @background_color_2;
+	background-color: @element_color;
 	border: none;
 	text-align: center;
 	border-radius: 15px;
@@ -153,11 +192,11 @@ h2.ban {
 	padding: 10px 15px 10px 15px;
 }
 .warn {
-	font-family: font_text;
+	@{font}: text;
 	font-size: 35px;
 	color: @color_2;
 	padding: 10px 15px 10px 15px;
-	background-color: @background_color_4;
+	background-color: @error_color;
 	border: none;
 	text-align: center;
 	border-radius: 25px;
@@ -166,7 +205,7 @@ h2.ban {
 	right: 0%;
 }
 .search {
-	font-family: font_text;
+	@{font}: text;
 	color: @color_1;
 	position: fixed;
 	top: 25%;
@@ -177,7 +216,7 @@ h2.ban {
 	display: none;
 }
 .search_text {
-	font-family: font_text;
+	@{font}: text;
 	font-size: 40px;
 	padding: 10px 15px 10px 15px;
 	border: none;
@@ -189,13 +228,13 @@ h2.ban {
 	position: absolute;
 	left: 15%;
 	&:hover {
-		background-color: @background_color_6;
+		background-color: @element_colorL;
 	}
 	&:active {
-		background-color: @background_color_6;
+		background-color: @element_colorL;
 	}
 	&:focus {
-		background-color: @background_color_6;
+		background-color: @element_colorL;
 	}
 }
 .search_checkbox {
@@ -206,23 +245,23 @@ h2.ban {
 	position: absolute;
 }
 .search_button {
-	font-family: font_text;
+	@{font}: text;
 	font-size: 35px;
 	padding: 10px 15px 10px 15px;
 	background-color: @background_color_5;
 	color: @color_2;
 	position: absolute;
-	align: center;
+	/*align: center;*/
 	border: none;
 	border-radius: 25px;
 	&:hover {
-		background-color: @background_color_6;
+		background-color: @element_colorL;
 	}
 	&:active {
-		background-color: @background_color_6;
+		background-color: @element_colorL;
 	}
 	&:focus {
-		background-color: @background_color_6;
+		background-color: @element_colorL;
 	}
 }
 .overlay {
@@ -240,24 +279,21 @@ h2.ban {
 	font-size: 35px;
 }
 .noteInfoDisplay {
-	font-family: font_text !important;
+	@{font}: text !important;
 	color: @color_2;
 }
-.delNoteButton {
-	font-family: font_text;
-	font-size: 35px;
-	color: @color_1;
-	background-color: @background_color_2;
-	border: none;
-	text-align: center;
-	border-radius: 15px;
-	padding: 10px 15px 10px 15px;
+
+.delNoteButton:extend(.btn) {
 }
-.delCommentBtn {
+
+.delCommentBtn:extend(.btn) {
 	display: none;
 	position: absolute;
 	left: 87%;
+	font-size: 18px;
+	padding: 1px 7px 1px 7px;
 }
+
 &::placeholder {
 	color: @color_1;
 	opacity: 1;
@@ -268,13 +304,14 @@ h2.ban {
 &::-ms-input-placeholder {
 	color: @color_1;
 }
+
 #span {
 	position: absolute;
 	right: 32%;
 	top: 28%;
 }
 #greet {
-	font-family: font_text;
+	@{font}: text;
 	font-size: 30px;
 	color: @color_1;
 	position: absolute;
