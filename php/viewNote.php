@@ -40,16 +40,19 @@
       <div class="comments" style="display: none;">
         <span>Commenti</span><br/>
         <div class="localSpawn"></div>
+        <div class="otherComments">
+        </div>
         <?php
           require_once 'core.php';
           require_once 'query_funs.php';
           $comments = searchRevw(connectDb(), NULL, NULL, $_GET["title"], NULL, NULL, NULL, NULL, NULL);
           foreach ($comments as $comment) {
-            echo "<script>$('.comments').append('<span id=" . $comment["id"] . ">" . $comment['review'] . "<button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button><br/></span>');</script>";
+            echo "<script>$('.otherComments').append('<span id=" . $comment["id"] . ">" . $comment['review'] . "<button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button><br/></span>');</script>";
           }
-         ?><br/>
-        <textarea rows="1" cols="100" placeholder="Inserisci un commento..." id="commentText"></textarea>
-        <button onclick="postComment()">Pubblica</button>
+        ?>
+         <br/>
+        <textarea rows="1" cols="100" placeholder="Inserisci un commento..." id="commentText" style="display: none;" class="postCommentElms"></textarea>
+        <button onclick="postComment()" style="display: none;" class="postCommentElms">Pubblica</button>
       </div>
       <button id="modifyNoteBtn" onclick="showNoteEditor()" style="display: none;">Modifica nota</button>
       <button id="modifyNoteConfirm" onclick="modifyNote()" style="display: none;">Salva</button>
@@ -111,6 +114,9 @@
       $s = "'" . $s . "'";
       echo "<script>error($s);</script>";
     }
+    if (checkNote(connectDb(), $_GET["title"])) {
+      echo "<script> $('.comments').show();</script>";
+    }
     if (isset($_SESSION['logged_in'])) {
       if ($_SESSION['logged_in'] == '1') {
         echo "<script>$('.log').attr('hidden', true); $('#scriviNotaBtn').show();</script>";
@@ -118,6 +124,9 @@
           echo "<script>$('.adminTools').show();</script>";
         }
         echo "<script>$('#greet').html('Benvenuto,  " . $_SESSION['username'] . "');</script>";
+        if (checkNote(connectDb(), $_GET["title"])) {
+          echo "<script> $('.postCommentElms').show();</script>";
+        }
       } else {
         session_unset();  //quando si esegue il logout logged_in é settato e != da 1 quindi sappiamo che é stato eseguito il logout
         session_destroy();

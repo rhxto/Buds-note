@@ -274,8 +274,17 @@ h1.err404 {
 	&:focus{background-color: @element_colorL}
 	&:active{background-color: @element_colorL}
 }
-
-
+.opz {
+	@{font}: text;
+	font-size: 20px;
+}
+.opzM:extend(.opz) {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: url(dropdown.ico) right / 20px no-repeat #fff;
+	padding-right: 20px;
+}
 &::placeholder {
 	color: @color_1;
 	opacity: 1;

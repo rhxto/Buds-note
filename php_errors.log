@@ -2333,3 +2333,32 @@ Stack trace:
 [15-May-2019 15:20:02 Europe/Berlin] New content: Contenuto della nota.
 [15-May-2019 15:23:18 Europe/Berlin] samettl
 [15-May-2019 15:24:25 Europe/Berlin] samettl
+[15-May-2019 15:49:14 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 130
+[15-May-2019 15:49:33 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 130
+[15-May-2019 16:19:03 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 130
+[15-May-2019 16:22:17 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 130
+[15-May-2019 16:22:18 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 130
+[15-May-2019 16:23:30 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 130
+[15-May-2019 16:23:34 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 130
+[15-May-2019 16:23:41 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 130
+[15-May-2019 16:24:23 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 130
+[15-May-2019 16:25:17 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 130
+[15-May-2019 16:25:28 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 130
+[15-May-2019 16:29:07 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /var/www/html/php/viewNote.php on line 122
+[15-May-2019 16:29:56 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 133
+[15-May-2019 16:30:19 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 262
+[15-May-2019 16:30:19 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 16:33:05 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 262
+[15-May-2019 16:33:05 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 16:33:06 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 262
+[15-May-2019 16:33:06 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 16:33:11 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 136
+[15-May-2019 16:33:15 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 136
+[15-May-2019 16:35:07 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 262
+[15-May-2019 16:35:07 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 262
+[15-May-2019 16:35:07 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 16:35:11 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 139
+[15-May-2019 18:25:20 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 139
+[15-May-2019 20:13:32 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 139
+[15-May-2019 20:24:32 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/index.php on line 53
+[15-May-2019 20:25:11 Europe/Berlin] cambiamento materia

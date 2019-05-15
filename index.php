@@ -40,28 +40,29 @@
       </span>
       <span class="top15 left35 filtro">
         Filtra per utente: <input id="filtroUtente" placeholder="Nome utente..." /><br/>
-	      Filtro per materia: <input id="filtroMateria" list="materie" placeholder="Materia..."/><br/>
-	      <?php
+        Filtra per materia: <select class="opzM" id="filtroMateria">
+        <?php
           require_once 'php/core.php';
           require_once 'php/query_funs.php';
           $r = subj(connectDb(), NULL, NULL);
-          echo "<datalist id='materie'>";
           foreach ($r[1] as $res) {
-            echo "<option value='" . $res . "'>";
+            if (strpos($res, "'") !== false) {
+              $res = str_replace("'", "&#39", $res);
+            }
+            echo "<option class='opz' value='" . $res . "'>$res</option>";
           }
-          echo "</datalist>";
          ?>
-        Filtra per indirizzo: <input id="filtroIndirizzo" list="Indirizzi" placeholder="Indirizzo..." /><br/>
+       </select><br/>
+        Filtra per indirizzo: <select class='opzM' id="filtroIndirizzo"/><br/>
         <?php
           require_once 'php/core.php';
           require_once 'php/query_funs.php';
           $r = dept(connectDb(), NULL, NULL);
-          echo "<datalist id='Indirizzi'>";
           foreach ($r[1] as $res) {
-            echo "<option value='" . $res . "'>";
+            echo "<option class='opz' value='" . $res . "'>$res</option>";
           }
-          echo "</datalist>";
          ?>
+       </select><br/>
         Filtra per anno: <input type="number" id="filtroAnno"/><br/>
         Data d'inizio: <input id="filtroDatefrom" /><br/>
         Data di fine:  <input id="filtroDateto"/><br/>
