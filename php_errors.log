@@ -2256,3 +2256,52 @@ Stack trace:
 [15-May-2019 00:36:47 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
 [15-May-2019 00:47:02 Europe/Berlin] Nota non valida delete
 [15-May-2019 00:47:21 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 283
+[15-May-2019 13:01:59 Europe/Berlin] Deleting: Titolo_modificato
+[15-May-2019 13:02:01 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:02:29 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:03:58 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:04:06 Europe/Berlin] Deleting: DDDD
+[15-May-2019 13:04:13 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:05:39 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:06:23 Europe/Berlin] Deleting: ddd
+[15-May-2019 13:06:50 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:13:28 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:13:34 Europe/Berlin] Deleting: DDD
+[15-May-2019 13:14:22 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:14:44 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:15:27 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:15:39 Europe/Berlin] Deleting: DDD
+[15-May-2019 13:15:51 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:16:06 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:17:14 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 13:37:07 Europe/Berlin] Nota non valida delete
+[15-May-2019 14:31:25 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 14:32:32 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 14:32:38 Europe/Berlin] PHP Notice:  Undefined variable: sip in /var/www/html/index.php on line 170
+[15-May-2019 14:33:09 Europe/Berlin] PHP Notice:  Undefined variable: sip in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:33:49 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:33:49 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:33:49 Europe/Berlin] PHP Notice:  Undefined variable: sip in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:33:49 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:33:49 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:34:11 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:34:11 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:34:11 Europe/Berlin] PHP Notice:  Undefined variable: sip in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:34:11 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:34:11 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:34:36 Europe/Berlin] PHP Notice:  Undefined variable: sip in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:35:05 Europe/Berlin] PHP Notice:  Undefined variable: sip in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:35:47 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:35:47 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:35:47 Europe/Berlin] PHP Notice:  A non well formed numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:35:47 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:35:47 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:36:39 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:36:39 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:36:39 Europe/Berlin] PHP Notice:  A non well formed numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:36:39 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:36:39 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:37:07 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:37:07 Europe/Berlin] PHP Warning:  A non-numeric value encountered in /var/www/html/php/viewNote.php on line 135
+[15-May-2019 14:37:52 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 131
+[15-May-2019 14:39:13 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 131

@@ -1,3 +1,8 @@
+$(document).ready(function(){
+  if (localStorage.getItem("title") != null) {
+    $(".comments").show();
+  }
+});
 function logout() {
   var clickBtnValue = "logout";
   var ajaxurl = '../php/sessionDestroyer.php',
@@ -171,13 +176,18 @@ function man(c) {
   }
 }
 function deleteNote() {
-  $("#everythingAboutNote").hide();
-  $(".delNote").show();
+  $("#delNoteBtn").html("Conferma");
+  $("#delNoteBtn").attr("onclick", "delNote()");
+  $("#abortNoteDeletion").show();
+}
+function abortNoteDeletion() {
+  $("#delNoteBtn").html("Rimuovi nota");
+  $("#delNoteBtn").attr("onclick", "deleteNote()");
+  $("#abortNoteDeletion").hide();
 }
 function delNote() {
-  $(".delNote").hide();
   var ajaxurl = "../php/noteManager.php";
-  var title = $("#delNoteTtl").val();
+  var title = localStorage.getItem("title");
   data = {
     'title': title,
     'type': 'delete'
@@ -185,6 +195,7 @@ function delNote() {
   $.post(ajaxurl, data, function(response) {
     response = JSON.parse(response);
     if (response == "done") {
+      //$(".comments").remove();
       $("#warn").show();
       $("#warn").html("Fatto");
       setTimeout(function(){
@@ -193,14 +204,25 @@ function delNote() {
     } else {
       error(response);
     }
-    $("#everythingAboutNote").show();
   });
+  localStorage.removeItem("title");
+  $("#delNoteBtn").html("Rimuovi nota");
+  $("#delNoteBtn").attr("onclick", "deleteNote()");
 }
-var commentCodes = [];
+
 function delCommentShow() {
   $(".delNote").hide();
   $("#everythingAboutNote").show();
   $(".delCommentBtn").show();
+  $("#delCommentBtn").html("Annulla");
+  $("#delCommentBtn").attr("onclick", "abortCommentDeletion()");
+}
+function abortCommentDeletion() {
+  $(".delNote").hide();
+  $("#everythingAboutNote").show();
+  $(".delCommentBtn").hide();
+  $("#delCommentBtn").html("Rimuovi commento");
+  $("#delCommentBtn").attr("onclick", "delCommentShow()");
 }
 function delComment(id) {
   var ajaxurl = "../php/commentManager.php";
@@ -248,7 +270,7 @@ function modifyNote() {
       url = $(".spawnTtl").html();
       localStorage.setItem('title', url);
       //in questo modo aggiorniamo il link della pagina senza doverla ricaricare con window.location.href, i primi due parametri della funzione servono ad altre cose
-      window.history.pushState("", "", "http://server/php/viewNote.php?title=" + url.replace(" ", "%20"));
+      window.history.pushState("", "", "http://" + location.host + "/php/viewNote.php?title=" + url.replace(" ", "%20"));
     } else {
       error(response);
     }

@@ -106,7 +106,10 @@
   <p style="position:sticky;top:0px;width:100%">
     <div class="navbar" id="navbar">
       <a href="" class="navbar-left">HOME</a>
-	    <button onclick="openSearch()" class="buttonIcon navbar-left">A</button>
+	    <a id="SearchLens" onclick="openSearch()" class="navbar-left buttonIcon">A</a>
+      <a id="SearchLensMoz" onclick="openSearch()" class="navbar-left searchLensMoz" style="padding:5px 0px 0px 0px">
+        <img src="main/imageedit_1_3306425612.png">
+      </a>
       <a href="login/" class="navbar-right log">LOGIN</a>
       <a href="register/" class="navbar-right log">REGISTER</a>
       <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
@@ -163,5 +166,4 @@
     echo "<script>$('.logout').attr('hidden', true);</script>";
     //se chiudiamo la sessione anche quando uno non é loggato, non riusciamo a settare logged_in a 1
   }
-
  ?>

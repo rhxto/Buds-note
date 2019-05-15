@@ -37,7 +37,7 @@
         <span class="noteHeaderDate">Data</span>
         <span class="noteContent">Contenuto</span>
       </div>
-      <div class="comments">
+      <div class="comments" style="display: none;">
         <span>Commenti</span><br/>
         <div class="localSpawn"></div>
         <?php
@@ -60,12 +60,11 @@
     <div class="navbar adminTools" style="position:absolute;bottom:5px;padding:10px 15px 10px 15px;display:none">
       <a onclick="man('on')" class="navbar-left">Avvia manutenzione</a>
       <a onclick="man('off')" class="navbar-left">Termina manutenzione</a>
-      <a onclick="deleteNote()" class="navbar-right">Rimuovi nota</a>
-      <a onclick="delCommentShow()" class="navbar-right">Rimuovi commento</a>
+      <a onclick="abortNoteDeletion()" id="abortNoteDeletion" class="navbar-right" style="display: none;">Annulla</a>
+      <a onclick="deleteNote()" class="navbar-right" id="delNoteBtn">Rimuovi nota</a>
+      <a onclick="delCommentShow()" class="navbar-right" id="delCommentBtn">Rimuovi commento</a>
     </div>
     <div class="delNote" style="display: none;">
-      <input id="delNoteTtl" class="textInput"/>
-      <button id="delNoteConfirm" onclick="delNote()" class="delNoteButton" style="position:absolute;left:330px;">Conferma</button>
     </div>
   </body>
 </html>
@@ -132,5 +131,4 @@
     if (isNoteOwner(connectDb(), $title, $_SESSION["username"])) {
       echo "<script>$('#modifyNoteBtn').show();</script>";
     }
-
    ?>
