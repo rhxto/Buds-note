@@ -8,7 +8,6 @@
 @element_colorL: lighten(@element_color, 30%);
 @error_color: desaturate(red, 50%);
 @background_color_5: whitesmoke;
-@background_color_7: rgba(0,0,0, 0.9);
 
 @font: font-family;
 
@@ -170,15 +169,10 @@ h2.ban {
 	right: 5px;
 	padding: 10px 15px 10px 15px;
 }
-.warn {
-	@{font}: text;
-	font-size: 35px;
-	color: @color_2;
-	padding: 10px 15px 10px 15px;
+.warn:extend(.txt) {
 	background-color: @error_color;
-	border: none;
 	text-align: center;
-	border-radius: 25px;
+	border-radius: 15px;
 	position: absolute;
 	top: 100px;
 	right: 0%;
@@ -245,16 +239,18 @@ h2.ban {
 	z-index: 1;
 	top: 0;
 	left: 0;
-	background-color: @background_color_7;
+	background-color: rgba(0,0,0, 0.9);;
 }
 .filtro {
 	position: absolute;
 	font-size: 35px;
 }
+
 .noteInfoDisplay {
 	@{font}: text !important;
 	color: @color_2;
 }
+
 
 .delNoteButton:extend(.btn) {
 }
