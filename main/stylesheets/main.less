@@ -58,18 +58,9 @@ body {
 		font-size: 35px;
 		color: @color_2;
 		border: none;
+		padding: 10px 15px 10px 15px;
 	}
 
-	/*button {
-		@{font}: icons2;
-		height: 50px;
-		background-color: @element_color;
-		border: none;
-		border-radius: 25px;
-		color: @color_1;
-		font-size: 50px;
-	}
-}*/
 .buttonIcon:extend(.btn) {
 	@{font}: icons2;
 	border-radius: 0px;
@@ -82,30 +73,36 @@ body {
 }
 @-moz-document url-prefix() { //mozzilla only
 }
-	.navbar {
-		position: relative;
-		font-size: 30px;
-		background-color: @element_color;
+.navbar {
+	position: relative;
+	font-size: 30px;
+	background-color: @element_color;
+	color: @color_1;
+	width: 98.5%;
+	padding: 10px 15px 60px 15px;
+	@{font}: text;
+	a {
+		padding: 10px 15px 10px 15px;
+		text-decoration: none !important;
 		color: @color_1;
-		width: 98.5%;
-		padding: 10px 15px 60px 15px;
-		@{font}: text;
-		a {
-			padding: 10px 15px 10px 15px;
-			text-decoration: none !important;
-			color: @color_1;
-			font-size: 30px;
-			&:hover {
-				background-color: @element_colorD;
-			}
-			&:focus {
-				background-color: @element_colorD;
-			}
-			&:active {
-				background-color: @element_colorD;
-			}
+		font-size: 30px;
+		&:hover {
+			background-color: @element_colorD;
+		}
+		&:focus {
+			background-color: @element_colorD;
+		}
+		&:active {
+			background-color: @element_colorD;
 		}
 	}
+}
+.navbar-right {
+	float: right !important;
+}
+.navbar-left {
+	float: left !important;
+}
 
 button {
 	&:hover {
@@ -119,7 +116,6 @@ button {
 	}
 }
 
-
 .textInput:extend(.txt) {
 	&:hover {
 		background-color: @element_colorD;
@@ -131,52 +127,35 @@ button {
 		background-color: @element_colorD;
 	}
 	@{font}: text;
-	font-size: 35px;
 	color: @color_1;
 	background-color: @element_color;
-	border: none;
 	text-align: center;
 	border-radius: 15px;
-	padding: 10px 15px 10px 15px;
-}
-.navbar-right {
-	float: right !important;
-}
-.navbar-left {
-	float: left !important;
-}
-.err404 {
-	@{font}: text;
-	color: @color_2;
-	text-align: center;
 }
 .ban {
 	@{font}: text;
 	color: @color_2;
 	text-align: center;
 }
-h1.err404 {
-	font-size: 50px;
+
+.err404:extend(.txt) {
+	text-align: center;
 }
+h1.err404 {
+		font-size: 50px;
+		font-weight: bold;
+}
+
 h1.ban {
 	font-size: 50px;
 }
-h2.err404 {
-	font-size: 35px;
-}
+
 h2.ban {
 	font-size: 35px;
 }
-.button {
-	@{font}: text;
-	font-size: 35px;
-	height: 50px;
+.button:extend(.btn) {
 	color: @color_1;
-	background-color: @element_color;
-	border: none;
-	text-align: center;
 	position: center;
-	border-radius: 25px;
 }
 .noteButton {
 	@{font}: text;
