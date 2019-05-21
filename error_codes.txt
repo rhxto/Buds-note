@@ -13,6 +13,7 @@ NOTENV = testo della nota non valido
 NOTEIE = errore interno generico nel settore note
 NOTEDE = erroe nella cancellazione della nota
 NOTESC = caratteri speciali non validi in nota
+NOTEWAE = note gia' esistente (in tentativo di scrittura)
 NOTEANV = azione della nota non valida (tipi: write, update e delete)
 NOTEDNA = tentativo di cancellare una nota non autorizzato
 NOTEDNF = nita da cancellare non trovata

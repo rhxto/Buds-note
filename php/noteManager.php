@@ -18,7 +18,10 @@
       error_log("Nota non valida write");
       die(json_encode("NOTENV"));
     } elseif ($type == "write") {
-      $title = test_input($_POST["title"]);
+      $title = test_input($_POST["title"]);	    
+      if (checkNote(connectDb(), $title)) {
+        die(json_encode("NOTEWAE"));
+      }
       $content = test_input($_POST["content"]);
       $subj = test_input($_POST["subj"]);
       $dept = test_input($_POST["dept"]);

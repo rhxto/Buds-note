@@ -27,15 +27,17 @@
     </p>
     <div id="everythingAboutNote">
       <div class="noteInfoDisplay" hidden>
-        <span class="noteHeaderTtl">
-          <h2>Titolo</h2>
-        </span>
-        <span class="noteHeaderUser">User</span>
-        <span class="noteHeaderDept">Indirizzo</span>
-        <span class="noteHeaderSubj">Materia</span>
-        <span class="noteHeaderYear">Anno</span>
-        <span class="noteHeaderDate">Data</span>
-        <span class="noteContent">Contenuto</span>
+        <div class="noteHeaderTtl">
+        </div>
+        <div class="noteInfo">
+          <br/>
+          <div class="noteHeaderUser">Utente: </div>
+          <div class="noteHeaderDept">Indirizzo: </div>
+          <div class="noteHeaderSubj">Materia: </div>
+          <div class="noteHeaderYear">Anno: </div>
+          <div class="noteHeaderDate">Data: </div><br/>
+        </div>
+        <div class="noteContent"></div>
       </div>
       <div class="comments" style="display: none;">
         <span>Commenti</span><br/>
@@ -59,7 +61,7 @@
     </div>
     <div id="warn" class="warn" style="display:none">
     </div>
-    <div class="navbar adminTools" style="position:absolute;bottom:5px;padding:10px 15px 10px 15px;display:none">
+    <div class="navbar adminTools" style="display:none;">
       <a onclick="man('on')" class="navbar-left">Avvia manutenzione</a>
       <a onclick="man('off')" class="navbar-left">Termina manutenzione</a>
       <a onclick="abortNoteDeletion()" id="abortNoteDeletion" class="navbar-right" style="display: none;">Annulla</a>
@@ -96,12 +98,14 @@
         echo "<h6 style='font-size: 35px;'>Nota non trovata ):</h6>";
       } else {
         echo "<script>$('.noteHeaderTtl').append('<span class=spawnTtl>" . $title . "</span><br/>'); localStorage.setItem('title', '" . $title . "');</script>";
-        echo "<script>$('.noteHeaderUser').append('<br/>" . $note[0]["user"] . "<br/>');</script>";
-        echo "<script>$('.noteHeaderDept').append('<br/>" . $note[0]["dept"] . "<br/>');</script>";
-        echo "<script>$('.noteHeaderSubj').append('<br/>" . $note[0]["subj"] . "<br/>');</script>";
-        echo "<script>$('.noteHeaderYear').append('<br/>" . $note[0]["year"] . "<br/>');</script>";
-        echo "<script>$('.noteHeaderDate').append('<br/>" . $note[0]["date"] . "<br/>');</script>";
-        echo "<script>$('.noteContent').append('<br/><span class=spawnContent>" . getNote(connectDb(), $title) . "</span><br/>');</script>";
+        echo "<script>$('.noteHeaderUser').append('" . $note[0]["user"] . "');</script>";
+        echo "<script>$('.noteHeaderDept').append('" . $note[0]["dept"] . "');</script>";
+        echo "<script>$('.noteHeaderSubj').append('" . $note[0]["subj"] . "');</script>";
+        echo "<script>$('.noteHeaderYear').append('" . $note[0]["year"] . "');</script>";
+        echo "<script>$('.noteHeaderDate').append('" . $note[0]["date"] . "');</script>";
+      //  $fc = str_replace("&lt;br /&gt;", "<br />", getNote(connectDb(), $title));
+        $fc = str_replace("'", "&#39", getNote(connectDb(), $title));
+        echo "<script>$('.noteContent').append('<br/><span class=spawnContent>" . $fc . "</span><br/>');</script>";
       }
     }
   }

@@ -2,7 +2,6 @@
   function err_handler($code, $msg) : bool {
     switch ($code) {
       case 23000:
-      echo json_encode("NOTEDE");
       error_log("Giá esistente, " . $msg);
       return true;
       break;

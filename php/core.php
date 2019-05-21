@@ -23,7 +23,6 @@
       die(json_encode("IE"));
       return true;
     } else {
-      die();
       return false;
     }
   }

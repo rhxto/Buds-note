@@ -84,7 +84,10 @@ function error(err) {
       $("#warn").html("La nota che volevi aggiornare non é stata trovata, copia le modifiche e prova a ricaricare la pagina. Se il problema persiste contatta gli amministratori.");
       break;
     case "FIREFOX":
-      $("#warn").html("A causa di errori nel broswer, alcuni elementi del sito potrebbero non funzionare correttamente in Firefox. Vedi: https://support.mozilla.org/en-US/questions/1191898");
+      $("#warn").html("A causa di errori nel broswer, alcuni elementi del sito potrebbero non funzionare correttamente in Firefox (consigliamo Chrome o Edge). Vedi: https://support.mozilla.org/en-US/questions/1191898");
+      break;
+    case "NOTEWAE":
+      $("#warn").html("Nota gi&#224; esistente");
       break;
     default:
       $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);

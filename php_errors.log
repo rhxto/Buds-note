@@ -2362,3 +2362,75 @@ Stack trace:
 [15-May-2019 20:13:32 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 139
 [15-May-2019 20:24:32 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/index.php on line 53
 [15-May-2019 20:25:11 Europe/Berlin] cambiamento materia
+[15-May-2019 21:55:50 Europe/Berlin] Deleting: Titolo_della_nota
+[15-May-2019 21:55:51 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 262
+[15-May-2019 21:55:51 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 262
+[15-May-2019 21:55:51 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 21:56:21 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 22:00:16 Europe/Berlin] Deleting: Titolo_della_nota
+[15-May-2019 22:00:17 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 262
+[15-May-2019 22:00:17 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 262
+[15-May-2019 22:00:17 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 22:00:50 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 22:19:20 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function n12br() in /var/www/html/php/viewNote.php:110
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/php/viewNote.php on line 110
+[15-May-2019 22:19:23 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function n12br() in /var/www/html/php/viewNote.php:110
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/php/viewNote.php on line 110
+[15-May-2019 22:19:49 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function n12br() in /var/www/html/php/viewNote.php:110
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/php/viewNote.php on line 110
+[15-May-2019 22:30:30 Europe/Berlin] Deleting: Titolo_della_nota
+[15-May-2019 22:31:35 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 22:32:45 Europe/Berlin] PHP Parse error:  syntax error, unexpected ',' in /var/www/html/php/viewNote.php on line 105
+[15-May-2019 22:41:44 Europe/Berlin] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /var/www/html/php/viewNote.php on line 105
+[15-May-2019 22:42:14 Europe/Berlin] Deleting: Titolo_della_nota
+[15-May-2019 22:42:47 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 22:48:32 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[15-May-2019 22:55:56 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 262
+[15-May-2019 22:55:56 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[15-May-2019 22:56:01 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[15-May-2019 22:59:41 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[16-May-2019 08:21:43 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[16-May-2019 12:59:10 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[16-May-2019 13:38:53 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[16-May-2019 14:43:36 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[16-May-2019 14:46:35 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[21-May-2019 13:42:00 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[21-May-2019 13:42:00 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`Buds_db`.`note`, CONSTRAINT `subj_pri` FOREIGN KEY (`subj`) REFERENCES `subj` (`name`))
+[21-May-2019 13:42:06 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[21-May-2019 13:42:06 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`Buds_db`.`note`, CONSTRAINT `subj_pri` FOREIGN KEY (`subj`) REFERENCES `subj` (`name`))
+[21-May-2019 13:42:44 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[21-May-2019 13:42:44 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`Buds_db`.`note`, CONSTRAINT `subj_pri` FOREIGN KEY (`subj`) REFERENCES `subj` (`name`))
+[21-May-2019 14:14:28 Europe/Berlin] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /var/www/html/php/query_funs.php on line 225
+[21-May-2019 14:14:46 Europe/Berlin] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /var/www/html/php/query_funs.php on line 225
+[21-May-2019 14:16:02 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 550
+[21-May-2019 14:16:02 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`Buds_db`.`note`, CONSTRAINT `subj_pri` FOREIGN KEY (`subj`) REFERENCES `subj` (`name`))
+[21-May-2019 14:19:14 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[21-May-2019 14:19:14 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`Buds_db`.`note`, CONSTRAINT `subj_pri` FOREIGN KEY (`subj`) REFERENCES `subj` (`name`))
+[21-May-2019 14:22:02 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 548
+[21-May-2019 14:22:02 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`Buds_db`.`note`, CONSTRAINT `subj_pri` FOREIGN KEY (`subj`) REFERENCES `subj` (`name`))
+[21-May-2019 14:38:27 Europe/Berlin] Nota non valida write
+[21-May-2019 14:38:45 Europe/Berlin] Nota non valida write
+[21-May-2019 14:39:14 Europe/Berlin] Nota non valida write
+[21-May-2019 14:52:12 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[21-May-2019 14:52:59 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[21-May-2019 14:53:18 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 262
+[21-May-2019 14:53:18 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[21-May-2019 14:53:22 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[21-May-2019 14:55:27 Europe/Berlin] Giá esistente, SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Nota_di_prova' for key 'PRIMARY'
+[21-May-2019 15:03:19 Europe/Berlin] PHP Notice:  Undefined offset: 0 in /var/www/html/php/query_funs.php on line 262
+[21-May-2019 15:03:19 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[21-May-2019 15:03:19 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[21-May-2019 15:03:19 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[21-May-2019 15:03:21 Europe/Berlin] PHP Notice:  Undefined index: username in /var/www/html/php/viewNote.php on line 143
+[21-May-2019 15:13:40 Europe/Berlin] PHP Notice:  Undefined variable: title in /var/www/html/php/noteManager.php on line 21
+[21-May-2019 15:13:40 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: Argument 2 passed to checkNote() must be of the type string, null given, called in /var/www/html/php/noteManager.php on line 21 and defined in /var/www/html/php/query_funs.php:255
+Stack trace:
+#0 /var/www/html/php/noteManager.php(21): checkNote(Object(PDO), NULL)
+#1 {main}
+  thrown in /var/www/html/php/query_funs.php on line 255

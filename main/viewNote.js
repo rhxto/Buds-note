@@ -245,7 +245,7 @@ function delComment(id) {
 function showNoteEditor() {
   $("#modifyNoteBtn").hide();
   $(".spawnTtl").replaceWith("<textarea id='modifyTtlTxtH' rows='1' cols='100'>" + $(".spawnTtl").html() + "</textarea>");
-  $(".spawnContent").replaceWith("<textarea id='modifyContentTxtH' cols='100' rows='10'>" + $(".spawnContent").html() + "</textarea>");
+  $(".spawnContent").replaceWith("<textarea id='modifyContentTxtH' cols='100' rows='10'>" + $(".spawnContent").html().replace(/<br\s?\/?>/g,"\n") + "</textarea>");
   $("#modifyNoteConfirm").show();
 }
 function modifyNote() {
@@ -259,7 +259,7 @@ function modifyNote() {
     'newTitle': $(".spawnTtl").html(),
     'newContent': $(".spawnContent").html(),
     'type': 'update'
-  }
+}
   $.post(ajaxurl, data, function(response) {
     response = JSON.parse(response);
     if (response == "done") {

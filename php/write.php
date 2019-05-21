@@ -48,7 +48,7 @@ require 'funs.php';
     $PasswordDb = '"' . $Password . '"';
     $accLvl = 0;
     $fail_acc = 0;
-    $status = mysqlWriteCrd("localhost", "system", "the_best_admin_passwd", $UsernameDb, $PasswordDb, $Mail, $accLvl, $fail_acc, $LastLog);
+    $status = mysqlWriteCrd($UsernameDb, $PasswordDb, $Mail, $accLvl, $fail_acc, $LastLog);
     exec("mkdir ../notedb/$Username");
     if ($status == "passed") {
       echo 'passed';
