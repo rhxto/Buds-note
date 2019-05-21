@@ -112,38 +112,34 @@
       }
     }
   }
-    $s = getManStatus();
-    if($s == "true") {
-      echo "<script>error('man');</script>";
-    } elseif ($s == "false") {
-
-    } else {
-      $s = "'" . $s . "'";
-      echo "<script>error($s);</script>";
-    }
-    if (checkNote(connectDb(), $_GET["title"])) {
-      echo "<script> $('.comments').show();</script>";
-    }
-    if (isset($_SESSION['logged_in'])) {
-      if ($_SESSION['logged_in'] == '1') {
-        echo "<script>$('.log').attr('hidden', true); $('#scriviNotaBtn').show();</script>";
-        if(getAcclvl($_SESSION["username"]) == 1) {
+  if(gettype($m = getManStatus()) == String) {
+    echo "<script>error($m);</script>";
+  } elseif ($m == true) {
+    echo "<script>error('man');</script>";
+  }
+  if (checkNote(connectDb(), $_GET["title"])) {
+    echo "<script> $('.comments').show();</script>";
+  }
+  if (isset($_SESSION['logged_in'])) {
+    if ($_SESSION['logged_in'] == '1') {
+      echo "<script>$('.log').attr('hidden', true); $('#scriviNotaBtn').show();</script>";
+    if(getAcclvl($_SESSION["username"]) == 1) {
           echo "<script>$('.adminTools').show();</script>";
-        }
-        echo "<script>$('#greet').html('Benvenuto,  " . $_SESSION['username'] . "');</script>";
-        if (checkNote(connectDb(), $_GET["title"])) {
-          echo "<script> $('.postCommentElms').show();</script>";
-        }
-      } else {
-        session_unset();  //quando si esegue il logout logged_in é settato e != da 1 quindi sappiamo che é stato eseguito il logout
-        session_destroy();
-        echo "<script>$('.logout').attr('hidden', true);</script>";
+      }
+      echo "<script>$('#greet').html('Benvenuto,  " . $_SESSION['username'] . "');</script>";
+      if (checkNote(connectDb(), $_GET["title"])) {
+      echo "<script> $('.postCommentElms').show();</script>";
       }
     } else {
+      session_unset();  //quando si esegue il logout logged_in é settato e != da 1 quindi sappiamo che é stato eseguito il logout
+      session_destroy();
       echo "<script>$('.logout').attr('hidden', true);</script>";
-      //se chiudiamo la sessione anche quando uno non é loggato, non riusciamo a settare logged_in a 1
     }
-    if (isNoteOwner(connectDb(), $title, $_SESSION["username"])) {
-      echo "<script>$('#modifyNoteBtn').show();</script>";
-    }
-   ?>
+  } else {
+    echo "<script>$('.logout').attr('hidden', true);</script>";
+  //se chiudiamo la sessione anche quando uno non é loggato, non riusciamo a settare logged_in a 1
+  }
+  if (isNoteOwner(connectDb(), $title, $_SESSION["username"])) {
+    echo "<script>$('#modifyNoteBtn').show();</script>";
+  }
+?>

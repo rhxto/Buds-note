@@ -155,30 +155,50 @@
     }
   }
 
+  /*
+   * La funzione ritorna il livello di accesso di un utente
+   *
+   * @param $user Lo username dell'utente del quale si vuole sapere l'acc_lvl
+   *
+   * @return Il numero corrispondente all'acc_lvl
+   */
   function getAcclvl($user) {
-    $conn = connectDb();
-    $getLvl = $conn->prepare("SELECT acc_lvl FROM user WHERE username = :usr");
-    $getLvl->bindParam(":usr", $user);
-    $getLvl->execute();
-    $result = $getLvl->fetchAll();
-    return $result[0]["acc_lvl"];
+    try {
+      $conn = connectDb();
+      $getLvl = $conn->prepare("SELECT acc_lvl FROM user WHERE username = :usr");
+      $getLvl->bindParam(":usr", $user);
+      $getLvl->execute();
+      $result = $getLvl->fetchAll();
+      return $result[0]["acc_lvl"];
+    } catch(PDOException $e) {
+      PDOError($e);
+      return "IEAG";
+    } finally {
+      $conn = null;
+    }
   }
-  function setManStatus($val) {
-    if (getManStatus() == "true" && $val == "true") {
+
+  /*
+   * Serve ad attivare o disattivare lo stato manutenzione
+   *
+   * @param $val Il valore a cui voglio settare manutenzione (TRUE per attivata, FALSE per disattivata)
+   *
+   * @return "done" Se la query di modifica è andata a buon $fine
+   * @return "MANAA" Se lo stato era già attivato
+   * @return "MANAT" Se lo stato era già disattivato
+   * @return "IEMANS" Se viene sollevato un'PDOException
+   */
+  function setManStatus(bool $val) {
+    if (getManStatus() && $val == true) {
       return "MANAA";
-    } elseif (getManStatus() == "false" && $val != "true") {
+    } elseif (!getManStatus() && $val != true) {
       return "MANAT";
     } else {
       try {
         $conn = connectDb();
         $query = $conn->prepare("UPDATE manutenzione SET val = :val");
-        if ($val == "true") {
-          $v = 1;
-          //usare un bindParam con 1 qui e 0 nell'else da errore perché bindParam vuole una variabile
-        } else {
-          $v = 0;
-        }
-        $query->bindParam(':val', $v);
+        $val = (int)$val;
+        $query->bindParam(':val', $val);
         $query->execute();
         return "done";
       } catch(PDOException $e) {
@@ -189,6 +209,13 @@
       }
     }
   }
+
+  /*
+   * Serve a ritornare il valore manutenzione
+   *
+   * @return true Se è attivata la manutenzione
+   * @return false Se è disattivata la manutenzione
+   */
   function getManStatus() {
     try {
       $conn = connectDb();
@@ -196,9 +223,9 @@
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $result = $query->fetchAll();
       if ($result[0]["val"] == 1) {
-        return "true";
+        return true;
       } else {
-        return "false";
+        return false;
       }
     } catch(PDOException $e) {
       PDOError($e);
@@ -207,6 +234,7 @@
       $conn = null;
     }
   }
+
   function differenzaData($inzio, $fine){
     $inzio = strtotime($inzio);
     $fine = strtotime($fine);
