@@ -131,17 +131,19 @@
    * @return true Se il dato username è contenuto nel DB
    * @return false Se il dato username non è presente nel DB
    */
-  function mysqlChckUsr(String $username, String $password, String $server, String $Username) : bool {
+  function mysqlChckUsr(String $username) : bool {
     try {
       $conn = connectDb();
-      $getUsers = $conn->query("SELECT * FROM user ORDER BY username");
-      $getUsers->setFetchMode(PDO::FETCH_ASSOC);
-      $users = $getUsers->fetchAll();
-      $utenti = array();
-      foreach ($users as $user) {
-	      array_push($utenti, $user['username']);
-      }
-      if (in_array($Username, $utenti)) {
+      $query = $conn->prepare("SELECT username FROM user WHERE username LIKE :username");
+      $query->bindParam(":username", $username);
+      /*
+      *$getLvl->execute();
+      $result = $getLvl->fetchAll();
+      return $result[0]["acc_lvl"];
+      */
+      $query->execute();
+      $users = $query->fetchAll();
+      if (!empty($users)) {
         return true;
       } else {
         return false;
