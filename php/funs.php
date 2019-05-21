@@ -1,13 +1,21 @@
 <?php
-//buono3
+
   require_once "core.php";
   function logD(String $s) {
     shell_exec("logger $s");
   }
 
-  function accLimit($usr, $pw, $conn){
+/*
+ * Funzione per verificare se l'utente non ha superato i 5 failed access
+ *
+ * @param $usr Lo username dell'utente da ricercare
+ * @param $conn La connessione che sto usando per comunicare con il DB 
+ *
+ * @return true Se l'utente ha 5 o meno di 5 failed access
+ * @return false Se l'utente ha più di 5 failed access
+ */
+  function accLimit($usr, $conn){
     $usr = '"' . $usr . '"';
-    $pw = '"' . $pw . '"';
     $accs = $conn->query("SELECT fail_acc FROM user WHERE username = $usr");
     $accs->setFetchMode(PDO::FETCH_ASSOC);
     $acc = $accs->fetchAll();
@@ -18,12 +26,38 @@
       return false;
     }
   }
-
-  function mysqlWriteCrd(String $server, String $username, String $password, String $usernameDb, String $passwordDb, String $Email, int $accLvl, int $fail_acc, String $date) {
-    $Email = '"' . $Email . '"';
+ 
+  /*
+   * Aggiunge un utente con i parametri passati
+   *
+   * @param $username Lo username che si vuole dare al nuovo user
+   * @param $password La password che si vuole dare al nuovo user
+   * @param $email La mail che si vuole collegare al nuovo user
+   * @param $acc_lvl L'acc_lvl che si vuole assegnare al nuovo user
+   * @param $fail_acc Il numero di fail_acc che si vogliono attribuire al nuovo user
+   * @param $last_log La data dell'ultimo log dell'utente
+   *
+   * @return "passed" Se tutto è andato bene
+   * @return "internalError" Se manca username o password o email o se viene sollevato una PDOException durente il binding o quando viene lanciata la query
+   */
+  function mysqlWriteCrd(String $username, String $password, String $email, int $acc_lvl, int $fail_acc, String $last_log) {
+    $email = '"'.$email.'"';
+    if(($username = " ") || ($password = " ") || ($email = " ")){
+	return "internalError";	    
+    }
+    if(($fail_acc<0) || ($fail_acc>5)){
+	$fail_acc = 0;	    
+    }
     try {
       $conn = connectDb();
-      $conn->exec("INSERT INTO user (username, pw, mail, acc_lvl, fail_acc, last_log) VALUES ($usernameDb, $passwordDb, $Email, $accLvl, $fail_acc, $date)");
+      $query = $conn->prepare("INSERT INTO user (username, pw, mail, acc_lvl, fail_acc, last_log) VALUES (:username, :password, :email, :acc_lvl, :fail_acc, :last_log)");
+      $query->bindParam(":username", $username);
+      $query->bindParam(":password", $password);
+      $query->bindParam(":email", $email);
+      $query->bindParam(":acc_lvl", $acc_lvl);
+      $query->bindParam(":fail_acc", $fail_acc);
+      $query->bindParam(":last_log", $last_log);
+      $query->execute();
       return "passed";
     } catch(PDOException $e) {
       PDOError($e);
@@ -85,7 +119,16 @@
       $conn = null;
     }
   }
-  function mysqlChckUsr(String $server, String $username, String $password, String $Username) : bool {
+  
+  /* 
+   * La funzione serve a verificare che uno user con il dato username sia presente nel DB
+   * 
+   * @param $username Lo username che deve avere lo user nel DB
+   *
+   * @return true Se il dato username è contenuto nel DB
+   * @return false Se il dato username non è presente nel DB
+   */
+  function mysqlChckUsr(String $username, String $password, String $server, String $Username) : bool {
     try {
       $conn = connectDb();
       $getUsers = $conn->query("SELECT * FROM user ORDER BY username");
@@ -106,6 +149,7 @@
       $conn = null;
     }
   }
+
   function getAcclvl($user) {
     $conn = connectDb();
     $getLvl = $conn->prepare("SELECT acc_lvl FROM user WHERE username = :usr");
