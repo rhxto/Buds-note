@@ -43,17 +43,23 @@ require 'funs.php';
     }
     $Password = hash("sha256", $Password);
     $Mail = hash("sha256", $Mail);
-    $LastLog =  '"' . date("Y-m-d H:i:s") . '"';
-    $UsernameDb = '"' . $Username . '"';
-    $PasswordDb = '"' . $Password . '"';
+    $LastLog =  date("Y-m-d H:i:s");
+    //$UsernameDb = '"' . $Username . '"';
+    //$PasswordDb = '"' . $Password . '"';
     $accLvl = 0;
     $fail_acc = 0;
-    $status = mysqlWriteCrd($UsernameDb, $PasswordDb, $Mail, $accLvl, $fail_acc, $LastLog);
-    exec("mkdir ../notedb/$Username");
+    $status = mysqlWriteCrd($Username, $Password, $Mail, $accLvl, $fail_acc, $LastLog);
+    //ok, non so perché ma per avere l'output in $r al posto che farlo andare chissá dove (in genere va in ${APACHE_LOG_DIR}) doobbiamo mettere 2>&1 alla fine... bho?
     if ($status == "passed") {
+      exec("mkdir ../notedb/$Username 2>&1", $r);
+      if (!empty($r)) {
+        die('UWFE');
+      }
       echo 'passed';
+    } elseif ($status == "ge") {
+      echo 'usernameEsiste';
     } else {
-      echo 'internalError';
+      echo "UWIE";
     }
   }
   ?>

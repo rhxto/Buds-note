@@ -9,7 +9,7 @@
  * Funzione per verificare se l'utente non ha superato i 5 failed access
  *
  * @param $usr Lo username dell'utente da ricercare
- * @param $conn La connessione che sto usando per comunicare con il DB 
+ * @param $conn La connessione che sto usando per comunicare con il DB
  *
  * @return true Se l'utente ha 5 o meno di 5 failed access
  * @return false Se l'utente ha più di 5 failed access
@@ -26,7 +26,7 @@
       return false;
     }
   }
- 
+
   /*
    * Aggiunge un utente con i parametri passati
    *
@@ -41,12 +41,12 @@
    * @return "internalError" Se manca username o password o email o se viene sollevato una PDOException durente il binding o quando viene lanciata la query
    */
   function mysqlWriteCrd(String $username, String $password, String $email, int $acc_lvl, int $fail_acc, String $last_log) {
-    $email = '"'.$email.'"';
-    if(($username = " ") || ($password = " ") || ($email = " ")){
-	return "internalError";	    
+    //$email = '"'.$email.'"';
+    if(($username == " ") || ($password == " ") || ($email == " ")){
+	    return "internalError";
     }
     if(($fail_acc<0) || ($fail_acc>5)){
-	$fail_acc = 0;	    
+	    $fail_acc = 0;
     }
     try {
       $conn = connectDb();
@@ -60,8 +60,11 @@
       $query->execute();
       return "passed";
     } catch(PDOException $e) {
-      PDOError($e);
-      return "internalError";
+      if (PDOError($e)) {
+        return "ge";
+      } else {
+        return "internalError";
+      }
     } finally {
       $conn = null;
     }
@@ -80,7 +83,7 @@
         array_push($passwords, $user['pw']);
       }
       if (in_array($cnfUsr, $utenti)) {
-        if(accLimit($cnfUsr, $cnfPw, $conn)) {
+        if(accLimit($cnfUsr, $conn)) {
           if (in_array($cnfPw, $passwords)) {
             $cnfUsr = '"' . $cnfUsr . '"';
             $conn->exec("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = $cnfUsr");
@@ -119,10 +122,10 @@
       $conn = null;
     }
   }
-  
-  /* 
+
+  /*
    * La funzione serve a verificare che uno user con il dato username sia presente nel DB
-   * 
+   *
    * @param $username Lo username che deve avere lo user nel DB
    *
    * @return true Se il dato username è contenuto nel DB

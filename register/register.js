@@ -57,14 +57,12 @@ function errore(err) {
   switch (err) {
     case "usernameEsiste":
     $("#Warning").html("Username giá esistente!");
-    break;
+      break;
     case "nonAN":
     $("#Warning").html("Username o password non validi (niente caratteri speciali)!");
-    break;
-    case "internalError":
-    $("#Warning").html("Errore interno");
+      break;
     default:
-    $("#Warning").html("Errore");
+    $("#Warning").html("Errore (riferisci questo messaggio agli amministratori)" + " Codice: " + err);
     break;
   }
 }

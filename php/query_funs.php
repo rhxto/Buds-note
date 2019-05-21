@@ -222,7 +222,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       return true;
     } catch (PDOException $e) {
       PDOError($e);
-      die(json_encode("NOTEW")); 
+      die(json_encode("NOTEW"));
     } finally {
       $conn = null;
     }
@@ -281,7 +281,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $dir = $query->fetchAll();
       $dir = $dir[0]["dir"];
-      return file_get_contents("../$dir");
+      return file("../$dir");
     } catch (PDOException $e) {
       PDOError($e);
       return false;

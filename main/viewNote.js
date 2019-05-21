@@ -245,19 +245,21 @@ function delComment(id) {
 function showNoteEditor() {
   $("#modifyNoteBtn").hide();
   $(".spawnTtl").replaceWith("<textarea id='modifyTtlTxtH' rows='1' cols='100'>" + $(".spawnTtl").html() + "</textarea>");
-  $(".spawnContent").replaceWith("<textarea id='modifyContentTxtH' cols='100' rows='10'>" + $(".spawnContent").html().replace(/<br\s?\/?>/g,"\n") + "</textarea>");
+  //senza /.../g js rimpiazza solo il primo match
+  $(".spawnContent").replaceWith("<textarea id='modifyContentTxtH' cols='100' rows='10'>" + $(".spawnContent").html().replace(/<br>/g,"\n") + "</textarea>");
   $("#modifyNoteConfirm").show();
 }
 function modifyNote() {
   $("#modifyNoteConfirm").hide();
   $("#modifyNoteBtn").show();
   $("#modifyTtlTxtH").replaceWith("<span class='spawnTtl'>" + $("#modifyTtlTxtH").val() + "</span>");
-  $("#modifyContentTxtH").replaceWith("<span class='spawnContent'>" + $("#modifyContentTxtH").val() + "</span>");
+  var content = $("#modifyContentTxtH").val();
+  $("#modifyContentTxtH").replaceWith("<span class='spawnContent'>" + $("#modifyContentTxtH").val().replace(/\n/g, "<br>") + "</span>");
   var ajaxurl = "../php/noteManager.php";
   data = {
     'title': localStorage.getItem("title"),
     'newTitle': $(".spawnTtl").html(),
-    'newContent': $(".spawnContent").html(),
+    'newContent': content,
     'type': 'update'
 }
   $.post(ajaxurl, data, function(response) {

@@ -1,4 +1,5 @@
 <?php
+  require_once 'funs.php';
   function err_handler($code, $msg) : bool {
     switch ($code) {
       case 23000:

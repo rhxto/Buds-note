@@ -21,9 +21,9 @@
     $exist = err_handler($e->getCode(), $e->getMessage());
     if (!$exist) {
       die(json_encode("IE"));
-      return true;
-    } else {
       return false;
+    } else {
+      return true;
     }
   }
 ?>

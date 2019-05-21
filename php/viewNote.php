@@ -103,9 +103,12 @@
         echo "<script>$('.noteHeaderSubj').append('" . $note[0]["subj"] . "');</script>";
         echo "<script>$('.noteHeaderYear').append('" . $note[0]["year"] . "');</script>";
         echo "<script>$('.noteHeaderDate').append('" . $note[0]["date"] . "');</script>";
-      //  $fc = str_replace("&lt;br /&gt;", "<br />", getNote(connectDb(), $title));
-        $fc = str_replace("'", "&#39", getNote(connectDb(), $title));
-        echo "<script>$('.noteContent').append('<br/><span class=spawnContent>" . $fc . "</span><br/>');</script>";
+        echo "<script>$('.noteContent').append('<span class=spawnContent></span><br/>');</script>";
+        foreach (getNote(connectDb(), $title) as $row) {
+          $row = str_replace("\n", "<br />", $row);
+          $row = str_replace("'", "&#39", $row);
+          echo "<script>$('.spawnContent').append('" . $row . "');</script>";
+        }
       }
     }
   }
