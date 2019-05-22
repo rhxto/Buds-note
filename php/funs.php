@@ -1,6 +1,11 @@
 <?php
-
   require_once "core.php";
+
+  /*
+   * Funzione per creare delle entry nel journalctl (log live per debug)
+   *
+   * @param $s stringa da inserire
+  */
   function logD(String $s) {
     shell_exec("logger $s");
   }
@@ -15,11 +20,12 @@
  * @return false Se l'utente ha più di 5 failed access
  */
   function accLimit($usr, $conn){
-    $usr = '"' . $usr . '"';
-    $accs = $conn->query("SELECT fail_acc FROM user WHERE username = $usr");
-    $accs->setFetchMode(PDO::FETCH_ASSOC);
-    $acc = $accs->fetchAll();
-    $fail_acc = $acc[0];
+    $query = $conn->prepare("SELECT fail_acc FROM user WHERE username = :username");
+    $query->bindParam(":username", $usr);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
+    $query->execute();
+    $acc = $query->fetchAll();
+    $fail_acc = $acc[0]["fail_acc"];
     if($fail_acc['fail_acc'] <= 5){
       return true;
     } else {
