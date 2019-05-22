@@ -56,14 +56,14 @@
         <textarea rows="1" cols="100" placeholder="Inserisci un commento..." id="commentText" style="display: none;" class="postCommentElms"></textarea>
         <button onclick="postComment()" style="display: none;" class="postCommentElms">Pubblica</button>
       </div>
-      <button id="modifyNoteBtn" onclick="showNoteEditor()" style="display: none;">Modifica nota</button>
-      <button id="modifyNoteConfirm" onclick="modifyNote()" style="display: none;">Salva</button>
     </div>
     <div id="warn" class="warn" style="display:none">
     </div>
     <div class="navbar adminTools" style="display:none;">
       <a onclick="man('on')" class="navbar-left">Avvia manutenzione</a>
       <a onclick="man('off')" class="navbar-left">Termina manutenzione</a>
+      <a id="modifyNoteBtn" onclick="showNoteEditor()" class="navbar-right" style="display: none;">Modifica nota</a>
+      <a id="modifyNoteConfirm" onclick="modifyNote()"class="navbar-right" style="display: none;">Salva</a>
       <a onclick="abortNoteDeletion()" id="abortNoteDeletion" class="navbar-right" style="display: none;">Annulla</a>
       <a onclick="deleteNote()" class="navbar-right" id="delNoteBtn">Rimuovi nota</a>
       <a onclick="delCommentShow()" class="navbar-right" id="delCommentBtn">Rimuovi commento</a>

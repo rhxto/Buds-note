@@ -236,10 +236,10 @@
   }
 
   /*
-   * Prende due date sotto forma di stringhe e restituisce la differenza 
+   * Prende due date sotto forma di stringhe e restituisce la differenza
    *
    * @param inizio La data iniziale
-   * @param fine La data finale 
+   * @param fine La data finale
    *
    * @return La differenza fra due date riportate come int
    */
