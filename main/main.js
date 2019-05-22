@@ -89,9 +89,6 @@ function error(err) {
     case "NOTEWAE":
       $("#warn").html("Nota gi&#224; esistente");
       break;
-    case "IEAG":
-      $("#warn").html("Errore nel retrieve di acc**** se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
-      break;
     default:
       $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
     break;

@@ -123,29 +123,8 @@
       </div>
       <div class="scriviNota" style="display: none;">
         Titolo: <textarea rows="1" cols="100" id="writeNoteTitle" class="scriviNotaText"></textarea><br/>
-        Materia: <select class="opzM" id="writeNoteSubj">
-        <?php
-          require_once 'php/core.php';
-          require_once 'php/query_funs.php';
-          $r = subj(connectDb(), NULL, NULL);
-          foreach ($r[1] as $res) {
-            if (strpos($res, "'") !== false) {
-              $res = str_replace("'", "&#39", $res);
-            }
-            echo "<option class='opz' value='" . $res . "'>$res</option>";
-          }
-         ?>
-       </select>
-        Indirizzo: <select class='opzM' id="writeNoteDept"><br/>
-        <?php
-          require_once 'php/core.php';
-          require_once 'php/query_funs.php';
-          $r = dept(connectDb(), NULL, NULL);
-          foreach ($r[1] as $res) {
-            echo "<option class='opz' value='" . $res . "'>$res</option>";
-          }
-         ?>
-       </select><br/>
+        Materia: <input id="writeNoteSubj" list="materie" class="scriviNotaElenco"/><br/>
+        Indizrizzo: <input id="writeNoteDept" list="Indirizzi" class="scriviNotaElenco"/><br/>
         <textarea rows="25" cols="100" id="writeNoteContent" class="scriviNotaTextArea"></textarea><br/>
         <button id="submitNote" class="btn" onclick="submitNote()">Pubblica</button>
       </div>
@@ -164,10 +143,14 @@
 </html>
 <?php
   require_once "php/funs.php";
-  if(gettype($m = getManStatus()) == String) {
-    echo "<script>error($m);</script>";
-  } elseif ($m == true) {
+  $s = getManStatus();
+  if($s == "true") {
     echo "<script>error('man');</script>";
+  } elseif ($s == "false") {
+
+  } else {
+    $s = "'" . $s . "'";
+    echo "<script>error($s);</script>";
   }
   if (isset($_SESSION['logged_in'])) {
     if ($_SESSION['logged_in'] == '1') {
