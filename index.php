@@ -153,7 +153,6 @@
   <div class="navbar adminTools" style="position:absolute;bottom:5px;padding:10px 15px 10px 15px;display:none">
     <a onclick="man('on')" class="navbar-left">Avvia manutenzione</a>
     <a onclick="man('off')" class="navbar-left">Termina manutenzione</a>
-    <a onclick="deleteNote()" class="navbar-right">Rimuovi nota</a>
   </div>
   <button id="scriviNotaBtn" class="noteButton" onclick="mostraSpazioNote();" style="display: none;">Scrivi una nota</button>
   <div class="delNote" style="display: none;">
