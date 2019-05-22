@@ -16,9 +16,9 @@
       } else {
         $manval = test_input($_POST["valman"]);
         if ($_POST["valman"] == "true") {
-          $set = "true";
+          $set = true;
         } else {
-          $set = "false";
+          $set = false;
         }
         $r = setManStatus($set);
         if ($r == "done") {

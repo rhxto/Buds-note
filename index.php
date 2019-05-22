@@ -143,14 +143,10 @@
 </html>
 <?php
   require_once "php/funs.php";
-  $s = getManStatus();
-  if($s == "true") {
+  if(gettype($m = getManStatus()) == String) {
+    echo "<script>error($m);</script>";
+  } elseif ($m == true) {
     echo "<script>error('man');</script>";
-  } elseif ($s == "false") {
-
-  } else {
-    $s = "'" . $s . "'";
-    echo "<script>error($s);</script>";
   }
   if (isset($_SESSION['logged_in'])) {
     if ($_SESSION['logged_in'] == '1') {
