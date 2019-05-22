@@ -235,11 +235,19 @@
     }
   }
 
-  function differenzaData($inzio, $fine){
-    $inzio = strtotime($inzio);
+  /*
+   * Prende due date sotto forma di stringhe e restituisce la differenza 
+   *
+   * @param inizio La data iniziale
+   * @param fine La data finale 
+   *
+   * @return La differenza fra due date riportate come int
+   */
+  function differenzaData($inizio, $fine){
+    $inizio = strtotime($inizio);
     $fine = strtotime($fine);
 
-    return ($fine - $inzio);
+    return ($fine - $inizio);
   }
 
 ?>
