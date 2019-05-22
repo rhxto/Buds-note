@@ -70,44 +70,52 @@
     }
   }
 
-  function mysqlRetrieveCrd(String $server, String $username, String $password, String $cnfUsr, String $cnfPw) : String {
+  /*
+   * Esegue il login e restituisce una stringa con il feedback e se sbagliata la pw aggiorna il fail_acc
+   *
+   * @param $cnfUsr Lo username dello username da testare
+   * @param $cnfPw La password hashata da testare
+   *
+   * @return "true" Se esiste lo username e la pw corrisponde (fail_acc azzerati)
+   * @return "false" Se esiste lo username ma la password è sbagliata, o se non esiste lo username
+   * @return "bannato" Se uno ha raggiunto il fail_acc limite e viene bannato
+   * @return "internalError" Se c'é stata una PDOException
+   */
+  function login(String $cnfUsr, String $cnfPw) : String {
+    require_once 'ips.php';
     try {
       $conn = connectDb();
-      $getUsers = $conn->query("SELECT * FROM user ORDER BY username");
-      $getUsers->setFetchMode(PDO::FETCH_ASSOC);
-      $users = $getUsers->fetchAll();
-      $utenti = array();
-      $passwords = array();
-      foreach ($users as $user) {
-	      array_push($utenti, $user['username']);
-        array_push($passwords, $user['pw']);
-      }
-      if (in_array($cnfUsr, $utenti)) {
-        if(accLimit($cnfUsr, $conn)) {
-          if (in_array($cnfPw, $passwords)) {
-            $cnfUsr = '"' . $cnfUsr . '"';
-            $conn->exec("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = $cnfUsr");
+      $query = $conn->prepare("SELECT * FROM user WHERE username = :username");
+      $query->bindParam(":username", $cnfUsr);
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $query->execute();
+      $userinfo = $query->fetchAll();
+      if (!empty($userinfo)) {
+        if(accLimit($userinfo[0]["username"], $conn)) {
+          if ($userinfo[0]["pw"] == $cnfPw) {
+            $query = $conn->prepare("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = :username");
+            $query->bindParam(":username", $cnfUsr);
+            $query->execute();
             return "true";
           } else {
-            $cnfUsr = '"' . $cnfUsr . '"';
-            $conn->exec("UPDATE user SET fail_acc = fail_acc+1 WHERE username = $cnfUsr");
+            $query = $conn->prepare("UPDATE user SET fail_acc = fail_acc+1 WHERE username = :username");
+            $query->bindParam(":username", $cnfUsr);
+            $query->execute();
             return "false";
           }
         } else {
-          //se un utente é sbannato ma i tentativi di login sono 6 allora non puó funzionare il reset di fail_acc
-          if (in_array($cnfPw, $passwords)) {
-            $cnfUsr = '"' . $cnfUsr . '"';
-            $conn->exec("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = $cnfUsr");
+          if ($userinfo[0]["pw"] == $cnfPw) {
+            $query = $conn->prepare("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = :username");
+            $query->bindParam(":username", $cnfUsr);
+            $query->execute();
 	          return "true";
 	        } else {
-            require 'ips.php';
             $ip = $_SERVER['REMOTE_ADDR'];
             blockIp($ip, $conn, $cnfUsr);
             return 'bannato';
           }
         }
       } else {
-        require 'ips.php';
         $ip = $_SERVER['REMOTE_ADDR'];
         if(blockIpTmp($ip, $conn)) {
           return 'bannato';
@@ -136,11 +144,6 @@
       $conn = connectDb();
       $query = $conn->prepare("SELECT username FROM user WHERE username LIKE :username");
       $query->bindParam(":username", $username);
-      /*
-      *$getLvl->execute();
-      $result = $getLvl->fetchAll();
-      return $result[0]["acc_lvl"];
-      */
       $query->execute();
       $users = $query->fetchAll();
       if (!empty($users)) {

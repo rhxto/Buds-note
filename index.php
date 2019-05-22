@@ -163,15 +163,15 @@
 </html>
 <?php
   require_once "php/funs.php";
-  if(gettype($m = getManStatus()) == String) {
+  if(gettype($m = getManStatus()) === "string") {
     echo "<script>error($m);</script>";
   } elseif ($m == true) {
     echo "<script>error('man');</script>";
   }
   if (isset($_SESSION['logged_in'])) {
-    if ($_SESSION['logged_in'] == '1') {
+    if ($_SESSION['logged_in'] === '1') {
       echo "<script>$('.log').attr('hidden', true); $('#scriviNotaBtn').show();</script>";
-      if(getAcclvl($_SESSION["username"]) == 1) {
+      if(getAcclvl($_SESSION["username"]) === 1) {
         echo "<script>$('.adminTools').show();</script>";
       }
       echo "<script>$('#greet').html('Benvenuto,  " . $_SESSION['username'] . "');</script>";
