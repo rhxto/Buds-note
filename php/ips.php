@@ -19,6 +19,7 @@
           $query->execute();
         }
       } catch(PDOException $e) {
+        logD("errore blockip");
         PDOError($e);
         $conn = null;
         die();
@@ -45,6 +46,7 @@
           $query->execute();
         }
       } catch(PDOException $e) {
+        logD("errore unbanip");
         PDOError($e);
         $conn = null;
         die();
@@ -68,10 +70,10 @@
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $ips = $query->fetchAll();
-        if (empty($ip[0]["ip"])) {
-          return true;
-        } else {
+        if (empty($ips[0]["ip"])) {
           return false;
+        } else {
+          return true;
         }
       } catch(PDOException $e) {
         logD("errore in mysqlcheckip");
@@ -113,6 +115,7 @@
           return false;
         }
       } catch(PDOException $e) {
+        logD("errore blockiptmp");
         PDOError($e);
         $conn = null;
         die();
@@ -144,6 +147,7 @@
         }
       } catch(PDOException $e) {
         require 'exceptions.php';
+        logD("errore checkbannedips");
         PDOError($e);
         $conn = null;
         die();
@@ -160,6 +164,7 @@
         $query->execute();
       } catch(PDOException $e) {
         PDOError($e);
+        logD("errore unbanextip");
         $conn = null;
         die();
       } finally {
@@ -175,8 +180,10 @@
         $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->exec("USE Buds_db;");
         if (mysqlCheckIp($ip, $conn)) {
+          logD("check: $ip");
           $query = $conn->prepare("SELECT date FROM ban_ip WHERE ip = :ip");
           $query->bindParam(":ip", $ip);
+          $query->execute();
           $query->setFetchMode(PDO::FETCH_ASSOC);
           $banDate = $query->fetchAll();
           $diff = differenzaData($banDate[0]['date'], date("Y-m-d H:i:s"));
@@ -186,7 +193,7 @@
             $valid = false;
           }
           if($valid) {
-            $query = $conn->query("SELECT user FROM ban_ip WHERE ip = :ip");
+            $query = $conn->prepare("SELECT user FROM ban_ip WHERE ip = :ip");
             $query->bindParam(":ip", $ip);
             $query->execute();
             $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -194,14 +201,15 @@
             if ($usr[0]['user'] == NULL) {
               $usr = "null";
             } else {
-              $usr = $usr['user'];
+              $usr = $usr[0]['user'];
             }
-            mysqlUnbanIp($conn, $ip, $uer);
+            mysqlUnbanIp($conn, $ip, $usr);
           } else {
             die("<script>window.location.href = '../ban/'</script>");
           }
         }
       } catch(PDOException $e) {
+        logD("errore logincheck");
         PDOError($e);
         $conn = null;
         die();

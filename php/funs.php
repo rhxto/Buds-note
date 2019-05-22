@@ -96,7 +96,7 @@
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $query->execute();
       $userinfo = $query->fetchAll();
-      if (!empty($userinfo)) {
+      if (!empty($userinfo[0]['username'])) {
         if(accLimit($userinfo[0]["username"], $conn)) {
           if ($userinfo[0]["pw"] == $cnfPw) {
             $query = $conn->prepare("UPDATE user SET last_log = NOW(), fail_acc = 0 WHERE username = :username");

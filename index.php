@@ -171,7 +171,7 @@
   if (isset($_SESSION['logged_in'])) {
     if ($_SESSION['logged_in'] === '1') {
       echo "<script>$('.log').attr('hidden', true); $('#scriviNotaBtn').show();</script>";
-      if(getAcclvl($_SESSION["username"]) === 1) {
+      if(getAcclvl($_SESSION["username"]) === "1") {
         echo "<script>$('.adminTools').show();</script>";
       }
       echo "<script>$('#greet').html('Benvenuto,  " . $_SESSION['username'] . "');</script>";
