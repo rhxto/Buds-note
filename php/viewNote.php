@@ -60,13 +60,13 @@
     <div id="warn" class="warn" style="display:none">
     </div>
     <div class="navbar adminTools" style="display:none;">
-      <a onclick="man('on')" class="navbar-left">Avvia manutenzione</a>
-      <a onclick="man('off')" class="navbar-left">Termina manutenzione</a>
-      <a id="modifyNoteBtn" onclick="showNoteEditor()" class="navbar-right" style="display: none;">Modifica nota</a>
+      <a onclick="man('on')" class="navbar-left admin" style="display: none;">Avvia manutenzione</a>
+      <a onclick="man('off')" class="navbar-left admin" style="display: none;">Termina manutenzione</a>
+      <a id="modifyNoteBtn" onclick="showNoteEditor()" class="navbar-right user" style="display: none;">Modifica nota</a>
       <a id="modifyNoteConfirm" onclick="modifyNote()"class="navbar-right" style="display: none;">Salva</a>
       <a onclick="abortNoteDeletion()" id="abortNoteDeletion" class="navbar-right" style="display: none;">Annulla</a>
-      <a onclick="deleteNote()" class="navbar-right" id="delNoteBtn">Rimuovi nota</a>
-      <a onclick="delCommentShow()" class="navbar-right" id="delCommentBtn">Rimuovi commento</a>
+      <a onclick="deleteNote()" class="navbar-right admin" id="delNoteBtn" style="display: none;">Rimuovi nota</a>
+      <a onclick="delCommentShow()" class="navbar-right admin" id="delCommentBtn" style="display: none;">Rimuovi commento</a>
     </div>
     <div class="delNote" style="display: none;">
     </div>
@@ -112,7 +112,7 @@
       }
     }
   }
-  if(gettype($m = getManStatus()) == String) {
+  if(gettype($m = getManStatus()) === "string") {
     echo "<script>error($m);</script>";
   } elseif ($m == true) {
     echo "<script>error('man');</script>";
@@ -124,7 +124,7 @@
     if ($_SESSION['logged_in'] == '1') {
       echo "<script>$('.log').attr('hidden', true); $('#scriviNotaBtn').show();</script>";
     if(getAcclvl($_SESSION["username"]) == 1) {
-          echo "<script>$('.adminTools').show();</script>";
+          echo "<script>$('.adminTools').show(); $('.admin').show();</script>";
       }
       echo "<script>$('#greet').html('Benvenuto,  " . $_SESSION['username'] . "');</script>";
       if (checkNote(connectDb(), $_GET["title"])) {
@@ -140,6 +140,6 @@
   //se chiudiamo la sessione anche quando uno non é loggato, non riusciamo a settare logged_in a 1
   }
   if (isNoteOwner(connectDb(), $title, $_SESSION["username"])) {
-    echo "<script>$('#modifyNoteBtn').show();</script>";
+    echo "<script>$('#modifyNoteBtn').show(); toolbarUser();</script>";
   }
 ?>

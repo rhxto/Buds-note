@@ -274,3 +274,7 @@ function modifyNote() {
     }
   });
 }
+function toolbarUser() {
+  $(".adminTools").show();
+  $(".user").show();
+}
