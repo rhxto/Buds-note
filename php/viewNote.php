@@ -49,7 +49,7 @@
           require_once 'query_funs.php';
           $comments = searchRevw(connectDb(), NULL, NULL, $_GET["title"], NULL, NULL, NULL, NULL, NULL);
           foreach ($comments as $comment) {
-            echo "<script>$('.otherComments').append('<span id=" . $comment["id"] . ">" . $comment['review'] . "<button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button><br/></span>');</script>";
+            echo "<script>$('.otherComments').append('<span id=" . $comment["id"] . ">" . $comment['review'] . " - " . $comment["user"] . "<button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button><br/></span>');</script>";
           }
         ?>
          <br/>
