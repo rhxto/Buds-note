@@ -106,7 +106,7 @@
         echo "<script>$('.noteContent').append('<span class=spawnContent></span><br/>');</script>";
         foreach (getNote(connectDb(), $title) as $row) {
           $row = str_replace("\n", "<br />", $row);
-          $row = str_replace("'", "&#39", $row);
+          $row = str_replace("'", "&#39;", $row);
           echo "<script>$('.spawnContent').append('" . $row . "');</script>";
         }
       }
