@@ -85,7 +85,16 @@
       }
     }
 
-    //controlla che l'ip non sia già bannato in ban_ext_ip e se ha raggiunto i 5 tentativi di accesso senza successo lo metto negli ip bannati senza username
+
+    /*
+     * Aggiunge l'ip a ban_ext_ip o na incrementa il try e se ha raggiunto i 5 try lo mette ion ban_ip senza uno username
+     *
+     * @param $ip L'ip che ha provato ad accedere
+     * @param $conn La connesione con cui stiamo lavorando
+     *
+     * @return true Se l'ip ha raggiunto i 5 try e viene spostato nei ban_ip
+     * @return false Se non ha raggiunto i 5 try nonostante l'incremento o se non era in ban_ext_ip ed è stato aggiunto
+     */
     function blockIpTmp(String $ip, $conn) {
       try {
         $query = $conn->prepare("SELECT ip FROM ban_ext_ip WHERE ip = :ip");
@@ -125,25 +134,19 @@
     }
 
     //viene chiamata tutte le volte che un utente si logga e cancella da ban_ext_ip gli indirizzi bannati se la differenza fra l'ora di ban e il momento in cui viene chiamata è > di 10 min
+    /*
+     * Controlla gli ip bannati in ban_ext_ip e se l'ultimo try risale a più di 10 minuti fa viene sbloccato l'ip (la funzione viene chiamata tutte le volte che si logga un utente)
+     *
+     * @param $conn La connessione con cui stiamo lavorando
+     */
     function checkBannedIps($conn) {
       try {
-        $getIps = $conn->query("SELECT ip FROM ban_ext_ip ORDER BY ip");
-        $getIps->setFetchMode(PDO::FETCH_ASSOC);
-        $ips = $getIps->fetchAll();
-        $ip = array();
-        foreach ($ips as $tmp) {
-          array_push($ip, $tmp['ip']);
-        }
-        foreach($ip as $ipa) {
-          $query = $conn->prepare("SELECT date FROM ban_ext_ip WHERE ip = :ip");
-          $query->bindParam(":ip", $ipa);
-          $query->execute();
-          $query->setFetchMode(PDO::FETCH_ASSOC);
-          $dates = $query->fetchAll();
-          $diff = differenzaData($dates[0]['date'], date("Y-m-d H:i:s"));
-        if ($diff >= 600) {
-            mysqlUnbanExtIp($conn, $ipa);
-          }
+         $query = $conn->prepare("SELECT ip FROM ban_ext_ip WHERE TIMESTAMPDIFF(SECOND, date, NOW()) >= 600");
+         $query->setFetchMode(PDO::FETCH_ASSOC);
+         $query->execute();
+         $ips = $query->fetchAll();
+         foreach($ips as $row) {
+            mysqlUnbanExtIp($conn, $row['ip']);
         }
       } catch(PDOException $e) {
         require 'exceptions.php';
@@ -156,7 +159,12 @@
       }
     }
 
-    //sbanna un ip senza username nella tabella ban_ext_ip
+    /*
+     * Rimuove dalla tabella ban_ext_ip un'ip, quindi lo sbanna
+     *
+     * @param $conn La connessione con cui stiamo lavorando
+     * @param $ip L'ip che vogliamo sbloccare
+     */
     function mysqlUnbanExtIp($conn, String $ip) {
       try {
         $query = $conn->prepare("DELETE FROM ban_ext_ip WHERE ip = :ip");
@@ -173,6 +181,12 @@
     }
 
     //viene chiamata tutte le volte che un utente si logga e cancella da ban_ip gli indirizzi bannati se la differenza fra l'ora di ban e il momento in cui viene chiamata è > di 10 min
+    /*
+     * Rimuove dalla tabella ban_ip tutti gli ip che sono stati bannati più di 10 minuti fa, rispetto al momento in cui viene chiamata (viene chiamata tutte le volte che un utente si logga)
+     *
+     * @param $ip
+     *
+     */
     function loginCheck($ip) {
       require "funs.php";
       try {
@@ -181,31 +195,19 @@
         $conn->exec("USE Buds_db;");
         if (mysqlCheckIp($ip, $conn)) {
           logD("check: $ip");
-          $query = $conn->prepare("SELECT date FROM ban_ip WHERE ip = :ip");
+          $query = $conn->prepare("SELECT user FROM ban_ip WHERE (TIMESTAMPDIFF(SECOND, ban_ip.date, NOW()) >= 600) AND (ip = :ip)");
           $query->bindParam(":ip", $ip);
-          $query->execute();
           $query->setFetchMode(PDO::FETCH_ASSOC);
-          $banDate = $query->fetchAll();
-          $diff = differenzaData($banDate[0]['date'], date("Y-m-d H:i:s"));
-          if ($diff >= 600) {
-            $valid = true;
-          } else {
-            $valid = false;
-          }
-          if($valid) {
-            $query = $conn->prepare("SELECT user FROM ban_ip WHERE ip = :ip");
-            $query->bindParam(":ip", $ip);
-            $query->execute();
-            $query->setFetchMode(PDO::FETCH_ASSOC);
-            $usr = $query->fetchAll();
-            if ($usr[0]['user'] == NULL) {
-              $usr = "null";
-            } else {
-              $usr = $usr[0]['user'];
-            }
-            mysqlUnbanIp($conn, $ip, $usr);
-          } else {
+          $query->execute();
+          $user = $query->fetchAll();
+          if(empty($user)){
             die("<script>window.location.href = '../ban/'</script>");
+          }else{
+            if($user[0]['user'] == NULL){
+              mysqlUnbanIp($conn, $ip, "null");
+            } else {
+              mysqlUnbanIp($conn, $ip, $user[0]['user']);
+            }
           }
         }
       } catch(PDOException $e) {

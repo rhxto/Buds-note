@@ -25,8 +25,7 @@
     $query->setFetchMode(PDO::FETCH_ASSOC);
     $query->execute();
     $acc = $query->fetchAll();
-    $fail_acc = $acc[0]["fail_acc"];
-    if($fail_acc['fail_acc'] <= 5){
+    if($acc[0]["fail_acc"] <= 5){
       return true;
     } else {
       return false;
