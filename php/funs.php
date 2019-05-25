@@ -87,6 +87,7 @@
    * @return "internalError" Se c'é stata una PDOException
    */
   function login(String $cnfUsr, String $cnfPw) : String {
+    logD("Logging: $cnfUsr, $cnfPw");
     require_once 'ips.php';
     try {
       $conn = connectDb();

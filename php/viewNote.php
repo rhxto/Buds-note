@@ -59,7 +59,7 @@
     </div>
     <div id="warn" class="warn" style="display:none">
     </div>
-    <div class="navbar adminTools" style="position:absolute;bottom:5px;padding:10px 15px 10px 15px;display:none">
+    <div class="navbar adminTools" style="/*position:absolute;bottom:5px;padding:10px 15px 10px 15px;*/display:none">
       <a onclick="man('on')" class="navbar-left admin" style="display: none;">Avvia manutenzione</a>
       <a onclick="man('off')" class="navbar-left admin" style="display: none;">Termina manutenzione</a>
       <a id="modifyNoteBtn" onclick="showNoteEditor()" class="navbar-right user" style="display: none;">Modifica nota</a>

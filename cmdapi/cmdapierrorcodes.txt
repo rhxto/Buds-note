@@ -1,0 +1,5 @@
+1_request_not_correct = richiesta effettuata con parametri non corretti
+
+54_operation_not_valid = tipo di operazione non valido
+55_type_not_valid = stessa cosa (diverso per debuggare meglio)
+500_internal_error = errore interno del server

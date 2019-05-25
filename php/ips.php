@@ -205,7 +205,7 @@
           }else{
             if($user[0]['user'] == NULL){
               mysqlUnbanIp($conn, $ip, "null");
-            } else {
+            }else{
               mysqlUnbanIp($conn, $ip, $user[0]['user']);
             }
           }
