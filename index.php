@@ -42,6 +42,7 @@
       <span class="top15 left35 filtro">
         Filtra per utente: <input id="filtroUtente" style="color:black" placeholder="Nome utente..." /><br/>
         Filtra per materia: <select class="opzM" id="filtroMateria">
+          <option class="opz" value="Tutto">Tutto</option>
         <?php
           require_once 'php/core.php';
           require_once 'php/query_funs.php';
@@ -55,6 +56,7 @@
          ?>
        </select><br/>
         Filtra per indirizzo: <select class='opzM' id="filtroIndirizzo"><br/>
+          <option class="opz" value="Tutto">Tutto</option>
         <?php
           require_once 'php/core.php';
           require_once 'php/query_funs.php';

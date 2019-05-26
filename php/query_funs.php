@@ -129,13 +129,13 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     if ($user == NULL) {
       $user = "%";
     }
-    if ($subj == NULL) {
+    if ($subj == NULL || $subj = "Tutto") {
       $subj = "%";
     }
     if ($year == NULL) {
       $year = "%";
     }
-    if ($dept == NULL) {
+    if ($dept == NULL || $dept = "Tutto") {
       $dept = "%";
     }
     if ($datefrom == NULL) {

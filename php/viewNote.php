@@ -49,7 +49,7 @@
           require_once 'query_funs.php';
           $comments = searchRevw(connectDb(), NULL, NULL, $_GET["title"], NULL, NULL, NULL, NULL, NULL);
           foreach ($comments as $comment) {
-            echo "<script>$('.otherComments').append('<span id=" . $comment["id"] . ">" . $comment['review'] . " - " . $comment["user"] . "<button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button><br/></span>');</script>";
+            echo "<script>$('.otherComments').append('<span id=" . $comment["id"] . ">" . $comment['review'] . " - " . $comment["user"] . " - " . $comment["date"] . "<button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button><br/></span>');</script>";
           }
         ?>
          <br/>
@@ -127,6 +127,9 @@
           echo "<script>$('.adminTools').show(); $('.admin').show();</script>";
       }
       echo "<script>$('#greet').html('Benvenuto,  " . $_SESSION['username'] . "');</script>";
+      if (isNoteOwner(connectDb(), $title, $_SESSION["username"])) {
+        echo "<script>$('#modifyNoteBtn').show(); toolbarUser();</script>";
+      }
       if (checkNote(connectDb(), $_GET["title"])) {
       echo "<script> $('.postCommentElms').show();</script>";
       }
@@ -138,8 +141,5 @@
   } else {
     echo "<script>$('.logout').attr('hidden', true);</script>";
   //se chiudiamo la sessione anche quando uno non é loggato, non riusciamo a settare logged_in a 1
-  }
-  if (isNoteOwner(connectDb(), $title, $_SESSION["username"])) {
-    echo "<script>$('#modifyNoteBtn').show(); toolbarUser();</script>";
   }
 ?>

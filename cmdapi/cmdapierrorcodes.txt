@@ -12,3 +12,7 @@
 63_order_not_valid = ordine non valido
 64_order_by_not_valid = tipo di ordine non corretto
 500_internal_error = errore interno del server
+600_values_not_valid = valori non validi
+601_write_error = errore nella scrittura della nota
+602_note_exists = la nota esiste giá
+700_no_subj_found = nessuna materia trovata
