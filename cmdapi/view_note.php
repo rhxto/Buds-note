@@ -29,7 +29,7 @@
             $comments = array();
             $commentsProps = searchRevw(connectDb(), NULL, NULL, $note_name, NULL, NULL, NULL, NULL, NULL);
             foreach ($commentsProps as $comment) {
-              array_push($comments, $comment["review"] . " - " . $comment["user"]);
+              array_push($comments, $comment["review"] . " - " . $comment["user"] . " - " . $comment["date"]);
             }
             $result = [
               "status"=> "success",

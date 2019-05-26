@@ -259,11 +259,10 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $query->bindParam(":ttl", $title);
       $query->execute();
       $result = $query->fetchAll();
-      $result = $result[0]["user"];
-      if (empty($result)) {
+      if (empty($result[0]["user"])) {
         return false;
       } else {
-	return true;
+	      return true;
       }
     } catch (PDOException $e) {
       PDOError($e);
