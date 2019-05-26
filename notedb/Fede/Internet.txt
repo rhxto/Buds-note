@@ -1,0 +1,7 @@
+Internet è una rete ad accesso pubblico che connette vari dispositivi o terminali in tutto il mondo. Dalla sua nascita rappresenta il principale mezzo di comunicazione di massa, che offre all'utente una vasta serie di contenuti potenzialmente informativi e di servizi.
+
+Si tratta di un'interconnessione globale tra reti informatiche di natura e di estensione diversa, resa possibile da una suite di protocolli di rete comune chiamata &quot;TCP/IP&quot; dal nome dei due protocolli principali, il TCP e l'IP, che costituiscono la &quot;lingua&quot; comune con cui i computer connessi a Internet (gli host) sono interconnessi e comunicano tra loro a un livello superiore indipendentemente dalla loro sottostante architettura hardware e software, garantendo così l'interoperabilità tra sistemi e sottoreti fisiche diverse.
+
+L'avvento e la diffusione di Internet e dei suoi servizi hanno rappresentato una vera e propria rivoluzione tecnologica e socio-culturale dagli inizi degli anni novanta (assieme ad altre invenzioni come i telefoni cellulari e il GPS) nonché uno dei motori dello sviluppo economico mondiale nell'ambito delle Tecnologie dell'Informazione e della Comunicazione (ICT).
+
+In quanto rete di telecomunicazione, come diffusione è seconda solo alla rete telefonica generale, anch'essa di diffusione mondiale e ad accesso pubblico, ma ancora più &quot;capillare&quot; di Internet.

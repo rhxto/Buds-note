@@ -2,4 +2,13 @@
 
 54_operation_not_valid = tipo di operazione non valido
 55_type_not_valid = stessa cosa (diverso per debuggare meglio)
+56_title_not_valid = titolo non corretto
+57_user_not_valid = utente non valido
+58_subj_not_valid = materia non valida
+59_year_not_valid = anno non valido
+60_dept_not_valid = indirizzo non valido
+61_date_from_not_valid = data di partenza non valida
+62_date_to_not_valie = data di fine non valida
+63_order_not_valid = ordine non valido
+64_order_by_not_valid = tipo di ordine non corretto
 500_internal_error = errore interno del server
