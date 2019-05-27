@@ -36,6 +36,8 @@
           <div class="noteHeaderSubj">Materia: </div>
           <div class="noteHeaderYear">Anno: </div>
           <div class="noteHeaderDate">Data: </div><br/>
+          <button id="mipiace" onclick="rateNote(true)">Mi piace</button>
+          <button id="nonmipiace" onclick="rateNote(false)">Non mi piace</button>
         </div>
         <div class="noteContent"></div>
       </div>

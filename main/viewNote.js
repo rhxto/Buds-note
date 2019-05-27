@@ -85,6 +85,15 @@ function error(err) {
     case "NOTEUUF":
       $("#warn").html("Errore nell'aggiornamento della nota, se vedi questo messaggio contatta gli amministratori." + " Codice: " + err);
       break;
+    case "NOTERNE":
+      $("#warn").html("La nota che stai provando di valutare non esiste... o.O (riferisci questo messaggio agli amministratori)" + " Codice " + err);
+      break;
+    case "NOTERWIE":
+      $("#warn").html("C'é stato un errore nella scrittura della valutazione della nota, rifersici questo messaggio agli amministratori." + " Codice " + err);
+      break;
+    case "NOTERNV":
+      $("#warn").html("Parametri di valutazione non validi!" + " Codice " + err);
+      break;
     case "COMMENTNV":
       $("#warn").html("Commento non valido!" + " Codice: " + err);
       break;
@@ -277,4 +286,23 @@ function modifyNote() {
 function toolbarUser() {
   $(".adminTools").show();
   $(".user").show();
+}
+function rateNote(rating) {
+  var ajaxurl = "../php/noteManager.php";
+  data = {
+    'title': localStorage.getItem("title"),
+    'rating': rating,
+    'type': 'rate'
+}
+  $.post(ajaxurl, data, function(response) {
+    response = JSON.parse(response);
+    if (response == "done") {
+      url = $(".spawnTtl").html();
+      localStorage.setItem('title', url);
+      //in questo modo aggiorniamo il link della pagina senza doverla ricaricare con window.location.href, i primi due parametri della funzione servono ad altre cose
+      window.history.pushState("", "", "http://" + location.host + "/php/viewNote.php?title=" + url.replace(" ", "%20"));
+    } else {
+      error(response);
+    }
+  });
 }

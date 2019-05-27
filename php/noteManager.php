@@ -18,7 +18,7 @@
       error_log("Nota non valida write");
       die(json_encode("NOTENV"));
     } elseif ($type == "write") {
-      $title = test_input($_POST["title"]);	    
+      $title = test_input($_POST["title"]);
       if (checkNote(connectDb(), $title)) {
         die(json_encode("NOTEWAE"));
       }
@@ -43,6 +43,13 @@
       die(json_encode("NOTENV"));
     } elseif ($type == "delete") {
       $title = test_input($_POST["title"]);
+    }
+    if ((empty($_POST["title"]) || empty($_POST["rating"])) && $type == "rate") {
+      logD("nota non valida rate");
+      die(json_encode("NOTERNV"));
+    } elseif ($type == "rate") {
+      $title = test_input($_POST["title"]);
+      $rating = test_input($_POST["rating"]);
     }
     switch ($type) {
       case 'write':
@@ -83,6 +90,16 @@
         die(json_encode("NOTEDNA"));
       }
       break;
+      case "rate":
+        if (checkNote(connectDb(), $title)) {
+          if (rateNote($title, $rating)) {
+            echo json_encode("done");
+          } else {
+            die(json_encode("NOTERWIE"));
+          }
+        } else {
+          die(json_encode("NOTERNE"));
+        }
       default:
           die(json_encode("NOTEANV"));
         break;

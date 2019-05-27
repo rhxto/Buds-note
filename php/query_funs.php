@@ -594,4 +594,19 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $conn = null;
     }
   }
+  function rateNote(String $title, bool $rating) {
+    try {
+      $conn = connectDb();
+      $query = $conn->prepare("INSERT INTO rate VALUES (:title, :rating)");
+      $query->bindParam(":title", $title);
+      $query->bindParam(":rating", $rating);
+      $query->execute();
+      return true;
+    } catch(PDOException $e) {
+      PDOError($e);
+      return false;
+    } finally {
+      $conn = null;
+    }
+  }
 ?>
