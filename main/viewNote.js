@@ -119,7 +119,7 @@ function postComment() {
   data =  {
     'type': action,
     'title': title,
-    'content': $("#commentText").val()
+    'content': $("#commentText").val().replace(/\n/g, "<br>")
   };
   $.post(ajaxurl, data, function (response) {
     response = JSON.parse(response);

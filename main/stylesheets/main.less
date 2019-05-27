@@ -309,6 +309,44 @@ h1.err404 {
 	font-weight: bold;
 	font-size: 30px;
 }
+.risultati:extend(.txt) {
+	padding: 5px 0px 5px 0px;
+	a {
+		display: block;
+		text-decoration: none;
+		font-weight: bold;
+		color: black;
+		border: solid;
+		border-radius: 15px;
+		padding: 10px 15px 10px 15px;
+		&:hover {
+			background-color: @element_colorL;
+		}
+		&:active {
+			background-color: @element_colorL;
+		}
+	}
+}
+.comments:extend(.txt){
+	font-size: 20px;
+}
+.commentBtn:extend(.btn){
+}
+.commentTxt:extend(.txt){
+	border-radius: 15px;
+	border: solid;
+	border-color: @element_color;
+	&:hover {
+		background-color: @element_colorL;
+	}
+	&:active {
+		background-color: @element_colorL;
+	}
+	&:focus {
+		background-color: @element_colorL;
+	}
+}
+
 &::placeholder {
 	color: @color_1;
 	opacity: 1;

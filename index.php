@@ -121,7 +121,7 @@
       <span id="greet"></span>
     </p>
     <div id="everythingAboutNote">
-      <div id="risultati">
+      <div id="risultati" class="risultati">
       </div>
       <div class="scriviNota" style="display: none;">
         Titolo: <textarea rows="1" cols="100" id="writeNoteTitle" class="scriviNotaText"></textarea><br/>

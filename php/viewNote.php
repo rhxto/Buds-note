@@ -40,7 +40,7 @@
         <div class="noteContent"></div>
       </div>
       <div class="comments" style="display: none;">
-        <span>Commenti</span><br/>
+        <span style="font-weight:bold;font-size:35px">COMMENTI</span><br/>
         <div class="localSpawn"></div>
         <div class="otherComments">
         </div>
@@ -49,12 +49,13 @@
           require_once 'query_funs.php';
           $comments = searchRevw(connectDb(), NULL, NULL, $_GET["title"], NULL, NULL, NULL, NULL, NULL);
           foreach ($comments as $comment) {
+            $comment["review"] = str_replace("&lt;br&gt;", "<br>", $comment["review"]);
             echo "<script>$('.otherComments').append('<span id=" . $comment["id"] . ">" . $comment['review'] . " - " . $comment["user"] . " - " . $comment["date"] . "<button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button><br/></span>');</script>";
           }
         ?>
          <br/>
-        <textarea rows="1" cols="100" placeholder="Inserisci un commento..." id="commentText" style="display: none;" class="postCommentElms"></textarea>
-        <button onclick="postComment()" style="display: none;" class="postCommentElms">Pubblica</button>
+        <textarea rows="1" cols="100" placeholder="Inserisci un commento..." id="commentText" style="display: none;" class="postCommentElms commentTxt"></textarea>
+        <button onclick="postComment()" style="display: none;" class="postCommentElms commentBtn">Pubblica</button>
       </div>
     </div>
     <div id="warn" class="warn" style="display:none">
