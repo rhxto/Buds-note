@@ -72,13 +72,18 @@ body {
 }
 @-moz-document url-prefix() { //mozzilla only
 }
+.icon {
+	@font: icons;
+	font-size: 50px;
+	color: white;
+}
 .navbar {
-	position: relative;
+	position: fixed;
 	font-size: 30px;
 	background-color: @element_color;
 	color: @color_1;
-	width: 98.5%;
-	padding: 10px 15px 60px 15px;
+	padding: 10px 15px 10px 15px;
+	width: 98%; /*da sistemare per risoluzioni diverse*/
 	@{font}: text;
 	a {
 		padding: 10px 15px 10px 15px;
@@ -167,7 +172,7 @@ h1.err404 {
 	@{font}: text;
 	color: @color_1;
 	position: fixed;
-	top: 25%;
+	top: 20%;
 	left: 10%;
 	width: 80%;
 	height: 50%;
@@ -256,6 +261,7 @@ h1.err404 {
 .scriviNotaText:extend(.txt) {
 	width: 70%;
 	border-radius: 15px;
+	padding: 5px 0px 5px 0px;
 	background-color: darken(whitesmoke, 10%);
 	&:hover{background-color: @element_colorL}
 	&:focus{background-color: @element_colorL}
@@ -277,6 +283,7 @@ h1.err404 {
 .opz {
 	@{font}: text;
 	font-size: 20px;
+	padding: 5px 0px 5px 0px;
 }
 .opzM:extend(.opz) {
 	-webkit-appearance: none;
@@ -284,6 +291,7 @@ h1.err404 {
 	appearance: none;
 	background: url(dropdown.ico) right / 20px no-repeat #fff;
 	padding-right: 20px;
+	padding: 5px 0px 5px 0px;
 }
 .noteInfoDisplay {
   overflow: hidden;
@@ -316,6 +324,7 @@ h1.err404 {
 		text-decoration: none;
 		font-weight: bold;
 		color: black;
+		border-color: darken(@element_color, 25%) !important;
 		border: solid;
 		border-radius: 15px;
 		padding: 10px 15px 10px 15px;
@@ -367,7 +376,7 @@ h1.err404 {
 	@{font}: text;
 	font-size: 30px;
 	color: @color_1;
-	position: absolute;
+	position: fixed;
 	top: 4%;
 	left: 40%;
 }
