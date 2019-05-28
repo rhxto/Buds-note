@@ -21,25 +21,26 @@
   </head>
   <body id="Body">
   <div class="overlay" id="SearchDiv">
+    <div><br/><br/><br/></div>
     <div class='search' id="Search">
       <a onclick="hideSearch()"class="icon absolute left80" style="color:whitesmoke">D</a>
       <input id="search" type="text" class="search_text"/>
-      <span class="search_checkbox top20 left40 a" hidden>
+      <span class="search_checkbox top25 left40 a" hidden>
         <input type="checkbox" class="a" id="deptNum" >Indirizzo per numero</input>
       </span>
-      <span class="search_checkbox top30 left40" hidden>
+      <span class="search_checkbox top35 left40" hidden>
         <input type="checkbox" id="deptName">Indirizzo per nome</input>
       </span>
-      <span class="search_checkbox top40 left40 a" hidden>
+      <span class="search_checkbox top45 left40 a" hidden>
         <input type="checkbox" class="a" id="subjNum">Materia per numero</input>
       </span>
-      <span class="search_checkbox top50 left40" hidden>
+      <span class="search_checkbox top55 left40" hidden>
         <input type="checkbox" id="subjName">Materia per nome</input>
       </span>
-      <span class="search_checkbox top60 left40" hidden>
+      <span class="search_checkbox top65 left40" hidden>
         <input type="checkbox" id="noteTtl">Appunti per titolo</input>
       </span>
-      <span class="top15 left35 filtro">
+      <span class="top20 left35 filtro">
         Filtra per utente: <input id="filtroUtente" style="color:black" placeholder="Nome utente..." /><br/>
         Filtra per materia: <select class="opzM" id="filtroMateria">
           <option class="opz" value="Tutto">Tutto</option>
@@ -98,16 +99,15 @@
         </datalist>
       </span>
       <span>
-        <button class="search_button top20 left15" onclick="getDepts();">Indirizzi</button><br/>
-        <button class="search_button top40 left15" onclick="getSubjs();">Materie</button><br/>
-        <button class="search_button top60 left15" onclick="getNotes();">Appunti</button>
+        <button class="search_button top25 left15" onclick="getDepts();">Indirizzi</button><br/>
+        <button class="search_button top45 left15" onclick="getSubjs();">Materie</button><br/>
+        <button class="search_button top65 left15" onclick="getNotes();">Appunti</button>
       </span>
-      <button onclick="cerca()" class="search_button top95 left48">Cerca</button>
+      <button onclick="cerca()" class="search_button top110 left48">Cerca</button>
     </div>
   </div>
   <div id="warn" class="warn" style="display:none">
   </div>
-  <p style="position:sticky;top:0px;width:100%">
     <div class="navbar" id="navbar">
       <a href="" class="navbar-left">HOME</a>
 	    <a id="SearchLens" onclick="openSearch()" class="navbar-left buttonIcon">A</a>
@@ -119,13 +119,12 @@
       <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
     </div>
       <span id="greet"></span>
-    </p>
     <div id="everythingAboutNote">
       <div id="risultati" class="risultati">
       </div>
-      <div class="scriviNota" style="display: none;">
+      <div class="scriviNota" style="display:none;padding:5px 0px 5px 0px;">
         Titolo: <textarea rows="1" cols="100" id="writeNoteTitle" class="scriviNotaText"></textarea><br/>
-        Materia: <select class="opzM" id="writeNoteSubj">
+        Materia: <select class="opzM" id="writeNoteSubj"><br/>
         <?php
           require_once 'php/core.php';
           require_once 'php/query_funs.php';
@@ -138,7 +137,7 @@
           }
          ?>
        </select>
-        Indirizzo: <select class='opzM' id="writeNoteDept"><br/>
+        Indirizzo: <select class='opzM' id="writeNoteDept"><br/><br/>
         <?php
           require_once 'php/core.php';
           require_once 'php/query_funs.php';
@@ -152,7 +151,7 @@
         <button id="submitNote" class="btn" onclick="submitNote()">Pubblica</button>
       </div>
     </div>
-  <div class="navbar adminTools" style="position:absolute;bottom:5px;padding:10px 15px 10px 15px;display:none">
+  <div class="navbar adminTools" style="position:fixed;bottom:5px;padding:10px 15px 10px 15px;display:none">
     <a onclick="man('on')" class="navbar-left">Avvia manutenzione</a>
     <a onclick="man('off')" class="navbar-left">Termina manutenzione</a>
   </div>
@@ -161,6 +160,7 @@
     <input id="delNoteTtl" class="textInput"/>
     <button id="delNoteConfirm" onclick="delNote()" class="delNoteButton" style="position:absolute;left:330px;">Conferma</button>
   </div>
+  <div><br/><br/><br/></div>
   </body>
 </html>
 <?php
