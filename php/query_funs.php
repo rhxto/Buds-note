@@ -594,26 +594,110 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $conn = null;
     }
   }
+
+  /*
+   * La funzione inserisce il rating di una nota se l'utente non l'aveva già inserito o se il rating che vuole inserire ora è diverso da quelle che aveva inserito in passato
+   *
+   * @param $username Lo username che vuole inserire la nota
+   * @param $title Il titolo della nota della quale si vuole inserire il rating
+   * @param $rating Il rating che si vuole isnerire (true per Mi piace e false per Non mi piace)
+   *
+   * @return true Se il rating viene aggiunto o aggiornato senza problemi
+   * @return "internalError" Se è stata sollevta una PDOexception
+   * @return false Se il rating che si vuole inserire era già presente
+   */
   function rateNote(String $username, String $title, bool $rating) {
     if ($rating) {
       $rating = 1;
     } else {
       $rating = 0;
-    }      
+    }
     try {
-	    $conn = connectDb();
-      logD("Title: $title, rating: $rating, user: $username");
-      $query = $conn->prepare("INSERT INTO rate (user, note, rate, date)  VALUES (:username, :title, :rating, NOW())");
-      $query->bindParam(":username", $username);
-      $query->bindParam(":title", $title);
-      $query->bindParam(":rating", $rating);
-      $query->execute();
-      return true;
-    } catch(PDOException $e) {
+      if(alreadyRated($username, $title) == 0){
+         $conn = connectDb();
+         $query = $conn->prepare("INSERT INTO rate (user, note, rate, date)  VALUES (:username, :title, :rating, NOW())");
+         $query->bindParam(":username", $username);
+         $query->bindParam(":title", $title);
+         $query->bindParam(":rating", $rating);
+         $query->execute();
+         return true;
+       }elseif((alreadyRated($username, $title) == 1) && (getRate($username, $title) != -1) && (getRate($username, $title) != $rating)){
+         $conn = connectDb();
+         $query = $conn->prepare("UPDATE rate SET rate = :rating  WHERE (user = :username) AND (note = :title)");
+         $query->bindParam(":rating", $rating);
+         $query->bindParam(":username", $username);
+         $query->bindParam(":title", $title);
+         $query->execute();
+         return true;
+       }else{
+         return false;
+       }
+    }catch(PDOException $e){
       PDOError($e);
-      return false;
-    } finally {
+      return "internalError";
+    }finally{
       $conn = null;
     }
   }
+
+  /*
+   * La funzione serve a verificare se l'utente ha già inserito un rating per la nota, ritorna il numero di rating già inseriti (dovrebbe essere fra 1 e 0)
+   *
+   * @param $username Lo username dell'utente di cui si vuole controllare il rate
+   * @param title La nota sulla quale si cerca il possibile rate dell'utente
+   *
+   * @return Il numero di rate messi dall'utente alla nota $title (dovrebbe essere fra 0 e 1)
+   * @return -1 Se è stata sollevata una eccezzione PDOException
+   */
+  function alreadyRated(String $username, String $title){
+      try{
+        $conn = connectDb();
+        $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (user = :username) AND (note = :title)");
+        $query->bindParam(":username", $username);
+        $query->bindParam(":title", $title);
+        $query->execute();
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $query->fetchAll();
+        return $result[0]["num"];
+      }catch(PDOException $e){
+        PDOError($e);
+        //In caso di errore faccio ritornare true per sicurezza in modo da non dare il via alla scrittura di un rate
+        return -1;
+      }finally{
+        $conn = null;
+      }
+  }
+
+  /*
+   * Restituisce il rate dato a una nota da un utente se c'è il rate, altrimenti restituisce -1
+   *
+   * @param $username Lo username del quale si vuole fare la ricerca
+   * @param $title Il titolo della nota sulla quale si deve cercare il rate
+   *
+   * @return -1 Se non c'è alcun rate su quella nota da parte dell'utente o se è stata sollevata una PDOException
+   * @return 1 Se il rate è TRUE
+   * @return 0 Se il rate è FALSE
+   */
+  function getRate(String $username, String $title){
+    try{
+      if(alreadyRated($username, $title) != 1){
+        return -1;
+      }else{
+        $conn = connectDb();
+        $query = $conn->prepare("SELECT rate FROM rate WHERE (user = :username) AND (note = :title)");
+        $query->bindParam(":username", $username);
+        $query->bindParam(":title", $title);
+        $query->execute();
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $query->fetchAll();
+        return $result[0]["rate"];
+      }
+    }catch(PDOException $e){
+      PDOError($e);
+      return -1;
+    }finally{
+      $conn = null;
+    }
+  }
+
 ?>

@@ -88,6 +88,9 @@ function error(err) {
     case "NOTERNE":
       $("#warn").html("La nota che stai provando di valutare non esiste... o.O (riferisci questo messaggio agli amministratori)" + " Codice " + err);
       break;
+    case "NOTERAE":
+      $("#warn").html("Hai giá valutato questa nota! " + " Codice " + err);
+      break;  
     case "NOTERWIE":
       $("#warn").html("C'é stato un errore nella scrittura della valutazione della nota, rifersici questo messaggio agli amministratori." + " Codice " + err);
       break;

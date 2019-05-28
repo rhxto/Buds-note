@@ -25,6 +25,7 @@ NOTEUNE = nota da aggiornare non trovata
 NOTEUUF = erroe interno nell'esecuzione della modifica della nota
 NOTERNV = valutazione nota non valida
 NOTERNE = nota da valutare inesistente
+NOTERAE = rating di nota giá inserito
 NOTERWIE = errore nella scrittura della valutazione
 COMMENTW = errore nella scrittura del commento
 COMMENTDE = errore nella cancellazione del commento

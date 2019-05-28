@@ -97,10 +97,12 @@
           } else {
             $rating = false;
           }
-          if (rateNote($_SESSION["username"], $title, $rating)) {
+          if ($response = rateNote($_SESSION["username"], $title, $rating)) {
             echo json_encode("done");
-          } else {
+          } elseif ($response === "internalError") {
             die(json_encode("NOTERWIE"));
+          } else {
+            die(json_encode("NOTERAE"));
           }
         } else {
           die(json_encode("NOTERNE"));
