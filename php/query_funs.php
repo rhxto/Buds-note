@@ -594,10 +594,17 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $conn = null;
     }
   }
-  function rateNote(String $title, bool $rating) {
+  function rateNote(String $username, String $title, bool $rating) {
+    if ($rating) {
+      $rating = 1;
+    } else {
+      $rating = 0;
+    }      
     try {
-      $conn = connectDb();
-      $query = $conn->prepare("INSERT INTO rate VALUES (:title, :rating)");
+	    $conn = connectDb();
+      logD("Title: $title, rating: $rating, user: $username");
+      $query = $conn->prepare("INSERT INTO rate (user, note, rate, date)  VALUES (:username, :title, :rating, NOW())");
+      $query->bindParam(":username", $username);
       $query->bindParam(":title", $title);
       $query->bindParam(":rating", $rating);
       $query->execute();

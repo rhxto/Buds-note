@@ -92,7 +92,12 @@
       break;
       case "rate":
         if (checkNote(connectDb(), $title)) {
-          if (rateNote($title, $rating)) {
+          if ($rating == "true") {
+            $rating = true;
+          } else {
+            $rating = false;
+          }
+          if (rateNote($_SESSION["username"], $title, $rating)) {
             echo json_encode("done");
           } else {
             die(json_encode("NOTERWIE"));
@@ -100,6 +105,7 @@
         } else {
           die(json_encode("NOTERNE"));
         }
+        break;
       default:
           die(json_encode("NOTEANV"));
         break;

@@ -342,6 +342,8 @@ function delNote() {
   $("#everythingAboutNote").show();
 }
 function mostraSpazioNote() {
+  hideSearch();
+  $("#risultati").empty();
   $(".scriviNota").show();
   $("#scriviNotaBtn").hide();
 }
