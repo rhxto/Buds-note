@@ -7,7 +7,7 @@
  * @param $name Il nome del dept che vogliamo ricercare
  * @param $id L'id del dept che vogliamo ricercare
  *
- * @return $result[x]["yyy"] Array dentro cui ci sono i risultati dove x è il numero di sorting della query e yyy è il nome del campo che vogliamo leggere (name o code)
+ * @return
  * @return "internalError" Se viene sollevata una eccezione PDOException
  */
 function dept($conn, $name, $id){
@@ -49,7 +49,7 @@ function dept($conn, $name, $id){
  * @param $name Il nome della subj che vogliamo ricercare
  * @param $id L'id della subj che vogliamo ricercare
  *
- * @return $result[x]["yyy"] Array dentro cui ci sono i risultati dove x è il numero di sorting della query e yyy è il nome del campo che vogliamo leggere (name o code)
+ * @return
  * @return "internalError" Se viene sollevata una eccezione PDOException
  */
 function subj($conn, $name, $id){
@@ -137,13 +137,35 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
   } finally {
     $conn = null;
   }
-  $results = array();
-
-  //Ora ho matrice [<Cardinalità di dept>][2 (ovvero name e code)]
-  //results [0]=> stdClass Object([username]=<username> [pw]=<password> [mail]=<mail> [acc_lvl]=<livello accesso> [fail_acc]=<accessi falliti> [last_log]=<ultimo login>)
-
+    $results = array();
+    foreach ($result as $row){
+      array_push($results, array(
+        "username"=>$row["username"], "email"=>$row["email"],
+        "acc_lvl"=>$row["acc_lvl"], "fail_acc"=>$row["fail_acc"],
+        "last_log"=>$row["last_log"]
+      ));
+    }
   return $results;
 }
+
+  /*
+   * La funzione ritorna una nota che rispetta i parametri inseriti
+   *
+   *  @param $conn La connessione con la quale stiamo lavorando
+   * @param $title Il titolo della nota cercare
+   * @param $dir La directpry in cui si trova la nota da cercare
+   * @param $user L'utente che ha scritto la nota da carcare
+   * @param $subj La materia a cui appartiene la nota da cercare
+   * @param $year L'anno corrispondente alla nota da carcare
+   * @param $dept Il dipartimento a cui appartiene la nota
+   * @param $datefrom La data minima di creazione della nota
+   * @param $dateto La data massima di creazione della nota
+   * @param $order Inserire il nome dell'attributo secondo cui si vuole ordinare il risultato della query
+   * @param $v Il verso di ordinamento dei risultati ("DESC" o "ASC")
+   *
+   * @return
+   * @return "internalError" Se vengono sollevate delle PDOException
+   */
   function searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $datefrom, $dateto, $order, $v) {
     if ($title == NULL) {
       $title = "%";
@@ -186,7 +208,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
 
     try {
       $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND (year LIKE :year) AND (dept LIKE :dept) AND (date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
-      //ci serve ORDER BY date DESC per avere le note dalla piú recente
       $title = str_replace(" ", "_", $title);
       $query->bindParam(":ttl", $title);
       $query->bindParam(":dir", $dir);
@@ -203,7 +224,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $i = 0;
       foreach ($result as $row) {
         array_push($results, array());
-        //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
         $results[$i]["title"] = str_replace("_", " ", $row["title"]);
         $results[$i]["dir"] = $row["dir"];
         $results[$i]["user"] = $row["user"];
@@ -222,8 +242,20 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $conn = null;
     }
   }
+
+  /*
+   * La funzione inserisce una nuova nota nella table note
+   *
+   * @param $conn La connessione che stiamo usando
+   * @param $title Il titolo della nota che vogliamo inserire
+   * @param $user L'utente che sta creando la nota
+   * @param $subj La materia a cui si riferisce l'appunto
+   * @param $dept Il dept a cui si riferisce la dept
+   * @param $content Il testo contenuto nella nota
+   *
+   * @return true Se tutto va come deve e la nota viene caricata senza problemi
+   */
   function writeNote($conn, String $title, String $user, String $subj, String $dept, String $content) {
-    //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
     $title = str_replace(" ", "_", $title);
     $dir = "/notedb/$user/$title.txt";
     $year = date("Y");
@@ -252,8 +284,17 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $conn = null;
     }
   }
+
+  /*
+   * La funzione cancella una nota dato il suo titolo
+   *
+   * @param $conn La connessione che stiamo usando
+   * @param $title Il titolo della nota da cancellare
+   *
+   * @return true Se tutto va come deve e viene cancellata
+   * @return false Se viene sollevata una PDOException
+   */
   function delNote($conn, String $title) {
-    //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
     $title = str_replace(" ", "_", $title);
     error_log("Deleting: $title");
     try {
@@ -277,6 +318,15 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
     }
   }
 
+  /*
+   * La funzione dice se è presente la nota con il titolo $title fra le note
+   *
+   * @param $conn La connessione che vogliamo usare
+   * @param $title Il titolo della nota di cui vogliamo verificare la presenza
+   *
+   * @return true Se una nota con titolo $title è già presente
+   * @return false Se non c'è nessuna nota con quel titolo o se è stato sollevata una PDOException
+   */
   function checkNote($conn, String $title) {
     $title = str_replace(" ", "_", $title);
     try {
@@ -296,6 +346,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $conn = null;
     }
   }
+
   function getNote($conn, String $title) {
     $title = str_replace(" ", "_", $title);
     try {
@@ -313,6 +364,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $conn = null;
     }
   }
+
   function searchMark($conn, $id, $user, $title, $mark, $datefrom, $dateto, $code){
 
     if($conn == "null"){
@@ -345,9 +397,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
     if($code == NULL){
       $code = "title";
     }
-
-
-
     try {
       $query = $conn->prepare("SELECT * FROM mark WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (mark LIKE :mark) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :code");
       $query->bindParam(':id', $id);
@@ -410,9 +459,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
     if($code == NULL){
       $code = "title";
     }
-
-
-
     try {
       $query = $conn->prepare("SELECT * FROM repo WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (text LIKE :text) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :code");
       $query->bindParam(':id', $id);
@@ -482,8 +528,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
     } else {
       $v = "ASC";
     }
-
-
     try {
       $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
       $query->bindParam(':id', $id);
