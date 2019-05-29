@@ -36,6 +36,7 @@
           <div class="noteHeaderSubj">Materia: </div>
           <div class="noteHeaderYear">Anno: </div>
           <div class="noteHeaderDate">Data: </div><br/>
+          <div class="noteRating"></div>
           <button id="mipiace" onclick="rateNote(true)">Mi piace</button>
           <button id="nonmipiace" onclick="rateNote(false)">Non mi piace</button>
         </div>
@@ -134,7 +135,12 @@
         echo "<script>$('#modifyNoteBtn').show(); toolbarUser();</script>";
       }
       if (checkNote(connectDb(), $_GET["title"])) {
-      echo "<script> $('.postCommentElms').show();</script>";
+        echo "<script> $('.postCommentElms').show();</script>";
+        if (($likes = getLikes($_GET["title"])) === false || ($dislikes = getDislikes($_GET["title"])) === false) {
+          echo "<script>error('NOTEREF'); $('.noteRating').append('Errore nel fetching dei likes e dislikes D:');</script>";
+        } else {
+          echo "<script>$('.noteRating').append('Likes: $likes Dislikes: $dislikes');</script>";
+        }
       }
     } else {
       session_unset();  //quando si esegue il logout logged_in é settato e != da 1 quindi sappiamo che é stato eseguito il logout

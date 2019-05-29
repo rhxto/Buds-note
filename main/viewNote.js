@@ -86,13 +86,13 @@ function error(err) {
       $("#warn").html("Errore nell'aggiornamento della nota, se vedi questo messaggio contatta gli amministratori." + " Codice: " + err);
       break;
     case "NOTERNE":
-      $("#warn").html("La nota che stai provando di valutare non esiste... o.O (riferisci questo messaggio agli amministratori)" + " Codice " + err);
+      $("#warn").html("La nota che stai provando di valutare non esiste... o.O (riferisci questo messaggio agli amministratori)" + " Codice: " + err);
       break;
     case "NOTERAE":
       $("#warn").html("Hai giá valutato questa nota! " + " Codice " + err);
-      break;  
+      break;
     case "NOTERWIE":
-      $("#warn").html("C'é stato un errore nella scrittura della valutazione della nota, rifersici questo messaggio agli amministratori." + " Codice " + err);
+      $("#warn").html("C'é stato un errore nella scrittura della valutazione della nota, rifersici questo messaggio agli amministratori." + " Codice: " + err);
       break;
     case "NOTERNV":
       $("#warn").html("Parametri di valutazione non validi!" + " Codice " + err);

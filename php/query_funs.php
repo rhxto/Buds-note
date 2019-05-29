@@ -607,6 +607,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
    * @return false Se il rating che si vuole inserire era già presente
    */
   function rateNote(String $username, String $title, bool $rating) {
+    $title = str_replace(" ", "_", $title);
     if ($rating) {
       $rating = 1;
     } else {
@@ -650,22 +651,23 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
    * @return -1 Se è stata sollevata una eccezzione PDOException
    */
   function alreadyRated(String $username, String $title){
-      try{
-        $conn = connectDb();
-        $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (user = :username) AND (note = :title)");
-        $query->bindParam(":username", $username);
-        $query->bindParam(":title", $title);
-        $query->execute();
-        $query->setFetchMode(PDO::FETCH_ASSOC);
-        $result = $query->fetchAll();
-        return $result[0]["num"];
-      }catch(PDOException $e){
-        PDOError($e);
-        //In caso di errore faccio ritornare true per sicurezza in modo da non dare il via alla scrittura di un rate
-        return -1;
-      }finally{
-        $conn = null;
-      }
+    $title = str_replace(" ", "_", $title);
+    try{
+      $conn = connectDb();
+      $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (user = :username) AND (note = :title)");
+      $query->bindParam(":username", $username);
+      $query->bindParam(":title", $title);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $result = $query->fetchAll();
+      return $result[0]["num"];
+    }catch(PDOException $e){
+      PDOError($e);
+      //In caso di errore faccio ritornare true per sicurezza in modo da non dare il via alla scrittura di un rate
+      return -1;
+    }finally{
+      $conn = null;
+    }
   }
 
   /*
@@ -679,6 +681,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
    * @return 0 Se il rate è FALSE
    */
   function getRate(String $username, String $title){
+    $title = str_replace(" ", "_", $title);
     try{
       if(alreadyRated($username, $title) != 1){
         return -1;
@@ -708,8 +711,9 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
    * @return Il numero di rate positivi
    * @return false In caso di errore se viene sollevata una PDOException
    */
-  function getLikes($note){
-    try{
+  function getLikes(String $note){
+    $note = str_replace(" ", "_", $note);
+    try {
       $conn = connectDb();
       $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (note = :note) AND (rate = 1)");
       $query->bindParam(":note", $note);
@@ -717,10 +721,10 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $result = $query->fetchAll();
       return $result[0]["num"];
-    }catch(PDOException $e){
+    } catch(PDOException $e) {
       PDOError($e);
       return false;
-    }finally{
+    } finally {
       $conn = null;
     }
   }
@@ -733,7 +737,8 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
    * @return Il numero di rate negativi
    * @return false In caso di errore se viene sollevata una PDOException
    */
-  function getDislikes($note){
+  function getDislikes(String $note){
+    $note = str_replace(" ", "_", $note);
     try{
       $conn = connectDb();
       $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (note = :note) AND (rate = 0)");
@@ -758,7 +763,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
    * @return Il numero di rate lasciati dall'utente (non i rate che gli altri lasciano sotto le sue note ma quelli che lui lascia in tutte le note del database)
    * @return false In caso di errore se viene sollevata una PDOException
    */
-  funtion getLeftRate($user){
+  function getLeftRate(String $user){
     try{
       $conn = connectDb();
       $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE user = :user");

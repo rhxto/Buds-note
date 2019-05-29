@@ -26,6 +26,7 @@ NOTEUUF = erroe interno nell'esecuzione della modifica della nota
 NOTERNV = valutazione nota non valida
 NOTERNE = nota da valutare inesistente
 NOTERAE = rating di nota giá inserito
+NOTEREF = errore nel fetch dei likes e dislikes della nota
 NOTERWIE = errore nella scrittura della valutazione
 COMMENTW = errore nella scrittura del commento
 COMMENTDE = errore nella cancellazione del commento
