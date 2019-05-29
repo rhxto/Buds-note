@@ -700,4 +700,79 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
     }
   }
 
+  /*
+   * La funzione ritorna il numero di rate positivi sulla nota $note
+   *
+   * @param $note Il nome della nota nella quale cercare i rate
+   *
+   * @return Il numero di rate positivi
+   * @return false In caso di errore se viene sollevata una PDOException
+   */
+  function getLikes($note){
+    try{
+      $conn = connectDb();
+      $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (note = :note) AND (rate = 1)");
+      $query->bindParam(":note", $note);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $result = $query->fetchAll();
+      return $result[0]["num"];
+    }catch(PDOException $e){
+      PDOError($e);
+      return false;
+    }finally{
+      $conn = null;
+    }
+  }
+
+  /*
+   * La funzione ritorna il numero di rate negativi sulla nota $note
+   *
+   * @param $note Il nome della nota nella quale cercare i rate
+   *
+   * @return Il numero di rate negativi
+   * @return false In caso di errore se viene sollevata una PDOException
+   */
+  function getDislikes($note){
+    try{
+      $conn = connectDb();
+      $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (note = :note) AND (rate = 0)");
+      $query->bindParam(":note", $note);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $result = $query->fetchAll();
+      return $result[0]["num"];
+    }catch(PDOException $e){
+      PDOError($e);
+      return false;
+    }finally{
+      $conn = null;
+    }
+  }
+
+  /*
+   * La funzione ritorna il numero totale dei rate lasciati dall'utente $user sotto tutte le note del DB
+   *
+   * @param $user Il nome dell'utente del quale cercare i rate
+   *
+   * @return Il numero di rate lasciati dall'utente (non i rate che gli altri lasciano sotto le sue note ma quelli che lui lascia in tutte le note del database)
+   * @return false In caso di errore se viene sollevata una PDOException
+   */
+  funtion getLeftRate($user){
+    try{
+      $conn = connectDb();
+      $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE user = :user");
+      $query->bindParam(":user", $user);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $result = $query->fetchAll();
+      return $result[0]["num"];
+    }catch(PDOException $e){
+      PDOError($e);
+      return false;
+    }finally{
+      $conn = null;
+    }
+  }
+
 ?>
