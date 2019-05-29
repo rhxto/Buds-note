@@ -300,10 +300,13 @@ function rateNote(rating) {
   $.post(ajaxurl, data, function(response) {
     response = JSON.parse(response);
     if (response == "done") {
-      url = $(".spawnTtl").html();
-      localStorage.setItem('title', url);
-      //in questo modo aggiorniamo il link della pagina senza doverla ricaricare con window.location.href, i primi due parametri della funzione servono ad altre cose
-      window.history.pushState("", "", "http://" + location.host + "/php/viewNote.php?title=" + url.replace(" ", "%20"));
+      if (rating) {
+        $(".likes").html(parseInt($(".likes").html()) + 1);
+        $(".dislikes").html(parseInt($(".dislikes").html()) - 1);
+      } else {
+        $(".likes").html(parseInt($(".likes").html()) - 1);
+        $(".dislikes").html(parseInt($(".dislikes").html()) + 1);
+      }
     } else {
       error(response);
     }
