@@ -632,13 +632,14 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
    * @return false Se il rating che si vuole inserire era già presente
    */
   function rateNote(String $username, String $title, bool $rating) {
+    $title = str_replace(" ", "_", $title);
     if ($rating) {
       $rating = 1;
     } else {
       $rating = 0;
     }
     try {
-      if(alreadyRated($username, $title) == 0){
+      if(alreadyRated($username, $title) == 0) {
          $conn = connectDb();
          $query = $conn->prepare("INSERT INTO rate (user, note, rate, date)  VALUES (:username, :title, :rating, NOW())");
          $query->bindParam(":username", $username);
@@ -646,7 +647,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
          $query->bindParam(":rating", $rating);
          $query->execute();
          return true;
-       }elseif((alreadyRated($username, $title) == 1) && (getRate($username, $title) != -1) && (getRate($username, $title) != $rating)){
+       } elseif((alreadyRated($username, $title) == 1) && (getRate($username, $title) != -1) && (getRate($username, $title) != $rating)) {
          $conn = connectDb();
          $query = $conn->prepare("UPDATE rate SET rate = :rating  WHERE (user = :username) AND (note = :title)");
          $query->bindParam(":rating", $rating);
@@ -654,13 +655,13 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
          $query->bindParam(":title", $title);
          $query->execute();
          return true;
-       }else{
+       } else {
          return false;
        }
-    }catch(PDOException $e){
+    } catch(PDOException $e) {
       PDOError($e);
       return "internalError";
-    }finally{
+    } finally {
       $conn = null;
     }
   }
@@ -674,22 +675,23 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
    * @return Il numero di rate messi dall'utente alla nota $title (dovrebbe essere fra 0 e 1)
    * @return -1 Se è stata sollevata una eccezzione PDOException
    */
-  function alreadyRated(String $username, String $title){
-      try{
-        $conn = connectDb();
-        $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (user = :username) AND (note = :title)");
-        $query->bindParam(":username", $username);
-        $query->bindParam(":title", $title);
-        $query->execute();
-        $query->setFetchMode(PDO::FETCH_ASSOC);
-        $result = $query->fetchAll();
-        return $result[0]["num"];
-      }catch(PDOException $e){
-        PDOError($e);
-        return -1;
-      }finally{
-        $conn = null;
-      }
+  function alreadyRated(String $username, String $title) {
+    $title = str_replace(" ", "_", $title);
+    try {
+      $conn = connectDb();
+      $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (user = :username) AND (note = :title)");
+      $query->bindParam(":username", $username);
+      $query->bindParam(":title", $title);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $result = $query->fetchAll();
+      return $result[0]["num"];
+    } catch(PDOException $e) {
+      PDOError($e);
+      return -1;
+    } finally {
+      $conn = null;
+    }
   }
 
   /*
@@ -703,10 +705,11 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
    * @return 0 Se il rate è FALSE
    */
   function getRate(String $username, String $title){
-    try{
-      if(alreadyRated($username, $title) != 1){
+    $title = str_replace(" ", "_", $title);
+    try {
+      if (alreadyRated($username, $title) != 1) {
         return -1;
-      }else{
+      } else {
         $conn = connectDb();
         $query = $conn->prepare("SELECT rate FROM rate WHERE (user = :username) AND (note = :title)");
         $query->bindParam(":username", $username);
@@ -716,10 +719,10 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
         $result = $query->fetchAll();
         return $result[0]["rate"];
       }
-    }catch(PDOException $e){
+    } catch(PDOException $e) {
       PDOError($e);
       return -1;
-    }finally{
+    } finally {
       $conn = null;
     }
   }
@@ -733,6 +736,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
    * @return false In caso di errore se viene sollevata una PDOException
    */
   function getLikes($note){
+    $note = str_replace(" ", "_", $note);
     try{
       $conn = connectDb();
       $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (note = :note) AND (rate = 1)");
@@ -758,6 +762,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
    * @return false In caso di errore se viene sollevata una PDOException
    */
   function getDislikes($note){
+    $note = str_replace(" ", "_", $note);
     try{
       $conn = connectDb();
       $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (note = :note) AND (rate = 0)");

@@ -1,4 +1,6 @@
 function openSearch() {
+  $(".scriviNota").hide();
+  $("#scriviNotaBtn").show();
   document.getElementById("Search").style.display = "block";
   document.getElementById("SearchDiv").style.display = "block";
 }
