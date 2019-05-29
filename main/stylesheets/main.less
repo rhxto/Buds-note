@@ -137,6 +137,9 @@ button {
 	text-align: center;
 	border-radius: 15px;
 }
+.adminTools {
+	bottom: 5px !important;
+}
 
 .ban:extend(.txt) {
 	text-align: center;
@@ -258,8 +261,6 @@ h1.err404 {
 .scriviNota {
 	@{font}: text;
 	font-size: 35px;
-	position: relative;
-	top: 80px;
 }
 .scriviNotaText:extend(.txt) {
 	width: 70%;
@@ -296,9 +297,13 @@ h1.err404 {
 	padding-right: 20px;
 	padding: 5px 0px 5px 0px;
 }
+#everythingAboutNote {
+	position: relative;
+	top: 80px;
+}
 .noteInfoDisplay {
   overflow: hidden;
-      width: 100%;
+  width: 100%;
 }
 .noteInfo {
   float: left;
@@ -322,7 +327,6 @@ h1.err404 {
 }
 .risultati:extend(.txt) {
 	position: relative;
-	top: 80px;
 	padding: 5px 0px 5px 0px;
 	a {
 		display: block;
