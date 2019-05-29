@@ -1,11 +1,15 @@
 <?php
 
-//La libreria contiene funzioni che eseguono query
-
-//La funzione apre una connessione e ritorna un'oggetto PDO
-
-
-//La funzione ritorna una matrice con nome e id del dept, se $conn è null allora ritorna -1
+/*
+ * La funzione fa una ricerca dei dept con il nome e/o il codice e poi ritorna una matrice con le informazioni, se si lascia NULL un parametro verrà considerato %
+ *
+ * @param $conn La connessione che stiamo usando
+ * @param $name Il nome del dept che vogliamo ricercare
+ * @param $id L'id del dept che vogliamo ricercare
+ *
+ * @return $result[x]["yyy"] Array dentro cui ci sono i risultati dove x è il numero di sorting della query e yyy è il nome del campo che vogliamo leggere (name o code)
+ * @return "internalError" Se viene sollevata una eccezione PDOException
+ */
 function dept($conn, $name, $id){
   if($conn == "null"){
     return -1;
@@ -35,10 +39,19 @@ function dept($conn, $name, $id){
     array_push($results[0], $row["code"]);
     array_push($results[1], $row["name"]);
   }
-  //Ora il mio risultato è una matrice dove nella riga [0] ho i codici e nella riga [1] i nomi
   return $results;
 }
 
+/*
+ * La funzione fa una ricerca delle subj con il nome e/o il codice e poi ritorna una matrice con le informazioni, se si lascia NULL un parametro verrà considerato %
+ *
+ * @param $conn La connessione che stiamo usando
+ * @param $name Il nome della subj che vogliamo ricercare
+ * @param $id L'id della subj che vogliamo ricercare
+ *
+ * @return $result[x]["yyy"] Array dentro cui ci sono i risultati dove x è il numero di sorting della query e yyy è il nome del campo che vogliamo leggere (name o code)
+ * @return "internalError" Se viene sollevata una eccezione PDOException
+ */
 function subj($conn, $name, $id){
   if($conn == "null"){
     return -1;
@@ -68,13 +81,25 @@ function subj($conn, $name, $id){
     array_push($results[0], $row["code"]);
     array_push($results[1], $row["name"]);
   }
-  //Ora il mio risultato è una matrice dove nella riga [0] ho i codici e nella riga [1] i nomi
   return $results;
 }
 
 
-
-function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max, String $fail_acc, String $last_log_from, String $last_log_to){
+/*
+ * La funzione serve a ricercare uno user dentro la tabella user inserrendo vari parametri, se alcuni di essi vengono lasciati NULL veranno considerati nella query come %, verranno poi restituite una o più tuple con gli elementi che rispettano i parametri
+ *
+ * @param $conn La connessione con la quale stiamo lavorando
+ * @param $username Lo username dell'utente di cui vogliamo le informazioni'(Se è "" diventa % nella query)
+ * @param $mail La mail dello user di cui vogliamo le informazioni (Se è "" diventa % nella query)
+ * @param $acc_lvl Il grado di accesso dell'utente di cui vogliamo le informazioni (Se è NULL diventa TRUE nella query)
+ * @param $fail_acc Il numero di failed access dell'utente di cui vogliamo le informazioni
+ * @param last_log_from La data minima dell'ultimo login dell'utente di cui vogliamo le informazioni (Se è "" diventa TRUE nella query)
+ * @param last_log_to La data massima dell'ultimo login dell'utente di cui vogliamo le informazioni (Se è "" diventa TRUE nella query)
+ *
+ * @return $result[x]["yyy"] Un array nel quale ci sono tutti gli user che rispettano i parametri ineriti dove x è l'ordine di sorting nella query (parte da 0) e yyy è il nome dell'attributo che vogliamo visualizzare
+ * @return "internalError" Se viene sollevata una PDOException
+ */
+function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, String $fail_acc, String $last_log_from, String $last_log_to){
 
   if($conn == NULL){
     return -1;
@@ -114,6 +139,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
   }
   $results = array();
 
+  }
   //Ora ho matrice [<Cardinalità di dept>][2 (ovvero name e code)]
   //results [0]=> stdClass Object([username]=<username> [pw]=<password> [mail]=<mail> [acc_lvl]=<livello accesso> [fail_acc]=<accessi falliti> [last_log]=<ultimo login>)
 
@@ -607,7 +633,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
    * @return false Se il rating che si vuole inserire era già presente
    */
   function rateNote(String $username, String $title, bool $rating) {
-    $title = str_replace(" ", "_", $title);
     if ($rating) {
       $rating = 1;
     } else {
@@ -651,23 +676,21 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
    * @return -1 Se è stata sollevata una eccezzione PDOException
    */
   function alreadyRated(String $username, String $title){
-    $title = str_replace(" ", "_", $title);
-    try{
-      $conn = connectDb();
-      $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (user = :username) AND (note = :title)");
-      $query->bindParam(":username", $username);
-      $query->bindParam(":title", $title);
-      $query->execute();
-      $query->setFetchMode(PDO::FETCH_ASSOC);
-      $result = $query->fetchAll();
-      return $result[0]["num"];
-    }catch(PDOException $e){
-      PDOError($e);
-      //In caso di errore faccio ritornare true per sicurezza in modo da non dare il via alla scrittura di un rate
-      return -1;
-    }finally{
-      $conn = null;
-    }
+      try{
+        $conn = connectDb();
+        $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (user = :username) AND (note = :title)");
+        $query->bindParam(":username", $username);
+        $query->bindParam(":title", $title);
+        $query->execute();
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $query->fetchAll();
+        return $result[0]["num"];
+      }catch(PDOException $e){
+        PDOError($e);
+        return -1;
+      }finally{
+        $conn = null;
+      }
   }
 
   /*
@@ -681,7 +704,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
    * @return 0 Se il rate è FALSE
    */
   function getRate(String $username, String $title){
-    $title = str_replace(" ", "_", $title);
     try{
       if(alreadyRated($username, $title) != 1){
         return -1;
@@ -711,9 +733,8 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
    * @return Il numero di rate positivi
    * @return false In caso di errore se viene sollevata una PDOException
    */
-  function getLikes(String $note){
-    $note = str_replace(" ", "_", $note);
-    try {
+  function getLikes($note){
+    try{
       $conn = connectDb();
       $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (note = :note) AND (rate = 1)");
       $query->bindParam(":note", $note);
@@ -721,10 +742,10 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $result = $query->fetchAll();
       return $result[0]["num"];
-    } catch(PDOException $e) {
+    }catch(PDOException $e){
       PDOError($e);
       return false;
-    } finally {
+    }finally{
       $conn = null;
     }
   }
@@ -737,8 +758,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
    * @return Il numero di rate negativi
    * @return false In caso di errore se viene sollevata una PDOException
    */
-  function getDislikes(String $note){
-    $note = str_replace(" ", "_", $note);
+  function getDislikes($note){
     try{
       $conn = connectDb();
       $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (note = :note) AND (rate = 0)");
@@ -763,7 +783,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl_max,
    * @return Il numero di rate lasciati dall'utente (non i rate che gli altri lasciano sotto le sue note ma quelli che lui lascia in tutte le note del database)
    * @return false In caso di errore se viene sollevata una PDOException
    */
-  function getLeftRate(String $user){
+  function getLeftRate($user){
     try{
       $conn = connectDb();
       $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE user = :user");
