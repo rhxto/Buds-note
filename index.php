@@ -20,6 +20,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
   </head>
   <body id="Body">
+  <div class="transparent_box"></div>
   <div class="overlay" id="SearchDiv">
     <div><br/><br/><br/></div>
     <div class='search' id="Search">
@@ -151,7 +152,8 @@
         <button id="submitNote" class="btn" onclick="submitNote()">Pubblica</button>
       </div>
     </div>
-  <div class="navbar adminTools" style="position:fixed;bottom:5px;padding:10px 15px 10px 15px;display:none">
+  <div class="transparent_box" style="position:fixed;bottom:5px;display:none"></div>
+  <div class="navbar adminTools" style="position:fixed;bottom:5px;display:none">
     <a onclick="man('on')" class="navbar-left">Avvia manutenzione</a>
     <a onclick="man('off')" class="navbar-left">Termina manutenzione</a>
   </div>

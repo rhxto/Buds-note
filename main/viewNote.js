@@ -299,12 +299,16 @@ function rateNote(rating) {
 }
   $.post(ajaxurl, data, function(response) {
     response = JSON.parse(response);
-    if (response == "done") {
-      if (rating) {
+    if (response["status"] == "done") {
+      if (rating && response["type"] == "modify") {
         $(".likes").html(parseInt($(".likes").html()) + 1);
         $(".dislikes").html(parseInt($(".dislikes").html()) - 1);
-      } else {
+      } else if (!rating && response["type"] == "modify") {
         $(".likes").html(parseInt($(".likes").html()) - 1);
+        $(".dislikes").html(parseInt($(".dislikes").html()) + 1);
+      } else if (rating) {
+        $(".likes").html(parseInt($(".likes").html()) + 1);
+      } else {
         $(".dislikes").html(parseInt($(".dislikes").html()) + 1);
       }
     } else {

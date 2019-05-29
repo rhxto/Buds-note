@@ -97,8 +97,13 @@
           } else {
             $rating = false;
           }
+          if ($type = alreadyRated($_SESSION["username"], $title) === "1") {
+            $type = "modify";
+          } else {
+            $type = "new";
+          }
           if ($response = rateNote($_SESSION["username"], $title, $rating)) {
-            echo json_encode("done");
+            echo json_encode(["status"=> "done", "type"=>$type]);
           } elseif ($response === "internalError") {
             die(json_encode("NOTERWIE"));
           } else {
