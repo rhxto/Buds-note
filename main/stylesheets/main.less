@@ -78,6 +78,7 @@ body {
 	color: white;
 }
 .navbar {
+	z-index: 1;
 	position: fixed;
 	font-size: 30px;
 	background-color: @element_color;
@@ -232,12 +233,6 @@ h1.err404 {
 	left: 0;
 	background-color: rgba(0,0,0, 0.9);;
 }
-.transparent_box {
-	position: fixed;
-	background-color: @background_color;
-	width: 100%;
-	height: 60px;
-}
 .filtro {
 	position: absolute;
 	font-size: 35px;
@@ -263,6 +258,8 @@ h1.err404 {
 .scriviNota {
 	@{font}: text;
 	font-size: 35px;
+	position: relative;
+	top: 80px;
 }
 .scriviNotaText:extend(.txt) {
 	width: 70%;
@@ -324,6 +321,8 @@ h1.err404 {
 	font-size: 30px;
 }
 .risultati:extend(.txt) {
+	position: relative;
+	top: 80px;
 	padding: 5px 0px 5px 0px;
 	a {
 		display: block;
