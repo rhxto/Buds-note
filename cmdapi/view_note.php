@@ -31,14 +31,23 @@
             foreach ($commentsProps as $comment) {
               array_push($comments, $comment["review"] . " - " . $comment["user"] . " - " . $comment["date"]);
             }
-            $result = [
-              "status"=> "success",
-              "Author"=> $note[0]["user"],
-              "Subj"=> $note[0]["subj"],
-              "Dept"=> $note[0]["dept"],
-              "Content"=> $content,
-              "Comments"=> $comments
-            ];
+            if (($likes = getLikes($note_name)) === false || ($dislikes = getDislikes($note_name)) === false) {
+              $result  = [
+                "status"=> "fail",
+                "code"=> "800_rating_fetch_failure"
+              ];
+            } else {
+              $result = [
+                "status"=> "success",
+                "Author"=> $note[0]["user"],
+                "Subj"=> $note[0]["subj"],
+                "Dept"=> $note[0]["dept"],
+                "Content"=> $content,
+                "Comments"=> $comments,
+                "Likes"=> $likes,
+                "Dislikes"=> $dislikes
+              ];
+            }
           } else {
             //nota non trovata
             $result = ["status"=> "fail", "code"=>"404_not_found"];
