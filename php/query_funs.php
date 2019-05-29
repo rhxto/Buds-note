@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
  * La funzione fa una ricerca dei dept con il nome e/o il codice e poi ritorna una matrice con le informazioni, se si lascia NULL un parametro verrà considerato %
@@ -139,7 +139,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
   }
   $results = array();
 
-  }
   //Ora ho matrice [<Cardinalità di dept>][2 (ovvero name e code)]
   //results [0]=> stdClass Object([username]=<username> [pw]=<password> [mail]=<mail> [acc_lvl]=<livello accesso> [fail_acc]=<accessi falliti> [last_log]=<ultimo login>)
 
