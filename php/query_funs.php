@@ -347,6 +347,14 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
     }
   }
 
+  /*
+   * La funzione ritorna la nota sotto forma di array in cui in ogni elemento c'è una riga diversa del file comporeso il \n 
+   * @param $conn La connessione che stiamo usando
+   * @param $title Il titolo della nota di cui vogliamo leggere il contenuto
+   *
+   * @return Un array in cui in ogni elemento c'è una riga del file seguito ovviamente dal suo \n
+   * @return false Se viene sollevata una PDOException 
+   */
   function getNote($conn, String $title) {
     $title = str_replace(" ", "_", $title);
     try {
@@ -365,6 +373,24 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
     }
   }
 
+  /*
+   *
+   * @deprecated Non viene più usata la tabella mark, è stata sotituita da like
+   * 
+   * La funzione mi permette di ricercare una nota ed ottenere il solito array in cui in ogni elemento son poi contenuti tramite un subarray associativo i nomi degli attributi
+   * 
+   * @param $conn La connessione che stiamo usando
+   * @param $id L'id del voto che stiamo cercando
+   * @param $user L'utente che ha caricato il voto 
+   * @param $title Il titolo della nota che ha ricevuto il voto
+   * @param $mark Il voto vche è stato dato nella tupla mark (ovvero il valore della valutazione)
+   * @param $datefrom La data minima in cui deve essere stato caricato il voto
+   * @param $dateto La data massima entro la quale deve essere stato caricato il voto
+   * @param $code Il nome dell'attributo tramite il quale dobbiamo ordinare i risultati della query 
+   *
+   * @return Un array[x]['yyy'] nella x va il numer del campo in ordine di sorting della query, su yyy ci va il campo che voglio leggere dall'elemento x
+   * @return ''internalError' Se viene sollevata una PDOException
+   */
   function searchMark($conn, $id, $user, $title, $mark, $datefrom, $dateto, $code){
 
     if($conn == "null"){
@@ -431,6 +457,21 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
     }
   }
 
+  /*
+   * La funzione ricerca un report dando i seguenti parametri come filtri
+   * 
+   * @param $conn La connessione che stiamo usando
+   * @param $id L'id del report che stiamo cercando
+   * @param $user L'utente che ha caricato la report che stiamo cercando
+   * @param $title Il tiolo della nota sulla quale deve essere stato fatto il report
+   * @param $text Il testo che deve essere scritto dentro la nota
+   * @param $datefrom La data minima in cui deve essere stata scritta la nota
+   * @param $dateto La data massima entro la quale deve essere stata scritta la nota
+   * @param $code L'attributo secondo cui dobbiamo ordinare i risultati della query
+   * 
+   * @return Un array[x]['yyy'] In cui su x deve andare il numero di sorting della tupla nella query e su yyy ci va il nome dell'attributo di cui ogliamo conoscere il contenuto per la tupla numero x
+   * @return "internalError" Se viene sollevata una PDOException
+   */
   function searchRepo($conn, $id, $user, $title, $text, $datefrom, $dateto, $code){
 
     if($conn == "null"){
@@ -492,7 +533,22 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $conn = null;
     }
   }
-
+  /*
+   * Serve a cercare un commento fra tutto quelli nel database che rispetti i parametri che inseriamo come filtri
+   *
+   * @param $conn La connessione che stiam usando
+   * @param $id L'id del commento che stiamo cercando
+   * @param $user L'utent che ha creato il commento che stiamo cercando
+   * @param $title Il titolo della note di cui stiamo cercando il commento
+   * @param $review Il contenuto del commento che stiamo cercando
+   * @param $datefrom La data minima entro cui deve essere stata scritto il commento
+   * @param $dateto La data entro la quale deve essere stata scritta la nota
+   * @param $order Il nome dell'attributo con il quale voglio ordinare il sorting order della query
+   * @param $v Se voglio ordinare il modo ascendente o discendente (ASC o DESC)
+   * 
+   * @return Il solito array[x]['yyy'] In cui x è l'ordine di sorting in cui la tupla è stata ordinata e yyy l'attributo che vogliamo leggere della tupla x
+   * @return "internalError" Se viene sollevata una PDOException
+   */
   function searchRevw($conn, $id, $user, $title, $review, $datefrom, $dateto, $order, $v){
 
     if($conn == "null"){
@@ -560,6 +616,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $conn = null;
     }
   }
+
   function postComment($conn, String $user, String $title, String $content) {
     if ($user == NULL || $content == NULL || $conn == "null" || $conn == NULL) {
       return false;
