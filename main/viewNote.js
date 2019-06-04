@@ -91,6 +91,9 @@ function error(err) {
     case "NOTERAE":
       $("#warn").html("Hai giá valutato questa nota! " + " Codice " + err);
       break;
+    case "NOTENLG":
+      $("#warn").html("Prima devi loggarti!");
+      break;
     case "NOTERWIE":
       $("#warn").html("C'é stato un errore nella scrittura della valutazione della nota, rifersici questo messaggio agli amministratori." + " Codice: " + err);
       break;

@@ -12,18 +12,18 @@
     <title>Buds_note</title>
     <script src="jquery/jquery.min.js"></script>
     <script type="text/javascript" src="jquery/jquery-ui/jquery-ui.js"></script>
+    <link rel="stylesheet/less" type="text/css" href="main/stylesheets/main.less" />
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
     <script src="main/main.js"></script>
 	  <script src="main/search.js"></script>
     <link rel="stylesheet" type="text/css" href="main/stylesheets/datePicker.css" />
     <link rel="stylesheet" type="text/css" href="main/stylesheets/positions.css" />
-    <link rel="stylesheet/less" type="text/css" href="main/stylesheets/main.less" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
   </head>
   <body id="Body">
   <div class="overlay" id="SearchDiv">
     <div><br/><br/><br/></div>
     <div class='search' id="Search">
-      <a onclick="hideSearch()"class="icon absolute left80" style="color:whitesmoke">D</a>
+      <a onclick="hideSearch()"class="icon absolute left80" style="z-index:3;color:whitesmoke">D</a>
       <input id="search" type="text" class="search_text"/>
       <span class="search_checkbox top25 left40 a" hidden>
         <input type="checkbox" class="a" id="deptNum" >Indirizzo per numero</input>
@@ -112,7 +112,7 @@
       <a href="" class="navbar-left">HOME</a>
 	    <a id="SearchLens" onclick="openSearch()" class="navbar-left buttonIcon">A</a>
       <a id="SearchLensMoz" onclick="openSearch()" class="navbar-left searchLensMoz" style="padding:5px 0px 0px 0px">
-        <img src="main/imageedit_1_3306425612.png">
+        <img src="main/searchlens.png">
       </a>
       <a href="login/" class="navbar-right log">LOGIN</a>
       <a href="register/" class="navbar-right log">REGISTER</a>
@@ -162,6 +162,22 @@
   </div>
   <div><br/><br/><br/></div>
   </body>
+  <script>
+  var FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+
+  if (FIREFOX) {
+    console.log("firefox");
+    $("#SearchLens").hide();
+    $("#SearchLensMoz").show();
+  } else  {
+    $("#SearchLens").show();
+    $("#SearchLensMoz").hide();
+  }
+   if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+     error("FIREFOX");
+   }
+
+  </script>
 </html>
 <?php
   require_once "php/funs.php";

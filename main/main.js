@@ -175,7 +175,7 @@ function cerca() {
         error(response);
       } else {
         for (i = 0; i < response.length; i++) {
-          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + "</a><br/>");
+          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + response[i]["user"] + response[i]["date"] + "</a><br/>");
         }
       }
     });
@@ -247,7 +247,7 @@ function getNotes() {
         error(response);
       } else {
         for (i = 0; i < response.length; i++) {
-          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + "</a><br/>");
+          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + response[i]["user"] + response[i]["date"] + "</a><br/>");
         }
       }
     });
@@ -354,13 +354,4 @@ $(document).ready(function(){
      cerca();
     }
   });
-  var FIREFOX = /Firefox/i.test(navigator.userAgent);
-
-  if (FIREFOX) {
-    $("#SearchLens").hide();
-    $("#SearchLensMoz").show();
-  }
-  if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
-     error("FIREFOX");
-   }
 });

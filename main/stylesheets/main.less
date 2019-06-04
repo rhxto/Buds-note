@@ -67,7 +67,6 @@ body {
 	padding: 0px 15px 0px 15px !important;
 }
 .searchLensMoz {
-	display:none;
 	padding: none !important;
 }
 @-moz-document url-prefix() { //mozzilla only
@@ -346,7 +345,6 @@ h1.err404 {
 	}
 }
 .comments:extend(.txt){
-	font-size: 20px;
 }
 .commentBtn:extend(.btn){
 }
@@ -363,6 +361,15 @@ h1.err404 {
 	&:focus {
 		background-color: @element_colorL;
 	}
+}
+.commentText:extend(.txt){
+
+}
+.commentUser:extend(.txt){
+
+}
+.commentDate:extend(.txt){
+
 }
 
 &::placeholder {
