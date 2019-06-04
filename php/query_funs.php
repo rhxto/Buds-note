@@ -616,7 +616,17 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $conn = null;
     }
   }
-
+  /*
+   * La funzione aggiunge al comemnto alla tabella revw che ha come attributi i vari parametri della funzione
+   *
+   * @param $conn La connessione che vogliamo usare
+   * @param $user L'utente che ha caricato il commento
+   * @param $title Il titolo della nota sulla quale è stato caricato il commento 
+   * @param $content Il contenuto del commento
+   *
+   * @return false Se uno dei parametri è nullo 
+   * @return "internalError" Se viene sollevata una PDOException
+   */ 
   function postComment($conn, String $user, String $title, String $content) {
     if ($user == NULL || $content == NULL || $conn == "null" || $conn == NULL) {
       return false;
@@ -628,14 +638,6 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $query->bindParam(":title", $title);
       $query->bindParam(":review", $content);
       $query->execute();
-      $query = $conn->prepare("SELECT id FROM revw WHERE review LIKE :content");
-      $query->bindParam(":content", $content);
-      $query->execute();
-      $id = $query->fetchAll();
-      $response = array();
-      $response["state"] = true;
-      $response["id"] = $id[0]["id"];
-      return $response;
     } catch(PDOException $e) {
       if (PDOError($e)) {
         return "internalError";
@@ -644,6 +646,17 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $conn = null;
     }
   }
+
+  /*
+   * La funzione serve ad eliminare un commento dato il suo id
+   * 
+   * @param $conn La connesione che stiamo usando
+   * @param $id L'id della nota che vogliamo cancellare
+   *
+   * @return false se l'id non è valido
+   * @return "internalError" Se viene sollevata una PDOException	
+   * @return true Se tutto viene cancellato correttamente 
+   */
   function delComment($conn, $id) {
     if ($id == "" || $id == "%" || $id == NULL || $conn == "null" || $conn == NULL) {
       return false;
@@ -661,6 +674,18 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $conn = null;
     }
   }
+ 
+  /*
+   * Dice se un utente è il creatore della nota dati i parametri 
+   *
+   * @param $conn La connessione che stiamo usando
+   * @param $title Il titolo della nota di cui dobbiamo verificare il proprietario
+   * @param $user L'utente che deve corrispondere al possessore della note per esserne il creatore
+   *
+   * @return false Se il titolo o il nome dell'utente della nota non è valido o se non è lui il possessore
+   * @return true Se $user è il creatore della nota $title
+   * @return "itnernalError" Se viene sollevata una PDOException
+   */
   function isNoteOwner($conn, $title, $user) {
     if ($conn == "null" || $conn == NULL || $title == NULL || $user == NULL) {
       return false;
@@ -683,6 +708,19 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $conn = null;
     }
   }
+
+  /*
+   * La funzione viene usata per aggiornare i parametri inseriti nella nota
+   *
+   * @param $conn La connessione che stiamo usando
+   * @param $user Il nome dell'utente che ha creato la nota
+   * @param $title Il vecchio titolo della nota da cambiare
+   * @param $newTitle Il nuovo titolo della nota da aggiornare
+   * @param $newContent Il nuovo contenuto della nota se vogliamo aggiorarlo
+   *
+   * @return true Se la nota viene aggiornata con successo
+   * @return false Se per qualche ragione non viene aperto il file o se viene sollevata una PDOException
+   */
   function updateNote($conn, $user, $title, $newTitle, $newContent) {
     $title = str_replace(" ", "_", $title);
     $newTitle = str_replace(" ", "_", $newTitle);
