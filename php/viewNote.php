@@ -127,6 +127,11 @@
   }
   if (checkNote(connectDb(), $_GET["title"])) {
     echo "<script> $('.comments').show();</script>";
+    if (($likes = getLikes($_GET["title"])) === false || ($dislikes = getDislikes($_GET["title"])) === false) {
+      echo "<script>error('NOTEREF'); $('.noteRating').html('Errore nel fetching dei likes e dislikes D:');</script>";
+    } else {
+      echo "<script>$('.likes').html($likes); $('.dislikes').html($dislikes);</script>";
+    }
   }
   if (isset($_SESSION['logged_in'])) {
     if ($_SESSION['logged_in'] == '1') {
@@ -140,11 +145,6 @@
       }
       if (checkNote(connectDb(), $_GET["title"])) {
         echo "<script> $('.postCommentElms').show();</script>";
-        if (($likes = getLikes($_GET["title"])) === false || ($dislikes = getDislikes($_GET["title"])) === false) {
-          echo "<script>error('NOTEREF'); $('.noteRating').html('Errore nel fetching dei likes e dislikes D:');</script>";
-        } else {
-          echo "<script>$('.likes').html($likes); $('.dislikes').html($dislikes);</script>";
-        }
       }
     } else {
       session_unset();  //quando si esegue il logout logged_in é settato e != da 1 quindi sappiamo che é stato eseguito il logout
