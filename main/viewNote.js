@@ -319,13 +319,16 @@ function rateNote(rating) {
     }
   });
 }
-/*$("#commentText").on("keypress", function (event) {
-  var text = $("#commentText").val();
-  var lines = text.split("\n");
-  var current = this.value.substr(0, this.selectionStart).split("\n").length;
-  if (event.keyCode != 13) {
-    if (lines[current - 1].length >= ($(this).attr('cols') - 1)) {
-      $('textarea').val($('textarea').val() + "-\n");
+$(document).ready(function() {
+  $("#commentText").on("keypress", function (event) {
+    var text = $("#commentText").val();
+    var lines = text.split("\n");
+    var current = this.value.substr(0, this.selectionStart).split("\n").length;
+    if (event.keyCode != 13) {
+      console.log("aaaaaa");
+      if (lines[current - 1].length >= ($(this).attr('cols') - 16)) {
+        $('textarea').val($('textarea').val() + "\n");
+      }
     }
-  }
-});*/
+  });
+});
