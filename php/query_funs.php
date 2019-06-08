@@ -348,12 +348,12 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
   }
 
   /*
-   * La funzione ritorna la nota sotto forma di array in cui in ogni elemento c'è una riga diversa del file comporeso il \n 
+   * La funzione ritorna la nota sotto forma di array in cui in ogni elemento c'è una riga diversa del file comporeso il \n
    * @param $conn La connessione che stiamo usando
    * @param $title Il titolo della nota di cui vogliamo leggere il contenuto
    *
    * @return Un array in cui in ogni elemento c'è una riga del file seguito ovviamente dal suo \n
-   * @return false Se viene sollevata una PDOException 
+   * @return false Se viene sollevata una PDOException
    */
   function getNote($conn, String $title) {
     $title = str_replace(" ", "_", $title);
@@ -376,17 +376,17 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
   /*
    *
    * @deprecated Non viene più usata la tabella mark, è stata sotituita da like
-   * 
+   *
    * La funzione mi permette di ricercare una nota ed ottenere il solito array in cui in ogni elemento son poi contenuti tramite un subarray associativo i nomi degli attributi
-   * 
+   *
    * @param $conn La connessione che stiamo usando
    * @param $id L'id del voto che stiamo cercando
-   * @param $user L'utente che ha caricato il voto 
+   * @param $user L'utente che ha caricato il voto
    * @param $title Il titolo della nota che ha ricevuto il voto
    * @param $mark Il voto vche è stato dato nella tupla mark (ovvero il valore della valutazione)
    * @param $datefrom La data minima in cui deve essere stato caricato il voto
    * @param $dateto La data massima entro la quale deve essere stato caricato il voto
-   * @param $code Il nome dell'attributo tramite il quale dobbiamo ordinare i risultati della query 
+   * @param $code Il nome dell'attributo tramite il quale dobbiamo ordinare i risultati della query
    *
    * @return Un array[x]['yyy'] nella x va il numer del campo in ordine di sorting della query, su yyy ci va il campo che voglio leggere dall'elemento x
    * @return ''internalError' Se viene sollevata una PDOException
@@ -459,7 +459,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
 
   /*
    * La funzione ricerca un report dando i seguenti parametri come filtri
-   * 
+   *
    * @param $conn La connessione che stiamo usando
    * @param $id L'id del report che stiamo cercando
    * @param $user L'utente che ha caricato la report che stiamo cercando
@@ -468,7 +468,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
    * @param $datefrom La data minima in cui deve essere stata scritta la nota
    * @param $dateto La data massima entro la quale deve essere stata scritta la nota
    * @param $code L'attributo secondo cui dobbiamo ordinare i risultati della query
-   * 
+   *
    * @return Un array[x]['yyy'] In cui su x deve andare il numero di sorting della tupla nella query e su yyy ci va il nome dell'attributo di cui ogliamo conoscere il contenuto per la tupla numero x
    * @return "internalError" Se viene sollevata una PDOException
    */
@@ -545,7 +545,7 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
    * @param $dateto La data entro la quale deve essere stata scritta la nota
    * @param $order Il nome dell'attributo con il quale voglio ordinare il sorting order della query
    * @param $v Se voglio ordinare il modo ascendente o discendente (ASC o DESC)
-   * 
+   *
    * @return Il solito array[x]['yyy'] In cui x è l'ordine di sorting in cui la tupla è stata ordinata e yyy l'attributo che vogliamo leggere della tupla x
    * @return "internalError" Se viene sollevata una PDOException
    */
@@ -621,12 +621,12 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
    *
    * @param $conn La connessione che vogliamo usare
    * @param $user L'utente che ha caricato il commento
-   * @param $title Il titolo della nota sulla quale è stato caricato il commento 
+   * @param $title Il titolo della nota sulla quale è stato caricato il commento
    * @param $content Il contenuto del commento
    *
-   * @return false Se uno dei parametri è nullo 
+   * @return false Se uno dei parametri è nullo
    * @return "internalError" Se viene sollevata una PDOException
-   */ 
+   */
   function postComment($conn, String $user, String $title, String $content) {
     if ($user == NULL || $content == NULL || $conn == "null" || $conn == NULL) {
       return false;
@@ -638,6 +638,13 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $query->bindParam(":title", $title);
       $query->bindParam(":review", $content);
       $query->execute();
+      //dobbiamo ritornare anche l'id per la cancellazione dei commenti postati nella pagina senza che sia ricaricata
+      $query = $conn->prepare("SELECT id FROM revw WHERE (user = :user) AND (review LIKE :content)");
+      $query->bindParam(":user", $user);
+      $query->bindParam(":content", $content);
+      $query->execute();
+      $commentId = $query->fetchAll()[0]["id"];
+      return ["state"=> true, "id"=> $commentId];
     } catch(PDOException $e) {
       if (PDOError($e)) {
         return "internalError";
@@ -649,13 +656,13 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
 
   /*
    * La funzione serve ad eliminare un commento dato il suo id
-   * 
+   *
    * @param $conn La connesione che stiamo usando
    * @param $id L'id della nota che vogliamo cancellare
    *
    * @return false se l'id non è valido
-   * @return "internalError" Se viene sollevata una PDOException	
-   * @return true Se tutto viene cancellato correttamente 
+   * @return "internalError" Se viene sollevata una PDOException
+   * @return true Se tutto viene cancellato correttamente
    */
   function delComment($conn, $id) {
     if ($id == "" || $id == "%" || $id == NULL || $conn == "null" || $conn == NULL) {
@@ -674,9 +681,9 @@ function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, Str
       $conn = null;
     }
   }
- 
+
   /*
-   * Dice se un utente è il creatore della nota dati i parametri 
+   * Dice se un utente è il creatore della nota dati i parametri
    *
    * @param $conn La connessione che stiamo usando
    * @param $title Il titolo della nota di cui dobbiamo verificare il proprietario

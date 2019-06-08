@@ -59,7 +59,7 @@ function error(err) {
       $("#warn").html("Devi essere loggato per scrivere una nota!");
       break;
     case "NOTEW":
-      $("#warn").html("Errore nella scrittura della nota, se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err)
+      $("#warn").html("Errore nella scrittura della nota, se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
       break;
     case "NOTEDNA":
       $("#warn").html("Non sei autorizzato a cancellare le note, questo incidente é stato segnalato");
@@ -68,7 +68,7 @@ function error(err) {
       $("#warn").html("C'é stato un errore nella rimozione della nota, controlla il log delgi erroi." + " Codice: " + err);
       break;
     case "NOTESC":
-      $("#warn").html("Non si possono usare caratteri speciali in una nota! (. e / non supportati)")
+      $("#warn").html("Non si possono usare caratteri speciali in una nota! (. e / non supportati)");
       break;
     case "NOTEDNF":
       $("#warn").html("Nota non trovata!");
@@ -139,7 +139,7 @@ function postComment() {
   $.post(ajaxurl, data, function (response) {
     response = JSON.parse(response);
   if (response["state"] == "done") {
-      $(".localSpawn").append('<br/><span id="' + response["id"] +  '"></span>');
+      $(".localSpawn").append('<div id="' + response["id"] +  '"></div>');
       $("#" + response["id"]).html($("#commentText").val() + '<button class="delCommentBtn" onclick="delComment(' + response["id"] + ');">Elimina commento</button>');
       $("#commentText").val("");
     } else {
@@ -319,3 +319,13 @@ function rateNote(rating) {
     }
   });
 }
+/*$("#commentText").on("keypress", function (event) {
+  var text = $("#commentText").val();
+  var lines = text.split("\n");
+  var current = this.value.substr(0, this.selectionStart).split("\n").length;
+  if (event.keyCode != 13) {
+    if (lines[current - 1].length >= ($(this).attr('cols') - 1)) {
+      $('textarea').val($('textarea').val() + "-\n");
+    }
+  }
+});*/

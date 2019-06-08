@@ -46,22 +46,22 @@
         <div class="noteContent"></div>
       </div>
       <div class="comments" style="display: none;">
-        <span style="font-weight:bold;font-size:45px;text-align:center;">COMMENTI</span><br/>
+        <span>COMMENTI</span><br/>
         <div class="localSpawn"></div>
         <div class="otherComments">
+          <?php
+            require_once 'core.php';
+            require_once 'query_funs.php';
+            $comments = searchRevw(connectDb(), NULL, NULL, $_GET["title"], NULL, NULL, NULL, NULL, NULL);
+            foreach ($comments as $comment) {
+              $comment["review"] = str_replace("&lt;br&gt;", "<br>", $comment["review"]);
+              $comment = str_replace("'", "&#39", $comment);
+              echo "<span id=" . $comment["id"] . "><div class=commentText>" . $comment['review'] . "</div><div class=commentInfo>" . $comment["user"] . " - " . $comment["date"] . "</div><button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button><br/></span>";
+            }
+          ?>
         </div>
-        <?php
-          require_once 'core.php';
-          require_once 'query_funs.php';
-          $comments = searchRevw(connectDb(), NULL, NULL, $_GET["title"], NULL, NULL, NULL, NULL, NULL);
-          foreach ($comments as $comment) {
-	          $comment["review"] = str_replace("&lt;br&gt;", "<br>", $comment["review"]);
-	          $comment = str_replace("'", "&#39", $comment);
-            echo "<script>$('.otherComments').append('<span id=" . $comment["id"] . "><span class=commentText>" . $comment['review'] . "</span><span class=commentUser>" . $comment["user"] . "</span><span class=commentDate>" . $comment["date"] . "</span><button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button><br/></span>');</script>";
-          }
-        ?>
          <br/>
-        <textarea rows="1" cols="100" placeholder="Inserisci un commento..." id="commentText" style="display: none;" class="postCommentElms commentTxt"></textarea>
+        <textarea rows="1" cols="100" wrap="hard" placeholder="Inserisci un commento..." id="commentText" style="display: none;" class="postCommentElms commentTxt"></textarea>
         <button onclick="postComment()" style="display: none;" class="postCommentElms commentBtn">Pubblica</button>
       </div>
     </div>

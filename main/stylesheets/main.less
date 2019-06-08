@@ -312,9 +312,24 @@ h1.err404 {
 	font-size: 25px;
 }
 .noteContent {
-  float: left;
+  float: right;
   width: 80%;
-  margin-right: -1px; /* Thank you IE */
+  margin-right: -1px;
+  padding-bottom: 500em;
+  margin-bottom: -500em;
+	font-size: 25px;
+}
+.commentText {
+	float: left;
+  width: 80%;
+  padding-bottom: 500em;
+  margin-bottom: -500em;
+	font-size: 25px;
+}
+.commentInfo {
+	float: right;
+  width: 19%;
+  margin-right: -1px;
   padding-bottom: 500em;
   margin-bottom: -500em;
 	font-size: 25px;
@@ -345,6 +360,7 @@ h1.err404 {
 	}
 }
 .comments:extend(.txt){
+	font-size: 25px;
 }
 .commentBtn:extend(.btn){
 }
@@ -361,15 +377,6 @@ h1.err404 {
 	&:focus {
 		background-color: @element_colorL;
 	}
-}
-.commentText:extend(.txt){
-
-}
-.commentUser:extend(.txt){
-
-}
-.commentDate:extend(.txt){
-
 }
 
 &::placeholder {
