@@ -175,7 +175,7 @@ function cerca() {
         error(response);
       } else {
         for (i = 0; i < response.length; i++) {
-          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + response[i]["user"] + response[i]["date"] + "</a><br/>");
+          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       }
     });
@@ -247,7 +247,7 @@ function getNotes() {
         error(response);
       } else {
         for (i = 0; i < response.length; i++) {
-          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + response[i]["user"] + response[i]["date"] + "</a><br/>");
+          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       }
     });
