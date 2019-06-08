@@ -325,7 +325,6 @@ $(document).ready(function() {
     var lines = text.split("\n");
     var current = this.value.substr(0, this.selectionStart).split("\n").length;
     if (event.keyCode != 13) {
-      console.log("aaaaaa");
       if (lines[current - 1].length >= ($(this).attr('cols') - 16)) {
         $('textarea').val($('textarea').val() + "\n");
       }
