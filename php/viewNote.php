@@ -23,27 +23,116 @@
         <a href="../register/" class="navbar-right log">REGISTER</a>
         <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
       </div>
-      <span id="greet"></span>
+      <span id="greet">
+        <?php
+          if (isset($_SESSION["logged_in"])) {
+            if ($_SESSION["logged_in"] === "1") {
+              echo "Benvenuto, " . $_SESSION["username"];
+            }
+          }
+        ?>
+      </span>
     </p>
     <div id="everythingAboutNote">
       <div class="noteInfoDisplay" hidden>
+        <?php
+          require_once 'core.php';
+          require_once "funs.php";
+          require_once 'query_funs.php';
+          function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            if ($data == "") {
+              die(json_encode("NOTESNV"));
+            }
+            return $data;
+          }
+          if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            if (empty($_GET["title"])) {
+              die(json_encode("NOTESUT"));
+            } else {
+              $title = test_input($_GET["title"]);
+              $note = searchNote(connectDb(), $title, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+            }
+            if (empty($note[0]['title'])) {
+              echo "<script>$('.noteInfoDisplay').hide();</script>";
+              echo "<h6 style='font-size: 35px;'>Nota non trovata ):</h6>";
+              $display = false;
+            } else {
+              $display = true;
+            }
+          }
+          ?>
         <div class="noteHeaderTtl">
-        </div>
+          <?php
+            if ($display) {
+              echo "<span class=spawnTtl>" . $title . "</span><br/><script>localStorage.setItem('title', '" . $title . "');</script>";
+            }
+          ?></div>
         <div class="noteInfo">
           <br/>
-          <div class="noteHeaderUser">Utente: </div>
-          <div class="noteHeaderDept">Indirizzo: </div>
-          <div class="noteHeaderSubj">Materia: </div>
-          <div class="noteHeaderYear">Anno: </div>
-          <div class="noteHeaderDate">Data: </div><br/>
+          <div class="noteHeaderUser">Utente:
+            <?php
+              if ($display) {
+                echo $note[0]["user"];
+              }
+            ?></div>
+          <div class="noteHeaderDept">Indirizzo:
+            <?php
+              if ($display) {
+                echo $note[0]["dept"];
+              }
+            ?></div>
+          <div class="noteHeaderSubj">Materia:
+            <?php
+              if ($display) {
+                echo $note[0]["subj"];
+              }
+            ?></div>
+          <div class="noteHeaderYear">Anno:
+            <?php
+              if ($display) {
+                echo $note[0]["year"];
+              }
+            ?></div>
+          <div class="noteHeaderDate">Data:
+            <?php
+              if ($display) {
+                echo $note[0]["date"];
+              }
+            ?></div><br/>
           <div class="noteRating">
-            Likes: <span class="likes"></span>
-            Dislikes: <span class="dislikes"></span>
+            Likes:
+            <?php
+            if (checkNote(connectDb(), $_GET["title"])) {
+                if (($likes = getLikes($_GET["title"])) === false || ($dislikes = getDislikes($_GET["title"])) === false) {
+                  echo "<script>error('NOTEREF'); $('.noteRating').html('Errore nel fetching dei likes e dislikes D:');</script>";
+                  $displayRate = false;
+                } else {
+                  echo "<span class='likes'>" . $likes . "</span>";
+                  $displayRate = true;
+                }
+              }
+              ?>
+            Dislikes: <?php
+              if ($displayRate) {
+                echo "<span class='dislikes'>" . $dislikes . "</span>";
+              }
+            ?>
           </div>
           <button id="mipiace" onclick="rateNote(true)">Mi piace</button>
           <button id="nonmipiace" onclick="rateNote(false)">Non mi piace</button>
         </div>
-        <div class="noteContent"></div>
+        <div class="noteContent">
+          <?php
+            foreach (getNote(connectDb(), $title) as $row) {
+              $row = str_replace("\n", "<br />", $row);
+              $row = str_replace("'", "&#39;", $row);
+              echo $row;
+            }
+           ?>
+        </div>
       </div>
       <div class="comments" style="display: none;">
         <span>COMMENTI</span><br/>
@@ -81,45 +170,6 @@
   </body>
 </html>
 <?php
-
-  require_once 'core.php';
-  require_once "funs.php";
-  require_once 'query_funs.php';
-  function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    if ($data == "") {
-      die(json_encode("NOTESNV"));
-    }
-    return $data;
-  }
-
-  if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    if (empty($_GET["title"])) {
-      die(json_encode("NOTESUT"));
-    } else {
-      $title = test_input($_GET["title"]);
-      $note = searchNote(connectDb(), $title, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-      if (empty($note[0]['title'])) {
-        echo "<script>$('.noteInfoDisplay').hide();</script>";
-        echo "<h6 style='font-size: 35px;'>Nota non trovata ):</h6>";
-      } else {
-        echo "<script>$('.noteHeaderTtl').append('<span class=spawnTtl>" . $title . "</span><br/>'); localStorage.setItem('title', '" . $title . "');</script>";
-        echo "<script>$('.noteHeaderUser').append('" . $note[0]["user"] . "');</script>";
-        echo "<script>$('.noteHeaderDept').append('" . $note[0]["dept"] . "');</script>";
-        echo "<script>$('.noteHeaderSubj').append('" . $note[0]["subj"] . "');</script>";
-        echo "<script>$('.noteHeaderYear').append('" . $note[0]["year"] . "');</script>";
-        echo "<script>$('.noteHeaderDate').append('" . $note[0]["date"] . "');</script>";
-        echo "<script>$('.noteContent').append('<span class=spawnContent></span><br/>');</script>";
-        foreach (getNote(connectDb(), $title) as $row) {
-          $row = str_replace("\n", "<br />", $row);
-          $row = str_replace("'", "&#39;", $row);
-          echo "<script>$('.spawnContent').append('" . $row . "');</script>";
-        }
-      }
-    }
-  }
   if(gettype($m = getManStatus()) === "string") {
     echo "<script>error($m);</script>";
   } elseif ($m == true) {
@@ -127,11 +177,6 @@
   }
   if (checkNote(connectDb(), $_GET["title"])) {
     echo "<script> $('.comments').show();</script>";
-    if (($likes = getLikes($_GET["title"])) === false || ($dislikes = getDislikes($_GET["title"])) === false) {
-      echo "<script>error('NOTEREF'); $('.noteRating').html('Errore nel fetching dei likes e dislikes D:');</script>";
-    } else {
-      echo "<script>$('.likes').html($likes); $('.dislikes').html($dislikes);</script>";
-    }
   }
   if (isset($_SESSION['logged_in'])) {
     if ($_SESSION['logged_in'] == '1') {
@@ -139,7 +184,6 @@
     if(getAcclvl($_SESSION["username"]) == 1) {
           echo "<script>$('.adminTools').show(); $('.admin').show();</script>";
       }
-      echo "<script>$('#greet').html('Benvenuto,  " . $_SESSION['username'] . "');</script>";
       if (isNoteOwner(connectDb(), $title, $_SESSION["username"])) {
         echo "<script>$('#modifyNoteBtn').show(); toolbarUser();</script>";
       }
