@@ -17,3 +17,7 @@
 602_note_exists = la nota esiste giá
 700_no_subj_found = nessuna materia trovata
 800_rating_fetch_failure = errore nel fetch dei likes e/o dislikes
+900_rate_failure = errore nella scrittura della valutazione
+901_already_rated = nota giá valutata in quel modo
+902_note_does_not_exist = la nota da valutare non esiste
+903_note_rating_not_valid = valori per la valutazione non validi
