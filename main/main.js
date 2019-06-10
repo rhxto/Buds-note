@@ -137,9 +137,11 @@ function cerca() {
         $("#risultati").html("Nessun risultato trovato")
       } else if (response == "IES" || response == "IE") {
         error(reponse);
-      }
-      for (i = 0; i < response[1].length; i++) {
-        $("#risultati").append(response[1][i] + "<br/>");
+      } else {
+        $("#scriviNotaBtn").hide();
+        for (i = 0; i < response[1].length; i++) {
+          $("#risultati").append(response[1][i] + "<br/>");
+        }
       }
     });
   } else if (type == "note"){
@@ -174,6 +176,7 @@ function cerca() {
       } else if (response == "IES" || response == "IE") {
         error(response);
       } else {
+        $("#scriviNotaBtn").hide();
         for (i = 0; i < response.length; i++) {
           $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
@@ -205,6 +208,7 @@ function getSubjs() {
         error(response);
       } else {
         for (i = 0; i < response[1].length; i++) {
+          $("#scriviNotaBtn").hide();
           $("#risultati").append("<a href='subj/" + i + "/'>" + response[1][i] + "</a><br/>");
         }
       }
@@ -226,6 +230,7 @@ function getDepts() {
         error(response);
       } else {
         for (i = 0; i < response[1].length; i++) {
+          $("#scriviNotaBtn").hide();
           $("#risultati").append("<a href='dept/" + i + "/'>" + response[1][i] + "</a><br/>");
         }
       }
@@ -247,6 +252,7 @@ function getNotes() {
         error(response);
       } else {
         for (i = 0; i < response.length; i++) {
+          $("#scriviNotaBtn").hide();
           $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       }

@@ -46,7 +46,7 @@ function errore(err) {
     $("#Warning").html("Errore interno");
     break;
     case "bannato":
-    window.location.href = "../";
+    window.location.href = "../ban";
     break;
     default:
     $("#Warning").html("Errore interno codice sconosciuto (se vedi questo messaggio riferiscilo agli amministratori)");
