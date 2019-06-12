@@ -6,7 +6,7 @@ IEMANR = errore nella lettura della manutenzione
 IEMANS = errore nella scrittura della manutenzione
 NOMAN = utente non autorizzato a impostare lo stato della manutenzione
 MANAA = manutenzione giá attiva
-MANAT = manutenzione giá attiva
+MANAT = manutenzione giá terminata
 
 NOTEW = errore nella scrittura della nota
 NOTENL = scrittura nota senza essere loggati
