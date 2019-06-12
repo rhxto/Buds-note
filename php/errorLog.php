@@ -8,7 +8,7 @@
         color: white;
       }
       a {
-        position: absolute;
+        position: fixed;
         bottom: 0%;
         right: 0%;
         background-color: black;
