@@ -59,8 +59,6 @@
         Filtra per indirizzo: <select class='opzM' id="filtroIndirizzo"><br/>
           <option class="opz" value="Tutto">Tutto</option>
         <?php
-          require_once 'php/core.php';
-          require_once 'php/query_funs.php';
           $r = dept(connectDb(), NULL, NULL);
           foreach ($r[1] as $res) {
             echo "<option class='opz' value='" . $res . "'>$res</option>";
@@ -126,8 +124,6 @@
         Titolo: <textarea rows="1" cols="100" id="writeNoteTitle" class="scriviNotaText"></textarea><br/>
         Materia: <select class="opzM" id="writeNoteSubj"><br/>
         <?php
-          require_once 'php/core.php';
-          require_once 'php/query_funs.php';
           $r = subj(connectDb(), NULL, NULL);
           foreach ($r[1] as $res) {
             if (strpos($res, "'") !== false) {
@@ -139,8 +135,6 @@
        </select>
         Indirizzo: <select class='opzM' id="writeNoteDept"><br/><br/>
         <?php
-          require_once 'php/core.php';
-          require_once 'php/query_funs.php';
           $r = dept(connectDb(), NULL, NULL);
           foreach ($r[1] as $res) {
             echo "<option class='opz' value='" . $res . "'>$res</option>";
@@ -181,7 +175,6 @@
   </script>
 </html>
 <?php
-  require_once "php/funs.php";
   if(gettype($m = getManStatus()) === "string") {
     echo "<script>error($m);</script>";
   } elseif ($m == true) {
