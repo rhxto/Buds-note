@@ -447,13 +447,9 @@
       }
       if ($datefrom == NULL) {
         $datefrom = "%";
-      } else {
-        //$datefrom = str_replace("/", "-", $datefrom) . "0:0:0";
       }
       if ($dateto == NULL) {
         $dateto = date("Y-m-d H:i:s");
-      } else {
-        //$dateto = str_replace("/", "-", $dateto) . "0:0:0";
       }
       if ($order == NULL) {
         $order = "date";
@@ -1287,5 +1283,32 @@
       }
     }
 
+    /*
+     * La funzione ritorna il numero totale dei like e dislike ricevuto dall'utente
+     *
+     * @param $user Il nome dell'utente del quale contare il nnumero di rates
+     *
+     * @return Il numero totale di rate ricevuti
+     * @return false In caso di errore se viene sollevata una PDOException
+     */
+    function getReceivedRate($user){
+      try{
+        $tot_rates = 0;
+        $list = searchNote(connectDb(), NULL, NULL, $user, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+        foreach($list as $element){
+          $tot_rates += ( getLikes($element["title"]) + getDislikes($element["title"]) )
+        }
+        return $tot_rates;
+      }catch(PDOException $e){
+        PDOError($e);
+        return false;
+      }finally{
+        $conn = null;
+      }
+    }
 
+
+
+
+searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $datefrom, $dateto, $order, $v)
 ?>
