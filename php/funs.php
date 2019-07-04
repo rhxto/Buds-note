@@ -885,6 +885,7 @@
      * @param $title Il titolo della nota sulla quale è stato caricato il commento
      * @param $content Il contenuto del commento
      *
+     * @return Ritorna un'array associativo dove dentro [state] c'è true se l' operazione è andata a abuon fine altrimenti false, dentro [id] c'è l'id del commento 
      * @return false Se uno dei parametri è nullo
      * @return "internalError" Se viene sollevata una PDOException
      */
