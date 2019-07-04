@@ -531,8 +531,9 @@
         $query->bindParam(":date", $date);
         $noteFile = fopen("../notedb/$user/$title.txt", "w+");
         if ($noteFile == false) {
-          die();
+          die(json_encode("NOTEW"));
         }
+        error_log("noteFIle: " . $noteFile);
         fwrite($noteFile, $content);
         fclose($noteFile);
         $query->execute();
