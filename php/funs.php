@@ -885,7 +885,7 @@
      * @param $title Il titolo della nota sulla quale è stato caricato il commento
      * @param $content Il contenuto del commento
      *
-     * @return Ritorna un'array associativo dove dentro [state] c'è true se l' operazione è andata a abuon fine altrimenti false, dentro [id] c'è l'id del commento 
+     * @return Ritorna un'array associativo dove dentro [state] c'è true se l' operazione è andata a abuon fine altrimenti false, dentro [id] c'è l'id del commento
      * @return false Se uno dei parametri è nullo
      * @return "internalError" Se viene sollevata una PDOException
      */
@@ -1190,7 +1190,7 @@
     /*
      * La funzione ritorna il numero totale dei rate lasciati dall'utente $user sotto tutte le note del DB
      *
-     * @param $user Il nome dell'utente del quale cercare i rate
+     * @param $user Il nome dell'utente del quale cercare il numero dei rate
      *
      * @return Il numero di rate lasciati dall'utente (non i rate che gli altri lasciano sotto le sue note ma quelli che lui lascia in tutte le note del database)
      * @return false In caso di errore se viene sollevata una PDOException
@@ -1211,5 +1211,81 @@
         $conn = null;
       }
     }
+
+    /*
+     * La funziona ritorna la data e l'ora dell'ultimo login eseguito con successo dall'utente
+     *
+     * @param $user Il nome dell'utente di cui stiamo cercando l'ultimo login
+     *
+     * @return La data e l'ora dell'ultimo log secondo il formato in cui esso è salvato dentro il database
+     * @return false Se viene sollevata una PDOException di qualche tipo
+     */
+    function getLastLog($user){
+      try{
+        $conn = connectDb();
+        $query = $conn->prepare("SELECT last_log FROM user WHERE username = :user");
+        $query->bindParam(":user", $user);
+        $query->execute();
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $query->fetchAll();
+        return $result[0]["last_log"];
+      }catch(PDOException $e){
+        PDOError($e);
+        return false;
+      }finally{
+        $conn = null;
+      }
+    }
+
+    /*
+     * La funzione ritorna il numero totale dei commenti lasciati dall'utente $user sotto tutte le note del DB
+     *
+     * @param $user Il nome dell'utente del quale cercare il numero demçi commenti
+     *
+     * @return Il numero di commenti lasciati dall'utente (non i commenti che gli altri lasciano sotto le sue note ma quelli che lui lascia in tutte le note del database)
+     * @return false In caso di errore se viene sollevata una PDOException
+     */
+    function getLeftComm($user){
+      try{
+        $conn = connectDb();
+        $query = $conn->prepare("SELECT COUNT(*) as num FROM revw WHERE user = :user");
+        $query->bindParam(":user", $user);
+        $query->execute();
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $query->fetchAll();
+        return $result[0]["num"];
+      }catch(PDOException $e){
+        PDOError($e);
+        return false;
+      }finally{
+        $conn = null;
+      }
+    }
+
+    /*
+     * La funzione ritorna il numero totale delle note create dall'utente $user
+     *
+     * @param $user Il nome dell'utente del quale contare il nnumero di note
+     *
+     * @return Il numero di note create dall'utente e ancora presenti nel database
+     * @return false In caso di errore se viene sollevata una PDOException
+     */
+    function getNoteNum($user){
+      try{
+        $conn = connectDb();
+        $query = $conn->prepare("SELECT COUNT(*) as num FROM note WHERE user = :user");
+        $query->bindParam(":user", $user);
+        $query->execute();
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $query->fetchAll();
+        return $result[0]["num"];
+      }catch(PDOException $e){
+        PDOError($e);
+        return false;
+      }finally{
+        $conn = null;
+      }
+    }
+
 
 ?>
