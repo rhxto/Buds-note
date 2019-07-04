@@ -142,7 +142,6 @@
     }
     if ($type == "search_note"  && empty($result["status"])) {
       require_once "../php/core.php";
-      require_once "../php/query_funs.php";
       require_once "../php/funs.php";
       $response = searchNote(connectDb(), $title, NULL, $user, $subj, $year, $dept, $datefrom, $dateto, $orderby, $order);
       if ($response == "internalError") {

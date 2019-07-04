@@ -1,7 +1,6 @@
 <?php session_start();
   require_once 'core.php';
   require_once 'funs.php';
-  require_once 'query_funs.php';
   function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);

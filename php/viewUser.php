@@ -53,7 +53,7 @@
         </div>
         <?php
           require_once 'core.php';
-          require_once 'query_funs.php';
+          require_once 'funs.php';
           $comments = searchRevw(connectDb(), NULL, NULL, $_GET["title"], NULL, NULL, NULL, NULL, NULL);
           foreach ($comments as $comment) {
 	          $comment["review"] = str_replace("&lt;br&gt;", "<br>", $comment["review"]);
@@ -85,7 +85,7 @@
 
   require_once 'core.php';
   require_once "funs.php";
-  require_once 'query_funs.php';
+  require_once 'funs.php';
   function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);

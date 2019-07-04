@@ -46,7 +46,7 @@
           <option class="opz" value="Tutto">Tutto</option>
         <?php
           require_once 'php/core.php';
-          require_once 'php/query_funs.php';
+          require_once 'php/funs.php';
           $r = subj(connectDb(), NULL, NULL);
           foreach ($r[1] as $res) {
             if (strpos($res, "'") !== false) {

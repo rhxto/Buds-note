@@ -122,7 +122,6 @@
     }
   }
   require_once "core.php";
-  require_once "query_funs.php";
   require_once "funs.php";
   $conn = connectDb();
   if ($type == "deptName") {

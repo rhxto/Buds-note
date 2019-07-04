@@ -1,7 +1,6 @@
 <?php
   require_once '../php/core.php';
   require_once '../php/funs.php';
-  require_once '../php/query_funs.php';
   if (login($_POST["username"], hash("sha256", $_POST["password"])) == "true") {
     function test_input($data) {
       $data = trim($data);
