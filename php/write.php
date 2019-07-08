@@ -4,7 +4,7 @@ require 'funs.php';
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
-    if ($data == "" || (strpos($data, ".") !== false && !$mail) || strpos($data, "/") !== false) {
+    if ($data == "" || (strpos($data, ".") !== false && !$mail) || strpos($data, "/") !== false || strpos($data, "'") !== false || strpos($data, ")") !== false) {
       //il controllo del . e dello / server perché se uno si chiama tipo ../ e crea/modifica/etc.. qualcosa come le note la costruzione del percorso si screwa
       echo 'nonAN';
       die();

@@ -5,7 +5,7 @@
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     //il controllo del . e dello / server perché se uno si chiama tipo ../ e crea/modifica/etc.. qualcosa come le note la costruzione del percorso si screwa
-    if ($data == "" || strpos($data, ".") !== false || strpos($data, "/") !== false) {
+    if ($data == "" || strpos($data, ".") !== false || strpos($data, "/") !== false || strpos($data, "'") !== false || strpos($data, ")") !== false) {
       echo 'nonAN';
       die();
     }

@@ -20,7 +20,7 @@ function testInput() {
   var usr = $("#Username").val();
   var pswd = $("#Password").val();
 
-  if(usr == null || pswd == null|| usr == undefined || pswd == undefined || usr == "" || pswd == "" || usr.length > 30 || pswd.length > 30) {
+  if(usr == null || pswd == null|| usr == undefined || pswd == undefined || usr == "" || pswd == "" || usr.length > 30 || pswd.length > 30 || usr.includes("'") || usr.includes(")")) {
     if (errThrown == false) {
       $("#Warning").html("Inserire dati validi!");
       errThrown = true;

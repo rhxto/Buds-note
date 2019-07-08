@@ -1296,7 +1296,7 @@
         $tot_rates = 0;
         $list = searchNote(connectDb(), NULL, NULL, $user, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
         foreach($list as $element){
-          $tot_rates += ( getLikes($element["title"]) + getDislikes($element["title"]) )
+          $tot_rates += (getLikes($element["title"]) + getDislikes($element["title"]));
         }
         return $tot_rates;
       }catch(PDOException $e){
@@ -1310,5 +1310,5 @@
 
 
 
-searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $datefrom, $dateto, $order, $v)
+//searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $datefrom, $dateto, $order, $v) a che serviva questo?
 ?>
