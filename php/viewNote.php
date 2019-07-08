@@ -49,14 +49,13 @@
           }
           if ($_SERVER["REQUEST_METHOD"] == "GET") {
             if (empty($_GET["title"])) {
-              die(json_encode("NOTESUT"));
+              die("<h1>URL non formato correttamente! (Quindi, ovviamente, nota non trovata D:)");
             } else {
               $title = test_input($_GET["title"]);
               $note = searchNote(connectDb(), $title, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
             }
             if (empty($note[0]['title'])) {
               echo "<script>$('.noteInfoDisplay').hide();</script>";
-              echo "<h6 style='font-size: 35px;'>Nota non trovata ):</h6>";
               $display = false;
             } else {
               $display = true;
@@ -112,6 +111,8 @@
                   echo "<span class='likes'>" . $likes . "</span>";
                   $displayRate = true;
                 }
+              } else {
+                $displayRate = false;
               }
               ?>
             Dislikes: <?php
@@ -125,26 +126,35 @@
         </div>
         <div class="noteContent">
           <?php
-            foreach (getNote(connectDb(), $title) as $row) {
-              $row = str_replace("\n", "<br />", $row);
-              $row = str_replace("'", "&#39;", $row);
-              echo $row;
+            if ($display) {
+              foreach (getNote(connectDb(), $title) as $row) {
+                $row = str_replace("\n", "<br />", $row);
+                $row = str_replace("'", "&#39;", $row);
+                echo $row;
+              }
             }
            ?>
         </div>
       </div>
+      <?php
+        if (!$display) {
+          echo "<h1>Nota non trovata ) :";
+        }
+       ?>
       <div class="comments" style="display: none;">
         <span>COMMENTI</span><br/>
         <div class="localSpawn"></div>
         <div class="otherComments">
           <?php
-            require_once 'core.php';
-            require_once 'funs.php';
-            $comments = searchRevw(connectDb(), NULL, NULL, $_GET["title"], NULL, NULL, NULL, NULL, NULL);
-            foreach ($comments as $comment) {
-              $comment["review"] = str_replace("&lt;br&gt;", "<br>", $comment["review"]);
-              $comment = str_replace("'", "&#39", $comment);
-              echo "<span id=" . $comment["id"] . "><div class=commentText>" . $comment['review'] . "<button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button></div><div class=commentInfo>" . $comment["user"] . " - " . $comment["date"] . "</div><br/></span>";
+            if ($display) {
+              require_once 'core.php';
+              require_once 'funs.php';
+              $comments = searchRevw(connectDb(), NULL, NULL, $_GET["title"], NULL, NULL, NULL, NULL, NULL);
+              foreach ($comments as $comment) {
+                $comment["review"] = str_replace("&lt;br&gt;", "<br>", $comment["review"]);
+                $comment = str_replace("'", "&#39", $comment);
+                echo "<span id=" . $comment["id"] . "><div class=commentText>" . $comment['review'] . "<button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button></div><div class=commentInfo>" . $comment["user"] . " - " . $comment["date"] . "</div><br/></span>";
+              }
             }
           ?>
         </div>
@@ -180,14 +190,14 @@
   if (isset($_SESSION['logged_in'])) {
     if ($_SESSION['logged_in'] == '1') {
       echo "<script>$('.log').attr('hidden', true); $('#scriviNotaBtn').show();</script>";
-    if(getAcclvl($_SESSION["username"]) == 1) {
-          echo "<script>$('.adminTools').show(); $('.admin').show();</script>";
-      }
-      if (isNoteOwner(connectDb(), $title, $_SESSION["username"])) {
-        echo "<script>$('#modifyNoteBtn').show(); toolbarUser();</script>";
+      if(getAcclvl($_SESSION["username"]) == 1) {
+        echo "<script>$('.adminTools').show(); $('.admin').show();</script>";
       }
       if (checkNote(connectDb(), $_GET["title"])) {
         echo "<script> $('.postCommentElms').show();</script>";
+        if (isNoteOwner(connectDb(), $title, $_SESSION["username"])) {
+          echo "<script>$('#modifyNoteBtn').show(); toolbarUser();</script>";
+        }
       }
     } else {
       session_unset();  //quando si esegue il logout logged_in é settato e != da 1 quindi sappiamo che é stato eseguito il logout
