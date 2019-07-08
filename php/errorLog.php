@@ -63,7 +63,7 @@
           die("<h1>Non sei autorizzato a visitare questa pagina, questo incidente é stato registrato.<h1>");
         }
       } else {
-        error_log("**Visita a errorLog.php non autorizzata 3**: Logged_in: " . $_SESSION["logged_in"] . " Username: " . $_SESSION['username'] . " Ip: " . $_SERVER["REMOTE_ADDR"]);
+        error_log("**Visita a errorLog.php non autorizzata 3**: Logged_in: NULL non é stato loggato Username: NULL non é stato loggato Ip: " . $_SERVER["REMOTE_ADDR"]);
         die("<h1>Non sei autorizzato a visitare questa pagina, questo incidente é stato registrato.<h1>");
       }
      ?>
