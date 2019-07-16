@@ -359,10 +359,10 @@
    * @return $result[x]["yyy"] Un array nel quale ci sono tutti gli user che rispettano i parametri ineriti dove x è l'ordine di sorting nella query (parte da 0) e yyy è il nome dell'attributo che vogliamo visualizzare
    * @return "internalError" Se viene sollevata una PDOException
    */
-  function user(PDOObject $conn, String $username, String $mail, int $acc_lvl, String $fail_acc, String $last_log_from, String $last_log_to){
+  function user($conn, $username, $mail, $acc_lvl, $fail_acc, $last_log_from, $last_log_to){
 
     if($conn == NULL){
-      return -1;
+      return "internalError";
     }
     if($username == ""){
       $username = '%';
@@ -371,16 +371,19 @@
       $mail = '%';
     }
     if($acc_lvl == NULL){
-      $acc_lvl = TRUE;
+      $acc_lvl = "%";
+    }
+    if ($fail_acc == NULL) {
+      $fail_acc = "%";
     }
     if($last_log_from == ""){
-      $last_log_from = TRUE;
+      $last_log_from = "%";
     }
     if($last_log_to == ""){
-      $last_log_to = TRUE;
+      $last_log_to = date("Y-m-d H:i:s");
     }
-      try {
-      $query = $conn->prepare("SELECT * FROM user WHERE (username LIKE :usrn) AND (mail LIKE :email) AND (acc_lvl = :acclvl) AND (fail_acc = :failacc) AND (last_log BETWEEN :lastlogfrom AND :lastlogto)");
+    try {
+      $query = $conn->prepare("SELECT * FROM user WHERE (username LIKE :usrn) AND (mail LIKE :email) AND (acc_lvl LIKE :acclvl) AND (fail_acc LIKE :failacc) AND (last_log BETWEEN :lastlogfrom AND :lastlogto)");
       $query->bindParam(':usrn', $username);
       $query->bindParam(':email', $mail);
       $query->bindParam(':acclvl', $acc_lvl);
@@ -390,22 +393,19 @@
       $query->execute();
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $result = $query->fetchAll();
-    } catch(PDOException $e) {
-      if (PDOError($e)) {
-        return "internalError";
-      }
-    } finally {
-      $conn = null;
-    }
       $results = array();
       foreach ($result as $row){
         array_push($results, array(
-          "username"=>$row["username"], "email"=>$row["email"],
-          "acc_lvl"=>$row["acc_lvl"], "fail_acc"=>$row["fail_acc"],
+          "username"=>$row["username"],
           "last_log"=>$row["last_log"]
         ));
       }
-    return $results;
+      return $results;
+    } catch(PDOException $e) {
+      return "internalError";
+    } finally {
+      $conn = null;
+    }
   }
 
     /*
@@ -1192,19 +1192,24 @@
      * @return false In caso di errore se viene sollevata una PDOException
      */
     function getLeftRate($user){
-      try{
-        $conn = connectDb();
-        $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE user = :user");
-        $query->bindParam(":user", $user);
-        $query->execute();
-        $query->setFetchMode(PDO::FETCH_ASSOC);
-        $result = $query->fetchAll();
-        return $result[0]["num"];
-      }catch(PDOException $e){
-        PDOError($e);
-        return false;
-      }finally{
-        $conn = null;
+      if (mysqlChckUsr($user)) {
+        try{
+          $conn = connectDb();
+          $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE user = :user");
+          $query->bindParam(":user", $user);
+          $query->execute();
+          $query->setFetchMode(PDO::FETCH_ASSOC);
+          $result = $query->fetchAll();
+          return $result[0]["num"];
+        }catch(PDOException $e){
+          PDOError($e);
+          return false;
+        }finally{
+          $conn = null;
+        }
+      } else {
+        //returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+        return "Utente non esistente";
       }
     }
 
@@ -1217,19 +1222,24 @@
      * @return false Se viene sollevata una PDOException di qualche tipo
      */
     function getLastLog($user){
-      try{
-        $conn = connectDb();
-        $query = $conn->prepare("SELECT last_log FROM user WHERE username = :user");
-        $query->bindParam(":user", $user);
-        $query->execute();
-        $query->setFetchMode(PDO::FETCH_ASSOC);
-        $result = $query->fetchAll();
-        return $result[0]["last_log"];
-      }catch(PDOException $e){
-        PDOError($e);
-        return false;
-      }finally{
-        $conn = null;
+      if (mysqlChckUsr($user)) {
+        try{
+          $conn = connectDb();
+          $query = $conn->prepare("SELECT last_log FROM user WHERE username = :user");
+          $query->bindParam(":user", $user);
+          $query->execute();
+          $query->setFetchMode(PDO::FETCH_ASSOC);
+          $result = $query->fetchAll();
+          return $result[0]["last_log"];
+        }catch(PDOException $e){
+          PDOError($e);
+          return false;
+        }finally{
+          $conn = null;
+        }
+      } else {
+        //returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+        return "Utente non esistente";
       }
     }
 
@@ -1242,19 +1252,24 @@
      * @return false In caso di errore se viene sollevata una PDOException
      */
     function getLeftComm($user){
-      try{
-        $conn = connectDb();
-        $query = $conn->prepare("SELECT COUNT(*) as num FROM revw WHERE user = :user");
-        $query->bindParam(":user", $user);
-        $query->execute();
-        $query->setFetchMode(PDO::FETCH_ASSOC);
-        $result = $query->fetchAll();
-        return $result[0]["num"];
-      }catch(PDOException $e){
-        PDOError($e);
-        return false;
-      }finally{
-        $conn = null;
+      if (mysqlChckUsr($user)) {
+        try{
+          $conn = connectDb();
+          $query = $conn->prepare("SELECT COUNT(*) as num FROM revw WHERE user = :user");
+          $query->bindParam(":user", $user);
+          $query->execute();
+          $query->setFetchMode(PDO::FETCH_ASSOC);
+          $result = $query->fetchAll();
+          return $result[0]["num"];
+        }catch(PDOException $e){
+          PDOError($e);
+          return false;
+        }finally{
+          $conn = null;
+        }
+      } else {
+        //returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+        return "Utente non esistente";
       }
     }
 
@@ -1267,19 +1282,24 @@
      * @return false In caso di errore se viene sollevata una PDOException
      */
     function getNoteNum($user){
-      try{
-        $conn = connectDb();
-        $query = $conn->prepare("SELECT COUNT(*) as num FROM note WHERE user = :user");
-        $query->bindParam(":user", $user);
-        $query->execute();
-        $query->setFetchMode(PDO::FETCH_ASSOC);
-        $result = $query->fetchAll();
-        return $result[0]["num"];
-      }catch(PDOException $e){
-        PDOError($e);
-        return false;
-      }finally{
-        $conn = null;
+      if (mysqlChckUsr($user)) {
+        try{
+          $conn = connectDb();
+          $query = $conn->prepare("SELECT COUNT(*) as num FROM note WHERE user = :user");
+          $query->bindParam(":user", $user);
+          $query->execute();
+          $query->setFetchMode(PDO::FETCH_ASSOC);
+          $result = $query->fetchAll();
+          return $result[0]["num"];
+        }catch(PDOException $e){
+          PDOError($e);
+          return false;
+        }finally{
+          $conn = null;
+        }
+      } else {
+        //returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+        return "Utente non esistente";
       }
     }
 
@@ -1292,18 +1312,23 @@
      * @return false In caso di errore se viene sollevata una PDOException
      */
     function getReceivedRate($user){
-      try{
-        $tot_rates = 0;
-        $list = searchNote(connectDb(), NULL, NULL, $user, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-        foreach($list as $element){
-          $tot_rates += (getLikes($element["title"]) + getDislikes($element["title"]));
+      if (mysqlChckUsr($user)) {
+        try{
+          $tot_rates = 0;
+          $list = searchNote(connectDb(), NULL, NULL, $user, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+          foreach($list as $element){
+            $tot_rates += (getLikes($element["title"]) + getDislikes($element["title"]));
+          }
+          return $tot_rates;
+        }catch(PDOException $e){
+          PDOError($e);
+          return false;
+        }finally{
+          $conn = null;
         }
-        return $tot_rates;
-      }catch(PDOException $e){
-        PDOError($e);
-        return false;
-      }finally{
-        $conn = null;
+      } else {
+        //returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+        return "Utente non esistente";
       }
     }
 

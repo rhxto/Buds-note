@@ -121,6 +121,9 @@ function error(err) {
     case "COMMENTDNF":
       $("#warn").html("Commento non trovato!");
       break;
+    case "RESMINR":
+      $("#warn").html("La larghezza del broswer, in questo momento non é sufficiente per un funzionamento corretto del sito. Si prega di allargare il broswer.");
+      break;
     default:
       $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
     break;
@@ -319,15 +322,100 @@ function rateNote(rating) {
     }
   });
 }
+
+String.prototype.splice = function(idx, rem, str) {
+    return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
+};
+
 $(document).ready(function() {
-  $("#commentText").on("keypress", function (event) {
-    var text = $("#commentText").val();
-    var lines = text.split("\n");
-    var current = this.value.substr(0, this.selectionStart).split("\n").length;
-    if (event.keyCode != 13) {
-      if (lines[current - 1].length >= ($(this).attr('cols') - 16)) {
-        $('textarea').val($('textarea').val() + "\n");
+  if ($(window).width() < 730) {
+    error("RESMINR");
+  }
+  // 94/1024=x/width: in 1024px di grandezza ci stanno 94 chars,
+  //usiamo questa proporzione per calcolare dove mettere i <br/>
+  width = Math.ceil(($(window).width() * 0.8) * 94 / 1024); //prendiamo l'80% poi proporzione
+  var comments = document.getElementsByClassName("revwText");
+  for (var i = 0; i < comments.length; i++) {
+    var readyText = "";
+    tmp = comments[i];
+    text = tmp.innerHTML;
+    lines = text.split("<br>");
+    //eliminiamo tutte le nostre aggiunte precedenti (da php in questo caso)
+    //prendo le righe del commento in un array
+    for (var c = 0; c < (lines.length - 1 /*non serve nell'ultima*/); c++) {
+      lines[c] = lines[c] + "<br>";
+    }
+    for (var c = 0; c < lines.length; c++) {
+      currentLine = lines[c];
+      //So che questi passaggi non sono contratti e sono brutti ma non
+      //possiamo contrarre tutto perché i broswers danno errore
+      if (currentLine.length > width) {
+        //niente a capo se il n. di caratteri é perfetto
+        //non posso chiamare il contatore di nuovo c per ovvi motivi
+        for (var c1 = 0; c1 < Math.floor(currentLine.length / width); c1++) {
+          //usiamo floor perché sopra a 0.5 il round andrebbe a +1 e metterebbe
+          //la roba alla fine della stringa dato che non é ancora pienamente maggiore
+          //ma solo sopra a x + 1/2
+          //usiamo width*(c+1) perché se no rimetteremmo un br sempre a width
+          currentLine = currentLine.splice(width * (c1+1), 0, "-<br>-");
+        }
+        readyText += currentLine;
+      } else {
+        //la linea va aggiunta anche se non modificata
+        readyText += currentLine;
       }
     }
-  });
+    tmp.innerHTML = readyText;
+  }
+});
+//rifacciamo la procedura di sopra ogni volta che la dimesione del broswer é modificata
+var done = true;
+$(window).resize(function(){
+  if ($(window).width() < 730) {
+    error("RESMINR");
+  }
+  if (done) {
+    done = false;
+    // 94/1024=x/width: in 1024px di grandezza ci stanno 94 chars,
+    //usiamo questa proporzione per calcolare dove mettere i <br/>
+    width = Math.ceil(($(window).width() * 0.8) * 94 / 1024); //prendiamo l'80% poi proporzione
+    var comments = document.getElementsByClassName("revwText");
+    for (var i = 0; i < comments.length; i++) {
+      var readyText = "";
+      tmp = comments[i];
+      text = tmp.innerHTML;
+      //eliminiamo tutte le nostre aggiunte precedenti
+      text = text.replace(/-<br>-/g, "");// \/ = / senza uscire dal container della g
+      lines = text.split("<br>");
+      //eliminiamo tutte le nostre aggiunte precedenti (da php in questo caso)
+      //prendo le righe del commento in un array
+      for (var c = 0; c < (lines.length - 1 /*non serve nell'ultima*/); c++) {
+        lines[c] = lines[c] + "<br>";
+      }
+      //So che questi passaggi non sono contratti e sono brutti ma non
+      //possiamo contrarre tutto perché i broswers danno errore
+      for (var c = 0; c < lines.length; c++) {
+        currentLine = lines[c];
+        //So che questi passaggi non sono contratti e sono brutti ma non
+        //possiamo contrarre tutto perché i broswers danno errore
+        if (currentLine.length > width) {
+          //niente a capo se il n. di caratteri é perfetto
+          //non posso chiamare il contatore di nuovo c per ovvi motivi
+          for (var c1 = 0; c1 < Math.floor(currentLine.length / width); c1++) {
+            //usiamo floor perché sopra a 0.5 il round andrebbe a +1 e metterebbe
+            //la roba alla fine della stringa dato che non é ancora pienamente maggiore
+            //ma solo sopra a x + 1/2
+            //usiamo width*(c+1) perché se no rimetteremmo un br sempre a width
+            currentLine = currentLine.splice(width * (c1+1), 0, "-<br>-");
+          }
+          readyText += currentLine;
+        } else {
+          //la linea va aggiunta anche se non modificata
+          readyText += currentLine;
+        }
+      }
+      tmp.innerHTML = readyText;
+    }
+    done = true;
+  }
 });

@@ -28,6 +28,7 @@ NOTERNE = nota da valutare inesistente
 NOTERAE = rating di nota giá inserito
 NOTEREF = errore nel fetch dei likes e dislikes della nota
 NOTERWIE = errore nella scrittura della valutazione
+
 COMMENTW = errore nella scrittura del commento
 COMMENTDE = errore nella cancellazione del commento
 COMMENTNV = commento non valido
@@ -35,3 +36,11 @@ COMMENTNL = tentativo di agire su un commento mentre non si é loggati
 COMMENTDNF = commento da cancellare non trovato
 COMMENTDNA = tentativo di cancellare il commento non autorizzato
 COMMENTANV = azione del commento non valida
+
+USERNV = parametro per la ricerca dell'utente non valido
+USERNL = azione non valida perche' non loggati
+USERSNV = parametro per la ricerca dell'utente non valido
+USERANV = azione per l'utente non valida
+USERSIE = errore interno nella ricerca dell'utente
+
+RESMINR = risoluzione minima per il funzionamento corretto dei commenti

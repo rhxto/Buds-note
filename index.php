@@ -22,8 +22,8 @@
   <body id="Body">
   <div class="overlay" id="SearchDiv">
     <div><br/><br/><br/></div>
+    <a onclick="hideSearch()" class="absolute right2 top10" style="font-size:30px;z-index:3;color:whitesmoke">X</a>
     <div class='search' id="Search">
-      <a onclick="hideSearch()"class="icon absolute left80" style="z-index:3;color:whitesmoke">D</a>
       <input id="search" type="text" class="search_text"/>
       <span class="search_checkbox top25 left40 a" hidden>
         <input type="checkbox" class="a" id="deptNum" >Indirizzo per numero</input>
@@ -99,9 +99,14 @@
       <span>
         <button class="search_button top25 left15" onclick="getDepts();">Indirizzi</button><br/>
         <button class="search_button top45 left15" onclick="getSubjs();">Materie</button><br/>
-        <button class="search_button top65 left15" onclick="getNotes();">Appunti</button>
+        <button class="search_button top65 left15" onclick="getNotes();">Appunti</button><br/>
+        <button class="search_button top85 left15" onclick="openUserSearch();">Utente</button>
       </span>
       <button onclick="cerca()" class="search_button top110 left48">Cerca</button>
+    </div>
+    <div id="userSearchDiv" class="searchUser">
+      <input id="searchUserInput" type="text" class="search_text top20 searchUser"/>
+      <button class="search_button searchUser top50 left43" onclick="searchUser()">Cerca utente</button>
     </div>
   </div>
   <div id="warn" class="warn" style="display:none">

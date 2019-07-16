@@ -92,6 +92,21 @@ function error(err) {
     case "IEAG":
       $("#warn").html("Errore nel retrieve di acc**** se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
       break;
+    case "USERANV":
+      $("#warn").html("Azione non valida!" + " Codice: " + err);
+      break;
+    case "USERNV":
+      $("#warn").html("Parametro per l'azione sull'utente non valido! (Attenzione ai caratteri speciali)" + " Codice: " + err);
+      break;
+    case "USERNL":
+      $("#warn").html("Prima devi eseguire il login!" + " Codice: " + err);
+      break;
+    case "USERSNV":
+    $("#warn").html("Parametro per ricerca dell'utente non valido! (Attenzione ai caratteri speciali)" + " Codice: " + err);
+      break;
+    case "USERSIE":
+      $("#warn").html("Abbiamo riscontrato un errore interno nella ricerca dell'utente, riferisci questo messaggio agli amministratori." + " Codice: " + err);
+      break;
     default:
       $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
     break;
@@ -352,6 +367,27 @@ function mostraSpazioNote() {
   $("#risultati").empty();
   $(".scriviNota").show();
   $("#scriviNotaBtn").hide();
+}
+function searchUser() {
+  closeSearch();
+  var phrase = $("#searchUserInput").val();
+  var ajaxurl = "../php/userManager.php";
+  data = {
+    'phrase' : phrase,
+    'type' : "search"
+  }
+  $.post(ajaxurl, data, function(response) {
+    response = JSON.parse(response);
+    if (response["status"] == "success") {
+      for (var i = 0; i < response["results"].length; i++) {
+        $(".risultati").html("<a href='php/viewUser.php?username=" + response["results"][i]["username"] + "'>" + response["results"][i]["username"] + "</a>");
+      }
+    } else if (response["status"] === "nrt") {
+      $(".risultati").html("Nessun risultato trovato.");
+    } else {
+      error(response["status"]);
+    }
+  });
 }
 $(document).ready(function(){
   document.getElementById("search").addEventListener("keyup", function(event) {

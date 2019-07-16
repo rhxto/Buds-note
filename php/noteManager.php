@@ -117,6 +117,6 @@
         break;
     }
   } else {
-    die(json_encode("NOTENLG"));
+    die(json_encode("NOTENL"));
   }
  ?>
