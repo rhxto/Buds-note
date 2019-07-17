@@ -84,7 +84,7 @@ function error(err) {
       $("#warn").html("La nota che volevi aggiornare non é stata trovata, copia le modifiche e prova a ricaricare la pagina. Se il problema persiste contatta gli amministratori.");
       break;
     case "FIREFOX":
-      $("#warn").html("A causa di errori nel broswer, alcuni elementi del sito potrebbero non funzionare correttamente in Firefox (consigliamo Chrome o Edge). Vedi: https://support.mozilla.org/en-US/questions/1191898");
+      $("#warn").html("A causa di errori nel broswer, alcuni elementi del sito potrebbero non funzionare correttamente in Firefox (consigliamo Chrome o Edge). Vedi: https://support.mozilla.org/en-US/questions/1191898 <button class='mozErrorDeactivation' onclick='mozShown()'>Ok</button>");
       break;
     case "NOTEWAE":
       $("#warn").html("Nota gi&#224; esistente");
@@ -371,23 +371,35 @@ function mostraSpazioNote() {
 function searchUser() {
   closeSearch();
   var phrase = $("#searchUserInput").val();
-  var ajaxurl = "../php/userManager.php";
-  data = {
-    'phrase' : phrase,
-    'type' : "search"
-  }
-  $.post(ajaxurl, data, function(response) {
-    response = JSON.parse(response);
-    if (response["status"] == "success") {
-      for (var i = 0; i < response["results"].length; i++) {
-        $(".risultati").html("<a href='php/viewUser.php?username=" + response["results"][i]["username"] + "'>" + response["results"][i]["username"] + "</a>");
-      }
-    } else if (response["status"] === "nrt") {
-      $(".risultati").html("Nessun risultato trovato.");
-    } else {
-      error(response["status"]);
+  if (phrase != "") {
+    var ajaxurl = "../php/userManager.php";
+    data = {
+      'phrase' : phrase,
+      'type' : "search"
     }
-  });
+    $.post(ajaxurl, data, function(response) {
+      response = JSON.parse(response);
+      if (response["status"] == "success") {
+        for (var i = 0; i < response["results"].length; i++) {
+          $(".risultati").html("<a href='php/viewUser.php?username=" + response["results"][i]["username"] + "'>" + response["results"][i]["username"] + "</a>");
+        }
+      } else if (response["status"] === "nrt") {
+        $(".risultati").html("Nessun risultato trovato.");
+      } else {
+        error(response["status"]);
+      }
+    });
+  } else {
+    $("#warn").show();
+    $("#warn").html("Inserire una chiave di ricerca valida!");
+    setTimeout(function(){
+      $("#warn").hide();
+    }, 5000);
+  }
+}
+function mozShown() {
+  localStorage.setItem("mozError", false);
+  $("#warn").hide();
 }
 $(document).ready(function(){
   document.getElementById("search").addEventListener("keyup", function(event) {

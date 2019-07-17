@@ -170,6 +170,7 @@ h1.err404 {
 	position: absolute;
 	top: 100px;
 	right: 0%;
+	z-index: 10;
 }
 .search {
 	@{font}: text;
@@ -378,6 +379,14 @@ h1.err404 {
 }
 .searchUser {
 	display: none;
+}
+.mozErrorDeactivation:extend(.txt) {
+		background-color: white;
+		text-align: center;
+		border-radius: 15px;
+}
+.mozErrorDeactivation:hover {
+	background-color: gray;
 }
 #userInfo {
 	top: 20%;

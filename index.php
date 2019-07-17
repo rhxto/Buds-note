@@ -166,14 +166,13 @@
   var FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
   if (FIREFOX) {
-    console.log("firefox");
     $("#SearchLens").hide();
     $("#SearchLensMoz").show();
   } else  {
     $("#SearchLens").show();
     $("#SearchLensMoz").hide();
   }
-   if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+   if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1 && localStorage.getItem("mozError") == undefined){
      error("FIREFOX");
    }
 
