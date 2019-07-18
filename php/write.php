@@ -52,7 +52,13 @@ require 'funs.php';
     //ok, non so perché ma per avere l'output in $r al posto che farlo andare chissá dove (in genere va in ${APACHE_LOG_DIR}) doobbiamo mettere 2>&1 alla fine... bho?
     if ($status == "passed") {
       exec("mkdir ../notedb/$Username 2>&1", $r);
+      exec("mkdir ../notedb/$Username/uploads 2>&1", $r);
+      exec("chmod o-x ../notedb/$Username 2>&1", $r);
+      exec("chmod g-x ../notedb/$Username 2>&1", $r);
+      exec("chmod o-x ../notedb/$Username/uploads 2>&1", $r);
+      exec("chmod g-x ../notedb/$Username/uploads 2>&1", $r);
       if (!empty($r)) {
+        error_log("Risposta da comando shell di write insapettata! Risposta: " . print_r($r, true));
         die('UWFE');
       }
       echo 'passed';

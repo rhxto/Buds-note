@@ -331,6 +331,9 @@ function submitNote() {
   $.post(ajaxurl, data, function(response) {
     response = JSON.parse(response);
     if (response == "done") {
+      if ($("#uploadImage").val() !== '') {
+        uploadImage();
+      }
     } else {
       error(response);
     }
@@ -408,4 +411,40 @@ $(document).ready(function(){
      cerca();
     }
   });
+  //se uno visualizza una nota poi va nella home page rimarrebbe il titolo nella voce title
+  //quindi puliamo
+  localStorage.clear()
 });
+function uploadImage() {
+  if ($("#uploadImage").val() !== '') {
+    var image = document.getElementById("uploadImage").files[0];
+    var image_name = image.name;
+    var image_extension = image_name.split('.').pop().toLowerCase();
+    if (jQuery.inArray(image_extension, ["gif", "png", "jpg", "jpeg"]) == -1) {
+      alert("Immagine non supportata!");
+    } else {
+      var image_size = image.size;
+      if (image_size > 5000000) {
+        alert("La dimensione massima per un'immagine é di 5MB!")
+      } else {
+        var data = new FormData();
+        data.append("uploadImage", image);
+        data.append("note", $("#writeNoteTitle").val());
+        $.ajax({
+          url:"php/uploadImg.php",
+          method:"POST",
+          data:data,
+          contentType:false,
+          cahe:false,
+          processData:false,
+          beforeSend:function(){
+            //nulla
+          },
+          success:function(data){
+            console.log(data);
+          }
+        });
+      }
+    }
+  }
+}

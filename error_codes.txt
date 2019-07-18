@@ -44,3 +44,12 @@ USERANV = azione per l'utente non valida
 USERSIE = errore interno nella ricerca dell'utente
 
 RESMINR = risoluzione minima per il funzionamento corretto dei commenti
+
+IMGUAE = immagine (relativa alla nota, non in generale) giá esistente!
+IMGUIE = errore generico nel caricamento dell'imamagine
+IMGUNL = non si puó caricare un'immagine senza essere loggati
+IMGUUE = eccezione non supportata da uploadImg.php *CONTROLLARE SUBITO SE QUESTO CODICE VIENE DATO*
+IMGUVNV = valori non validi per il caricamento dell'immagine
+IMGUFNS = tipo di immagine non supportato (supportati: GIF, JPEG, JPG, PNG)
+IMGUFNI = il file caricato non é un immagine
+IMGUFTB = immagine troppo grande per essere caricata
