@@ -1190,6 +1190,7 @@
      *
      * @return Il numero di rate lasciati dall'utente (non i rate che gli altri lasciano sotto le sue note ma quelli che lui lascia in tutte le note del database)
      * @return false In caso di errore se viene sollevata una PDOException
+     * @return "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
      */
     function getLeftRate(String $user){
       if (mysqlChckUsr($user)) {
@@ -1208,7 +1209,6 @@
           $conn = null;
         }
       } else {
-        //returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
         return "Utente non esistente";
       }
     }
@@ -1220,6 +1220,7 @@
      *
      * @return La data e l'ora dell'ultimo log secondo il formato in cui esso è salvato dentro il database
      * @return false Se viene sollevata una PDOException di qualche tipo
+     * @return "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
      */
     function getLastLog(String $user){
       if (mysqlChckUsr($user)) {
@@ -1238,7 +1239,6 @@
           $conn = null;
         }
       } else {
-        //returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
         return "Utente non esistente";
       }
     }
@@ -1250,6 +1250,7 @@
      *
      * @return Il numero di commenti lasciati dall'utente (non i commenti che gli altri lasciano sotto le sue note ma quelli che lui lascia in tutte le note del database)
      * @return false In caso di errore se viene sollevata una PDOException
+     * @return "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
      */
     function getLeftComm(String $user){
       if (mysqlChckUsr($user)) {
@@ -1268,7 +1269,6 @@
           $conn = null;
         }
       } else {
-        //returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
         return "Utente non esistente";
       }
     }
@@ -1280,6 +1280,7 @@
      *
      * @return Il numero di note create dall'utente e ancora presenti nel database
      * @return false In caso di errore se viene sollevata una PDOException
+     * @return "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
      */
     function getNoteNum(String $user){
       if (mysqlChckUsr($user)) {
@@ -1298,7 +1299,6 @@
           $conn = null;
         }
       } else {
-        //returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
         return "Utente non esistente";
       }
     }
@@ -1310,6 +1310,7 @@
      *
      * @return Il numero totale di rate ricevuti
      * @return false In caso di errore se viene sollevata una PDOException
+     * @return "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
      */
     function getReceivedRate(String $user){
       if (mysqlChckUsr($user)) {
@@ -1327,7 +1328,6 @@
           $conn = null;
         }
       } else {
-        //returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
         return "Utente non esistente";
       }
     }
