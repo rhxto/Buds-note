@@ -11,6 +11,7 @@
 62_date_to_not_valie = data di fine non valida
 63_order_not_valid = ordine non valido
 64_order_by_not_valid = tipo di ordine non corretto
+400_user_not_found = la ricerca dell'user non ha avuto risultati
 500_internal_error = errore interno del server
 600_values_not_valid = valori non validi
 601_write_error = errore nella scrittura della nota
