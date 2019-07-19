@@ -302,7 +302,7 @@ function getNotes() {
       } else {
         for (i = 0; i < response.length; i++) {
           $("#scriviNotaBtn").hide();
-          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
+          $("#risultati").append('<a href="php/viewNote.php?title=' + response[i]["title"] + '">' + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       }
     });
@@ -367,37 +367,28 @@ function submitNote() {
     if (response == "done") {
       if ($("#uploadImage").val() !== '') {
         uploadImage();
+        if (localStorage.getItem("uploadStatus")) {
+          $("#warn").show();
+          $("#warn").attr("style", "background-color: lightblue;");
+          $("#warn").html("Nota pubblicata!");
+          setTimeout(function(){
+            $("#warn").hide();
+            $("#warn").attr("style", "background-color: red;");
+          }, 3000);
+        }
+      } else {
+        $("#warn").show();
+        $("#warn").attr("style", "background-color: lightblue;");
+        $("#warn").html("Nota pubblicata!");
+        setTimeout(function(){
+          $("#warn").hide();
+          $("#warn").attr("style", "background-color: red;");
+        }, 3000);
       }
     } else {
       error(response);
     }
   });
-}
-function deleteNote() {
-  $(".delNote").show();
-  $("#everythingAboutNote").hide();
-}
-function delNote() {
-  $(".delNote").hide();
-  var ajaxurl = "../php/noteManager.php";
-  var title = $("#delNoteTtl").val();
-  data = {
-    'title': title,
-    'type': 'delete'
-  }
-  $.post(ajaxurl, data, function(response) {
-    response = JSON.parse(response);
-    if (response == "done") {
-      $("#warn").show();
-      $("#warn").html("Fatto");
-      setTimeout(function(){
-        $("#warn").hide()
-      }, 5000);
-    } else {
-      error(response);
-    }
-  });
-  $("#everythingAboutNote").show();
 }
 function mostraSpazioNote() {
   hideSearch();
@@ -477,7 +468,10 @@ function uploadImage() {
           success:function(response){
             response = JSON.parse(response);
             if (response !== "success") {
+                localStorage.setItem("uploadStatus", false);
               error(response);
+            } else {
+              localStorage.setItem("uploadStatus", true);
             }
           }
         });

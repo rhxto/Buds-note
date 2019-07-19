@@ -65,7 +65,8 @@
         <div class="noteHeaderTtl">
           <?php
             if ($display) {
-              echo "<span class=spawnTtl>" . $title . "</span><br/><script>localStorage.setItem('title', '" . $title . "');</script>";
+              $titleToStorage = str_replace("'", "\\'", $title);
+              echo "<span class=spawnTtl>" . $title . "</span><br/><script>localStorage.setItem('title', '" . $titleToStorage . "');</script>";
             }
           ?></div>
         <div class="noteInfo">
@@ -138,7 +139,7 @@
         <div id="pics">
           <?php
             foreach (getPicsPaths($title) as $pic) {
-              echo "<img src='" . $pic["dir"] . "'>";
+              echo '<img src="' . $pic["dir"] . '">';
             }
            ?>
         </div>
