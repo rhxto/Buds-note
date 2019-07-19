@@ -56,7 +56,7 @@ function error(err) {
       $("#warn").html("Tipo di azione non valido (se vedi questo messaggio riferiscilo agli amministratori)!" + " Codice: " + err);
       break;
     case "NOTENL":
-      $("#warn").html("Devi essere loggato per scrivere una nota!");
+      $("#warn").html("Prima devi eseguire il login!");
       break;
     case "NOTEW":
       $("#warn").html("Errore nella scrittura della nota, se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
@@ -214,6 +214,7 @@ function delNote() {
       $("#warn").html("Fatto");
       setTimeout(function(){
         $("#warn").hide();
+        window.position.href = "../../";
       }, 5000);
     } else {
       error(response);

@@ -57,7 +57,7 @@ function error(err) {
       $("#warn").html("Tipo di azione non valido (se vedi questo messaggio riferiscilo agli amministratori)!" + " Codice: " + err);
       break;
     case "NOTENL":
-      $("#warn").html("Devi essere loggato per scrivere una nota!");
+      $("#warn").html("Devi eseguire il login per scrivere una nota!");
       break;
     case "NOTEW":
       $("#warn").html("Errore nella scrittura della nota, se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
@@ -106,6 +106,40 @@ function error(err) {
       break;
     case "USERSIE":
       $("#warn").html("Abbiamo riscontrato un errore interno nella ricerca dell'utente, riferisci questo messaggio agli amministratori." + " Codice: " + err);
+      break;
+    case "IMGUAE":
+      //finché non si potranno modificare le immagini relative alla nota, questo errore non dovrebbe apparire
+      $("#warn").html("Hai giá caricato un'immagine relativa alla nota con lo stesso nome!" + " Codice: " + err);
+      break;
+    case "IMGUIE":
+      $("#warn").html("Abbiamo riscontrato un errore interno nel caricamento dell'immagine!" + " Codice: " + err);
+      break;
+    case "IMGUNL":
+      $("#warn").html("Prima devi eseguire il login!" + " Codice: " + err);
+      break;
+    case "IMGUUE":
+      $("#warn").html("Errore sconosciuto nel caricamento dell'immagine! <bold>Riferisci questo messaggio agli amministratori</bold>" + " Codice: " + err);
+      break;
+    case "IMGUVNV":
+      $("#warn").html("Valori non validi per il caricamento dell'immagine!" + " Codice: " + err);
+      break;
+    case "IMGUFNS":
+      $("#warn").html("Questo tipo di immagine non é supportato!" + " Codice: " + err);
+      break;
+    case "IMGUFNI":
+      $("#warn").html("Il file che stai cercando di caricare non é un'immagine!" + "Codice: " + err);
+      break;
+    case "IMGUFTB":
+      $("#warn").html("La dimensione massima per un'immagine é di 5MB!" + " Codice: " + err);
+      break;
+    case "IMGUMIE":
+      $("#warn").html("C'é stato un errore nel caricamento dell'immagine!" + " Codice: " + err);
+      break;
+    case "IMGUUIE":
+      $("#warn").html("Errore imprevisto nel caricamento dell'immagine! <bold>Riferisci questo messaggio agli amministratori</bold>" + " Codice: " + err);
+      break;
+    case "IMGUNEN":
+      $("#warn").html("La nota a cui stai cercando di allegare l'immagine non esiste!" + " Codice: " + err);
       break;
     default:
       $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
@@ -440,8 +474,11 @@ function uploadImage() {
           beforeSend:function(){
             //nulla
           },
-          success:function(data){
-            console.log(data);
+          success:function(response){
+            response = JSON.parse(response);
+            if (response !== "success") {
+              error(response);
+            }
           }
         });
       }

@@ -76,14 +76,17 @@
       case 'delete':
         if (getAcclvl($_SESSION["username"]) == 1) {
 	         if (checkNote(connectDb(), $title)) {
-	            if (delNote(connectDb(), $title)) {
-                echo json_encode("done");
-              } else {
-                echo json_encode("NOTEDE");
-              }
-	      } else {
-	        die(json_encode("NOTEDNF"));
-	      }
+             foreach (getPicsPaths($title) as $pic) {
+              exec("rm " . $pic["dir"]);
+             }
+	           if (delNote(connectDb(), $title)) {
+               echo json_encode("done");
+             } else {
+               echo json_encode("NOTEDE");
+             }
+	         } else {
+	           die(json_encode("NOTEDNF"));
+	         }
       } else {
         error_log("**TENTATIVO DI CANCELLARE UNA NOTA NON AUTORIZZATO** ip: " . $_SERVER["REMOTE_ADDR"]);
         die(json_encode("NOTEDNA"));

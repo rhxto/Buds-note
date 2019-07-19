@@ -1332,8 +1332,53 @@
       }
     }
 
+  function newImageEntry($note, $format, $dir, $picName) {
+    if (checkNote(connectDb(), $note)) {
+      $formats = ["png", "gif", "jpg", "jpeg"];
+      if (in_array($format, $formats)) {
+        $note = str_replace(" ", "_", $note);
+        try {
+          $conn = connectDb();
+          $query = $conn->prepare("INSERT INTO pict (date, note, format, dir, name) VALUES (NOW(), :note, :format, :dir, :pic_name)");
+          $query->bindParam(":note", $note);
+          $query->bindParam(":format", $format);
+          $query->bindParam(":dir", $dir);
+          $query->bindParam(":pic_name", $picName);
+          $query->execute();
+          return "done";
+        } catch(PDOException $e){
+          PDOError($e);
+          return "internalError";
+        } finally {
+          $conn = null;
+        }
+      } else {
+        return "invalidFormat";
+      }
+    } else {
+      return "non-existentNote";
+    }
+  }
 
-
+  function getPicsPaths($note) {
+    if ($note == NULL) {
+      return;
+    }
+    $note = str_replace(" ", "_", $note);
+    try {
+      $query = connectDb()->prepare("SELECT dir FROM pict WHERE note = :note");
+      $query->bindParam(":note", $note);
+      $query->execute();
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      $pics = $query->fetchAll();
+      return $pics;
+    } catch(PDOException $e){
+      PDOError($e);
+      return "internalError";
+    } finally {
+      $conn = null;
+    }
+  }
 
 //searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $datefrom, $dateto, $order, $v) a che serviva questo?
 ?>

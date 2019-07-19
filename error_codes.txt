@@ -53,3 +53,7 @@ IMGUVNV = valori non validi per il caricamento dell'immagine
 IMGUFNS = tipo di immagine non supportato (supportati: GIF, JPEG, JPG, PNG)
 IMGUFNI = il file caricato non é un immagine
 IMGUFTB = immagine troppo grande per essere caricata
+IMGUMIE = errore interno nell'aggiunta della pic a mysql
+IMGUUIE = errore nel caricamento dell'immagine su db, questo codice non dovrebbe mai apparire
+IMGUNEN = si sta cercano di associare un'immagine ad una nota non esistente
+IMGUMNEN = la nota non esiste per mysql
