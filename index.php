@@ -147,8 +147,10 @@
          ?>
        </select><br/>
         <textarea rows="25" cols="100" id="writeNoteContent" class="scriviNotaTextArea"></textarea><br/>
-        <input type="file" name="uploadImage" id="uploadImage"/>
-        <button id="submitNote" class="btn" onclick="submitNote();">Pubblica</button>
+        <input type="file" name="uploadImage" id="uploadImage" class="uploadImage"/>
+        <label for="uploadImage">Carica un'immagine</label>
+        <span id="uploadedImage"></span>
+        <button id="submitNote" class="btn" onclick="submitNote()">Pubblica</button>
       </div>
     </div>
   <div class="navbar adminTools" style="position:fixed;bottom:5px;display:none">

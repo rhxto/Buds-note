@@ -1,4 +1,3 @@
-
 @color_1: white;
 @color_2: black;
 @color_3: whitesmoke;
@@ -377,6 +376,9 @@ h1.err404 {
 		background-color: @element_colorL;
 	}
 }
+.likesBtn:extend(.btn){
+	font-size: 20px;
+}
 .searchUser {
 	display: none;
 }
@@ -387,6 +389,24 @@ h1.err404 {
 }
 .mozErrorDeactivation:hover {
 	background-color: gray;
+}
+.uploadImage{
+	height: 0.1px;
+	width: 0.1px;
+	border: none;
+	opacity: 0;
+	overflow: hidden;
+}
+.uploadImage + label:extend(.btn) {
+	&:hover{
+		background-color: @element_colorD;
+	}
+	&:active{
+		background-color: @element_colorD;
+	}
+	&:focus{
+		background-color: @element_colorD;
+	}
 }
 #userInfo {
 	top: 20%;

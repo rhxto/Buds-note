@@ -54,7 +54,7 @@ require 'funs.php';
       exec("mkdir ../notedb/$Username 2>&1", $r);
       exec("mkdir ../notedb/$Username/uploads 2>&1", $r);
       exec("chmod o-x ../notedb/$Username 2>&1", $r);
-      exec("chmod g-x ../notedb/$Username 2>&1", $r);
+      exec("chmod g-x ../notedb/$Username 2>&1", $r); 
       exec("chmod o-x ../notedb/$Username/uploads 2>&1", $r);
       exec("chmod g-x ../notedb/$Username/uploads 2>&1", $r);
       if (!empty($r)) {

@@ -121,8 +121,8 @@
               }
             ?>
           </div>
-          <button id="mipiace" onclick="rateNote(true)">Mi piace</button>
-          <button id="nonmipiace" onclick="rateNote(false)">Non mi piace</button>
+          <button id="mipiace" onclick="rateNote(true)" class="likesBtn">Mi piace</button>
+          <button id="nonmipiace" onclick="rateNote(false)" class="likesBtn">Non mi piace</button>
         </div>
         <div class="noteContent">
           <?php
