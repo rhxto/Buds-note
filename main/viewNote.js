@@ -413,7 +413,7 @@ $(document).ready(function() {
       } else {
         var image_size = image.size;
         if (image_size > 5000000) {
-          alert("La dimensione massima per un'immagine é di 5MB!")
+          alert("La dimensione massima per un'immagine é di 5MB!");
         } else {
           var data = new FormData();
           data.append("uploadImage", image);
@@ -430,8 +430,17 @@ $(document).ready(function() {
             },
             success:function(response){
               response = JSON.parse(response);
-              if (response !== "success") {
-                error(response);
+              if (response["status"] !== "success") {
+                error(response["status"]);
+              } else {
+                $("#pics").append(response["img_tag"]);
+                $("#warn").show();
+                $("#warn").attr("style", "background-color: lightblue;");
+                $("#warn").html("Immagine aggiunta!");
+                setTimeout(function(){
+                  $("#warn").hide();
+                  $("#warn").attr("style", "background-color: red;");
+                }, 3000);
               }
             }
           });
