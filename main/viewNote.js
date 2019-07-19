@@ -124,6 +124,40 @@ function error(err) {
     case "RESMINR":
       $("#warn").html("La larghezza del broswer, in questo momento non é sufficiente per un funzionamento corretto del sito. Si prega di allargare il broswer.");
       break;
+    case "IMGUAE":
+      //finché non si potranno modificare le immagini relative alla nota, questo errore non dovrebbe apparire
+      $("#warn").html("Hai giá caricato un'immagine relativa alla nota con lo stesso nome!" + " Codice: " + err);
+      break;
+    case "IMGUIE":
+      $("#warn").html("Abbiamo riscontrato un errore interno nel caricamento dell'immagine!" + " Codice: " + err);
+      break;
+    case "IMGUNL":
+      $("#warn").html("Prima devi eseguire il login!" + " Codice: " + err);
+      break;
+    case "IMGUUE":
+      $("#warn").html("Errore sconosciuto nel caricamento dell'immagine! <bold>Riferisci questo messaggio agli amministratori</bold>" + " Codice: " + err);
+      break;
+    case "IMGUVNV":
+      $("#warn").html("Valori non validi per il caricamento dell'immagine!" + " Codice: " + err);
+      break;
+    case "IMGUFNS":
+      $("#warn").html("Questo tipo di immagine non é supportato!" + " Codice: " + err);
+      break;
+    case "IMGUFNI":
+      $("#warn").html("Il file che stai cercando di caricare non é un'immagine!" + "Codice: " + err);
+      break;
+    case "IMGUFTB":
+      $("#warn").html("La dimensione massima per un'immagine é di 5MB!" + " Codice: " + err);
+      break;
+    case "IMGUMIE":
+      $("#warn").html("C'é stato un errore nel caricamento dell'immagine!" + " Codice: " + err);
+      break;
+    case "IMGUUIE":
+      $("#warn").html("Errore imprevisto nel caricamento dell'immagine! <bold>Riferisci questo messaggio agli amministratori</bold>" + " Codice: " + err);
+      break;
+    case "IMGUNEN":
+      $("#warn").html("La nota a cui stai cercando di allegare l'immagine non esiste!" + " Codice: " + err);
+      break;
     default:
       $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
     break;
@@ -212,9 +246,10 @@ function delNote() {
       //$(".comments").remove();
       $("#warn").show();
       $("#warn").html("Fatto");
+      $("#abortNoteDeletion").hide();
       setTimeout(function(){
         $("#warn").hide();
-        window.position.href = "../../";
+        window.location.href = "../../";
       }, 5000);
     } else {
       error(response);
@@ -368,6 +403,42 @@ $(document).ready(function() {
     }
     tmp.innerHTML = readyText;
   }
+  $("#addPic").on("change"/*quando un file viene selezionato*/, function(){
+    if ($("#addPic").val() !== '') {
+      var image = document.getElementById("addPic").files[0];
+      var image_name = image.name;
+      var image_extension = image_name.split('.').pop().toLowerCase();
+      if (jQuery.inArray(image_extension, ["gif", "png", "jpg", "jpeg"]) == -1) {
+        alert("Immagine non supportata!");
+      } else {
+        var image_size = image.size;
+        if (image_size > 5000000) {
+          alert("La dimensione massima per un'immagine é di 5MB!")
+        } else {
+          var data = new FormData();
+          data.append("uploadImage", image);
+          data.append("note", localStorage.getItem("title"));
+          $.ajax({
+            url:"uploadImg.php",
+            method:"POST",
+            data:data,
+            contentType:false,
+            cahe:false,
+            processData:false,
+            beforeSend:function(){
+              //nulla
+            },
+            success:function(response){
+              response = JSON.parse(response);
+              if (response !== "success") {
+                error(response);
+              }
+            }
+          });
+        }
+      }
+    }
+  });
 });
 //rifacciamo la procedura di sopra ogni volta che la dimesione del broswer é modificata
 var done = true;

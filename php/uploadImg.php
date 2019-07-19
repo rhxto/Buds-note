@@ -15,10 +15,9 @@
     echo json_encode("IMGUVNV");
   } else if (($user = test_input($_SESSION["username"])) === $_SESSION["username"]) {
     if (!checkNote(connectDb(), $note)) {
-      logD($note);
       die(json_encode("IMGUNEN"));
     }
-    $file = "../notedb/" . $user . "/uploads" . "/" . basename($note . "_" . $user . "_" . $_FILES["uploadImage"]["name"]);
+    $file = str_replace(" ", "_", "../notedb/" . $user . "/uploads" . "/" . basename($note . "_" . $user . "_" . $_FILES["uploadImage"]["name"]));
     //prendi l'estensione e mettila tutta lowercase
     $imageExtension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
     $check = getimagesize($_FILES["uploadImage"]["tmp_name"]);

@@ -135,6 +135,13 @@
             }
            ?>
         </div>
+        <div id="pics">
+          <?php
+            foreach (getPicsPaths($title) as $pic) {
+              echo "<img src='" . $pic["dir"] . "'>";
+            }
+           ?>
+        </div>
       </div>
       <?php
         if (!$display) {
@@ -173,6 +180,8 @@
       <a onclick="abortNoteDeletion()" id="abortNoteDeletion" class="navbar-right" style="display: none;">Annulla</a>
       <a onclick="deleteNote()" class="navbar-right admin" id="delNoteBtn" style="display: none;">Rimuovi nota</a>
       <a onclick="delCommentShow()" class="navbar-right admin" id="delCommentBtn" style="display: none;">Rimuovi commento</a>
+      <input type="file" class="navbar-right uploadPicture" id="addPic" style="display: none;"/>
+      <label for="addPic" class="user padding navbar-right">Aggiungi immagine</label>
     </div>
     <div class="delNote" style="display: none;">
     </div>
