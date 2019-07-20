@@ -449,7 +449,7 @@ function uploadImage() {
       alert("Immagine non supportata!");
     } else {
       var image_size = image.size;
-      if (image_size > 5000000) {
+      if (image_size > 10000000) {
         alert("La dimensione massima per un'immagine é di 5MB!")
       } else {
         var data = new FormData();

@@ -26,7 +26,7 @@
         echo json_encode(["status"=>"IMGUAE"]);
       } else {
         //non accettiamo immagini troppo pesanti max = 5MB
-        if ($_FILES["uploadImage"]["size"] > 5000000) {
+        if ($_FILES["uploadImage"]["size"] > 10000000) {
           echo json_encode(["status"=>"IMGUFTB"]);
         } else {
           //controlliamo che sia un immagine
