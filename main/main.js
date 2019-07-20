@@ -472,7 +472,7 @@ function uploadImage() {
               response = JSON.parse(response);
               if (response["status"] !== "success") {
                   localStorage.setItem("uploadStatus", false);
-                error(response);
+                error(response["status"]);
               } else {
                 localStorage.setItem("uploadStatus", true);
               }
