@@ -6,6 +6,13 @@
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     $data = str_replace("/", "", $data);
+    $data = str_replace("\0", "", $data);
+    $data = str_replace("0x00", "", $data);
+    $data = str_replace("\000", "", $data);
+    $data = str_replace("\x00", "", $data);
+    $data = str_replace("\z", "", $data);
+    $data = str_replace("\u0000", "", $data);
+    $data = str_replace("%00", "", $data);
 
     return $data;
   }

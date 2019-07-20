@@ -4,8 +4,14 @@
   function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    $data = str_replace("/", "", $data);
+    $data = htmlspecialchars($data
+    $data = str_replace("\0", "", $data);
+    $data = str_replace("0x00", "", $data);
+    $data = str_replace("\000", "", $data);
+    $data = str_replace("\x00", "", $data);
+    $data = str_replace("\z", "", $data);
+    $data = str_replace("\u0000", "", $data);
+    $data = str_replace("%00", "", $data);
     if ($data == "") {
       error_log("Nota non valida test_input");
       die(json_encode("NOTENV"));
@@ -14,7 +20,7 @@
   }
   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["username"]) && $_SESSION['logged_in'] == '1' && isset($_POST["type"])) {
     $type = test_input($_POST["type"]);
-    if ((empty($_POST["title"]) || empty($_POST["content"]) || empty($_POST["subj"]) || empty($_POST["dept"]) || test_input($_POST["title"]) !== $_POST["title"]) && $type == "write")  {
+    if ((empty($_POST["title"]) || empty($_POST["content"]) || empty($_POST["subj"]) || empty($_POST["dept"]) || str_replace("/", "", $_POST["title"]) !== $_POST["title"]) && $type == "write")  {
       error_log("Nota non valida write");
       die(json_encode("NOTENV"));
     } elseif ($type == "write") {
