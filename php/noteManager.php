@@ -4,7 +4,7 @@
   function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
-    $data = htmlspecialchars($data
+    $data = htmlspecialchars($data);
     $data = str_replace("\0", "", $data);
     $data = str_replace("0x00", "", $data);
     $data = str_replace("\000", "", $data);
