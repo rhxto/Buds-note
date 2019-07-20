@@ -7,6 +7,8 @@ IEMANS = errore nella scrittura della manutenzione
 NOMAN = utente non autorizzato a impostare lo stato della manutenzione
 MANAA = manutenzione giá attiva
 
+UWFE = errore nella scrittura su filesystem dell'utente
+
 NOTEW = errore nella scrittura della nota
 NOTENL = scrittura nota senza essere loggati
 NOTENV = testo della nota non valido
