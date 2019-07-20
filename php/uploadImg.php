@@ -5,13 +5,14 @@
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
+    $data = str_replace("/", "", $data);
 
     return $data;
   }
 
   if (empty($_SESSION["username"]) || !isset($_SESSION["username"]) || $_SESSION["logged_in"] === "0") {
     echo json_encode(["status"=>"IMGUNL"]);
-  } else if (empty(($note = $_POST["note"])) || $note === "") {
+  } else if (empty(($note = $_POST["note"])) || $note === "" || if (test_input($_FILES["uploadImage"]["name"]) !== $_FILES["uploadImage"]["name"])) {
     echo json_encode(["status"=>"IMGUVNV"]);
   } else if (($user = test_input($_SESSION["username"])) === $_SESSION["username"]) {
     if (!checkNote(connectDb(), $note)) {

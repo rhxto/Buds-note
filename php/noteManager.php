@@ -5,6 +5,7 @@
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
+    $data = str_replace("/", "", $data);
     if ($data == "") {
       error_log("Nota non valida test_input");
       die(json_encode("NOTENV"));
@@ -13,7 +14,7 @@
   }
   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["username"]) && $_SESSION['logged_in'] == '1' && isset($_POST["type"])) {
     $type = test_input($_POST["type"]);
-    if ((empty($_POST["title"]) || empty($_POST["content"]) || empty($_POST["subj"]) || empty($_POST["dept"])) && $type == "write")  {
+    if ((empty($_POST["title"]) || empty($_POST["content"]) || empty($_POST["subj"]) || empty($_POST["dept"]) || test_input($_POST["title"]) !== $_POST["title"]) && $type == "write")  {
       error_log("Nota non valida write");
       die(json_encode("NOTENV"));
     } elseif ($type == "write") {
