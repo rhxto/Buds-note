@@ -377,7 +377,7 @@ function submitNote() {
     if (response == "done") {
       if ($("#uploadImage").val() !== '') {
         uploadImage();
-        if (localStorage.getItem("uploadStatus")) {
+        if (localStorage.getItem("uploadStatus") === "true") {
           $("#warn").show();
           $("#warn").attr("style", "background-color: lightblue;");
           $("#warn").html("Nota pubblicata!");
