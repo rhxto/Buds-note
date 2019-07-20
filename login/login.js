@@ -53,3 +53,15 @@ function errore(err) {
     break;
   }
 }
+$(document).ready( function() {
+  document.getElementById("Password").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      testInput();
+    }
+  });
+  document.getElementById("Username").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      testInput();
+    }
+  });
+});
