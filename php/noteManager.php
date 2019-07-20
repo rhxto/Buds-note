@@ -25,6 +25,8 @@
       die(json_encode("NOTENV"));
     } elseif ($type == "write") {
       $title = test_input($_POST["title"]);
+      $title = str_replace("'", "sc-a", $title);
+      $title = str_replace('"', "sc-q", $title);
       if (checkNote(connectDb(), $title)) {
         die(json_encode("NOTEWAE"));
       }

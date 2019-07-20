@@ -30,6 +30,8 @@
           $response = array();
           $response["state"] = "done";
           $response["id"] = $postResult["id"];
+          $response["username"] = $_SESSION["username"];
+          $response["date"] = $postResult["date"];
           echo json_encode($response);
         } else {
           die(json_encode("COMMENTW"));

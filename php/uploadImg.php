@@ -16,10 +16,19 @@
 
     return $data;
   }
-
+  $note = str_replace("'", "sc-a", $_POST["note"]);
+  $note = str_replace('"', "sc-q", $note);
+  $note = str_replace(" ", "_", $note);
+  $note = test_input($note);
+  $noteCheck = str_replace("'", "sc-a", $_POST["note"]);
+  $noteCheck = str_replace('"', "sc-q", $noteCheck);
+  $noteCheck = str_replace(" ", "_", $noteCheck);
+  if ($noteCheck !== $note) {
+    die(json_encode(["status"=>"IMGUVNV"]));
+  }
   if (empty($_SESSION["username"]) || !isset($_SESSION["username"]) || $_SESSION["logged_in"] === "0") {
     echo json_encode(["status"=>"IMGUNL"]);
-  } else if (empty(($note = $_POST["note"])) || $note === "" || if (test_input($_FILES["uploadImage"]["name"]) !== $_FILES["uploadImage"]["name"])) {
+  } else if (empty($note) || $note === "" || test_input($_FILES["uploadImage"]["name"]) !== $_FILES["uploadImage"]["name"]) {
     echo json_encode(["status"=>"IMGUVNV"]);
   } else if (($user = test_input($_SESSION["username"])) === $_SESSION["username"]) {
     if (!checkNote(connectDb(), $note)) {
@@ -27,6 +36,8 @@
     }
     if (checkDotIteration($_FILES["uploadImage"]["name"])) {
       $file = str_replace(" ", "_", "../notedb/" . $user . "/uploads" . "/" . basename($note . "_" . $user . "_" . $_FILES["uploadImage"]["name"]));
+      $file = str_replace("'", "sc-a", $file);
+      $file = str_replace('"', "sc-q", $file);
       //prendi l'estensione e mettila tutta lowercase
       $imageExtension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
       $check = getimagesize($_FILES["uploadImage"]["tmp_name"]);

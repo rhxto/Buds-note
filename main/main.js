@@ -189,12 +189,16 @@ function cerca() {
       } else {
         $("#scriviNotaBtn").hide();
         for (i = 0; i < response[1].length; i++) {
-          $("#risultati").append(response[1][i] + "<br/>");
+          response = response[1][i].replace(/sc-a/g, "&apos;");
+          response = response.replace(/sc-q/g, "&quot;");
+          $("#risultati").append(response + "<br/>");
         }
       }
     });
   } else if (type == "note"){
     var title = arg;
+    title = title.replace(/"/g, "sc-q");
+    title = title.replace(/'/g, "sc-a");
     var user = $("#filtroUtente").val();
     var subj = $("#filtroMateria").val();
     var year = $("#filtroAnno").val();
@@ -227,7 +231,9 @@ function cerca() {
       } else {
         $("#scriviNotaBtn").hide();
         for (i = 0; i < response.length; i++) {
-          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
+          response[i]["title"] = response[i]["title"].replace(/sc-a/g, "&apos;");
+          response[i]["title"] = response[i]["title"].replace(/sc-q/g, "&quot;");
+          $("#risultati").append("<a href='php/viewNote.php?title=" + response[i]["title"].replace(/&quot;/g, "sc-q") + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       }
     });
@@ -302,7 +308,9 @@ function getNotes() {
       } else {
         for (i = 0; i < response.length; i++) {
           $("#scriviNotaBtn").hide();
-          $("#risultati").append('<a href="php/viewNote.php?title=' + response[i]["title"] + '">' + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
+          response[i]["title"] = response[i]["title"].replace(/sc-a/g, "&apos;");
+          response[i]["title"] = response[i]["title"].replace(/sc-q/g, "&quot;");
+          $("#risultati").append('<a href="php/viewNote.php?title=' + response[i]["title"].replace(/&quot;/g, "sc-q") + '">' + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       }
     });
@@ -355,6 +363,8 @@ function submitNote() {
   var subj = $("#writeNoteSubj").val();
   var dept = $("#writeNoteDept").val();
   var content = $("#writeNoteContent").val();
+  title = title.replace(/'/g, "sc-a");
+  title = title.replace(/"/g, "sc-q");
   data = {
     'title': title,
     'content': content,
@@ -432,20 +442,26 @@ function mozShown() {
 $(document).ready(function(){
   document.getElementById("search").addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
-     event.preventDefault();
-     cerca();
+      event.preventDefault();
+      cerca();
+    }
+  });
+  document.getElementById("searchUserInput").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      searchUser();
     }
   });
   //se uno visualizza una nota poi va nella home page rimarrebbe il titolo nella voce title
   //quindi puliamo
-  localStorage.clear()
+  localStorage.removeItem("title");
 });
 function uploadImage() {
   if ($("#uploadImage").val() !== '') {
     var image = document.getElementById("uploadImage").files[0];
     var image_name = image.name;
     var image_extension = image_name.split('.').pop().toLowerCase();
-    if (image_extension.length > 1) {
+    if (image_name.split('.').length > 2) {
       alert("Formato immagine non supportato! (Mantenere solo l'estensione originale)");
     } else {
       if (jQuery.inArray(image_extension, ["gif", "png", "jpg", "jpeg"]) == -1) {

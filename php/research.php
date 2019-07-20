@@ -20,6 +20,8 @@
     $phrase = NULL;
   } else {
     $phrase = test_input($_POST["phrase"]);
+    $phrase = str_replace("'", "sc-a", $phrase);
+    $phrase = str_replace('"', "sc-q", $phrase);
   }
 
   if ($type == "note"){
@@ -27,6 +29,8 @@
       $title =  NULL;
     } else {
       $title = test_input($_POST["title"]);
+      $title = str_replace("'", "sc-a", $title);
+      $title = str_replace('"', "sc-q", $title);
       if ($_POST["title"] != $title) {
         //echo 'nonAN';
         die();

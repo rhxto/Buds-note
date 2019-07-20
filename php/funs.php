@@ -897,12 +897,13 @@
         $query->bindParam(":review", $content);
         $query->execute();
         //dobbiamo ritornare anche l'id per la cancellazione dei commenti postati nella pagina senza che sia ricaricata
-        $query = $conn->prepare("SELECT id FROM revw WHERE (user = :user) AND (review LIKE :content)");
+        $query = $conn->prepare("SELECT id, date FROM revw WHERE (user = :user) AND (review LIKE :content)");
         $query->bindParam(":user", $user);
         $query->bindParam(":content", $content);
         $query->execute();
-        $commentId = $query->fetchAll()[0]["id"];
-        return ["state"=> true, "id"=> $commentId];
+        $commentId = ($result = $query->fetchAll())[0]["id"];
+        $date = $result[0]["date"];
+        return ["state"=> true, "id"=> $commentId, "date"=>$date];
       } catch(PDOException $e) {
         if (PDOError($e)) {
           return "internalError";
@@ -960,8 +961,12 @@
         $query = $conn->prepare("SELECT user FROM note WHERE title LIKE :ttl");
         $query->bindParam(":ttl", $title);
         $query->execute();
-        if ($query->fetchAll()[0]["user"] == $user) {
-          return true;
+        if (null !== ($result = $query->fetchAll()[0]["user"]) && !empty($result)) {
+          if ($result === $user) {
+            return true;
+          } else {
+            return false;
+          }
         } else {
           return false;
         }
@@ -1337,6 +1342,10 @@
       $formats = ["png", "gif", "jpg", "jpeg"];
       if (in_array($format, $formats)) {
         $note = str_replace(" ", "_", $note);
+        $note = str_replace("'", "sc-a", $note);
+        $note = str_replace('"', "sc-q", $note);
+        $picName = str_replace("'", "sc-a", $picName);
+        $picName = str_replace('"', "sc-q", $picName);
         try {
           $conn = connectDb();
           $query = $conn->prepare("INSERT INTO pict (date, note, format, dir, name) VALUES (NOW(), :note, :format, :dir, :pic_name)");

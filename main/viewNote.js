@@ -176,8 +176,9 @@ function postComment() {
   $.post(ajaxurl, data, function (response) {
     response = JSON.parse(response);
   if (response["state"] == "done") {
-      $(".localSpawn").append('<div id="' + response["id"] +  '"></div>');
-      $("#" + response["id"]).html($("#commentText").val() + '<button class="delCommentBtn" onclick="delComment(' + response["id"] + ');">Elimina commento</button>');
+      $(".localSpawn").append('<span id="' + response["id"] +  '"></span>');
+      $("#" + response["id"]).html("<div class=commentText><span class='revwText'>" + $("#commentText").val() + '</span><button class="delCommentBtn" onclick="delComment(' + response["id"] + ');">Elimina commento</button></div>');
+      $(".localSpawn").append('<div class=commentInfo>' + response["username"] + " - " + response["date"] + "</div>");
       $("#commentText").val("");
     } else {
       error(response);
@@ -310,19 +311,20 @@ function modifyNote() {
   var content = $("#modifyContentTxtH").val();
   $("#modifyContentTxtH").replaceWith("<span class='noteContent'>" + $("#modifyContentTxtH").val().replace(/\n/g, "<br>") + "</span>");
   var ajaxurl = "../php/noteManager.php";
+  var newTitle = $(".spawnTtl").html().replace(/'/g, "sc-a");
+  newTitle = newTitle.replace(/"/g, "sc-q");
   data = {
     'title': localStorage.getItem("title"),
-    'newTitle': $(".spawnTtl").html(),
+    'newTitle': newTitle,
     'newContent': content,
     'type': 'update'
-}
+  }
   $.post(ajaxurl, data, function(response) {
     response = JSON.parse(response);
     if (response == "done") {
-      url = $(".spawnTtl").html();
-      localStorage.setItem('title', url);
+      localStorage.setItem('title', newTitle);
       //in questo modo aggiorniamo il link della pagina senza doverla ricaricare con window.location.href, i primi due parametri della funzione servono ad altre cose
-      window.history.pushState("", "", "http://" + location.host + "/php/viewNote.php?title=" + url.replace(" ", "%20"));
+      window.history.pushState("", "", "http://" + location.host + "/php/viewNote.php?title=" + newTitle.replace(/ /g, "%20"));
     } else {
       error(response);
     }
@@ -408,7 +410,7 @@ $(document).ready(function() {
       var image = document.getElementById("addPic").files[0];
       var image_name = image.name;
       var image_extension = image_name.split('.').pop().toLowerCase();
-      if (image_extension.length > 2) {
+      if (image_name.split('.').length > 2) {
         alert("Formato non supportato! (Mantenere solo l'estensione originale)")
       } else {
         if (jQuery.inArray(image_extension, ["gif", "png", "jpg", "jpeg"]) == -1) {
