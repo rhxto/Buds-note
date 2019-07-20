@@ -449,7 +449,7 @@ function uploadImage() {
       alert("Formato immagine non supportato! (Mantenere solo l'estensione originale)");
     } else {
       if (jQuery.inArray(image_extension, ["gif", "png", "jpg", "jpeg"]) == -1) {
-        alert("Immagine non supportata!");
+        alert("Fomrato non supportato!");
       } else {
         var image_size = image.size;
         if (image_size > 10000000) {

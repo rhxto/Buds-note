@@ -409,10 +409,10 @@ $(document).ready(function() {
       var image_name = image.name;
       var image_extension = image_name.split('.').pop().toLowerCase();
       if (image_extension.length > 2) {
-        alert("Immagine non supportata! (Mantenere solo l'estensione originale)")
+        alert("Formato non supportato! (Mantenere solo l'estensione originale)")
       } else {
         if (jQuery.inArray(image_extension, ["gif", "png", "jpg", "jpeg"]) == -1) {
-          alert("Immagine non supportata!");
+          alert("Formato non supportato!");
         } else {
           var image_size = image.size;
           if (image_size > 10000000) {
