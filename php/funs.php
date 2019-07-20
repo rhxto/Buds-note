@@ -1380,5 +1380,19 @@
     }
   }
 
-//searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $datefrom, $dateto, $order, $v) a che serviva questo?
+  /*
+   * Controlla che il punto all' interno di una foto sia ripetuto solo una volta in modo da evitare di salvare dentro al server file del tipo "Foto.php.png" che può sembrare png ma in realtà è php
+   *
+   * @param $path Il nome del file da controllare
+   *
+   * @return true Se il punto è presente nel nome del file una volta sola
+   * @return false Se il punto è presente più di una volta o non è proprio presente
+   */
+  function checkDotIteration($path) {
+    if (substr_count($path, ".") === 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 ?>

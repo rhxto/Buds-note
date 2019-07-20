@@ -408,42 +408,46 @@ $(document).ready(function() {
       var image = document.getElementById("addPic").files[0];
       var image_name = image.name;
       var image_extension = image_name.split('.').pop().toLowerCase();
-      if (jQuery.inArray(image_extension, ["gif", "png", "jpg", "jpeg"]) == -1) {
-        alert("Immagine non supportata!");
+      if (image_extension.length > 2) {
+        alert("Immagine non supportata! (Mantenere solo l'estensione originale)")
       } else {
-        var image_size = image.size;
-        if (image_size > 10000000) {
-          alert("La dimensione massima per un'immagine é di 5MB!");
+        if (jQuery.inArray(image_extension, ["gif", "png", "jpg", "jpeg"]) == -1) {
+          alert("Immagine non supportata!");
         } else {
-          var data = new FormData();
-          data.append("uploadImage", image);
-          data.append("note", localStorage.getItem("title"));
-          $.ajax({
-            url:"uploadImg.php",
-            method:"POST",
-            data:data,
-            contentType:false,
-            cahe:false,
-            processData:false,
-            beforeSend:function(){
-              //nulla
-            },
-            success:function(response){
-              response = JSON.parse(response);
-              if (response["status"] !== "success") {
-                error(response["status"]);
-              } else {
-                $("#pics").append(response["img_tag"]);
-                $("#warn").show();
-                $("#warn").attr("style", "background-color: lightblue;");
-                $("#warn").html("Immagine aggiunta!");
-                setTimeout(function(){
-                  $("#warn").hide();
-                  $("#warn").attr("style", "background-color: red;");
-                }, 3000);
+          var image_size = image.size;
+          if (image_size > 10000000) {
+            alert("La dimensione massima per un'immagine é di 5MB!");
+          } else {
+            var data = new FormData();
+            data.append("uploadImage", image);
+            data.append("note", localStorage.getItem("title"));
+            $.ajax({
+              url:"uploadImg.php",
+              method:"POST",
+              data:data,
+              contentType:false,
+              cahe:false,
+              processData:false,
+              beforeSend:function(){
+                //nulla
+              },
+              success:function(response){
+                response = JSON.parse(response);
+                if (response["status"] !== "success") {
+                  error(response["status"]);
+                } else {
+                  $("#pics").append(response["img_tag"]);
+                  $("#warn").show();
+                  $("#warn").attr("style", "background-color: lightblue;");
+                  $("#warn").html("Immagine aggiunta!");
+                  setTimeout(function(){
+                    $("#warn").hide();
+                    $("#warn").attr("style", "background-color: red;");
+                  }, 3000);
+                }
               }
-            }
-          });
+            });
+          }
         }
       }
     }
