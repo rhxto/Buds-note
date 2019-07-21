@@ -382,8 +382,8 @@ function submitNote() {
           $("#warn").attr("style", "background-color: lightblue;");
           $("#warn").html("Nota pubblicata!");
           setTimeout(function(){
-            $("#warn").hide();
             $("#warn").attr("style", "background-color: red;");
+            $("#warn").hide();
           }, 3000);
         }
       } else {

@@ -57,7 +57,7 @@
         }
       }
      ?>
-     <div id="userInfo">
+     <div id="userInfo" class="txt">
        Nome utente: <span id="username" class="userInfo">
          <?php
            echo $username;
@@ -68,7 +68,8 @@
            echo getLastLog($username);
           ?>
        </span><br/>
-       Valutazioni totali lasciate: <?php
+       Valutazioni totali lasciate: <span class="userInfo">
+        <?php
            echo getLeftRate($username);
           ?>
        </span><br/>
