@@ -1,0 +1,61 @@
+codici:
+IE = errore interno generico
+IES = errore nella ricerca
+IEMAN = errore  generico manutenzione
+IEMANR = errore nella lettura della manutenzione
+IEMANS = errore nella scrittura della manutenzione
+NOMAN = utente non autorizzato a impostare lo stato della manutenzione
+MANAA = manutenzione giá attiva
+
+UWFE = errore nella scrittura su filesystem dell'utente
+
+NOTEW = errore nella scrittura della nota
+NOTENL = scrittura nota senza essere loggati
+NOTENV = testo della nota non valido
+NOTEIE = errore interno generico nel settore note
+NOTEDE = erroe nella cancellazione della nota
+NOTESC = caratteri speciali non validi in nota
+NOTEWAE = note gia' esistente (in tentativo di scrittura)
+NOTEANV = azione della nota non valida (tipi: write, update e delete)
+NOTEDNA = tentativo di cancellare una nota non autorizzato
+NOTEDNF = nita da cancellare non trovata
+NOTESUT = titolo della nota da cercare non valido
+NOTESNV = titolo della nota di ricerca non valido
+NOTEUNV = parametri di modifica della nota non validi
+NOTEUNA = aggiornamento nota non autorizzato
+NOTEUNE = nota da aggiornare non trovata
+NOTEUUF = erroe interno nell'esecuzione della modifica della nota
+NOTERNV = valutazione nota non valida
+NOTERNE = nota da valutare inesistente
+NOTERAE = rating di nota giá inserito
+NOTEREF = errore nel fetch dei likes e dislikes della nota
+NOTERWIE = errore nella scrittura della valutazione
+
+COMMENTW = errore nella scrittura del commento
+COMMENTDE = errore nella cancellazione del commento
+COMMENTNV = commento non valido
+COMMENTNL = tentativo di agire su un commento mentre non si é loggati
+COMMENTDNF = commento da cancellare non trovato
+COMMENTDNA = tentativo di cancellare il commento non autorizzato
+COMMENTANV = azione del commento non valida
+
+USERNV = parametro per la ricerca dell'utente non valido
+USERNL = azione non valida perche' non loggati
+USERSNV = parametro per la ricerca dell'utente non valido
+USERANV = azione per l'utente non valida
+USERSIE = errore interno nella ricerca dell'utente
+
+RESMINR = risoluzione minima per il funzionamento corretto dei commenti
+
+IMGUAE = immagine (relativa alla nota, non in generale) giá esistente!
+IMGUIE = errore generico nel caricamento dell'imamagine
+IMGUNL = non si puó caricare un'immagine senza essere loggati
+IMGUUE = eccezione non supportata da uploadImg.php *CONTROLLARE SUBITO SE QUESTO CODICE VIENE DATO*
+IMGUVNV = valori non validi per il caricamento dell'immagine
+IMGUFNS = tipo di immagine non supportato (supportati: GIF, JPEG, JPG, PNG)
+IMGUFNI = il file caricato non é un immagine
+IMGUFTB = immagine troppo grande per essere caricata
+IMGUMIE = errore interno nell'aggiunta della pic a mysql
+IMGUUIE = errore nel caricamento dell'immagine su db, questo codice non dovrebbe mai apparire
+IMGUNEN = si sta cercano di associare un'immagine ad una nota non esistente
+IMGUMNEN = la nota non esiste per mysql
