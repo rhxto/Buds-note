@@ -20,6 +20,9 @@
   $note = str_replace('"', "sc-q", $note);
   $note = str_replace(" ", "_", $note);
   $note = test_input($note);
+  if (!isNoteOwner(connectDb(), $note, $_SESSION["username"])) {
+    die(json_encode(["status"=>"IMGUNO"]));
+  }
   $noteCheck = str_replace("'", "sc-a", $_POST["note"]);
   $noteCheck = str_replace('"', "sc-q", $noteCheck);
   $noteCheck = str_replace(" ", "_", $noteCheck);

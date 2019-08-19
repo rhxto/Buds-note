@@ -24,7 +24,7 @@
     <div><br/><br/><br/></div>
     <a onclick="hideSearch()" class="absolute right2 top10" style="font-size:30px;z-index:3;color:whitesmoke">X</a>
     <div class='search' id="Search">
-      <input id="search" type="text" class="search_text"/>
+      <input id="search" placeholder="Titolo nota..." type="text" class="search_text"/>
       <span class="search_checkbox top25 left40 a" hidden>
         <input type="checkbox" class="a" id="deptNum" >Indirizzo per numero</input>
       </span>
@@ -41,8 +41,8 @@
         <input type="checkbox" id="noteTtl">Appunti per titolo</input>
       </span>
       <span class="top20 left35 filtro">
-        Filtra per utente: <input id="filtroUtente" style="color:black" placeholder="Nome utente..." /><br/>
-        Filtra per materia: <select class="opzM" id="filtroMateria">
+        Utente: <input id="filtroUtente" style="color:black" placeholder="Lascia vuoto per tutto" /><br/>
+        Materia: <select class="opzM" id="filtroMateria">
           <option class="opz" value="Tutto">Tutto</option>
         <?php
           require_once 'php/core.php';
@@ -56,8 +56,8 @@
           }
          ?>
        </select><br/>
-        Filtra per indirizzo: <select class='opzM' id="filtroIndirizzo"><br/>
-          <option class="opz" value="Tutto">Tutto</option>
+        Indirizzo: <select class='opzM' id="filtroIndirizzo"><br/>
+        <option class="opz" value="Tutto">Tutto</option>
         <?php
           $r = dept(connectDb(), NULL, NULL);
           foreach ($r[1] as $res) {
@@ -65,7 +65,9 @@
           }
          ?>
        </select><br/>
-        Filtra per anno: <input type="number" id="filtroAnno"/><br/>
+       Anno: <span> <!-- Selezione anno -->
+         1<input type="checkbox" id="inputyear_1" checked/> 2<input type="checkbox" id="inputyear_2" checked/> 3<input type="checkbox" id="inputyear_3" checked/> 4<input type="checkbox" id="inputyear_4"/ checked> 5<input type="checkbox" id="inputyear_5" checked/>
+       </span><br/>
         Data d'inizio: <input id="filtroDatefrom" /><br/>
         Data di fine:  <input id="filtroDateto"/><br/>
         <script type="text/javascript">
@@ -87,14 +89,12 @@
           <option value="Materia">
           <option value="Anno">
           <option value="Indirizzo">
-          <option value="Insegnante">
           <option value="Data">
         </datalist>
-        Ordine: <input list="ordini" id="filtroOrdine"/>
-        <datalist id="ordini">
-          <option value="ascendente">
-          <option value="discendente">
-        </datalist>
+        Ordine: <select id="filtroOrdine" class="opzM">
+          <option class="opz" value="Crescente">Crescente</option>
+          <option class="opz" value="Decrescente">Decrescente</option>
+        </select>
       </span>
       <span>
         <button class="search_button top25 left15" onclick="getDepts();">Indirizzi</button><br/>
@@ -146,6 +146,13 @@
           }
          ?>
        </select><br/>
+        Anno: <select id="writeNoteYear">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select><br/>
         <textarea rows="25" cols="100" id="writeNoteContent" class="scriviNotaTextArea"></textarea><br/>
         <input type="file" name="uploadImage" id="uploadImage" class="uploadImage"/>
         <label for="uploadImage">Carica un'immagine</label>

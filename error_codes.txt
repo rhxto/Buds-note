@@ -1,5 +1,5 @@
 codici:
-IE = errore interno generico
+sessione: errore nel set/distruzione della sessione
 IES = errore nella ricerca
 IEMAN = errore  generico manutenzione
 IEMANR = errore nella lettura della manutenzione
@@ -16,11 +16,13 @@ NOTEIE = errore interno generico nel settore note
 NOTEDE = erroe nella cancellazione della nota
 NOTESC = caratteri speciali non validi in nota
 NOTEWAE = note gia' esistente (in tentativo di scrittura)
+NOTEWYNV = anno della nota non valido
 NOTEANV = azione della nota non valida (tipi: write, update e delete)
 NOTEDNA = tentativo di cancellare una nota non autorizzato
 NOTEDNF = nita da cancellare non trovata
 NOTESUT = titolo della nota da cercare non valido
 NOTESNV = titolo della nota di ricerca non valido
+NOTESYNV = array di anni non valido (almeno 1 dei valori é diverso da true/false)
 NOTEUNV = parametri di modifica della nota non validi
 NOTEUNA = aggiornamento nota non autorizzato
 NOTEUNE = nota da aggiornare non trovata
@@ -51,6 +53,7 @@ IMGUAE = immagine (relativa alla nota, non in generale) giá esistente!
 IMGUIE = errore generico nel caricamento dell'imamagine
 IMGUNL = non si puó caricare un'immagine senza essere loggati
 IMGUUE = eccezione non supportata da uploadImg.php *CONTROLLARE SUBITO SE QUESTO CODICE VIENE DATO*
+IMGUNO = non sei il propietario della nota
 IMGUVNV = valori non validi per il caricamento dell'immagine
 IMGUFNS = tipo di immagine non supportato (supportati: GIF, JPEG, JPG, PNG)
 IMGUFNI = il file caricato non é un immagine

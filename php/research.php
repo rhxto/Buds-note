@@ -54,13 +54,15 @@
         die();
       }
     }
-    if ((!isset($_POST["year"]) || $_POST["year"] == "") || $_POST["year"] == "undefined") {
-      $year =  NULL;
+    if ((!isset($_POST["years"]) || $_POST["years"] === []) || $_POST["years"] == "undefined") {
+      $years =  NULL;
     } else {
-      $year = test_input($_POST["year"]);
-      if ($_POST["year"] != $year) {
-        //echo 'nonAN';
-        die();
+      $years = $_POST["years"];
+      for ($i = 0; $i < 5; $i++) {
+        if (($year = $years[$i]) !== "true" && $year !== "false") {
+          error_log("Anno $i non valido: " . $years[$i]);
+          die(json_encode("NOTESYNV"));
+        }
       }
     }
     if ((!isset($_POST["dept"]) || $_POST["dept"] == "") || $_POST["dept"] == "undefined") {
@@ -209,7 +211,7 @@
       echo json_encode($response);
     }
   } elseif ($type == "notes") {
-    $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "date", "desc");
+    $response = searchNote($conn, NULL, NULL, NULL, NULL, ["true","true","true","true","true"], NULL, NULL, NULL, "date", "desc");
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
@@ -219,7 +221,7 @@
       echo json_encode($response);
     }
   } elseif ($type == "note") {
-    $response = searchNote($conn, $title, NULL, $user, $subj, $year, $dept, $datefrom, $dateto, $orderby, $order);
+    $response = searchNote($conn, $title, NULL, $user, $subj, $years, $dept, $datefrom, $dateto, $orderby, $order);
     if ($response == "internalError") {
       die(json_encode("IES"));
     }

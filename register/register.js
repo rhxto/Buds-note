@@ -61,6 +61,8 @@ function errore(err) {
     case "nonAN":
     $("#Warning").html("Username o password non validi (niente caratteri speciali)!");
       break;
+    case "UWFE":
+      $("#Warning").html("Errore nella creazione dell'utente (riferisci il messaggio agli amministratori). Codice: UWFE");
     default:
     $("#Warning").html("Errore (riferisci questo messaggio agli amministratori)" + " Codice: " + err);
     break;

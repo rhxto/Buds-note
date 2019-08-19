@@ -54,11 +54,11 @@ require 'funs.php';
       exec("mkdir ../notedb/$Username 2>&1", $r);
       exec("mkdir ../notedb/$Username/uploads 2>&1", $r);
       exec("chmod o-x ../notedb/$Username 2>&1", $r);
-      exec("chmod g-x ../notedb/$Username 2>&1", $r); 
+      exec("chmod g-x ../notedb/$Username 2>&1", $r);
       exec("chmod o-x ../notedb/$Username/uploads 2>&1", $r);
       exec("chmod g-x ../notedb/$Username/uploads 2>&1", $r);
       if (!empty($r)) {
-        error_log("Risposta da comando shell di write insapettata! Risposta: " . print_r($r, true));
+        error_log("Risposta da comando shell di write insapettata! Risposta: " . print_r($r, true) . " User: " . $Username);
         die('UWFE');
       }
       echo 'passed';

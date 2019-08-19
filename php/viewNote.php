@@ -42,9 +42,6 @@
             $data = trim($data);
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
-            if ($data == "") {
-              die(json_encode("NOTESNV"));
-            }
             return $data;
           }
           if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -54,7 +51,7 @@
               $title = test_input($_GET["title"]);
               $title = str_replace("'", "sc-a", $title);
               $title = str_replace('"', "sc-q", $title);
-              $note = searchNote(connectDb(), $title, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+              $note = searchNote(connectDb(), $title, NULL, NULL, NULL, ["true", "true", "true", "true", "true"], NULL, NULL, NULL, NULL, NULL, NULL);
             }
             if (empty($note[0]['title'])) {
               echo "<script>$('.noteInfoDisplay').hide();</script>";
@@ -175,6 +172,7 @@
          <br/>
         <textarea rows="1" cols="100" wrap="hard" placeholder="Inserisci un commento..." id="commentText" style="display: none;" class="postCommentElms commentTxt"></textarea>
         <button onclick="postComment()" style="display: none;" class="postCommentElms commentBtn">Pubblica</button>
+        <br/><br/><br/><br/>
       </div>
     </div>
     <div id="warn" class="warn" style="display:none">
@@ -188,7 +186,7 @@
       <a onclick="deleteNote()" class="navbar-right admin" id="delNoteBtn" style="display: none;">Rimuovi nota</a>
       <a onclick="delCommentShow()" class="navbar-right admin" id="delCommentBtn" style="display: none;">Rimuovi commento</a>
       <input type="file" class="navbar-right uploadPicture" id="addPic" style="display: none;"/>
-      <label for="addPic" class="user padding navbar-right">Aggiungi immagine</label>
+      <label for="addPic" class="user padding navbar-right" style="display: none;">Aggiungi immagine</label>
     </div>
     <div class="delNote" style="display: none;">
     </div>

@@ -34,13 +34,15 @@
       $subj = test_input($_POST["subj"]);
       $dept = test_input($_POST["dept"]);
     }
-    if ((isNoteOwner(connectDb(), $_POST["title"], $_SESSION["username"])) && $type == "update") {
-      if ((empty($_POST["title"]) || empty($_POST["newTitle"]) || empty($_POST["newContent"])) && $type == "update") {
-        die(json_encode("NOTEUNV"));
-      } else {
-        $title = test_input($_POST["title"]);
-        $newTitle = test_input($_POST["newTitle"]);
-        $newContent = test_input($_POST["newContent"]);
+    if ($type == "update") {
+      if (isNoteOwner(connectDb(), $_POST["title"], $_SESSION["username"])) {
+        if ((empty($_POST["title"]) || empty($_POST["newTitle"]) || empty($_POST["newContent"])) && $type == "update") {
+          die(json_encode("NOTEUNV"));
+        } else {
+          $title = test_input($_POST["title"]);
+          $newTitle = test_input($_POST["newTitle"]);
+          $newContent = test_input($_POST["newContent"]);
+        }
       }
     } elseif ($type == "update") {
       error_log("**TENTATIVO DI AGGIORNAMENTO NOTA NON AUTORIZZATO DA: " . $_SERVER["REMOTE_ADDR"] . "**");
@@ -53,18 +55,25 @@
       $title = test_input($_POST["title"]);
     }
     if ((empty($_POST["title"]) || empty($_POST["rating"])) && $type == "rate") {
-      logD("nota non valida rate");
+      error_log("nota non valida rate");
       die(json_encode("NOTERNV"));
     } elseif ($type == "rate") {
       $title = test_input($_POST["title"]);
       $rating = test_input($_POST["rating"]);
+    }
+    if ($type === "write") {
+      $year = $_POST["year"];
+    }
+    if (((empty($_POST["year"]) || $_POST["year"] == NULL) || !in_array($year, [1,2,3,4,5])) && $type === "write") {
+      error_log("Anno non valido" . $year);
+      die(json_encode("NOTEWYNV"));
     }
     switch ($type) {
       case 'write':
         if (strpos($title, ".") !== false || strpos($title, "/") !== false) {
           die(json_encode("NOTESC"));
         } else {
-          if(writeNote(connectDb(), $title, $_SESSION["username"], $subj, $dept, $content)) {
+          if(writeNote(connectDb(), $title, $_SESSION["username"], $subj, $dept, $year, $content)) {
             echo json_encode("done");
           } else {
             die(json_encode("NOTEW"));

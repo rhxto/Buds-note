@@ -41,12 +41,15 @@
     echo 'passed';
   } else if ($status == "false"){
     $_SESSION['logged_in'] = '0';
+    unset($_SESSION["username"]);
     echo 'credenziali';
   } else if ($status == 'bannato') {
     $_SESSION['logged_in'] = '0';
+    unset($_SESSION["username"]);
     echo 'bannato';
   } else {
     $_SESSION['logged_in'] = '0';
+    unset($_SESSION["username"]);
     echo 'internalError';
   }
 ?>

@@ -62,6 +62,9 @@ function error(err) {
     case "NOTEW":
       $("#warn").html("Errore nella scrittura della nota, se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
       break;
+    case "NOTEWYNV":
+      $("#warn").html("Anno non valido! Codice: " + err);
+      break;
     case "NOTEDNA":
       $("#warn").html("Non sei autorizzato a cancellare le note, questo incidente é stato segnalato");
       break;
@@ -70,6 +73,9 @@ function error(err) {
       break;
     case "NOTESC":
       $("#warn").html("Non si possono usare caratteri speciali in una nota! (. e / non supportati)");
+      break;
+    case "NOTESYNV":
+      $("#warn").html("Anno della ricerca non valido! Codice: " + err);
       break;
     case "NOTEDNF":
       $("#warn").html("Nota non trovata!");
@@ -87,7 +93,7 @@ function error(err) {
       $("#warn").html("A causa di errori nel broswer, alcuni elementi del sito potrebbero non funzionare correttamente in Firefox (consigliamo Chrome o Edge). Vedi: https://support.mozilla.org/en-US/questions/1191898 <button class='mozErrorDeactivation' onclick='mozShown()'>Ok</button>");
       break;
     case "NOTEWAE":
-      $("#warn").html("Nota gi&#224; esistente");
+      $("#warn").html("Nota giá esistente");
       break;
     case "IEAG":
       $("#warn").html("Errore nel retrieve di acc**** se vedi questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
@@ -149,6 +155,7 @@ function error(err) {
 }
 function cerca() {
   hideSearch();
+  $("#risultati").empty();
   var arg = $("#search").val();
   var ajaxurl = "../php/research.php";
   if ($("#filtroMateria").val() == "" && $("#filtroIndirizzo").val() == "" && $("#filtroUtente").val() == "" && $("#filtroAnno").val() == "" &&$("#filtroDatefrom").val() == "" &&$("#filtroDateto").val() == "" &&$("#filtroOrdine").val() == "" && $("#filtroOrderBy").val() == "") {
@@ -201,19 +208,27 @@ function cerca() {
     title = title.replace(/'/g, "sc-a");
     var user = $("#filtroUtente").val();
     var subj = $("#filtroMateria").val();
-    var year = $("#filtroAnno").val();
+    var years = [];
+    for (var i = 0; i < 5; i++) {
+      if ($("#inputyear_" + (i + 1)).prop("checked")) {
+        years[i] = true;
+      } else {
+        years[i] = false;
+      }
+    }
     var dept = $("#filtroIndirizzo").val();
     var teacher = user;
     var datefrom = $("#filtroDatefrom").val();
     var dateto = $("#filtroDateto").val();
     var orderby = $("#filtroOrderBy").val();
     var order = $("#filtroOrdine").val();
+
     data = {
       "type": type,
       "title": title,
       "user": user,
       "subj": subj,
-      "year": year,
+      "years": years,
       "dept": dept,
       "teacher": teacher,
       "datefrom": datefrom,
@@ -226,7 +241,7 @@ function cerca() {
       var response = JSON.parse(response);
       if (response == "Nrt") {
         $("#risultati").html("Nessun risultato trovato");
-      } else if (response == "IES" || response == "IE") {
+      } else if (response == "IES" || response == "IE" || response == "NOTESYNV") {
         error(response);
       } else {
         $("#scriviNotaBtn").hide();
@@ -362,6 +377,7 @@ function submitNote() {
   var title = $("#writeNoteTitle").val();
   var subj = $("#writeNoteSubj").val();
   var dept = $("#writeNoteDept").val();
+  var year = parseInt($("#writeNoteYear").val());
   var content = $("#writeNoteContent").val();
   title = title.replace(/'/g, "sc-a");
   title = title.replace(/"/g, "sc-q");
@@ -370,6 +386,7 @@ function submitNote() {
     'content': content,
     'subj': subj,
     'dept': dept,
+    'year': year,
     'type': 'write'
   }
   $.post(ajaxurl, data, function(response) {

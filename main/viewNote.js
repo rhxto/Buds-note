@@ -137,6 +137,9 @@ function error(err) {
     case "IMGUUE":
       $("#warn").html("Errore sconosciuto nel caricamento dell'immagine! <bold>Riferisci questo messaggio agli amministratori</bold>" + " Codice: " + err);
       break;
+    case "IMGUNO":
+      $("#warn").html("Non sei il proprietario della nota quindi non puoi aggiungerci delle immagini! Codice: " + err);
+      break;
     case "IMGUVNV":
       $("#warn").html("Valori non validi per il caricamento dell'immagine!" + " Codice: " + err);
       break;

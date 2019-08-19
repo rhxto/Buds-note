@@ -416,7 +416,7 @@
      * @param $dir La directpry in cui si trova la nota da cercare
      * @param $user L'utente che ha scritto la nota da carcare
      * @param $subj La materia a cui appartiene la nota da cercare
-     * @param $year L'anno corrispondente alla nota da carcare
+     * @param $years L'array con gli anni selezionati dall'utente dove true o false indicano se l'anno year[i] è stato selezionato (quindi true) o meno (quindi false)
      * @param $dept Il dipartimento a cui appartiene la nota
      * @param $datefrom La data minima di creazione della nota
      * @param $dateto La data massima di creazione della nota
@@ -426,7 +426,7 @@
      * @return
      * @return "internalError" Se vengono sollevate delle PDOException
      */
-    function searchNote($conn, $title, $dir, $user, $subj, $year, $dept, $datefrom, $dateto, $order, $v) {
+    function searchNote($conn, $title, $dir, $user, $subj, $years, $dept, $datefrom, $dateto, $order, $v) {
       if ($title == NULL) {
         $title = "%";
       }
@@ -439,8 +439,30 @@
       if ($subj == NULL || $subj == "Tutto") {
         $subj = "%";
       }
-      if ($year == NULL) {
-        $year = "%";
+      if ($years[0] === "true") {
+        $year1 = 1;
+      } else {
+        $year1 = 0;
+      }
+      if ($years[1] === "true") {
+        $year2 = 2;
+      } else {
+        $year2 = 0;
+      }
+      if ($years[2] === "true") {
+        $year3 = 3;
+      } else {
+        $year3 = 0;
+      }
+      if ($years[3] === "true") {
+        $year4 = 4;
+      } else {
+        $year4 = 0;
+      }
+      if ($years[4] === "true") {
+        $year5 = 5;
+      } else {
+        $year5 = 0;
       }
       if ($dept == NULL || $dept == "Tutto") {
         $dept = "%";
@@ -456,20 +478,24 @@
       }
       if ($v == NULL) {
         $v = "DESC";
-      } elseif ($v == "discendente") {
+      } elseif ($v == "decrescente") {
         $v = "DESC";
       } else {
         $v = "ASC";
       }
 
       try {
-        $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND (year LIKE :year) AND (dept LIKE :dept) AND (date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
+        $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND ((year LIKE :year1) OR (year LIKE :year2) OR (year LIKE :year3) OR (year LIKE :year4) OR (year LIKE :year5)) AND (dept LIKE :dept) AND (date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
         $title = str_replace(" ", "_", $title);
         $query->bindParam(":ttl", $title);
         $query->bindParam(":dir", $dir);
         $query->bindParam(":usr", $user);
         $query->bindParam(":subj", $subj);
-        $query->bindParam(":year", $year);
+        $query->bindParam(":year1", $year1);
+        $query->bindParam(":year2", $year2);
+        $query->bindParam(":year3", $year3);
+        $query->bindParam(":year4", $year4);
+        $query->bindParam(":year5", $year5);
         $query->bindParam(":dept", $dept);
         $query->bindParam(":datefrom", $datefrom);
         $query->bindParam(":dateto", $dateto);
@@ -507,14 +533,14 @@
      * @param $user L'utente che sta creando la nota
      * @param $subj La materia a cui si riferisce l'appunto
      * @param $dept Il dept a cui si riferisce la dept
+     * @param $year La classe alla quale si riferisce la nota che si sta scrivendo [1/2/3/4/5]
      * @param $content Il testo contenuto nella nota
      *
      * @return true Se tutto va come deve e la nota viene caricata senza problemi
      */
-    function writeNote($conn, String $title, String $user, String $subj, String $dept, String $content) {
+    function writeNote($conn, String $title, String $user, String $subj, String $dept, int $year, String $content) {
       $title = str_replace(" ", "_", $title);
       $dir = "/notedb/$user/$title.txt";
-      $year = date("Y");
       $date = date("Y-m-d H:i:s");
       try {
         $query = $conn->prepare("INSERT INTO note VALUES (:ttl, :dir, :user, :subj, :year, :dept, :date)");
@@ -529,7 +555,7 @@
         if ($noteFile == false) {
           die(json_encode("NOTEW"));
         }
-        error_log("noteFIle: " . $noteFile);
+        error_log("noteFile: " . $noteFile);
         fwrite($noteFile, $content);
         fclose($noteFile);
         $query->execute();
