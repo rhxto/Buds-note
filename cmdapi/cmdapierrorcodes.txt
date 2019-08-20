@@ -16,6 +16,7 @@
 600_values_not_valid = valori non validi
 601_write_error = errore nella scrittura della nota
 602_note_exists = la nota esiste giá
+603_year_out_bound = l'anno selezionato é fuori dal range consentito
 700_no_subj_found = nessuna materia trovata
 800_rating_fetch_failure = errore nel fetch dei likes e/o dislikes
 900_rate_failure = errore nella scrittura della valutazione

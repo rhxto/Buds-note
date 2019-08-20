@@ -55,7 +55,7 @@
       }
     }
     if ((!isset($_POST["years"]) || $_POST["years"] === []) || $_POST["years"] == "undefined") {
-      $years =  NULL;
+      $years =  ["true", "true", "true", "true", "true"];
     } else {
       $years = $_POST["years"];
       for ($i = 0; $i < 5; $i++) {

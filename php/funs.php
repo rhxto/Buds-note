@@ -542,6 +542,9 @@
       $title = str_replace(" ", "_", $title);
       $dir = "/notedb/$user/$title.txt";
       $date = date("Y-m-d H:i:s");
+      if ($year < 1 || $year > 5) {
+        return "yearOutBound";
+      }
       try {
         $query = $conn->prepare("INSERT INTO note VALUES (:ttl, :dir, :user, :subj, :year, :dept, :date)");
         $query->bindParam(":ttl", $title);

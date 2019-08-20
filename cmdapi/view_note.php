@@ -18,7 +18,7 @@
           } else {
             $note_name = test_input($_POST["note_name"]);
           }
-          $note = searchNote(connectDb(), $note_name, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+          $note = searchNote(connectDb(), $note_name, NULL, NULL, NULL, ["true", "true", "true", "true", "true"], NULL, NULL, NULL, NULL, NULL, NULL);
           if (!empty($note[0]["title"])) {
             $content = array();
             foreach (getNote(connectDb(), $note_name) as $row) {
@@ -52,7 +52,7 @@
             $result = ["status"=> "fail", "code"=>"404_not_found"];
           }
         } elseif ($type == "view_recent_notes") {
-          $response = searchNote(connectDb(), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "date", "desc");
+          $response = searchNote(connectDb(), NULL, NULL, NULL, NULL, ["true", "true", "true", "true", "true"], NULL, NULL, NULL, "date", "desc");
           if ($response == "internalError") {
             $result = [
               "status"=> "fail",

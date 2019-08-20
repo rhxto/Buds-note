@@ -73,7 +73,7 @@
         if (strpos($title, ".") !== false || strpos($title, "/") !== false) {
           die(json_encode("NOTESC"));
         } else {
-          if(writeNote(connectDb(), $title, $_SESSION["username"], $subj, $dept, $year, $content)) {
+          if(writeNote(connectDb(), $title, $_SESSION["username"], $subj, $dept, $year, $content) === true) {
             echo json_encode("done");
           } else {
             die(json_encode("NOTEW"));
