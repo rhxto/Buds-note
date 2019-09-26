@@ -183,7 +183,7 @@
       <a id="modifyNoteBtn" onclick="showNoteEditor()" class="navbar-right user" style="display: none;">Modifica nota</a>
       <a id="modifyNoteConfirm" onclick="modifyNote()"class="navbar-right" style="display: none;">Salva</a>
       <a onclick="abortNoteDeletion()" id="abortNoteDeletion" class="navbar-right" style="display: none;">Annulla</a>
-      <a onclick="deleteNote()" class="navbar-right admin" id="delNoteBtn" style="display: none;">Rimuovi nota</a>
+      <a onclick="deleteNote()" class="navbar-right admin user" id="delNoteBtn" style="display: none;">Rimuovi nota</a>
       <a onclick="delCommentShow()" class="navbar-right admin" id="delCommentBtn" style="display: none;">Rimuovi commento</a>
       <input type="file" class="navbar-right uploadPicture" id="addPic" style="display: none;"/>
       <label for="addPic" class="user padding navbar-right" style="display: none;">Aggiungi immagine</label>

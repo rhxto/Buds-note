@@ -158,6 +158,7 @@
         <label for="uploadImage">Carica un'immagine</label>
         <span id="uploadedImage"></span>
         <button id="submitNote" class="btn" onclick="submitNote()">Pubblica</button>
+        <br/><br/><br/>
       </div>
     </div>
   <div class="navbar adminTools" style="position:fixed;bottom:5px;display:none">

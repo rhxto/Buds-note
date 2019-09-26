@@ -387,22 +387,13 @@ function submitNote() {
     'subj': subj,
     'dept': dept,
     'year': year,
-    'type': 'write'
+    'type': 'write',
   }
   $.post(ajaxurl, data, function(response) {
     response = JSON.parse(response);
     if (response == "done") {
       if ($("#uploadImage").val() !== '') {
         uploadImage();
-        if (localStorage.getItem("uploadStatus") === "true") {
-          $("#warn").show();
-          $("#warn").attr("style", "background-color: lightblue;");
-          $("#warn").html("Nota pubblicata!");
-          setTimeout(function(){
-            $("#warn").attr("style", "background-color: red;");
-            $("#warn").hide();
-          }, 3000);
-        }
       } else {
         $("#warn").show();
         $("#warn").attr("style", "background-color: lightblue;");
@@ -499,20 +490,68 @@ function uploadImage() {
             cahe:false,
             processData:false,
             beforeSend:function(){
-              //nulla
+              $("#warn").html("<progress id='imageUploadProgress'></progress>");
+              $("#warn").attr("style", "background-color: white;");
+              $("#warn").show();
+              localStorage.setItem("uploadStatus", "time_wait");
+            },
+            xhr:function(){
+              var xhr = new window.XMLHttpRequest();
+              xhr.upload.addEventListener("progress", function(event) {
+                if (localStorage.getItem("uploadStatus") !== "done") {
+                  document.getElementById("imageUploadProgress").value = (event.loaded/event.total);
+                }
+              }, false);
+              xhr.addEventListener("load", function(event) {
+                localStorage.setItem("uploadStatus", "done");
+                $("#warn").attr("style", "background-color: lightblue;");
+                $("#warn").html("Nota pubblicata!");
+                setTimeout(function(){
+                  $("#warn").attr("style", "background-color: red;");
+                  $("#warn").hide();
+                }, 5000);
+              }, false);
+              return xhr;
             },
             success:function(response){
               response = JSON.parse(response);
               if (response["status"] !== "success") {
-                  localStorage.setItem("uploadStatus", false);
+                localStorage.setItem("uploadStatus", "success");
                 error(response["status"]);
               } else {
-                localStorage.setItem("uploadStatus", true);
+                localStorage.setItem("uploadStatus", "failure");
               }
             }
           });
+          // var ajax = new XMLHttpRequest();
+          // ajax.upload.addEventListener("progress", progressHandler, false);
+          // ajax.addEventListener("load", completeHandler, false);
+          // ajax.addEventListener("error", errorHandler, false);
+          // ajax.addEventListener("abort", abortHandler, false);
+          // ajax.open("POST", "php/uploadImg.php");
+          // ajax.send(data);
         }
       }
     }
   }
 }
+
+// function progressHandler(event) {
+//   $("#loaded_n_total").html("Caricati " + event.loaded + " di " + event.total + " bytes");
+//   var pct = (event.loaded / event.total) * 100;
+//   $("#progressBar").value = Math.round(pct);
+//   $("#status").html(Math.round(pct) + " caricato");
+//   console.log("updt " + event.loaded + " | " + event.total);
+// }
+// function completeHandler(event) {
+//   $("#status").html(event.target.responseText);
+//   $("#progressBar").value = 0;
+//   console.log("Success");
+// }
+// function errorHandler(event) {
+//   $("#status").html("Upload failed");
+//   localStorage.setItem("uploadStatus", false);
+// }
+// function abortHandler(event) {
+//   $("#status").html("Operazione annullata.");
+// }
