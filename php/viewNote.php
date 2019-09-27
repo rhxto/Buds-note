@@ -186,7 +186,7 @@
       <a onclick="deleteNote()" class="navbar-right admin user" id="delNoteBtn" style="display: none;">Rimuovi nota</a>
       <a onclick="delCommentShow()" class="navbar-right admin" id="delCommentBtn" style="display: none;">Rimuovi commento</a>
       <input type="file" class="navbar-right uploadPicture" id="addPic" style="display: none;"/>
-      <label for="addPic" class="user padding navbar-right" style="display: none;">Aggiungi immagine</label>
+      <label for="addPic" onmouseout="$(this).attr('style', 'background-color: #5F5F5F;');" onmouseover="$(this).attr('style', 'background-color: black;');" class="user padding navbar-right" style="display: none;">Aggiungi immagine</label>
     </div>
     <div class="delNote" style="display: none;">
     </div>

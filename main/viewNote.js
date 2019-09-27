@@ -420,7 +420,7 @@ $(document).ready(function() {
           alert("Formato non supportato!");
         } else {
           var image_size = image.size;
-          if (image_size > 10000000) {
+          if (image_size > 200000000) {
             alert("La dimensione massima per un'immagine é di 5MB!");
           } else {
             var data = new FormData();
@@ -434,7 +434,22 @@ $(document).ready(function() {
               cahe:false,
               processData:false,
               beforeSend:function(){
-                //nulla
+                $("#warn").html("<progress id='imageUploadProgress'></progress>");
+                $("#warn").attr("style", "background-color: white;");
+                $("#warn").show();
+                localStorage.setItem("uploadStatus", "time_wait");
+              },
+              xhr:function(){
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function(event) {
+                  if (localStorage.getItem("uploadStatus") !== "done") {
+                    document.getElementById("imageUploadProgress").value = (event.loaded/event.total);
+                  }
+                }, false);
+                xhr.addEventListener("load", function(event) {
+                  localStorage.setItem("uploadStatus", "done");
+                }, false);
+                return xhr;
               },
               success:function(response){
                 response = JSON.parse(response);
@@ -446,9 +461,9 @@ $(document).ready(function() {
                   $("#warn").attr("style", "background-color: lightblue;");
                   $("#warn").html("Immagine aggiunta!");
                   setTimeout(function(){
-                    $("#warn").hide();
                     $("#warn").attr("style", "background-color: red;");
-                  }, 3000);
+                    $("#warn").hide();
+                  }, 5000);
                 }
               }
             });
