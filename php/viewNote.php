@@ -138,13 +138,13 @@
               }
             }
            ?>
-        </div>
-        <div id="pics">
-          <?php
-            foreach (getPicsPaths($title) as $pic) {
-              echo '<img src="' . $pic["dir"] . '">';
-            }
-           ?>
+           <div id="pics">
+             <?php
+               foreach (getPicsPaths($title) as $pic) {
+                 echo '<img style="width: 50%;" src="' . $pic["dir"] . '">';
+               }
+              ?>
+           </div>
         </div>
       </div>
       <?php

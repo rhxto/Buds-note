@@ -555,3 +555,16 @@ function uploadImage() {
 // function abortHandler(event) {
 //   $("#status").html("Operazione annullata.");
 // }
+$(document).ready(function() {
+  $("#uploadImage").on("change"/*quando un file viene selezionato*/, function(){
+    if ($("#uploadImage").val() !== '') {
+      var image = document.getElementById("uploadImage").files[0];
+      $("#warn").attr("style", "background-color: lightblue;");
+      $("#warn").html("Immagine " + image.name + " selezionata!");
+      setTimeout(function(){
+        $("#warn").attr("style", "background-color: red;");
+        $("#warn").hide();
+      }, 5000);
+    }
+  });
+});

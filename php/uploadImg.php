@@ -58,7 +58,7 @@
             } else {
               if (($status = newImageEntry($note, $imageExtension, $file, $_FILES["uploadImage"]["name"])) === "done") {
                 if (move_uploaded_file($_FILES["uploadImage"]["tmp_name"], $file)) {
-                  echo json_encode(["status"=>"success", "img_tag"=>'<img src="' . $file . '">']);
+                  echo json_encode(["status"=>"success", "img_tag"=>'<img style="width: 50%;" src="' . $file . '">']);
                 } else {
                   echo json_encode(["status"=>"IMGUIE"]);
                 }
