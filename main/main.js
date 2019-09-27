@@ -118,31 +118,31 @@ function error(err) {
       $("#warn").html("Hai giá caricato un'immagine relativa alla nota con lo stesso nome!" + " Codice: " + err);
       break;
     case "IMGUIE":
-      $("#warn").html("Abbiamo riscontrato un errore interno nel caricamento dell'immagine!" + " Codice: " + err);
+      $("#warn").html("Abbiamo riscontrato un errore interno nel caricamento dell'immagine! (Tuttavia la nota é stata pubblicata senza immagine)" + " Codice: " + err);
       break;
     case "IMGUNL":
       $("#warn").html("Prima devi eseguire il login!" + " Codice: " + err);
       break;
     case "IMGUUE":
-      $("#warn").html("Errore sconosciuto nel caricamento dell'immagine! <bold>Riferisci questo messaggio agli amministratori</bold>" + " Codice: " + err);
+      $("#warn").html("Errore sconosciuto nel caricamento dell'immagine! <bold>Riferisci questo messaggio agli amministratori</bold> (Tuttavia la nota é stata pubblicata senza immagine)" + " Codice: " + err);
       break;
     case "IMGUVNV":
-      $("#warn").html("Valori non validi per il caricamento dell'immagine!" + " Codice: " + err);
+      $("#warn").html("Valori non validi per il caricamento dell'immagine! (Tuttavia la nota é stata pubblicata senza immagine)" + " Codice: " + err);
       break;
     case "IMGUFNS":
-      $("#warn").html("Questo tipo di immagine non é supportato!" + " Codice: " + err);
+      $("#warn").html("Questo tipo di immagine non é supportato! (Tuttavia la nota é stata pubblicata senza immagine)" + " Codice: " + err);
       break;
     case "IMGUFNI":
-      $("#warn").html("Il file che stai cercando di caricare non é un'immagine!" + "Codice: " + err);
+      $("#warn").html("Il file che stai cercando di caricare non é un'immagine! (Tuttavia la nota é stata pubblicata senza immagine)" + "Codice: " + err);
       break;
     case "IMGUFTB":
-      $("#warn").html("La dimensione massima per un'immagine é di 5MB!" + " Codice: " + err);
+      $("#warn").html("La dimensione massima per un'immagine é di 20MB! (Tuttavia la nota é stata pubblicata senza immagine)" + " Codice: " + err);
       break;
     case "IMGUMIE":
-      $("#warn").html("C'é stato un errore nel caricamento dell'immagine!" + " Codice: " + err);
+      $("#warn").html("C'é stato un errore nel caricamento dell'immagine! (Tuttavia la nota é stata pubblicata senza immagine)" + " Codice: " + err);
       break;
     case "IMGUUIE":
-      $("#warn").html("Errore imprevisto nel caricamento dell'immagine! <bold>Riferisci questo messaggio agli amministratori</bold>" + " Codice: " + err);
+      $("#warn").html("Errore imprevisto nel caricamento dell'immagine! (Tuttavia la nota é stata pubblicata senza immagine) <bold>Riferisci questo messaggio agli amministratori</bold>" + " Codice: " + err);
       break;
     case "IMGUNEN":
       $("#warn").html("La nota a cui stai cercando di allegare l'immagine non esiste!" + " Codice: " + err);
