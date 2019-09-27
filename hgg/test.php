@@ -6,4 +6,5 @@
     -moltiplicare 2 numeri
     -stampare la "concatenazione di due stringhe"
   */
+  echo  "questo é un test";
  ?>
