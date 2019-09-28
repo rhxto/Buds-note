@@ -420,8 +420,8 @@ $(document).ready(function() {
           alert("Formato non supportato!");
         } else {
           var image_size = image.size;
-          if (image_size > 200000000) {
-            alert("La dimensione massima per un'immagine é di 5MB!");
+          if (image_size > 22000000) {
+            alert("La dimensione massima per un'immagine é di 22MB!");
           } else {
             var data = new FormData();
             data.append("uploadImage", image);
