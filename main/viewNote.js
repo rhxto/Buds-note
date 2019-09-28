@@ -180,7 +180,7 @@ function postComment() {
     response = JSON.parse(response);
   if (response["state"] == "done") {
       $(".localSpawn").append('<span id="' + response["id"] +  '"></span>');
-      $("#" + response["id"]).html("<div class=commentText><span class='revwText'>" + $("#commentText").val() + '</span><button class="delCommentBtn" onclick="delComment(' + response["id"] + ');">Elimina commento</button></div>');
+      $("#" + response["id"]).html("<div class=commentText><span class='revwText'>" + $("#commentText").val().replace(/\n/g, "<br>") + '</span><button class="delCommentBtn" onclick="delComment(' + response["id"] + ');">Elimina commento</button></div>');
       $(".localSpawn").append('<div class=commentInfo>' + response["username"] + " - " + response["date"] + "</div>");
       $("#commentText").val("");
     } else {
