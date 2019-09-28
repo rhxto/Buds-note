@@ -16,6 +16,9 @@
 
     return $data;
   }
+  if (empty($_POST["note"])) {
+    die(json_encode(["status"=>"IMGUFTB"]));
+  }
   $note = str_replace("'", "sc-a", $_POST["note"]);
   $note = str_replace('"', "sc-q", $note);
   $note = str_replace(" ", "_", $note);
@@ -49,7 +52,7 @@
           echo json_encode(["status"=>"IMGUAE"]);
         } else {
           //non accettiamo immagini troppo pesanti max = 5MB
-          if ($_FILES["uploadImage"]["size"] > 10000000) {
+          if ($_FILES["uploadImage"]["size"] > 22000000) {
             echo json_encode(["status"=>"IMGUFTB"]);
           } else {
             //controlliamo che sia un immagine
