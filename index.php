@@ -82,15 +82,14 @@
               firstDay: 1 // Start with Monday
           });
         </script>
-        Ordina per: <input list="tipoOrdine" id="filtroOrderBy"/><br/>
-        <datalist id="tipoOrdine">
-          <option value="Titolo">
-          <option value="Username">
-          <option value="Materia">
-          <option value="Anno">
-          <option value="Indirizzo">
-          <option value="Data">
-        </datalist>
+        Ordina per: <select class="opzM" id="filtroOrderBy">
+          <option class='opz' value="Titolo">Titolo</option>
+          <option class='opz' value="Username">Username</option>
+          <option class='opz' value="Materia">Materia</option>
+          <option class='opz' value="Anno">Anno</option>
+          <option class='opz' value="Indirizzo">Indirizzo</option>
+          <option class='opz' value="Data">Data</option>
+        </select><br/>
         Ordine: <select id="filtroOrdine" class="opzM">
           <option class="opz" value="Crescente">Crescente</option>
           <option class="opz" value="Decrescente">Decrescente</option>
