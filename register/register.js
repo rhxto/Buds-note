@@ -63,9 +63,13 @@ function errore(err) {
       break;
     case "UWFE":
       $("#Warning").html("Errore nella creazione dell'utente (riferisci il messaggio agli amministratori). Codice: UWFE");
+      break;
+    case "REGD":
+      $("#Warning").html("Le registrazioni sono temporaneamente disabilitate a causa di persone troppo simpatiche.");
+      break;
     default:
-    $("#Warning").html("Errore (riferisci questo messaggio agli amministratori)" + " Codice: " + err);
-    break;
+      $("#Warning").html("Errore (riferisci questo messaggio agli amministratori)" + " Codice: " + err);
+      break;
   }
 }
 $(document).ready( function() {

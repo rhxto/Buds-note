@@ -62,3 +62,11 @@ IMGUMIE = errore interno nell'aggiunta della pic a mysql
 IMGUUIE = errore nel caricamento dell'immagine su db, questo codice non dovrebbe mai apparire
 IMGUNEN = si sta cercano di associare un'immagine ad una nota non esistente
 IMGUMNEN = la nota non esiste per mysql
+
+REGD = registrazioni disabilitate
+
+IMGDNA = rimzoione immagine non autorizzata
+IMGDNL = login non effettuato
+IMGDIE = errore di mysql nella rimozione dell'immagine
+UMGDUE = eccezione non supportata nella rimozione dell'immagine
+IMGDVNV = valori non validi per la rimozione dell'immagine

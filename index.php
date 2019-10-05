@@ -22,7 +22,7 @@
   <body id="Body">
   <div class="overlay" id="SearchDiv">
     <div><br/><br/><br/></div>
-    <a onclick="hideSearch()" class="absolute right2 top10" style="font-size:30px;z-index:3;color:whitesmoke">X</a>
+    <a onclick="hideSearch()" class="absolute right2 top10 closeSearch">D</a>
     <div class='search' id="Search">
       <input id="search" placeholder="Titolo nota..." type="text" class="search_text"/>
       <span class="search_checkbox top25 left40 a" hidden>
@@ -125,7 +125,7 @@
       <div id="risultati" class="risultati">
       </div>
       <div class="scriviNota" style="display:none;padding:5px 0px 5px 0px;">
-        Titolo: <textarea rows="1" cols="100" id="writeNoteTitle" style="width:80%;" class="scriviNotaText"></textarea><br/>
+        Titolo: <textarea rows="1" cols="100" id="writeNoteTitle" class="scriviNotaText"></textarea><br/>
         Materia: <select class="opzM" id="writeNoteSubj"><br/>
         <?php
           $r = subj(connectDb(), NULL, NULL);
@@ -152,7 +152,7 @@
           <option value="4">4</option>
           <option value="5">5</option>
         </select><br/>
-        <textarea rows="20" cols="100" placeholder="Scrivi qui la tua nota..." id="writeNoteContent" style="width:80%;" class="scriviNotaTextArea"></textarea><br/>
+        <textarea rows="25" cols="100" id="writeNoteContent" class="scriviNotaTextArea"></textarea><br/>
         <input type="file" name="uploadImage" id="uploadImage" class="uploadImage"/>
         <label for="uploadImage">Carica un'immagine</label>
         <span id="uploadedImage"></span>

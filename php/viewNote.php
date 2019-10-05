@@ -140,8 +140,11 @@
            ?>
            <div id="pics">
              <?php
-               foreach (getPicsPaths($title) as $pic) {
-                 echo '<img style="width: 50%;" src="' . $pic["dir"] . '">';
+               foreach (getPicsPathsAndIds($title) as $pic) {
+                 echo '<div class="removeImageContainer" id="' . $pic["id"] . '">';
+                 echo '  <img style="width: 100%;" src="' . $pic["dir"] . '">';
+                 echo '  <button id=' . $pic["id"] . '" class="btn removeImage" onclick="removeImage(' . $pic["id"] . ')">Rimuovi immagine</button>';
+                 echo '</div>';
                }
               ?>
            </div>
@@ -187,6 +190,7 @@
       <a onclick="delCommentShow()" class="navbar-right admin" id="delCommentBtn" style="display: none;">Rimuovi commento</a>
       <input type="file" class="navbar-right uploadImage" id="addPic" style="display: none;"/>
       <label for="addPic" class="user padding navbar-right" style="display: none;">Aggiungi immagine</label>
+      <a onclick="showImageRemoval()" class="navbar-right admin user" id="showImageRemoval" style="display: none;">Rimuovi immgine</a>
     </div>
     <div class="delNote" style="display: none;">
     </div>

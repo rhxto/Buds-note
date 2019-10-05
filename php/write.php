@@ -1,5 +1,9 @@
 <?php
-require 'funs.php';
+  $registerDisabled = true; //degli idioti registrano account che non vanno bene
+  if ($registerDisabled) {
+    die("REGD");
+  }
+  require 'funs.php';
   function test_input($data, $mail) {
     $data = trim($data);
     $data = stripslashes($data);

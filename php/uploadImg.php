@@ -61,7 +61,11 @@
             } else {
               if (($status = newImageEntry($note, $imageExtension, $file, $_FILES["uploadImage"]["name"])) === "done") {
                 if (move_uploaded_file($_FILES["uploadImage"]["tmp_name"], $file)) {
-                  echo json_encode(["status"=>"success", "img_tag"=>'<img style="width: 50%;" src="' . $file . '">']);
+                  $getPicId = connectDb()->prepare("SELECT id FROM pict WHERE dir = :dir");
+                  $getPicId->bindParam(":dir", $file);
+                  $getPicId->execute();
+		              $result = $getPicId->fetchAll();
+                  echo json_encode(["status"=>"success", "img_tag"=>"<img style='width: 100%;' src='" . $file . "'/><button id='" . $result[0]["id"] . "' class='removeImage btn' onclick=removeImage('" . $result[0]["id"] .  "')>Rimuovi immagine</button>", "id"=>$result[0]["id"]]);
                 } else {
                   echo json_encode(["status"=>"IMGUIE"]);
                 }

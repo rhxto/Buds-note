@@ -1398,13 +1398,13 @@
     }
   }
 
-  function getPicsPaths($note) {
+  function getPicsPathsAndIds($note) {
     if ($note == NULL) {
       return;
     }
     $note = str_replace(" ", "_", $note);
     try {
-      $query = connectDb()->prepare("SELECT dir FROM pict WHERE note = :note");
+      $query = connectDb()->prepare("SELECT dir,id FROM pict WHERE note = :note");
       $query->bindParam(":note", $note);
       $query->execute();
       $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -1432,5 +1432,67 @@
     } else {
       return false;
     }
+  }
+
+  function removeImage($conn, $note, $id, $user) {
+    $note = str_replace(" ", "_", test_input($_POST["note"]));
+    $note = str_replace("'", "sc-a", $note);
+    $note = str_replace('"', "sc-q", $note); //per sicurezza
+    $dir = null; //se non lo metto fuori dal try viene usato solo dentro ad esso
+    $authBypass = false;
+    $noteOnDb = null;
+    if (getAcclvl($_SESSION["username"]) === "1") {
+      $authBypass = true;
+      try {
+        $getPictInfo = $conn->prepare("SELECT note,dir FROM pict WHERE id = :id");
+        $getPictInfo->bindParam(":id", $id);
+        $getPictInfo->execute();
+        $result = $getPictInfo->fetchAll();
+        $dir = $result[0]["dir"];
+      } catch(PDOException $e){
+        PDOError($e);
+        return "internalError"; //errore mysql
+      }
+    } else {
+      try {
+        $getPictInfo = $conn->prepare("SELECT note,dir FROM pict WHERE id = :id");
+        $getPictInfo->bindParam(":id", $id);
+        $getPictInfo->execute();
+        $result = $getPictInfo->fetchAll();
+        $dir = $result[0]["dir"];
+        $noteOnDb = $result[0]["note"];
+
+        $getPictInfo = $conn->prepare("SELECT user FROM note WHERE title = :ttl");
+        $getPictInfo->bindParam(":ttl", $result[0]["note"]);
+        $getPictInfo->execute();
+        $result = $getPictInfo->fetchAll();
+        if ($result[0]["user"] != $user) {
+          return "notAuthorized"; //non proprietario nota
+        }
+      } catch(PDOException $e){
+        PDOError($e);
+        return "internalError"; //errore mysql
+      }
+    }
+
+
+    if ($authBypass || $note === $noteOnDb) {
+      exec("rm " . $dir);
+      try {
+        $removal = $conn->prepare("DELETE FROM pict WHERE (id = :id AND note = :note)");
+        $removal->bindParam(":id", $id);
+        $removal->bindParam(":note", $note);
+        $removal->execute();
+      }  catch(PDOException $e){
+        PDOError($e);
+        return "internalError"; //errore mysql
+      } finally {
+        $conn = null;
+      }
+      return "done"; //fatto
+    } else {
+      return "illegalDeletion"; //l'immagine non corrisponde alla nota o non si é admin
+    }
+    $conn = null;
   }
 ?>

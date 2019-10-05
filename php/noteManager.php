@@ -94,7 +94,7 @@
       case 'delete':
         if (getAcclvl($_SESSION["username"]) == 1 || isNoteOwner(connectDb(), $title, $_SESSION["username"])) {
 	         if (checkNote(connectDb(), $title)) {
-             foreach (getPicsPaths($title) as $pic) {
+             foreach (getPicsPathsAndIds($title) as $pic) {
               exec("rm " . $pic["dir"]);
              }
 	           if (delNote(connectDb(), $title)) {

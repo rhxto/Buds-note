@@ -156,10 +156,28 @@ function error(err) {
       $("#warn").html("C'é stato un errore nel caricamento dell'immagine!" + " Codice: " + err);
       break;
     case "IMGUUIE":
-      $("#warn").html("Errore imprevisto nel caricamento dell'immagine! <bold>Riferisci questo messaggio agli amministratori</bold>" + " Codice: " + err);
+      $("#warn").html("Errore imprevisto nel caricamento dell'immagine! <bold>Riferisci questo messaggio agli amministratori.</bold>" + " Codice: " + err);
       break;
     case "IMGUNEN":
       $("#warn").html("La nota a cui stai cercando di allegare l'immagine non esiste!" + " Codice: " + err);
+      break;
+    case "IMGDIE":
+      $("#warn").html("Qualcosa é andato storto nella rimozione dell'immagine nel database. (riferisci il messaggio agli amministratori) Codice: " + err);
+      break;
+    case "IMGDNA":
+      $("#warn").html("Non sei autorizzato a rimuovere questa immagine, l'incidente é stato registrato.");
+      break;
+    case "IMGDID":
+      $("#warn").html("L'immagine che stai provando di rimuovere non é associata a questa nota. Codice: " + err);
+      break;
+    case "IMGDUE":
+      $("#warn").html("Errore sconosciuto nella rimozione dell'immagine, riferisci il messaggio agli amministratori. Codice: " + err);
+      break;
+    case "IMGDVNV":
+      $("#warn").html("I parametri per la rimozione dell'immagine non sono validi. Codice: " + err);
+      break;
+    case "IMGDNL":
+      $("#warn").html("Per rimovere un'immagine devi eseguire il login! Codice: " + err);
       break;
     default:
       $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
@@ -364,6 +382,36 @@ function rateNote(rating) {
   });
 }
 
+function removeImage(id) {
+  var ajaxurl = "deleteImage.php";
+  data = {
+    "note": localStorage.getItem("title"),
+    "id": id
+  }
+  $.post(ajaxurl, data, function(response) {
+    var response = JSON.parse(response);
+    if (response["status"] === "success") {
+      $("#" + id).remove();
+      $("#warn").show();
+      $("#warn").html("Fatto");
+      setTimeout(function(){
+        $("#warn").hide();
+      }, 5000);
+    } else {
+      error(response["status"]);
+    }
+  });
+}
+function showImageRemoval() {
+  $(".removeImage").show();
+  $("#showImageRemoval").html("Fine");
+  $("#showImageRemoval").attr("onclick", "hideImageRemoval()");
+}
+function hideImageRemoval() {
+  $(".removeImage").hide();
+  $("#showImageRemoval").html("Rimuovi immagine");
+  $("#showImageRemoval").attr("onclick", "showImageRemoval()");
+}
 String.prototype.splice = function(idx, rem, str) {
     return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
 };
@@ -456,7 +504,7 @@ $(document).ready(function() {
                 if (response["status"] !== "success") {
                   error(response["status"]);
                 } else {
-                  $("#pics").append(response["img_tag"]);
+                  $("#pics").append("<div class='removeImageContainer' id='" + response["id"] + "'>" + response["img_tag"] + "</div>");
                   $("#warn").show();
                   $("#warn").attr("style", "background-color: lightblue;");
                   $("#warn").html("Immagine aggiunta!");
