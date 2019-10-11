@@ -27,28 +27,24 @@
     error_log("User: " . $user . " deleting: " . $note);
     //Concediamo la modifica solo se user è il creatore della nota o se è un admin
     //Dopo aver modificatola funzione removeImage bisogna anche modificare i case, togliendo quelli che non vengono mai sollevati
-    if (isNoteOwner(connectDb(), test_input($_POST["note"]), $user) || getAcclvl($user) === "1") {
-      switch (removeImage(connectDb(), $note, $id, $_SESSION["username"])) {
-        case "done":
-          echo json_encode(["status"=>"success"]);
-          break;
-        case "notAuthorized":
-          echo json_encode(["status"=>"IMGDNA"]); //non autorizzato
-          error_log("**l'utente $user ha provato a cancellare l'immagine numero $id senza autorizzazione: ip: " . $_SERVER["REMOTE_ADDR"] . "**");
-          break;
-        case "interalError":
-          echo json_encode(["status"=>"IMGDIE"]); //errore mysql
-          break;
-        case "illegalDeletion":
-          echo json_encode(["status"=>"IMGDID"]); //immagine non associata alla nota
-          break;
-        default:
-          echo json_encode(["status"=>"IMGDUE"]);
-          break;
-      }
-    } else {
-      echo json_encode(["status"=>"IMGDNA"]);
-      error_log("**l'utente $user ha provato a cancellare l'immagine numero $id senza autorizzazione: ip: " . $_SERVER["REMOTE_ADDR"] . "**");
+
+    switch (removeImage(connectDb(), $note, $id, $_SESSION["username"])) {
+      case "done":
+        echo json_encode(["status"=>"success"]);
+        break;
+      case "notAuthorized":
+        echo json_encode(["status"=>"IMGDNA"]); //non autorizzato
+        error_log("**l'utente $user ha provato a cancellare l'immagine numero $id senza autorizzazione: ip: " . $_SERVER["REMOTE_ADDR"] . "**");
+        break;
+      case "interalError":
+        echo json_encode(["status"=>"IMGDIE"]); //errore mysql
+        break;
+      case "illegalDeletion":
+        echo json_encode(["status"=>"IMGDID"]); //immagine non associata alla nota
+        break;
+      default:
+        echo json_encode(["status"=>"IMGDUE"]);
+        break;
     }
   } else {
     echo json_encode(["status"=>"IMGDVNV"]); //valori non validi

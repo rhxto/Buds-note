@@ -1440,63 +1440,47 @@
     $note = str_replace('"', "sc-q", $note);
     $dir = null;
     $authBypass = false;
-    $noteOnDb = null;
+    $picOnDb = false;
     if (getAcclvl($_SESSION["username"]) === "1") {
       $authBypass = true;
-      //Bisogna verificare che user sia il creatore della nota, e segnare $authBypass = true
-      //Dopodichè bisogna ottenere il dir della nota
-      //Ho cancellato noteOnDb perchè non serve, se non esiste allora non avrò riscontro alla query (COUNT * FROM pict WHERE user = :user AND note = :note AND id = :id)
-/*
-      try {
-        $getPictInfo = $conn->prepare("SELECT note,dir FROM pict WHERE id = :id");
-        $getPictInfo->bindParam(":id", $id);
-        $getPictInfo->execute();
-        $result = $getPictInfo->fetchAll();
-        $dir = $result[0]["dir"];
-      } catch(PDOException $e){
-        PDOError($e);
-        return "internalError"; //errore mysql
-      }
-    } else {
-      try {
-        $getPictInfo = $conn->prepare("SELECT note,dir FROM pict WHERE id = :id");
-        $getPictInfo->bindParam(":id", $id);
-        $getPictInfo->execute();
-        $result = $getPictInfo->fetchAll();
-        $dir = $result[0]["dir"];
-        $noteOnDb = $result[0]["note"];
-
-        $getPictInfo = $conn->prepare("SELECT user FROM note WHERE title = :ttl");
-        $getPictInfo->bindParam(":ttl", $result[0]["note"]);
-        $getPictInfo->execute();
-        $result = $getPictInfo->fetchAll();
-        if ($result[0]["user"] != $user) {
-          return "notAuthorized"; //non proprietario nota
-        }
-      } catch(PDOException $e){
-        PDOError($e);
-        return "internalError"; //errore mysql
-      }
     }
-*/
-
-    if ($authBypass || $note === $noteOnDb) {
-      exec("rm " . $dir);
-      try {
-        $removal = $conn->prepare("DELETE FROM pict WHERE (id = :id AND note = :note)");
-        $removal->bindParam(":id", $id);
-        $removal->bindParam(":note", $note);
-        $removal->execute();
-      }  catch(PDOException $e){
-        PDOError($e);
-        return "internalError"; //errore mysql
-      } finally {
-        $conn = null;
+    try{
+      if(isNoteOwner($conn, $note, $user)){
+        $authBypass = true;
       }
-      return "done"; //fatto
-    } else {
-      return "illegalDeletion"; //l'immagine non corrisponde alla nota o non si é admin
+      $findPic = $conn->prepare("SELECT COUNT(*) AS val FROM pict INNER JOIN note ON pict.note = note.title WHERE pict.id =:id AND note.title = :note");
+      $findPic->bindParam(":id", $id);
+      $findPic->bindParam(":note", $note);
+      $findPic->execute();
+      $result = $findPic->fetchAll();
+      if($result[0]["val"] == 1){
+        $picOnDb = true;
+      }
+      if(($authBypass == true) && ($picOnDb == true)){
+            $getDir = $conn->prepare("SELECT pict.dir FROM pict INNER JOIN note ON note.title = pict.note WHERE id= :id");
+            $getDir->bindParam(":id", $id);
+            $getDir->execute();
+            $result = $getDir->fetchAll();
+            $dir = result[0]["dir"];
+            $removeImg = $conn->prepare("DELETE FROM pict WHERE dir = :id");
+            $removeImg->bindParam(":id", $id);
+            $removeImg.execute();
+            exec("rm " . $dir);
+            //Questa cosa qui sopra non può sollevare errori, non sarebbe meglio mettere un catch anche per lei?
+          }elseif(($authBypass == true) && ($picOnDb == false)){
+            return "illegalDeletion";     //Qui possiamo mettere tipo (note not found) o una cosa simile, tasnto con le variabili di controllo che abbiamo possiamo determinarlo
+          }elseif(($authBypass == false) && ($picOnDb == true)){
+            return "notAuthorized";
+          }else{
+            return "illegalDeletion";
+          }
+      }catch(PDOException $e){
+      PDOError($e);
+      return "internalError";
+    }finally{
+      $conn = null;
     }
-    $conn = null;
+    return "done";
   }
+
 ?>
