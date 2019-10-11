@@ -1437,12 +1437,16 @@
   function removeImage($conn, $note, $id, $user) {
     $note = str_replace(" ", "_", test_input($_POST["note"]));
     $note = str_replace("'", "sc-a", $note);
-    $note = str_replace('"', "sc-q", $note); //per sicurezza
-    $dir = null; //se non lo metto fuori dal try viene usato solo dentro ad esso
+    $note = str_replace('"', "sc-q", $note);
+    $dir = null;
     $authBypass = false;
     $noteOnDb = null;
     if (getAcclvl($_SESSION["username"]) === "1") {
       $authBypass = true;
+      //Bisogna verificare che user sia il creatore della nota, e segnare $authBypass = true
+      //Dopodichè bisogna ottenere il dir della nota
+      //Ho cancellato noteOnDb perchè non serve, se non esiste allora non avrò riscontro alla query (COUNT * FROM pict WHERE user = :user AND note = :note AND id = :id)
+/*
       try {
         $getPictInfo = $conn->prepare("SELECT note,dir FROM pict WHERE id = :id");
         $getPictInfo->bindParam(":id", $id);
@@ -1474,7 +1478,7 @@
         return "internalError"; //errore mysql
       }
     }
-
+*/
 
     if ($authBypass || $note === $noteOnDb) {
       exec("rm " . $dir);

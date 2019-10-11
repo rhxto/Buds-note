@@ -16,13 +16,17 @@
 
     return $data;
   }
+
+  //Verifica che l'utente che vuole modificare la foto sia loggato, e sia chi dice di essere, se ci sono problemi di identità risponde IMGDNL
   if (empty(($user = $_SESSION["username"])) || !isset($_SESSION["username"]) || $_SESSION["logged_in"] === "0") {
-    echo json_encode(["status"=>"IMGDNL"]); //non loggato
+    echo json_encode(["status"=>"IMGDNL"]);
   } else if (($id = test_input($_POST["id"])) === $_POST["id"]) {
     $note = str_replace(" ", "_", test_input($_POST["note"]));
     $note = str_replace("'", "sc-a", $note);
     $note = str_replace('"', "sc-q", $note);
     error_log("User: " . $user . " deleting: " . $note);
+    //Concediamo la modifica solo se user è il creatore della nota o se è un admin
+    //Dopo aver modificatola funzione removeImage bisogna anche modificare i case, togliendo quelli che non vengono mai sollevati
     if (isNoteOwner(connectDb(), test_input($_POST["note"]), $user) || getAcclvl($user) === "1") {
       switch (removeImage(connectDb(), $note, $id, $_SESSION["username"])) {
         case "done":
