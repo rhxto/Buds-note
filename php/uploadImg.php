@@ -44,6 +44,9 @@
       $file = str_replace(" ", "_", "../notedb/" . $user . "/uploads" . "/" . basename($note . "_" . $user . "_" . $_FILES["uploadImage"]["name"]));
       $file = str_replace("'", "sc-a", $file);
       $file = str_replace('"', "sc-q", $file);
+      $fileEncoded = str_replace(" ", "_", "../notedb/" . $user . "/uploads" . "/" . basename(urlencode($note) . "_" . urlencode($user) . "_" . urlencode($_FILES["uploadImage"]["name"])));
+      $fileEncoded = str_replace("'", "sc-a", $fileEncoded);
+      $fileEncoded = str_replace('"', "sc-q", $fileEncoded);
       //prendi l'estensione e mettila tutta lowercase
       $imageExtension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
       $check = getimagesize($_FILES["uploadImage"]["tmp_name"]);
@@ -65,7 +68,7 @@
                   $getPicId->bindParam(":dir", $file);
                   $getPicId->execute();
 		              $result = $getPicId->fetchAll();
-                  echo json_encode(["status"=>"success", "img_tag"=>"<img style='width: 100%;' src='" . $file . "'/><button id='" . $result[0]["id"] . "' class='removeImage btn' onclick=removeImage('" . $result[0]["id"] .  "')>Rimuovi immagine</button>", "id"=>$result[0]["id"]]);
+                  echo json_encode(["status"=>"success", "img_tag"=>"<img style='width: 100%;' src='" . $fileEncoded . "'/><button id='" . $result[0]["id"] . "' class='removeImage btn' onclick=removeImage('" . $result[0]["id"] .  "')>Rimuovi immagine</button>", "id"=>$result[0]["id"]]);
                 } else {
                   echo json_encode(["status"=>"IMGUIE"]);
                 }

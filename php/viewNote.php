@@ -51,6 +51,7 @@
               $title = test_input(urldecode($_GET["title"]));
               $title = str_replace("'", "sc-a", $title);
               $title = str_replace('"', "sc-q", $title);
+              error_log('Visualizzazione: ' . $title);
               $note = searchNote(connectDb(), $title, NULL, NULL, NULL, ["true", "true", "true", "true", "true"], NULL, NULL, NULL, NULL, NULL, NULL);
             }
             if (empty($note[0]['title'])) {
@@ -154,7 +155,7 @@
       </div>
       <?php
         if (!$display) {
-          echo "<h1>Nota non trovata ) :";
+          echo "<h1>Nota non trovata ) :</h1>";
         }
        ?>
       <div class="comments" style="display: none;">

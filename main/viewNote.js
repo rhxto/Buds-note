@@ -269,10 +269,8 @@ function delNote() {
       $("#warn").show();
       $("#warn").html("Fatto");
       $("#abortNoteDeletion").hide();
-      setTimeout(function(){
-        $("#warn").hide();
-        window.location.href = "../../";
-      }, 5000);
+      $("#warn").hide();
+      window.location.href = "../../";
     } else {
       error(response);
     }

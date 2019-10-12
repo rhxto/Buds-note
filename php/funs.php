@@ -986,17 +986,21 @@
         return false;
       }
       try {
+        error_log("INO: $title, $username");
         $title = str_replace(" ", "_", $title);
         $query = $conn->prepare("SELECT user FROM note WHERE title LIKE :ttl");
         $query->bindParam(":ttl", $title);
         $query->execute();
         if (null !== ($result = $query->fetchAll()[0]["user"]) && !empty($result)) {
           if ($result === $user) {
+            error_log("INO: Y");
             return true;
           } else {
+            error_log("INO: N");
             return false;
           }
         } else {
+          error_log("INO: N");
           return false;
         }
       } catch(PDOException $e) {
@@ -1475,14 +1479,14 @@
     $note = str_replace("'", "sc-a", $note);
     $note = str_replace('"', "sc-q", $note);
     $dir = null;
-    $authBypass = false;
+    $authorized = false;
     $picOnDb = false;
-    if (getAcclvl($_SESSION["username"]) === "1") { //TODO: dobbiamo controllare che sia o admin o proprietario, solo loggato non basta
-      $authBypass = true;
+    if (getAcclvl($_SESSION["username"]) === "1") {
+      $authorized = true;
     }
     try{
       if(isNoteOwner(connectDb(), $note, $user)){
-        $authBypass = true;
+        $authorized = true;
       }
       $findPic = $conn->prepare("SELECT COUNT(*) AS val FROM pict INNER JOIN note ON pict.note = note.title WHERE pict.id =:id AND note.title = :note");
       $findPic->bindParam(":id", $id);
@@ -1492,22 +1496,21 @@
       if($result[0]["val"] == 1){
         $picOnDb = true;
       }
-      if(($authBypass == true) && ($picOnDb == true)){
+      if(($authorized == true) && ($picOnDb == true)){
         $getDir = $conn->prepare("SELECT pict.dir FROM pict INNER JOIN note ON note.title = pict.note WHERE id= :id");
         $getDir->bindParam(":id", $id);
         $getDir->execute();
         $result = $getDir->fetchAll();
-        $dir = result[0]["dir"];
-        $removeImg = $conn->prepare("DELETE FROM pict WHERE dir = :id");
+        $dir = $result[0]["dir"];
+        $removeImg = $conn->prepare("DELETE FROM pict WHERE id = :id");
         $removeImg->bindParam(":id", $id);
-        $removeImg.execute();
+        $removeImg->execute();
         exec("rm " . $dir);
-        //Questa cosa qui sopra non può sollevare errori, non sarebbe meglio mettere un catch anche per lei?
-	//e' gia' dentro ad un try ~fede
-      }elseif(($authBypass == true) && ($picOnDb == false)){
+        return "done";
+      }elseif(($authorized == true) && ($picOnDb == false)){
         return "imgNotFound";
-      }elseif(($authBypass == false)/* && ($picOnDb == true) //perche'? illegal deletion e' solo se l'immagine non e' in db*/){
-        return "notAuthorized"; //con quello che hai messo dopo viene ritornato illegal deletion se non sei autorizzato e se l'immagine non e' su db
+      }elseif(($authorized == false) && ($picOnDb == true)){
+        return "notAuthorized";
       }else{
         return "illegalDeletion";
       }
@@ -1517,7 +1520,8 @@
     }finally{
       $conn = null;
     }
-    return "done";
   }
+
+  //substr($stringa, strlen($stringa) - strpos(strrev($stringa), "/"));
 
 ?>
