@@ -1477,11 +1477,11 @@
     $dir = null;
     $authBypass = false;
     $picOnDb = false;
-    if (getAcclvl($_SESSION["username"]) === "1") {
+    if (getAcclvl($_SESSION["username"]) === "1") { //TODO: dobbiamo controllare che sia o admin o proprietario, solo loggato non basta
       $authBypass = true;
     }
     try{
-      if(isNoteOwner($conn, $note, $user)){
+      if(isNoteOwner(connectDb(), $note, $user)){
         $authBypass = true;
       }
       $findPic = $conn->prepare("SELECT COUNT(*) AS val FROM pict INNER JOIN note ON pict.note = note.title WHERE pict.id =:id AND note.title = :note");
@@ -1493,24 +1493,25 @@
         $picOnDb = true;
       }
       if(($authBypass == true) && ($picOnDb == true)){
-            $getDir = $conn->prepare("SELECT pict.dir FROM pict INNER JOIN note ON note.title = pict.note WHERE id= :id");
-            $getDir->bindParam(":id", $id);
-            $getDir->execute();
-            $result = $getDir->fetchAll();
-            $dir = result[0]["dir"];
-            $removeImg = $conn->prepare("DELETE FROM pict WHERE dir = :id");
-            $removeImg->bindParam(":id", $id);
-            $removeImg.execute();
-            exec("rm " . $dir);
-            //Questa cosa qui sopra non può sollevare errori, non sarebbe meglio mettere un catch anche per lei?
-          }elseif(($authBypass == true) && ($picOnDb == false)){
-            return "imgNotFound";
-          }elseif(($authBypass == false) && ($picOnDb == true)){
-            return "notAuthorized";
-          }else{
-            return "illegalDeletion";
-          }
-      }catch(PDOException $e){
+        $getDir = $conn->prepare("SELECT pict.dir FROM pict INNER JOIN note ON note.title = pict.note WHERE id= :id");
+        $getDir->bindParam(":id", $id);
+        $getDir->execute();
+        $result = $getDir->fetchAll();
+        $dir = result[0]["dir"];
+        $removeImg = $conn->prepare("DELETE FROM pict WHERE dir = :id");
+        $removeImg->bindParam(":id", $id);
+        $removeImg.execute();
+        exec("rm " . $dir);
+        //Questa cosa qui sopra non può sollevare errori, non sarebbe meglio mettere un catch anche per lei?
+	//e' gia' dentro ad un try ~fede
+      }elseif(($authBypass == true) && ($picOnDb == false)){
+        return "imgNotFound";
+      }elseif(($authBypass == false)/* && ($picOnDb == true) //perche'? illegal deletion e' solo se l'immagine non e' in db*/){
+        return "notAuthorized"; //con quello che hai messo dopo viene ritornato illegal deletion se non sei autorizzato e se l'immagine non e' su db
+      }else{
+        return "illegalDeletion";
+      }
+    }catch(PDOException $e){
       PDOError($e);
       return "internalError";
     }finally{
