@@ -129,15 +129,17 @@
           <button id="nonmipiace" onclick="rateNote(false)" class="likesBtn">Non mi piace</button>
         </div>
         <div class="noteContent">
-          <?php
-            if ($display) {
-              foreach (getNote(connectDb(), $title) as $row) {
-                $row = str_replace("\n", "<br />", $row);
-                $row = str_replace("'", "&#39;", $row);
-                echo $row;
+          <div class="noteText">
+            <?php
+              if ($display) {
+                foreach (getNote(connectDb(), $title) as $row) {
+                  $row = str_replace("\n", "<br />", $row);
+                  $row = str_replace("'", "&#39;", $row);
+                  echo $row;
+                }
               }
-            }
-           ?>
+             ?>
+           </div>
            <div id="pics">
              <?php
                foreach (getPicsPathsAndIds($title) as $pic) {

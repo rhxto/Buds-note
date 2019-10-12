@@ -322,7 +322,7 @@ function showNoteEditor() {
   $("#modifyNoteBtn").hide();
   $(".spawnTtl").replaceWith("<textarea id='modifyTtlTxtH' rows='1' cols='100'>" + $(".spawnTtl").html() + "</textarea>");
   //senza /.../g js rimpiazza solo il primo match
-  $(".noteContent").replaceWith("<textarea id='modifyContentTxtH' cols='100' rows='10'>" + $(".noteContent").html().replace(/<br>/g,"\n") + "</textarea>");
+  $(".noteText").replaceWith("<textarea id='modifyContentTxtH' cols='100' rows='10'>" + $(".noteText").html().replace(/<br>/g,"\n") + "</textarea>");
   $("#modifyNoteConfirm").show();
 }
 function modifyNote() {
@@ -330,7 +330,7 @@ function modifyNote() {
   $("#modifyNoteBtn").show();
   $("#modifyTtlTxtH").replaceWith("<span class='spawnTtl'>" + $("#modifyTtlTxtH").val() + "</span>");
   var content = $("#modifyContentTxtH").val();
-  $("#modifyContentTxtH").replaceWith("<span class='noteContent'>" + $("#modifyContentTxtH").val().replace(/\n/g, "<br>") + "</span>");
+  $("#modifyContentTxtH").replaceWith("<span class='noteText'>" + $("#modifyContentTxtH").val().replace(/\n/g, "<br>") + "</span>");
   var ajaxurl = "../php/noteManager.php";
   var newTitle = $(".spawnTtl").html().replace(/'/g, "sc-a");
   newTitle = newTitle.replace(/"/g, "sc-q");
