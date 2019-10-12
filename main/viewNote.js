@@ -345,7 +345,7 @@ function modifyNote() {
     if (response == "done") {
       localStorage.setItem('title', newTitle);
       //in questo modo aggiorniamo il link della pagina senza doverla ricaricare con window.location.href, i primi due parametri della funzione servono ad altre cose
-      window.history.pushState("", "", "http://" + location.host + "/php/viewNote.php?title=" + newTitle.replace(/ /g, "%20"));
+      window.history.pushState("", "", "http://" + location.host + "/php/viewNote.php?title=" + encodeURIComponent(newTitle.replace(/ /g, "%20")));
     } else {
       error(response);
     }
