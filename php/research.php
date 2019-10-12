@@ -201,12 +201,12 @@
       echo json_encode($response);
     }
   } elseif ($type == "noteDept") {
-    $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, $phrase, NULL, NULL, "date", "desc");
+    $response = searchNote($conn, NULL, NULL, NULL, NULL, ["true","true","true","true","true"], $phrase, NULL, NULL, "date", "desc");
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
     if (!isset($response[0]["title"])) {
-      echo json_encode("Nrt.");
+      echo json_encode("Nrt");
     } else {
       echo json_encode($response);
     }

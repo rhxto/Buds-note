@@ -173,19 +173,18 @@
   <div><br/><br/><br/></div>
   </body>
   <script>
-  var FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+    var FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
-  if (FIREFOX) {
-    $("#SearchLens").hide();
-    $("#SearchLensMoz").show();
-  } else  {
-    $("#SearchLens").show();
-    $("#SearchLensMoz").hide();
-  }
-   if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1 && localStorage.getItem("mozError") == undefined){
-     error("FIREFOX");
-   }
-
+    if (FIREFOX) {
+      $("#SearchLens").hide();
+      $("#SearchLensMoz").show();
+    } else  {
+      $("#SearchLens").show();
+      $("#SearchLensMoz").hide();
+    }
+    if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1 && localStorage.getItem("mozError") == undefined){
+      error("FIREFOX");
+    }
   </script>
 </html>
 <?php
