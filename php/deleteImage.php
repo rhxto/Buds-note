@@ -36,6 +36,9 @@
         echo json_encode(["status"=>"IMGDNA"]); //non autorizzato
         error_log("**l'utente $user ha provato a cancellare l'immagine numero $id senza autorizzazione: ip: " . $_SERVER["REMOTE_ADDR"] . "**");
         break;
+      case "imgNotFound":
+        echo json_encode(["status"=>"IMGNTFND"]); //immagine on trovata per la nota data
+        break;
       case "interalError":
         echo json_encode(["status"=>"IMGDIE"]); //errore mysql
         break;

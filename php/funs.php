@@ -1366,6 +1366,19 @@
       }
     }
 
+  /*
+   * La funzione inserisce un'immagine nel DB verificando che il formato fornito sia tra quelli ammessi e verificando che esista la nota (non verifica l'autorizzazione o meno dell'utente)
+   *
+   * @param $note Il nome della nota sulla quale aggiungere un immagine
+   * @param $format Il formato dell'immagine
+   * @param $dir La directory del server dentro cui abbiamo messo l'immagine
+   * @param $picName Il nome dell'immagine
+   *
+   * @return "done" Se tutto è andato bene e se non sono state sollevate eccezioni
+   * @return "internalError" Se è stata sollevata un'eccezione PDOException
+   * @return "invalidFormat" Se il formato non è tra quelli concessi (scritti nell'array $formats)
+   * @return "non_existentNote" Se la nota sulla quale si sta cercando di inserire l'immagine non esiste
+   */
   function newImageEntry($note, $format, $dir, $picName) {
     if (checkNote(connectDb(), $note)) {
       $formats = ["png", "gif", "jpg", "jpeg"];
@@ -1398,6 +1411,15 @@
     }
   }
 
+  /*
+   * La funzione ritorna in una matrice la dir e l'id di tutte le foto di una nota
+   *
+   * @param $note La nota di cui cercare i dati delle immagini
+   *
+   * @return Non ritorna nulla se non è stata definita alcuna nota
+   * @return matrix[x]["dir"/"id"] una matrice dove x è il numero dell'immagine (in base al sorting sql) e come seconda dimensione si può scegliere "dir" per la directoryoppure "id" per l'id
+   * @return "internalError" Se è stata sollevata una PDOException
+   */
   function getPicsPathsAndIds($note) {
     if ($note == NULL) {
       return;
@@ -1434,6 +1456,20 @@
     }
   }
 
+  /*
+   * La funzione rimuove un immagine dal DB e anche dalla sua directory nel server e prima di farlo verifica che l'immagine esista e che l'utente che ne chiede la rimozione sia autorizzato
+   *
+   * @param $conn La connessione che stiamo usando
+   * @param $note Il titolo della nota a cui deve appartenere l'immagine
+   * @param $id L'id dell'immagine da cancellare
+   * @param $user L'utente che chiede la cancellazione della foto (per essere autorizzato deve essere admin o il creatore della nota)
+   *
+   * @return "imgNotFound" Nel caso in cui l'immagine con $id dentro al $note non sia stata trovata
+   * @return "notAuthorized" Nel caso in cui l'utente provi a cancellare un'immagine senza autorizzazione (no admin e no creatore nota)
+   * @return "illegalDeletion" Se l'utente non è admin o creatore della nota e se non esiste immagine $id relativa a $note
+   * @return "illegalError" Se viene sollevata una PDOException, quindi errore tra la comunicazione con db (spesso errori nelle query)
+   * @return "done" Se tutto va come deve e non vengono sollevati errori
+   */
   function removeImage($conn, $note, $id, $user) {
     $note = str_replace(" ", "_", test_input($_POST["note"]));
     $note = str_replace("'", "sc-a", $note);
@@ -1468,7 +1504,7 @@
             exec("rm " . $dir);
             //Questa cosa qui sopra non può sollevare errori, non sarebbe meglio mettere un catch anche per lei?
           }elseif(($authBypass == true) && ($picOnDb == false)){
-            return "illegalDeletion";     //Qui possiamo mettere tipo (note not found) o una cosa simile, tasnto con le variabili di controllo che abbiamo possiamo determinarlo
+            return "imgNotFound";
           }elseif(($authBypass == false) && ($picOnDb == true)){
             return "notAuthorized";
           }else{
