@@ -45,10 +45,10 @@
             return $data;
           }
           if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            if (empty($_GET["title"])) {
+            if (empty(urldecode($_GET["title"]))) {
               die("<h1>URL non formato correttamente! (Quindi, ovviamente, nota non trovata D:)");
             } else {
-              $title = test_input($_GET["title"]);
+              $title = test_input(urldecode($_GET["title"]));
               $title = str_replace("'", "sc-a", $title);
               $title = str_replace('"', "sc-q", $title);
               $note = searchNote(connectDb(), $title, NULL, NULL, NULL, ["true", "true", "true", "true", "true"], NULL, NULL, NULL, NULL, NULL, NULL);
