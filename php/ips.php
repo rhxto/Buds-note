@@ -65,15 +65,15 @@
      */
     function mysqlCheckIp(String $ip, $conn) : bool {
       try {
-        $query = $conn->prepare("SELECT * FROM ban_ip WHERE ip = :ip");
+        $query = $conn->prepare("SELECT COUNT(*) as num FROM ban_ip WHERE ip = :ip");
         $query->bindParam(":ip", $ip);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $ips = $query->fetchAll();
-        if (empty($ips[0]["ip"])) {
-          return false;
-        } else {
+        if (!empty($ips) && $ips[0]["num"] == 1) {
           return true;
+        } else {
+          return false;
         }
       } catch(PDOException $e) {
         logD("errore in mysqlcheckip");
