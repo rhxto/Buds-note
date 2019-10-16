@@ -1522,6 +1522,33 @@
     }
   }
 
-  //substr($stringa, strlen($stringa) - strpos(strrev($stringa), "/"));
+
+
+  function String urlCodec($conn, $note, $pic_id){
+  //Codifico solo la parte dopo l'ultimo / del path, in modo che sia codificato solo il nome della foto
+    try{
+      $getPath = $conn->prepare("SELECT dir FROM pict WHERE note = :note AND id = :id");
+      $getPath->bindParam(":note", $note);
+      $getPath->bindParam(":id", $id);
+      $getPath->execute();
+      $result = $getPath->fetchAll();
+      if(empty($result)){
+        return "imgNotExisting";
+      }else{
+        $result = $result[0]["dir"];
+      }
+    }catch(PDOException $e){
+      PDOErrors($e);
+      return "internalError";
+    }
+  //Divido in due stringhe ma non ricordo quale delle due era da codificare e quel meno quindi lascio a te l'onore di cancellare il commento sbalgiato e togliere il // al codice correto cambiano al funzione codifica() nella funzion vera
+  $imgName = substr($stringa, 1+strrpos($stringa, "/"));
+  $preImgName = substr($stringa, 0, 1+strrpos($stringa, "/"));
+
+  //$imgName = codifica($imagName);
+  //$preImgName = codifica($preImgName);
+  return $imgName.$preImgName;
+  
+  }
 
 ?>
