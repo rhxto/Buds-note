@@ -11,25 +11,30 @@
     <meta charset="utf-8">
     <title>Buds_note</title>
     <script src="../../jquery/jquery.min.js"></script>
-    <script src="1.js"></script>
+    <script src="0.js"></script>
     <link rel="stylesheet" type="text/css" href="../../main/stylesheets/positions.css" />
-    <link rel="stylesheet" type="text/css" href="../../main/stylesheets/main.css" />
+    <link rel="stylesheet/less" type="text/css" href="../../main/stylesheets/main.less" />
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
   </head>
   <body id="Body">
     <div id="warn" class="warn" style="display:none">
     </div>
-    <p style="position:sticky;top:0px;width:100%">
-      <div class="navbar" id="navbar">
-        <a href="../../" class="navbar-left">HOME</a>
-        <a href="../login/" class="navbar-right log">LOGIN</a>
-        <a href="../register/" class="navbar-right log">REGISTER</a>
-        <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
-      </div>
-    </p>
-    <div id="risultati">
+    <div class="navbar" id="navbar">
+      <a href="../.." class="navbar-left">HOME</a>
+      <a href="login/" class="navbar-right log">LOGIN</a>
+      <a href="register/" class="navbar-right log">REGISTER</a>
+      <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
     </div>
-    Pagina per tutte le note del liceo linguistico.
+      <span id="greet">Liceo classico</span>
+      <div><br/><br/><br/><br/></div>
+    <div id="risultati" class="risultati">
+    </div>
   </body>
+  <script>
+    if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1 && localStorage.getItem("mozError") == undefined){
+      error("FIREFOX");
+    }
+  </script>
 </html>
 <?php
   if (isset($_SESSION['logged_in'])) {
