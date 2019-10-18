@@ -1523,7 +1523,17 @@
   }
 
 
-
+  /**
+   * La funzione ritorna il path leggibile dal browser con la parte del nome dell'immagine codificata secondo la funzione encode()
+   *
+   * @param $conn La connessione che stiamo usando
+   * @param $note La nota da cui prendiamo la foto di cui codificare il path
+   * @param $pic_id L'id della foto dentro il DB (identificazione univoca)
+   * 
+   * @return "imgNotExisting" Se non esiste immagine con quell'id relativa alla nota
+   * @return "internalError" Se viene sollevata una PDOException
+   * @return $preImgName.encode($imgName) il path fino al nome dell'immagine in clear e il nome immagine encoded da encode()
+   */
   function String urlCodec($conn, $note, $pic_id){
   //Codifico solo la parte dopo l'ultimo / del path, in modo che sia codificato solo il nome della foto
     try{
@@ -1541,13 +1551,13 @@
       PDOErrors($e);
       return "internalError";
     }
-  //Divido in due stringhe ma non ricordo quale delle due era da codificare e quel meno quindi lascio a te l'onore di cancellare il commento sbalgiato e togliere il // al codice correto cambiano al funzione codifica() nella funzion vera
+
   $imgName = substr($stringa, 1+strrpos($stringa, "/"));
   $preImgName = substr($stringa, 0, 1+strrpos($stringa, "/"));
 
-  //$imgName = codifica($imagName);
-  //$preImgName = codifica($preImgName);
-  return $imgName.$preImgName;
+
+
+  return $preImgName.encode($imgName);
   
   }
 
