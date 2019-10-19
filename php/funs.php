@@ -1552,12 +1552,12 @@
       return "internalError";
     }
 
-  $imgName = substr($stringa, 1+strrpos($stringa, "/"));
-  $preImgName = substr($stringa, 0, 1+strrpos($stringa, "/"));
+  $imgName = substr($stringa, 1+strpos($stringa, "/"));
+  $preImgName = substr($stringa, 0, 1+strpos($stringa, "/"));
 
 
 
-  return $preImgName.encode($imgName);
+  return $preImgName.urlencode($imgName);
   
   }
 
