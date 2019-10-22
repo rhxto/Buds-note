@@ -1,7 +1,7 @@
 <?php
   require_once "core.php";
 
-  /*
+  /**
    * Funzione per creare delle entry nel journalctl (log live per debug)
    *
    * @param $s stringa da inserire
@@ -10,7 +10,7 @@
     shell_exec("logger $s");
   }
 
-/*
+/**
  * Funzione per verificare se l'utente non ha superato i 5 failed access
  *
  * @param $usr Lo username dell'utente da ricercare
@@ -32,7 +32,7 @@
     }
   }
 
-  /*
+  /**
    * Aggiunge un utente con i parametri passati
    *
    * @param $username Lo username che si vuole dare al nuovo user
@@ -42,8 +42,8 @@
    * @param $fail_acc Il numero di fail_acc che si vogliono attribuire al nuovo user
    * @param $last_log La data dell'ultimo log dell'utente
    *
-   * @return "passed" Se tutto è andato bene
-   * @return "internalError" Se manca username o password o email o se viene sollevato una PDOException durente il binding o quando viene lanciata la query
+   * @return string "passed" Se tutto è andato bene
+   * @return string "internalError" Se manca username o password o email o se viene sollevato una PDOException durente il binding o quando viene lanciata la query
    */
   function mysqlWriteCrd(String $username, String $password, String $email, int $acc_lvl, int $fail_acc, String $last_log) {
     //$email = '"'.$email.'"';
@@ -75,16 +75,16 @@
     }
   }
 
-  /*
+  /**
    * Esegue il login e restituisce una stringa con il feedback e se sbagliata la pw aggiorna il fail_acc
    *
    * @param $cnfUsr Lo username dello username da testare
    * @param $cnfPw La password hashata da testare
    *
-   * @return "true" Se esiste lo username e la pw corrisponde (fail_acc azzerati)
-   * @return "false" Se esiste lo username ma la password è sbagliata, o se non esiste lo username
-   * @return "bannato" Se uno ha raggiunto il fail_acc limite e viene bannato
-   * @return "internalError" Se c'é stata una PDOException
+   * @return string "true" Se esiste lo username e la pw corrisponde (fail_acc azzerati)
+   * @return string "false" Se esiste lo username ma la password è sbagliata, o se non esiste lo username
+   * @return string "bannato" Se uno ha raggiunto il fail_acc limite e viene bannato
+   * @return string "internalError" Se c'é stata una PDOException
    */
   function login(String $cnfUsr, String $cnfPw) : String {
     logD("Logging: $cnfUsr, $cnfPw");
@@ -137,7 +137,7 @@
     }
   }
 
-  /*
+  /**
    * La funzione serve a verificare che uno user con il dato username sia presente nel DB
    *
    * @param $username Lo username che deve avere lo user nel DB
@@ -164,12 +164,12 @@
     }
   }
 
-  /*
+  /**
    * La funzione ritorna il livello di accesso di un utente
    *
    * @param $user Lo username dell'utente del quale si vuole sapere l'acc_lvl
    *
-   * @return Il numero corrispondente all'acc_lvl
+   * @return int numero corrispondente all'acc_lvl
    */
   function getAcclvl($user) {
     try {
@@ -187,15 +187,15 @@
     }
   }
 
-  /*
+  /**
    * Serve ad attivare o disattivare lo stato manutenzione
    *
    * @param $val Il valore a cui voglio settare manutenzione (TRUE per attivata, FALSE per disattivata)
    *
-   * @return "done" Se la query di modifica è andata a buon $fine
-   * @return "MANAA" Se lo stato era già attivato
-   * @return "MANAT" Se lo stato era già disattivato
-   * @return "IEMANS" Se viene sollevato un'PDOException
+   * @return string "done" Se la query di modifica è andata a buon $fine
+   * @return string "MANAA" Se lo stato era già attivato
+   * @return string "MANAT" Se lo stato era già disattivato
+   * @return string "IEMANS" Se viene sollevato un'PDOException
    */
   function setManStatus(bool $val) {
     if (getManStatus() && $val == true) {
@@ -219,7 +219,7 @@
     }
   }
 
-  /*
+  /**
    * Serve a ritornare il valore manutenzione
    *
    * @return true Se è attivata la manutenzione
@@ -244,13 +244,13 @@
     }
   }
 
-  /*
+  /**
    * Prende due date sotto forma di stringhe e restituisce la differenza
    *
-   * @param inizio La data iniziale
-   * @param fine La data finale
+   * @param $inizio La data iniziale
+   * @param $fine La data finale
    *
-   * @return La differenza fra due date riportate come int
+   * @return int differenza fra due date riportate in secondi
    */
   function differenzaData($inizio, $fine){
     $inizio = strtotime($inizio);
@@ -260,15 +260,15 @@
   }
 
 
-  /*
+  /**
    * La funzione fa una ricerca dei dept con il nome e/o il codice e poi ritorna una matrice con le informazioni, se si lascia NULL un parametro verrà considerato %
    *
    * @param $conn La connessione che stiamo usando
    * @param $name Il nome del dept che vogliamo ricercare
    * @param $id L'id del dept che vogliamo ricercare
    *
-   * @return
-   * @return "internalError" Se viene sollevata una eccezione PDOException
+   * @return array[][] Nella prima parenti va il numero n di sorting del dept e nella seconda il campo che vogliamo conoscere dell'elemento n ("name", "code"...)
+   * @return string "internalError" Se viene sollevata una eccezione PDOException
    */
   function dept($conn, $name, $id){
     if($conn == "null"){
@@ -302,15 +302,15 @@
     return $results;
   }
 
-  /*
+  /**
    * La funzione fa una ricerca delle subj con il nome e/o il codice e poi ritorna una matrice con le informazioni, se si lascia NULL un parametro verrà considerato %
    *
    * @param $conn La connessione che stiamo usando
    * @param $name Il nome della subj che vogliamo ricercare
    * @param $id L'id della subj che vogliamo ricercare
    *
-   * @return
-   * @return "internalError" Se viene sollevata una eccezione PDOException
+   * @return array[][] Nella prima parenti va il numero n di sorting della subj e nella seconda il campo che vogliamo conoscere dell'elemento n ("name", "code"...)
+   * @return string "internalError" Se viene sollevata una eccezione PDOException
    */
   function subj($conn, $name, $id){
     if($conn == "null"){
@@ -345,7 +345,7 @@
   }
 
 
-  /*
+  /**
    * La funzione serve a ricercare uno user dentro la tabella user inserrendo vari parametri, se alcuni di essi vengono lasciati NULL veranno considerati nella query come %, verranno poi restituite una o più tuple con gli elementi che rispettano i parametri
    *
    * @param $conn La connessione con la quale stiamo lavorando
@@ -353,11 +353,11 @@
    * @param $mail La mail dello user di cui vogliamo le informazioni (Se è "" diventa % nella query)
    * @param $acc_lvl Il grado di accesso dell'utente di cui vogliamo le informazioni (Se è NULL diventa TRUE nella query)
    * @param $fail_acc Il numero di failed access dell'utente di cui vogliamo le informazioni
-   * @param last_log_from La data minima dell'ultimo login dell'utente di cui vogliamo le informazioni (Se è "" diventa TRUE nella query)
-   * @param last_log_to La data massima dell'ultimo login dell'utente di cui vogliamo le informazioni (Se è "" diventa TRUE nella query)
+   * @param $last_log_from La data minima dell'ultimo login dell'utente di cui vogliamo le informazioni (Se è "" diventa TRUE nella query)
+   * @param $last_log_to La data massima dell'ultimo login dell'utente di cui vogliamo le informazioni (Se è "" diventa TRUE nella query)
    *
-   * @return $result[x]["yyy"] Un array nel quale ci sono tutti gli user che rispettano i parametri ineriti dove x è l'ordine di sorting nella query (parte da 0) e yyy è il nome dell'attributo che vogliamo visualizzare
-   * @return "internalError" Se viene sollevata una PDOException
+   * @return array[x]["yyy"] Un array nel quale ci sono tutti gli user che rispettano i parametri ineriti dove x è l'ordine di sorting nella query (parte da 0) e yyy è il nome dell'attributo che vogliamo visualizzare
+   * @return string "internalError" Se viene sollevata una PDOException
    */
   function user($conn, $username, $mail, $acc_lvl, $fail_acc, $last_log_from, $last_log_to){
 
@@ -408,10 +408,10 @@
     }
   }
 
-    /*
+    /**
      * La funzione ritorna una nota che rispetta i parametri inseriti
      *
-     *  @param $conn La connessione con la quale stiamo lavorando
+     * @param $conn La connessione con la quale stiamo lavorando
      * @param $title Il titolo della nota cercare
      * @param $dir La directpry in cui si trova la nota da cercare
      * @param $user L'utente che ha scritto la nota da carcare
@@ -423,8 +423,8 @@
      * @param $order Inserire il nome dell'attributo secondo cui si vuole ordinare il risultato della query
      * @param $v Il verso di ordinamento dei risultati ("DESC" o "ASC")
      *
-     * @return
-     * @return "internalError" Se vengono sollevate delle PDOException
+     * @return array[][] Dove nel primo capo ci va il numero n dell'ordine di sorting delle note (nel caso di più note) e nel secondo paramentro ci va il nome del campo che vogliamo leggere della nota n
+     * @return string "internalError" Se vengono sollevate delle PDOException
      */
     function searchNote($conn, $title, $dir, $user, $subj, $years, $dept, $datefrom, $dateto, $order, $v) {
       if ($title == NULL) {
@@ -475,6 +475,8 @@
       }
       if ($order == NULL) {
         $order = "date";
+      }elseif($order != "title" && $order != "user" && $order != "subj" && $order != "year" && $order != "dept" && $order != "date" ){
+        $order = "date";
       }
       if ($v == NULL) {
         $v = "DESC";
@@ -485,7 +487,7 @@
       }
 
       try {
-        $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND ((year LIKE :year1) OR (year LIKE :year2) OR (year LIKE :year3) OR (year LIKE :year4) OR (year LIKE :year5)) AND (dept LIKE :dept) AND (date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
+        $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND ((year LIKE :year1) OR (year LIKE :year2) OR (year LIKE :year3) OR (year LIKE :year4) OR (year LIKE :year5)) AND (dept LIKE :dept) AND (date BETWEEN :datefrom AND :dateto) ORDER BY :ord :direction");
         $title = str_replace(" ", "_", $title);
         $query->bindParam(":ttl", $title);
         $query->bindParam(":dir", $dir);
@@ -499,6 +501,8 @@
         $query->bindParam(":dept", $dept);
         $query->bindParam(":datefrom", $datefrom);
         $query->bindParam(":dateto", $dateto);
+        $query->bindParam(":ord", $order);
+        $query->bindParam(":direction", $v);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $result = $query->fetchAll();
@@ -525,7 +529,7 @@
       }
     }
 
-    /*
+    /**
      * La funzione inserisce una nuova nota nella table note
      *
      * @param $conn La connessione che stiamo usando
@@ -571,7 +575,7 @@
       }
     }
 
-    /*
+    /**
      * La funzione cancella una nota dato il suo titolo
      *
      * @param $conn La connessione che stiamo usando
@@ -604,7 +608,7 @@
       }
     }
 
-    /*
+    /**
      * La funzione dice se è presente la nota con il titolo $title fra le note
      *
      * @param $conn La connessione che vogliamo usare
@@ -633,12 +637,12 @@
       }
     }
 
-    /*
+    /**
      * La funzione ritorna la nota sotto forma di array in cui in ogni elemento c'è una riga diversa del file comporeso il \n
      * @param $conn La connessione che stiamo usando
      * @param $title Il titolo della nota di cui vogliamo leggere il contenuto
      *
-     * @return Un array in cui in ogni elemento c'è una riga del file seguito ovviamente dal suo \n
+     * @return array[] array in cui in ogni elemento c'è una riga del file seguito ovviamente dal suo \n
      * @return false Se viene sollevata una PDOException
      */
     function getNote($conn, String $title) {
@@ -659,7 +663,7 @@
       }
     }
 
-    /*
+    /**
      *
      * @deprecated Non viene più usata la tabella mark, è stata sotituita da like
      *
@@ -674,8 +678,8 @@
      * @param $dateto La data massima entro la quale deve essere stato caricato il voto
      * @param $code Il nome dell'attributo tramite il quale dobbiamo ordinare i risultati della query
      *
-     * @return Un array[x]['yyy'] nella x va il numer del campo in ordine di sorting della query, su yyy ci va il campo che voglio leggere dall'elemento x
-     * @return ''internalError' Se viene sollevata una PDOException
+     * @return array[x]['yyy'] nella x va il numer del campo in ordine di sorting della query, su yyy ci va il campo che voglio leggere dall'elemento x
+     * @return string 'internalError' Se viene sollevata una PDOException
      */
     function searchMark($conn, $id, $user, $title, $mark, $datefrom, $dateto, $code){
 
@@ -743,7 +747,7 @@
       }
     }
 
-    /*
+    /**
      * La funzione ricerca un report dando i seguenti parametri come filtri
      *
      * @param $conn La connessione che stiamo usando
@@ -755,8 +759,8 @@
      * @param $dateto La data massima entro la quale deve essere stata scritta la nota
      * @param $code L'attributo secondo cui dobbiamo ordinare i risultati della query
      *
-     * @return Un array[x]['yyy'] In cui su x deve andare il numero di sorting della tupla nella query e su yyy ci va il nome dell'attributo di cui ogliamo conoscere il contenuto per la tupla numero x
-     * @return "internalError" Se viene sollevata una PDOException
+     * @return array[x]['yyy'] In cui su x deve andare il numero di sorting della tupla nella query e su yyy ci va il nome dell'attributo di cui ogliamo conoscere il contenuto per la tupla numero x
+     * @return string "internalError" Se viene sollevata una PDOException
      */
     function searchRepo($conn, $id, $user, $title, $text, $datefrom, $dateto, $code){
 
@@ -819,7 +823,7 @@
         $conn = null;
       }
     }
-    /*
+    /**
      * Serve a cercare un commento fra tutto quelli nel database che rispetti i parametri che inseriamo come filtri
      *
      * @param $conn La connessione che stiam usando
@@ -832,8 +836,8 @@
      * @param $order Il nome dell'attributo con il quale voglio ordinare il sorting order della query
      * @param $v Se voglio ordinare il modo ascendente o discendente (ASC o DESC)
      *
-     * @return Il solito array[x]['yyy'] In cui x è l'ordine di sorting in cui la tupla è stata ordinata e yyy l'attributo che vogliamo leggere della tupla x
-     * @return "internalError" Se viene sollevata una PDOException
+     * @return array[x]['yyy'] In cui x è l'ordine di sorting in cui la tupla è stata ordinata e yyy l'attributo che vogliamo leggere della tupla x
+     * @return string "internalError" Se viene sollevata una PDOException
      */
     function searchRevw($conn, $id, $user, $title, $review, $datefrom, $dateto, $order, $v){
 
@@ -871,13 +875,15 @@
         $v = "ASC";
       }
       try {
-        $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
+        $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :ord :direction");
         $query->bindParam(':id', $id);
         $query->bindParam(':user', $user);
         $query->bindParam(':title', $title);
         $query->bindParam(':review', $review);
         $query->bindParam(':datefrom', $datefrom);
         $query->bindParam(':dateto', $dateto);
+        $query->bindParam(':ord', $order);
+        $query->bindParam(':direction', $v);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $result = $query->fetchAll();
@@ -902,7 +908,7 @@
         $conn = null;
       }
     }
-    /*
+    /**
      * La funzione aggiunge al comemnto alla tabella revw che ha come attributi i vari parametri della funzione
      *
      * @param $conn La connessione che vogliamo usare
@@ -910,9 +916,9 @@
      * @param $title Il titolo della nota sulla quale è stato caricato il commento
      * @param $content Il contenuto del commento
      *
-     * @return Ritorna un'array associativo dove dentro [state] c'è true se l' operazione è andata a abuon fine altrimenti false, dentro [id] c'è l'id del commento
+     * @return array[] dove posso scegliere fra tre colonne: "state" che è true se è andata a buon fine o false se non è stato così, "id" l'id che è stato associato al commento, "date" la data di pubblicazione del commento
      * @return false Se uno dei parametri è nullo
-     * @return "internalError" Se viene sollevata una PDOException
+     * @return string "internalError" Se viene sollevata una PDOException
      */
     function postComment($conn, String $user, String $title, String $content) {
       if ($user == NULL || $content == NULL || $conn == "null" || $conn == NULL) {
@@ -942,14 +948,14 @@
       }
     }
 
-    /*
+    /**
      * La funzione serve ad eliminare un commento dato il suo id
      *
      * @param $conn La connesione che stiamo usando
      * @param $id L'id della nota che vogliamo cancellare
      *
      * @return false se l'id non è valido
-     * @return "internalError" Se viene sollevata una PDOException
+     * @return string "internalError" Se viene sollevata una PDOException
      * @return true Se tutto viene cancellato correttamente
      */
     function delComment($conn, $id) {
@@ -970,7 +976,7 @@
       }
     }
 
-    /*
+    /**
      * Dice se un utente è il creatore della nota dati i parametri
      *
      * @param $conn La connessione che stiamo usando
@@ -979,7 +985,7 @@
      *
      * @return false Se il titolo o il nome dell'utente della nota non è valido o se non è lui il possessore
      * @return true Se $user è il creatore della nota $title
-     * @return "itnernalError" Se viene sollevata una PDOException
+     * @return string "itnernalError" Se viene sollevata una PDOException
      */
     function isNoteOwner($conn, $title, $user) {
       if ($conn == "null" || $conn == NULL || $title == NULL || $user == NULL) {
@@ -1012,7 +1018,7 @@
       }
     }
 
-    /*
+    /**
      * La funzione viene usata per aggiornare i parametri inseriti nella nota
      *
      * @param $conn La connessione che stiamo usando
@@ -1062,7 +1068,7 @@
       }
     }
 
-    /*
+    /**
      * La funzione inserisce il rating di una nota se l'utente non l'aveva già inserito o se il rating che vuole inserire ora è diverso da quelle che aveva inserito in passato
      *
      * @param $username Lo username che vuole inserire la nota
@@ -1070,7 +1076,7 @@
      * @param $rating Il rating che si vuole isnerire (true per Mi piace e false per Non mi piace)
      *
      * @return true Se il rating viene aggiunto o aggiornato senza problemi
-     * @return "internalError" Se è stata sollevta una PDOexception
+     * @return string "internalError" Se è stata sollevta una PDOexception
      * @return false Se il rating che si vuole inserire era già presente
      */
     function rateNote(String $username, String $title, bool $rating) {
@@ -1108,14 +1114,14 @@
       }
     }
 
-    /*
+    /**
      * La funzione serve a verificare se l'utente ha già inserito un rating per la nota, ritorna il numero di rating già inseriti (dovrebbe essere fra 1 e 0)
      *
      * @param $username Lo username dell'utente di cui si vuole controllare il rate
-     * @param title La nota sulla quale si cerca il possibile rate dell'utente
+     * @param $title La nota sulla quale si cerca il possibile rate dell'utente
      *
-     * @return Il numero di rate messi dall'utente alla nota $title (dovrebbe essere fra 0 e 1)
-     * @return -1 Se è stata sollevata una eccezzione PDOException
+     * @return int Il numero di rate messi dall'utente alla nota $title (dovrebbe essere fra 0 e 1)
+     * @return int -1 Se è stata sollevata una eccezzione PDOException
      */
     function alreadyRated(String $username, String $title) {
       $title = str_replace(" ", "_", $title);
@@ -1136,15 +1142,15 @@
       }
     }
 
-    /*
+    /**
      * Restituisce il rate dato a una nota da un utente se c'è il rate, altrimenti restituisce -1
      *
      * @param $username Lo username del quale si vuole fare la ricerca
      * @param $title Il titolo della nota sulla quale si deve cercare il rate
      *
-     * @return -1 Se non c'è alcun rate su quella nota da parte dell'utente o se è stata sollevata una PDOException
-     * @return 1 Se il rate è TRUE
-     * @return 0 Se il rate è FALSE
+     * @return int -1 Se non c'è alcun rate su quella nota da parte dell'utente o se è stata sollevata una PDOException
+     * @return int 1 Se il rate è TRUE
+     * @return int 0 Se il rate è FALSE
      */
     function getRate(String $username, String $title){
       $title = str_replace(" ", "_", $title);
@@ -1169,12 +1175,12 @@
       }
     }
 
-    /*
+    /**
      * La funzione ritorna il numero di rate positivi sulla nota $note
      *
      * @param $note Il nome della nota nella quale cercare i rate
      *
-     * @return Il numero di rate positivi
+     * @return int Il numero di rate positivi
      * @return false In caso di errore se viene sollevata una PDOException
      */
     function getLikes($note){
@@ -1195,12 +1201,12 @@
       }
     }
 
-    /*
+    /**
      * La funzione ritorna il numero di rate negativi sulla nota $note
      *
      * @param $note Il nome della nota nella quale cercare i rate
      *
-     * @return Il numero di rate negativi
+     * @return int Il numero di rate negativi
      * @return false In caso di errore se viene sollevata una PDOException
      */
     function getDislikes(String $note){
@@ -1221,14 +1227,14 @@
       }
     }
 
-    /*
+    /**
      * La funzione ritorna il numero totale dei rate lasciati dall'utente $user sotto tutte le note del DB
      *
      * @param $user Il nome dell'utente del quale cercare il numero dei rate
      *
-     * @return Il numero di rate lasciati dall'utente (non i rate che gli altri lasciano sotto le sue note ma quelli che lui lascia in tutte le note del database)
+     * @return int Il numero di rate lasciati dall'utente (non i rate che gli altri lasciano sotto le sue note ma quelli che lui lascia in tutte le note del database)
      * @return false In caso di errore se viene sollevata una PDOException
-     * @return "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+     * @return string "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
      */
     function getLeftRate(String $user){
       if (mysqlChckUsr($user)) {
@@ -1251,14 +1257,14 @@
       }
     }
 
-    /*
+    /**
      * La funziona ritorna la data e l'ora dell'ultimo login eseguito con successo dall'utente
      *
      * @param $user Il nome dell'utente di cui stiamo cercando l'ultimo login
      *
-     * @return La data e l'ora dell'ultimo log secondo il formato in cui esso è salvato dentro il database
+     * @return datetime La data e l'ora dell'ultimo log secondo il formato in cui esso è salvato dentro il database
      * @return false Se viene sollevata una PDOException di qualche tipo
-     * @return "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+     * @return string "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
      */
     function getLastLog(String $user){
       if (mysqlChckUsr($user)) {
@@ -1281,14 +1287,14 @@
       }
     }
 
-    /*
+    /**
      * La funzione ritorna il numero totale dei commenti lasciati dall'utente $user sotto tutte le note del DB
      *
      * @param $user Il nome dell'utente del quale cercare il numero demçi commenti
      *
-     * @return Il numero di commenti lasciati dall'utente (non i commenti che gli altri lasciano sotto le sue note ma quelli che lui lascia in tutte le note del database)
+     * @return int Il numero di commenti lasciati dall'utente (non i commenti che gli altri lasciano sotto le sue note ma quelli che lui lascia in tutte le note del database)
      * @return false In caso di errore se viene sollevata una PDOException
-     * @return "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+     * @return string "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
      */
     function getLeftComm(String $user){
       if (mysqlChckUsr($user)) {
@@ -1311,14 +1317,14 @@
       }
     }
 
-    /*
+    /**
      * La funzione ritorna il numero totale delle note create dall'utente $user
      *
      * @param $user Il nome dell'utente del quale contare il nnumero di note
      *
-     * @return Il numero di note create dall'utente e ancora presenti nel database
+     * @return int Il numero di note create dall'utente e ancora presenti nel database
      * @return false In caso di errore se viene sollevata una PDOException
-     * @return "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+     * @return string "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
      */
     function getNoteNum(String $user){
       if (mysqlChckUsr($user)) {
@@ -1341,14 +1347,14 @@
       }
     }
 
-    /*
+    /**
      * La funzione ritorna il numero totale dei like e dislike ricevuto dall'utente
      *
      * @param $user Il nome dell'utente del quale contare il nnumero di rates
      *
-     * @return Il numero totale di rate ricevuti
+     * @return int Il numero totale di rate ricevuti
      * @return false In caso di errore se viene sollevata una PDOException
-     * @return "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+     * @return string "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
      */
     function getReceivedRate(String $user){
       if (mysqlChckUsr($user)) {
@@ -1370,7 +1376,7 @@
       }
     }
 
-  /*
+  /**
    * La funzione inserisce un'immagine nel DB verificando che il formato fornito sia tra quelli ammessi e verificando che esista la nota (non verifica l'autorizzazione o meno dell'utente)
    *
    * @param $note Il nome della nota sulla quale aggiungere un immagine
@@ -1378,10 +1384,10 @@
    * @param $dir La directory del server dentro cui abbiamo messo l'immagine
    * @param $picName Il nome dell'immagine
    *
-   * @return "done" Se tutto è andato bene e se non sono state sollevate eccezioni
-   * @return "internalError" Se è stata sollevata un'eccezione PDOException
-   * @return "invalidFormat" Se il formato non è tra quelli concessi (scritti nell'array $formats)
-   * @return "non_existentNote" Se la nota sulla quale si sta cercando di inserire l'immagine non esiste
+   * @return string "done" Se tutto è andato bene e se non sono state sollevate eccezioni
+   * @return string "internalError" Se è stata sollevata un'eccezione PDOException
+   * @return string "invalidFormat" Se il formato non è tra quelli concessi (scritti nell'array $formats)
+   * @return string "non_existentNote" Se la nota sulla quale si sta cercando di inserire l'immagine non esiste
    */
   function newImageEntry($note, $format, $dir, $picName) {
     if (checkNote(connectDb(), $note)) {
@@ -1415,14 +1421,13 @@
     }
   }
 
-  /*
-   * La funzione ritorna in una matrice la dir e l'id di tutte le foto di una nota
+  /**
+   * La funzione ritorna in una matrice la dir e l'id di tutte le foto di una nota, non ritorna nulla se non è stata definita alcuna nota
    *
    * @param $note La nota di cui cercare i dati delle immagini
    *
-   * @return Non ritorna nulla se non è stata definita alcuna nota
-   * @return matrix[x]["dir"/"id"] una matrice dove x è il numero dell'immagine (in base al sorting sql) e come seconda dimensione si può scegliere "dir" per la directoryoppure "id" per l'id
-   * @return "internalError" Se è stata sollevata una PDOException
+   * @return array[x]["dir"/"id"] una matrice dove x è il numero dell'immagine (in base al sorting sql) e come seconda dimensione si può scegliere "dir" per la directory oppure "id" per l'id
+   * @return string "internalError" Se è stata sollevata una PDOException
    */
   function getPicsPathsAndIds($note) {
     if ($note == NULL) {
@@ -1444,7 +1449,7 @@
     }
   }
 
-  /*
+  /**
    * Controlla che il punto all' interno di una foto sia ripetuto solo una volta in modo da evitare di salvare dentro al server file del tipo "Foto.php.png" che può sembrare png ma in realtà è php
    *
    * @param $path Il nome del file da controllare
@@ -1460,7 +1465,7 @@
     }
   }
 
-  /*
+  /**
    * La funzione rimuove un immagine dal DB e anche dalla sua directory nel server e prima di farlo verifica che l'immagine esista e che l'utente che ne chiede la rimozione sia autorizzato
    *
    * @param $conn La connessione che stiamo usando
@@ -1468,11 +1473,11 @@
    * @param $id L'id dell'immagine da cancellare
    * @param $user L'utente che chiede la cancellazione della foto (per essere autorizzato deve essere admin o il creatore della nota)
    *
-   * @return "imgNotFound" Nel caso in cui l'immagine con $id dentro al $note non sia stata trovata
-   * @return "notAuthorized" Nel caso in cui l'utente provi a cancellare un'immagine senza autorizzazione (no admin e no creatore nota)
-   * @return "illegalDeletion" Se l'utente non è admin o creatore della nota e se non esiste immagine $id relativa a $note
-   * @return "illegalError" Se viene sollevata una PDOException, quindi errore tra la comunicazione con db (spesso errori nelle query)
-   * @return "done" Se tutto va come deve e non vengono sollevati errori
+   * @return string "imgNotFound" Nel caso in cui l'immagine con $id dentro al $note non sia stata trovata
+   * @return string "notAuthorized" Nel caso in cui l'utente provi a cancellare un'immagine senza autorizzazione (no admin e no creatore nota)
+   * @return string "illegalDeletion" Se l'utente non è admin o creatore della nota e se non esiste immagine $id relativa a $note
+   * @return string "illegalError" Se viene sollevata una PDOException, quindi errore tra la comunicazione con db (spesso errori nelle query)
+   * @return string "done" Se tutto va come deve e non vengono sollevati errori
    */
   function removeImage($conn, $note, $id, $user) {
     $note = str_replace(" ", "_", test_input($_POST["note"]));
@@ -1529,13 +1534,12 @@
    * @param $conn La connessione che stiamo usando
    * @param $note La nota da cui prendiamo la foto di cui codificare il path
    * @param $pic_id L'id della foto dentro il DB (identificazione univoca)
-   * 
-   * @return "imgNotExisting" Se non esiste immagine con quell'id relativa alla nota
-   * @return "internalError" Se viene sollevata una PDOException
-   * @return $preImgName.encode($imgName) il path fino al nome dell'immagine in clear e il nome immagine encoded da encode()
+   *
+   * @return string "imgNotExisting" Se non esiste immagine con quell'id relativa alla nota
+   * @return string "internalError" Se viene sollevata una PDOException
+   * @return string $preImgName.encode($imgName) il path fino al nome dell'immagine in clear e il nome immagine encoded da encode()
    */
   function String urlCodec($conn, $note, $pic_id){
-  //Codifico solo la parte dopo l'ultimo / del path, in modo che sia codificato solo il nome della foto
     try{
       $getPath = $conn->prepare("SELECT dir FROM pict WHERE note = :note AND id = :id");
       $getPath->bindParam(":note", $note);
@@ -1558,7 +1562,7 @@
 
 
   return $preImgName.urlencode($imgName);
-  
+
   }
 
 ?>
