@@ -19,13 +19,13 @@
   if (empty($_POST["noteId"])) {
     die(json_encode(["status"=>"IMGUFTB"]));
   }
-  $noteId = test_input($_GET["noteId"]);
+  $noteId = test_input($_POST["noteId"]);
   if (!isNoteOwner(connectDb(), $noteId, $_SESSION["username"])) {
     die(json_encode(["status"=>"IMGUNO"]));
   }
   if (empty($_SESSION["username"]) || !isset($_SESSION["username"]) || $_SESSION["logged_in"] === "0") {
     echo json_encode(["status"=>"IMGUNL"]);
-  } else if (empty($note) || $note === "" || test_input($_FILES["uploadImage"]["name"]) !== $_FILES["uploadImage"]["name"]) {
+  } else if (empty($noteId) || $noteId === "" || test_input($_FILES["uploadImage"]["name"]) !== $_FILES["uploadImage"]["name"]) {
     echo json_encode(["status"=>"IMGUVNV"]);
   } else if (($user = test_input($_SESSION["username"])) === $_SESSION["username"]) {
     if (!checkNote(connectDb(), $noteId)) {
@@ -33,7 +33,7 @@
     }
     if (checkDotIteration($_FILES["uploadImage"]["name"])) {
       $file = "../notedb/" . $user . "/uploads" . "/" . basename($noteId . "_" . $user . "_" . $_FILES["uploadImage"]["name"]);
-      $fileEncoded = "../notedb/" . $user . "/uploads" . "/" . basename(urlencode($noteId) . "_" . urlencode($user) . "_" . urlencode($_FILES["uploadImage"]["name"])));
+      $fileEncoded = "../notedb/" . $user . "/uploads" . "/" . basename(urlencode($noteId) . "_" . urlencode($user) . "_" . urlencode($_FILES["uploadImage"]["name"]));
       //prendi l'estensione e mettila tutta lowercase
       $imageExtension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
       $check = getimagesize($_FILES["uploadImage"]["tmp_name"]);

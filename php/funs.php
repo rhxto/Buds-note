@@ -515,7 +515,7 @@
         $i = 0;
         foreach ($result as $row) {
           array_push($results, array());
-          $results[$i]["id"] $row["id"];
+          $results[$i]["id"] = $row["id"];
           $results[$i]["title"] = str_replace("_", " ", $row["title"]);
           $results[$i]["dir"] = $row["dir"];
           $results[$i]["user"] = $row["user"];
@@ -567,7 +567,14 @@
 
         $dir = "/notedb/$user/$noteId.txt";
         $noteFile = fopen("../notedb/$user/$noteId.txt", "w+");
+
+        $query= $conn->prepare("UPDATE note SET dir = :dir WHERE id = :id");
+        $query->bindParam(":dir", $dir);
+        $query->bindParam(":id", $noteId);
+        $query->execute();
+
         if ($noteFile == false) {
+          error_log("CASO IN FUNS ERRORE");
           die(json_encode("NOTEW"));
         }
         error_log("noteFile: " . $noteFile);
@@ -577,6 +584,7 @@
         return ["status"=>"done", "date"=>$date];
       } catch (PDOException $e) {
         PDOError($e);
+        error_log("CASO IN FUNS ERRORE PDO");
         die(json_encode("NOTEW"));
       } finally {
         $conn = null;
@@ -626,8 +634,8 @@
      */
     function checkNote($conn, String $noteId) {
       try {
-        $query = $conn->prepare("SELECT user FROM note WHERE id = :id");
-        $query->bindParam(":ttl", $noteId);
+        $query = $conn->prepare("SELECT user FROM note WHERE id = :noteId");
+        $query->bindParam(":noteId", $noteId);
         $query->execute();
         $result = $query->fetchAll();
         if (empty($result[0]["user"])) {
@@ -659,7 +667,7 @@
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $dir = $query->fetchAll();
         $dir = $dir[0]["dir"];
-        return file("../$dir");
+        return file("..$dir");
       } catch (PDOException $e) {
         PDOError($e);
         return false;
@@ -951,11 +959,7 @@
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $dir = $query->fetchAll();
         $dir = $dir[0]["dir"];
-        if ($dir !== $newDir) {
-          $newDir = "/notedb/$user/$noteId.txt";
-          exec("mv ..$dir ..$newDir");
-        }
-        if ($content = fopen("..$newDir", "w+")) {
+        if ($content = fopen("..$dir", "w+")) {
           //se usiamo r+ non possiamo eliminare caratteri, con w+ il file viene distrutto e riscritto.
           fwrite($content, $newContent);
           fclose($content);
@@ -1404,7 +1408,7 @@
         $picOnDb = true;
       }
       if(($authorized == true) && ($picOnDb == true)){
-        $getDir = $conn->prepare("SELECT pict.dir FROM pict INNER JOIN note ON note.id = pict.note WHERE id = :id");
+        $getDir = $conn->prepare("SELECT pict.dir FROM pict INNER JOIN note ON note.id = pict.note WHERE pict.id = :id");
         $getDir->bindParam(":id", $id);
         $getDir->execute();
         $result = $getDir->fetchAll();
@@ -1442,7 +1446,7 @@
    * @return string "internalError" Se viene sollevata una PDOException
    * @return string $preImgName.encode($imgName) il path fino al nome dell'immagine in clear e il nome immagine encoded da encode()
    */
-  function String urlCodec($conn, $noteId, $pic_id){
+   function urlCodec($conn, $noteId, $pic_id) : String {
     try{
       $getPath = $conn->prepare("SELECT dir FROM pict WHERE note = :note AND id = :id");
       $getPath->bindParam(":note", $noteId);

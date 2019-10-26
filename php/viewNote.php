@@ -49,8 +49,6 @@
               die("<h1>URL non formato correttamente! (Quindi, ovviamente, nota non trovata D:)");
             } else {
               $noteId = test_input($_GET["noteId"]);
-              $noteId = str_replace("'", "sc-a", $noteId);
-              $noteId = str_replace('"', "sc-q", $noteId);
               error_log('Visualizzazione: ' . $noteId);
               $note = searchNote(connectDb(), NULL, $noteId, NULL, NULL, NULL, ["true", "true", "true", "true", "true"], NULL, NULL, NULL, NULL, NULL, NULL);
               $title = $note[0]["title"];
@@ -105,7 +103,7 @@
           <div class="noteRating">
             Likes:
             <?php
-            if (checkNote(connectDb(), $title)) {
+            if (checkNote(connectDb(), $noteId)) {
                 if (($likes = getLikes($noteId)) === false || ($dislikes = getDislikes($noteId)) === false) {
                   echo "<script>error('NOTEREF'); $('.noteRating').html('Errore nel fetching dei likes e dislikes D:');</script>";
                   $displayRate = false;

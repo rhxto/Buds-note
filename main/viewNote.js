@@ -338,12 +338,12 @@ function modifyNote() {
   }
   $.post(ajaxurl, data, function(response) {
     response = JSON.parse(response);
-    if (response == "done") {
-      localStorage.setItem('noteId', id);
+    if (response["status"] == "done") {
       //in questo modo aggiorniamo il link della pagina senza doverla ricaricare con window.location.href, i primi due parametri della funzione servono ad altre cose
-      window.history.pushState("", "", "http://" + location.host + "/php/viewNote.php?id=" + id;
+      //window.history.pushState("", "", "http://" + location.host + "/php/viewNote.php?id=" + id);
+      //NOTE: DEPRECATED: da quando usiamo gli id, il titolo non cambia l'url
     } else {
-      error(response);
+      error(response["status"]);
     }
   });
 }
@@ -381,7 +381,7 @@ function rateNote(rating) {
 function removeImage(id) {
   var ajaxurl = "deleteImage.php";
   data = {
-    "note": localStorage.getItem("noteId"),
+    "noteId": localStorage.getItem("noteId"),
     "id": id
   }
   $.post(ajaxurl, data, function(response) {
@@ -458,7 +458,7 @@ $(document).ready(function() {
       var image_name = image.name;
       var image_extension = image_name.split('.').pop().toLowerCase();
       if (image_name.split('.').length > 2) {
-        alert("Formato non supportato! (Mantenere solo l'estensione originale)")
+        alert("Formato non supportato! (Mantenere solo l'estensione originale)");
       } else {
         if (jQuery.inArray(image_extension, ["gif", "png", "jpg", "jpeg"]) == -1) {
           alert("Formato non supportato!");

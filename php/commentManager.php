@@ -12,16 +12,16 @@
   }
   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["username"]) && $_SESSION['logged_in'] == '1') {
     $type = test_input($_POST["type"]);
-    if ((empty($_POST["content"]) || empty($_POST["title"])) && $type == "write")  {
+    if ((empty($_POST["content"]) || empty($_POST["noteId"])) && $type == "write")  {
       die(json_encode("COMMENTNV"));
     } elseif ($type == "write") {
       $content = test_input($_POST["content"]);
       $noteId = test_input($_POST["noteId"]);
     }
-    if ((empty($_POST["id"])) && $type == "delete") {
+    if (empty($_POST["id"]) && $type == "delete") {
       die(json_encode("COMMENTNV"));
     } elseif ($type == "delete") {
-      $noteId = test_input($_POST["noteId"]);
+      $id = test_input($_POST["id"]);
     }
     switch ($type) {
       case 'write':

@@ -136,7 +136,7 @@ function error(err) {
       $("#warn").html("Il file che stai cercando di caricare non é un'immagine! (Tuttavia la nota é stata pubblicata senza immagine)" + "Codice: " + err);
       break;
     case "IMGUFTB":
-      $("#warn").html("La dimensione massima per un'immagine é di 20MB! (Tuttavia la nota é stata pubblicata senza immagine)" + " Codice: " + err);
+      $("#warn").html("La dimensione massima per un'immagine é di 22MB! (Tuttavia la nota é stata pubblicata senza immagine)" + " Codice: " + err);
       break;
     case "IMGUMIE":
       $("#warn").html("C'é stato un errore nel caricamento dell'immagine! (Tuttavia la nota é stata pubblicata senza immagine)" + " Codice: " + err);
@@ -246,7 +246,7 @@ function cerca() {
       } else {
         $("#scriviNotaBtn").hide();
         for (i = 0; i < response.length; i++) {
-          $("#risultati").append("<a href='php/viewNote.php?id=" + response[i]["id"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
+          $("#risultati").append("<a href='php/viewNote.php?noteId=" + response[i]["id"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       }
     });
@@ -320,8 +320,8 @@ function getNotes() {
         error(response);
       } else {
         for (i = 0; i < response.length; i++) {
-          $("#scriviNotaBtn").hide();=
-          $("#risultati").append('<a href="php/viewNote.php?id=' + response[i]["id"] + '">' + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
+          $("#scriviNotaBtn").hide();
+          $("#risultati").append('<a href="php/viewNote.php?noteId=' + response[i]["id"] + '">' + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       }
     });
@@ -478,7 +478,7 @@ function uploadImage() {
         } else {
           var data = new FormData();
           data.append("uploadImage", image);
-          data.append("id", localStorage.getItem("noteId"));
+          data.append("noteId", localStorage.getItem("noteId"));
           $.ajax({
             url:"php/uploadImg.php",
             method:"POST",

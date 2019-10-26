@@ -20,9 +20,9 @@
   //Verifica che l'utente che vuole modificare la foto sia loggato, e sia chi dice di essere, se ci sono problemi di identità risponde IMGDNL
   if (empty(($user = $_SESSION["username"])) || !isset($_SESSION["username"]) || $_SESSION["logged_in"] === "0") {
     echo json_encode(["status"=>"IMGDNL"]);
-  } else if (($id = test_input($_POST["id"])) === $_POST["id"]) {
-    $noteId = test_input($id);
-    error_log("User: " . $user . " deleting: " . $noteId);
+  } else if (($noteId = test_input($_POST["noteId"])) === $_POST["noteId"] && ($id = test_input($_POST["id"])) === $_POST["id"]) {
+    $noteId = test_input($noteId);
+    error_log("User: " . $user . " deleting image: " . $id);
     //Concediamo la modifica solo se user è il creatore della nota o se è un admin
     //Dopo aver modificatola funzione removeImage bisogna anche modificare i case, togliendo quelli che non vengono mai sollevati
 
