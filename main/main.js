@@ -321,7 +321,11 @@ function getNotes() {
       } else {
         for (i = 0; i < response.length; i++) {
           $("#scriviNotaBtn").hide();
+<<<<<<< HEAD
           $("#risultati").append('<a href="php/viewNote.php?noteId=' + response[i]["id"] + '">' + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
+=======
+          $("#risultati").append('<a href="php/viewNote.php?id=' + response[i]["id"] + '">' + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
+>>>>>>> 09f76970d08b0154d0f5e2631f34a9d38186176a
         }
       }
     });
