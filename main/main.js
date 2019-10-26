@@ -320,7 +320,7 @@ function getNotes() {
         error(response);
       } else {
         for (i = 0; i < response.length; i++) {
-          $("#scriviNotaBtn").hide();=
+          $("#scriviNotaBtn").hide();
           $("#risultati").append('<a href="php/viewNote.php?id=' + response[i]["id"] + '">' + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       }

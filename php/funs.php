@@ -515,7 +515,7 @@
         $i = 0;
         foreach ($result as $row) {
           array_push($results, array());
-          $results[$i]["id"] $row["id"];
+          $results[$i]["id"] = $row["id"];
           $results[$i]["title"] = str_replace("_", " ", $row["title"]);
           $results[$i]["dir"] = $row["dir"];
           $results[$i]["user"] = $row["user"];
@@ -1442,7 +1442,7 @@
    * @return string "internalError" Se viene sollevata una PDOException
    * @return string $preImgName.encode($imgName) il path fino al nome dell'immagine in clear e il nome immagine encoded da encode()
    */
-  function String urlCodec($conn, $noteId, $pic_id){
+   function urlCodec($conn, $noteId, $pic_id) : String {
     try{
       $getPath = $conn->prepare("SELECT dir FROM pict WHERE note = :note AND id = :id");
       $getPath->bindParam(":note", $noteId);
