@@ -187,11 +187,10 @@ function error(err) {
 }
 function postComment() {
   var action = "write";
-  var title = localStorage.getItem("title");
   var ajaxurl = '../php/commentManager.php',
   data =  {
     'type': action,
-    'title': title,
+    'noteId': localStorage.getItem("noteId"),
     'content': $("#commentText").val().replace(/\n/g, "<br>")
   };
   $.post(ajaxurl, data, function (response) {
@@ -257,9 +256,8 @@ function abortNoteDeletion() {
 }
 function delNote() {
   var ajaxurl = "../php/noteManager.php";
-  var title = localStorage.getItem("title");
   data = {
-    'title': title,
+    'noteId': localStorage.getItem("noteId"),
     'type': 'delete'
   }
   $.post(ajaxurl, data, function(response) {
@@ -275,7 +273,7 @@ function delNote() {
       error(response);
     }
   });
-  localStorage.removeItem("title");
+  localStorage.removeItem("noteId");
   $("#delNoteBtn").html("Rimuovi nota");
   $("#delNoteBtn").attr("onclick", "deleteNote()");
 }
@@ -333,7 +331,7 @@ function modifyNote() {
   var newTitle = $(".spawnTtl").html().replace(/'/g, "sc-a");
   newTitle = newTitle.replace(/"/g, "sc-q");
   data = {
-    'title': localStorage.getItem("title"),
+    'noteId': localStorage.getItem("noteId"),
     'newTitle': newTitle,
     'newContent': content,
     'type': 'update'
@@ -341,9 +339,9 @@ function modifyNote() {
   $.post(ajaxurl, data, function(response) {
     response = JSON.parse(response);
     if (response == "done") {
-      localStorage.setItem('title', newTitle);
+      localStorage.setItem('noteId', id);
       //in questo modo aggiorniamo il link della pagina senza doverla ricaricare con window.location.href, i primi due parametri della funzione servono ad altre cose
-      window.history.pushState("", "", "http://" + location.host + "/php/viewNote.php?title=" + encodeURIComponent(newTitle.replace(/ /g, "%20")));
+      window.history.pushState("", "", "http://" + location.host + "/php/viewNote.php?id=" + id;
     } else {
       error(response);
     }
@@ -356,7 +354,7 @@ function toolbarUser() {
 function rateNote(rating) {
   var ajaxurl = "../php/noteManager.php";
   data = {
-    'title': localStorage.getItem("title"),
+    'noteId': localStorage.getItem("noteId"),
     'rating': rating,
     'type': 'rate'
 }
@@ -383,7 +381,7 @@ function rateNote(rating) {
 function removeImage(id) {
   var ajaxurl = "deleteImage.php";
   data = {
-    "note": localStorage.getItem("title"),
+    "note": localStorage.getItem("noteId"),
     "id": id
   }
   $.post(ajaxurl, data, function(response) {
@@ -471,7 +469,7 @@ $(document).ready(function() {
           } else {
             var data = new FormData();
             data.append("uploadImage", image);
-            data.append("note", localStorage.getItem("title"));
+            data.append("noteId", localStorage.getItem("noteId"));
             $.ajax({
               url:"uploadImg.php",
               method:"POST",

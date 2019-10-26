@@ -191,7 +191,7 @@
         echo json_encode($response);
     }
   } elseif ($type == "noteTtl") {
-    $response = searchNote($conn, $phrase, NULL, NULL, NULL, NULL, NULL, NULL, "date", "desc");
+    $response = searchNote($conn, NULL, $phrase, NULL, NULL, NULL, NULL, NULL, NULL, "date", "desc");
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
@@ -201,7 +201,7 @@
       echo json_encode($response);
     }
   } elseif ($type == "noteDept") {
-    $response = searchNote($conn, NULL, NULL, NULL, NULL, ["true","true","true","true","true"], $phrase, NULL, NULL, "date", "desc");
+    $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, ["true","true","true","true","true"], $phrase, NULL, NULL, "date", "desc");
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
@@ -211,7 +211,7 @@
       echo json_encode($response);
     }
   } elseif ($type == "notes") {
-    $response = searchNote($conn, NULL, NULL, NULL, NULL, ["true","true","true","true","true"], NULL, NULL, NULL, "date", "desc");
+    $response = searchNote($conn, NULL, NULL, NULL, NULL, NULL, ["true","true","true","true","true"], NULL, NULL, NULL, "date", "desc");
     if ($response == "internalError") {
       die(json_encode("IES"));
     }
@@ -221,7 +221,7 @@
       echo json_encode($response);
     }
   } elseif ($type == "note") {
-    $response = searchNote($conn, $title, NULL, $user, $subj, $years, $dept, $datefrom, $dateto, $orderby, $order);
+    $response = searchNote($conn, $title, NULL, NULL, $user, $subj, $years, $dept, $datefrom, $dateto, $orderby, $order);
     if ($response == "internalError") {
       die(json_encode("IES"));
     }

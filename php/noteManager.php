@@ -20,26 +20,23 @@
   }
   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["username"]) && $_SESSION['logged_in'] == '1' && isset($_POST["type"])) {
     $type = test_input($_POST["type"]);
-    if ((empty($_POST["title"]) || empty($_POST["content"]) || empty($_POST["subj"]) || empty($_POST["dept"]) || str_replace("/", "", $_POST["title"]) !== $_POST["title"]) && $type == "write")  {
+    if ((empty($_POST["title"]) || empty($_POST["content"]) || empty($_POST["subj"]) || empty($_POST["dept"]) || str_replace("/", "", $_POST["title"]) !== $_POST["title"]) && $type == "wrtitleite")  {
       error_log("Nota non valida write");
       die(json_encode("NOTENV"));
     } elseif ($type == "write") {
       $title = test_input($_POST["title"]);
       $title = str_replace("'", "sc-a", $title);
       $title = str_replace('"', "sc-q", $title);
-      if (checkNote(connectDb(), $title)) {
-        die(json_encode("NOTEWAE"));
-      }
       $content = test_input($_POST["content"]);
       $subj = test_input($_POST["subj"]);
       $dept = test_input($_POST["dept"]);
     }
     if ($type == "update") {
-      if (isNoteOwner(connectDb(), $_POST["title"], $_SESSION["username"])) {
-        if ((empty($_POST["title"]) || empty($_POST["newTitle"]) || empty($_POST["newContent"])) && $type == "update") {
+      if (isNoteOwner(connectDb(), test_input($_POST["noteId"]), $_SESSION["username"])) {
+        if ((empty($_POST["noteId"]) || empty($_POST["newTitle"]) || empty($_POST["newContent"])) && $type == "update") {
           die(json_encode("NOTEUNV"));
         } else {
-          $title = test_input($_POST["title"]);
+          $noteId = test_input($_POST["noteId"]);
           $newTitle = test_input($_POST["newTitle"]);
           $newContent = test_input($_POST["newContent"]);
         }
@@ -52,13 +49,13 @@
       error_log("Nota non valida delete");
       die(json_encode("NOTENV"));
     } elseif ($type == "delete") {
-      $title = test_input($_POST["title"]);
+      $noteId = test_input($_POST["noteId"]);
     }
     if ((empty($_POST["title"]) || empty($_POST["rating"])) && $type == "rate") {
       error_log("nota non valida rate");
       die(json_encode("NOTERNV"));
     } elseif ($type == "rate") {
-      $title = test_input($_POST["title"]);
+      $noteId = test_input($_POST["noteId"]);
       $rating = test_input($_POST["rating"]);
     }
     if ($type === "write") {
@@ -71,18 +68,24 @@
     switch ($type) {
       case 'write':
         if (strpos($title, ".") !== false || strpos($title, "/") !== false) {
-          die(json_encode("NOTESC"));
+          die(json_encode(["status"=>"NOTESC"]));
         } else {
-          if(writeNote(connectDb(), $title, $_SESSION["username"], $subj, $dept, $year, $content) === true) {
-            echo json_encode("done");
+          if(($result = writeNote(connectDb(), $title, $_SESSION["username"], $subj, $dept, $year, $content))["status"] === true) {
+            if (($id = getNoteId(connectDb(), $title, $_SESSION["username"], $result["date"])) != "internalError") {
+              echo json_encode(["status"=>"done", "id"=>$id]);
+            } else if ($id === "internalError"){
+              echo json_encode(["status"=>"NOTEW"]);
+            } else {
+              echo json_encode(["status"=>"NOTEWIN"]);
+            }
           } else {
-            die(json_encode("NOTEW"));
+            die(json_encode(["status"=>"NOTEW"]));
           }
         }
         break;
       case 'update':
-        if (checkNote(connectDb(), $title)) {
-          if (updateNote(connectDb(), $_SESSION["username"], $title, $newTitle, $newContent)) {
+        if (checkNote(connectDb(), $noteId)) {
+          if (updateNote(connectDb(), $_SESSION["username"], $noteId, $newTitle, $newContent)) {
             echo json_encode("done");
           } else {
             die(json_encode("NOTEUUF"));
@@ -92,12 +95,12 @@
         }
         break;
       case 'delete':
-        if (getAcclvl($_SESSION["username"]) == 1 || isNoteOwner(connectDb(), $title, $_SESSION["username"])) {
-	         if (checkNote(connectDb(), $title)) {
-             foreach (getPicsPathsAndIds($title) as $pic) {
+        if (getAcclvl($_SESSION["username"]) == 1 || isNoteOwner(connectDb(), $noteId, $_SESSION["username"])) {
+	         if (checkNote(connectDb(), $noteId)) {
+             foreach (getPicsPathsAndIds($noteId) as $pic) {
               exec("rm " . $pic["dir"]);
              }
-	           if (delNote(connectDb(), $title)) {
+	           if (delNote(connectDb(), $noteId)) {
                echo json_encode("done");
              } else {
                echo json_encode("NOTEDE");
@@ -111,18 +114,18 @@
       }
       break;
       case "rate":
-        if (checkNote(connectDb(), $title)) {
+        if (checkNote(connectDb(), $noteId)) {
           if ($rating == "true") {
             $rating = true;
           } else {
             $rating = false;
           }
-          if ($type = alreadyRated($_SESSION["username"], $title) === "1") {
+          if ($type = alreadyRated($_SESSION["username"], $noteId) === "1") {
             $type = "modify";
           } else {
             $type = "new";
           }
-          if ($response = rateNote($_SESSION["username"], $title, $rating)) {
+          if ($response = rateNote($_SESSION["username"], $noteId, $rating)) {
             echo json_encode(["status"=> "done", "type"=>$type]);
           } elseif ($response === "internalError") {
             die(json_encode("NOTERWIE"));

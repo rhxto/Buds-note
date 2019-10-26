@@ -246,9 +246,7 @@ function cerca() {
       } else {
         $("#scriviNotaBtn").hide();
         for (i = 0; i < response.length; i++) {
-          response[i]["title"] = response[i]["title"].replace(/sc-a/g, "&apos;");
-          response[i]["title"] = response[i]["title"].replace(/sc-q/g, "&quot;");
-          $("#risultati").append("<a href='php/viewNote.php?title=" + encodeURIComponent(response[i]["title"].replace(/&quot;/g, "sc-q").replace(/&apos;/g, "sc-a")) + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
+          $("#risultati").append("<a href='php/viewNote.php?id=" + response[i]["id"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       }
     });
@@ -322,10 +320,8 @@ function getNotes() {
         error(response);
       } else {
         for (i = 0; i < response.length; i++) {
-          $("#scriviNotaBtn").hide();
-          response[i]["title"] = response[i]["title"].replace(/sc-a/g, "&apos;");
-          response[i]["title"] = response[i]["title"].replace(/sc-q/g, "&quot;");
-          $("#risultati").append('<a href="php/viewNote.php?title=' + encodeURIComponent(response[i]["title"].replace(/&quot;/g, "sc-q").replace(/&apos;/g, "sc-a")) + '">' + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
+          $("#scriviNotaBtn").hide();=
+          $("#risultati").append('<a href="php/viewNote.php?id=' + response[i]["id"] + '">' + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       }
     });
@@ -391,7 +387,8 @@ function submitNote() {
   }
   $.post(ajaxurl, data, function(response) {
     response = JSON.parse(response);
-    if (response == "done") {
+    if (response["status"] == "done") {
+      localStorage.setItem("noteId", response["id"]);
       if ($("#uploadImage").val() !== '') {
         uploadImage();
       } else {
@@ -404,7 +401,7 @@ function submitNote() {
         }, 3000);
       }
     } else {
-      error(response);
+      error(response["status"]);
     }
   });
 }
@@ -481,7 +478,7 @@ function uploadImage() {
         } else {
           var data = new FormData();
           data.append("uploadImage", image);
-          data.append("note", $("#writeNoteTitle").val());
+          data.append("id", localStorage.getItem("noteId"));
           $.ajax({
             url:"php/uploadImg.php",
             method:"POST",

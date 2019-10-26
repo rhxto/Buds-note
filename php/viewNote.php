@@ -45,14 +45,15 @@
             return $data;
           }
           if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            if (empty(urldecode($_GET["title"]))) {
+            if (empty($_GET["noteId"])) {
               die("<h1>URL non formato correttamente! (Quindi, ovviamente, nota non trovata D:)");
             } else {
-              $title = test_input(urldecode($_GET["title"]));
-              $title = str_replace("'", "sc-a", $title);
-              $title = str_replace('"', "sc-q", $title);
-              error_log('Visualizzazione: ' . $title);
-              $note = searchNote(connectDb(), $title, NULL, NULL, NULL, ["true", "true", "true", "true", "true"], NULL, NULL, NULL, NULL, NULL, NULL);
+              $noteId = test_input($_GET["noteId"]);
+              $noteId = str_replace("'", "sc-a", $noteId);
+              $noteId = str_replace('"', "sc-q", $noteId);
+              error_log('Visualizzazione: ' . $noteId);
+              $note = searchNote(connectDb(), NULL, $noteId, NULL, NULL, NULL, ["true", "true", "true", "true", "true"], NULL, NULL, NULL, NULL, NULL, NULL);
+              $title = $note[0]["title"];
             }
             if (empty($note[0]['title'])) {
               echo "<script>$('.noteInfoDisplay').hide();</script>";
@@ -65,13 +66,9 @@
         <div class="noteHeaderTtl">
           <?php
             if ($display) {
-              echo "<script>localStorage.setItem('title', '" . $title . "');</script>";
-              $title = str_replace("sc-a", "&apos;", $title);
-              $title = str_replace("sc-q", "&quot;", $title);
+              echo "<script>localStorage.setItem('noteId', '" . $noteId . "');</script>";
               echo "<span class=spawnTtl>" . $title . "</span><br/>";
             }
-            $title = str_replace("&apos;", "sc-a", $title);
-            $title = str_replace("&quot;", "sc-q", $title);
           ?></div>
         <div class="noteInfo">
           <br/>
@@ -109,7 +106,7 @@
             Likes:
             <?php
             if (checkNote(connectDb(), $title)) {
-                if (($likes = getLikes($title)) === false || ($dislikes = getDislikes($title)) === false) {
+                if (($likes = getLikes($noteId)) === false || ($dislikes = getDislikes($noteId)) === false) {
                   echo "<script>error('NOTEREF'); $('.noteRating').html('Errore nel fetching dei likes e dislikes D:');</script>";
                   $displayRate = false;
                 } else {
@@ -133,7 +130,7 @@
           <div class="noteText">
             <?php
               if ($display) {
-                foreach (getNote(connectDb(), $title) as $row) {
+                foreach (getNote(connectDb(), $noteId) as $row) {
                   $row = str_replace("\n", "<br />", $row);
                   $row = str_replace("'", "&#39;", $row);
                   echo $row;
@@ -143,7 +140,7 @@
            </div>
            <div id="pics">
              <?php
-               foreach (getPicsPathsAndIds($title) as $pic) {
+               foreach (getPicsPathsAndIds($noteId) as $pic) {
                  echo '<div class="removeImageContainer" id="' . $pic["id"] . '">';
                  echo '  <img style="width: 100%;" src="' . $pic["dir"] . '">';
                  echo '  <button id=' . $pic["id"] . '" class="btn removeImage" onclick="removeImage(' . $pic["id"] . ')">Rimuovi immagine</button>';
@@ -166,7 +163,7 @@
             if ($display) {
               require_once 'core.php';
               require_once 'funs.php';
-              $comments = searchRevw(connectDb(), NULL, NULL, $title, NULL, NULL, NULL, NULL, NULL);
+              $comments = searchRevw(connectDb(), NULL, NULL, $noteId, NULL, NULL, NULL, NULL, NULL);
               foreach ($comments as $comment) {
                 $comment["review"] = str_replace("&lt;br&gt;", "<br>", $comment["review"]);
                 $comment = str_replace("'", "&#39;", $comment);
@@ -200,14 +197,12 @@
   </body>
 </html>
 <?php
-  $title = str_replace("'", "sc-a", $_GET["title"]);
-  $title = str_replace('"', "sc-q", $title);
   if(gettype($m = getManStatus()) === "string") {
     echo "<script>error($m);</script>";
   } elseif ($m == true) {
     echo "<script>error('man');</script>";
   }
-  if (checkNote(connectDb(), $title)) {
+  if (checkNote(connectDb(), $noteId)) {
     echo "<script> $('.comments').show();</script>";
   }
   if (isset($_SESSION['logged_in'])) {
@@ -216,9 +211,9 @@
       if(getAcclvl($_SESSION["username"]) == 1) {
         echo "<script>$('.adminTools').show(); $('.admin').show();</script>";
       }
-      if (checkNote(connectDb(), $title)) {
+      if (checkNote(connectDb(), $noteId)) {
         echo "<script> $('.postCommentElms').show();</script>";
-        if (isNoteOwner(connectDb(), $title, $_SESSION["username"])) {
+        if (isNoteOwner(connectDb(), $noteId, $_SESSION["username"])) {
           echo "<script>$('#modifyNoteBtn').show(); toolbarUser();</script>";
         }
       }

@@ -413,6 +413,7 @@
      *
      * @param $conn La connessione con la quale stiamo lavorando
      * @param $title Il titolo della nota cercare
+     * @param $noteId L'id della nota da cercare
      * @param $dir La directpry in cui si trova la nota da cercare
      * @param $user L'utente che ha scritto la nota da carcare
      * @param $subj La materia a cui appartiene la nota da cercare
@@ -426,9 +427,12 @@
      * @return array[][] Dove nel primo capo ci va il numero n dell'ordine di sorting delle note (nel caso di più note) e nel secondo paramentro ci va il nome del campo che vogliamo leggere della nota n
      * @return string "internalError" Se vengono sollevate delle PDOException
      */
-    function searchNote($conn, $title, $dir, $user, $subj, $years, $dept, $datefrom, $dateto, $order, $v) {
+    function searchNote($conn, $title, $noteId, $dir, $user, $subj, $years, $dept, $datefrom, $dateto, $order, $v) {
       if ($title == NULL) {
         $title = "%";
+      }
+      if ($noteId == NULL) {
+        $noteId = "%";
       }
       if ($dir == NULL) {
         $dir = "%";
@@ -487,8 +491,9 @@
       }
 
       try {
-        $query = $conn->prepare("SELECT * FROM note WHERE (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND ((year LIKE :year1) OR (year LIKE :year2) OR (year LIKE :year3) OR (year LIKE :year4) OR (year LIKE :year5)) AND (dept LIKE :dept) AND (date BETWEEN :datefrom AND :dateto) ORDER BY :ord :direction");
+        $query = $conn->prepare("SELECT * FROM note WHERE (id LIKE :id) AND (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND ((year LIKE :year1) OR (year LIKE :year2) OR (year LIKE :year3) OR (year LIKE :year4) OR (year LIKE :year5)) AND (dept LIKE :dept) AND (date BETWEEN :datefrom AND :dateto) ORDER BY :ord :direction");
         $title = str_replace(" ", "_", $title);
+        $query->bindParam(":id", $noteId);
         $query->bindParam(":ttl", $title);
         $query->bindParam(":dir", $dir);
         $query->bindParam(":usr", $user);
@@ -510,6 +515,7 @@
         $i = 0;
         foreach ($result as $row) {
           array_push($results, array());
+          $results[$i]["id"] $row["id"];
           $results[$i]["title"] = str_replace("_", " ", $row["title"]);
           $results[$i]["dir"] = $row["dir"];
           $results[$i]["user"] = $row["user"];
@@ -543,14 +549,12 @@
      * @return true Se tutto va come deve e la nota viene caricata senza problemi
      */
     function writeNote($conn, String $title, String $user, String $subj, String $dept, int $year, String $content) {
-      $title = str_replace(" ", "_", $title);
-      $dir = "/notedb/$user/$title.txt";
       $date = date("Y-m-d H:i:s");
       if ($year < 1 || $year > 5) {
         return "yearOutBound";
       }
       try {
-        $query = $conn->prepare("INSERT INTO note VALUES (:ttl, :dir, :user, :subj, :year, :dept, :date)");
+        $query = $conn->prepare("INSERT INTO note (title, dir, user, subj, year, dept, date) VALUES (:ttl, :dir, :user, :subj, :year, :dept, :date)");
         $query->bindParam(":ttl", $title);
         $query->bindParam(":dir", $dir);
         $query->bindParam(":user", $user);
@@ -558,15 +562,19 @@
         $query->bindParam(":year", $year);
         $query->bindParam(":dept", $dept);
         $query->bindParam(":date", $date);
-        $noteFile = fopen("../notedb/$user/$title.txt", "w+");
+        $query->execute();
+        $noteId = getNoteId(connectDb(), $title, $user, $date);
+
+        $dir = "/notedb/$user/$noteId.txt";
+        $noteFile = fopen("../notedb/$user/$noteId.txt", "w+");
         if ($noteFile == false) {
           die(json_encode("NOTEW"));
         }
         error_log("noteFile: " . $noteFile);
         fwrite($noteFile, $content);
         fclose($noteFile);
-        $query->execute();
-        return true;
+
+        return ["status"=>"done", "date"=>$date];
       } catch (PDOException $e) {
         PDOError($e);
         die(json_encode("NOTEW"));
@@ -576,27 +584,26 @@
     }
 
     /**
-     * La funzione cancella una nota dato il suo titolo
+     * La funzione cancella una nota dato il suo id
      *
      * @param $conn La connessione che stiamo usando
-     * @param $title Il titolo della nota da cancellare
+     * @param $noteId L'id della nota da cancellare
      *
      * @return true Se tutto va come deve e viene cancellata
      * @return false Se viene sollevata una PDOException
      */
-    function delNote($conn, String $title) {
-      $title = str_replace(" ", "_", $title);
-      error_log("Deleting: $title");
+    function delNote($conn, String $noteId) {
+      error_log("Deleting: $noteId");
       try {
-        $query = $conn->prepare("SELECT dir FROM note WHERE title = :ttl");
-        $query->bindParam(":ttl", $title);
+        $query = $conn->prepare("SELECT dir FROM note WHERE id = :id");
+        $query->bindParam(":id", $noteId);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $dir = $query->fetchAll();
         $dir = $dir[0]["dir"];
         exec("rm ..$dir");
-        $query = $conn->prepare("DELETE FROM note WHERE title = :ttl");
-        $query->bindParam(":ttl", $title);
+        $query = $conn->prepare("DELETE FROM note WHERE id = :id");
+        $query->bindParam(":id", $noteId);
         $query->execute();
 
         return true;
@@ -609,19 +616,18 @@
     }
 
     /**
-     * La funzione dice se è presente la nota con il titolo $title fra le note
+     * La funzione dice se è presente la nota con id $noteId fra le note
      *
      * @param $conn La connessione che vogliamo usare
-     * @param $title Il titolo della nota di cui vogliamo verificare la presenza
+     * @param $noteId L'id della nota di cui vogliamo verificare la presenza
      *
      * @return true Se una nota con titolo $title è già presente
      * @return false Se non c'è nessuna nota con quel titolo o se è stato sollevata una PDOException
      */
-    function checkNote($conn, String $title) {
-      $title = str_replace(" ", "_", $title);
+    function checkNote($conn, String $noteId) {
       try {
-        $query = $conn->prepare("SELECT user FROM note WHERE title = :ttl");
-        $query->bindParam(":ttl", $title);
+        $query = $conn->prepare("SELECT user FROM note WHERE id = :id");
+        $query->bindParam(":ttl", $noteId);
         $query->execute();
         $result = $query->fetchAll();
         if (empty($result[0]["user"])) {
@@ -645,11 +651,10 @@
      * @return array[] array in cui in ogni elemento c'è una riga del file seguito ovviamente dal suo \n
      * @return false Se viene sollevata una PDOException
      */
-    function getNote($conn, String $title) {
-      $title = str_replace(" ", "_", $title);
+    function getNote($conn, String $noteId) {
       try {
-        $query = $conn->prepare("SELECT dir FROM note WHERE title = :ttl");
-        $query->bindParam(":ttl", $title);
+        $query = $conn->prepare("SELECT dir FROM note WHERE id = :noteId");
+        $query->bindParam(":noteId", $noteId);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $dir = $query->fetchAll();
@@ -663,89 +668,6 @@
       }
     }
 
-    /**
-     *
-     * @deprecated Non viene più usata la tabella mark, è stata sotituita da like
-     *
-     * La funzione mi permette di ricercare una nota ed ottenere il solito array in cui in ogni elemento son poi contenuti tramite un subarray associativo i nomi degli attributi
-     *
-     * @param $conn La connessione che stiamo usando
-     * @param $id L'id del voto che stiamo cercando
-     * @param $user L'utente che ha caricato il voto
-     * @param $title Il titolo della nota che ha ricevuto il voto
-     * @param $mark Il voto vche è stato dato nella tupla mark (ovvero il valore della valutazione)
-     * @param $datefrom La data minima in cui deve essere stato caricato il voto
-     * @param $dateto La data massima entro la quale deve essere stato caricato il voto
-     * @param $code Il nome dell'attributo tramite il quale dobbiamo ordinare i risultati della query
-     *
-     * @return array[x]['yyy'] nella x va il numer del campo in ordine di sorting della query, su yyy ci va il campo che voglio leggere dall'elemento x
-     * @return string 'internalError' Se viene sollevata una PDOException
-     */
-    function searchMark($conn, $id, $user, $title, $mark, $datefrom, $dateto, $code){
-
-      if($conn == "null"){
-        return -1;
-      }
-      if($id == NULL){
-        $id = "%";
-      }
-      if($user == NULL){
-        $user = '%';
-      }
-      if($title == NULL){
-        $title = "%";
-      } else {
-        $title = str_replace(" ", "_", $title);
-      }
-      if($mark == NULL){
-        $mark = "%";
-      }elseif($mark<1){
-        $mark = 1;
-      }elseif($mark>5){
-        $mark = 5;
-      }
-      if ($datefrom == NULL) {
-        $datefrom = "%";
-      }
-      if ($dateto == NULL) {
-        $dateto = date("Y-m-d H:i:s");
-      }
-      if($code == NULL){
-        $code = "title";
-      }
-      try {
-        $query = $conn->prepare("SELECT * FROM mark WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (mark LIKE :mark) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :code");
-        $query->bindParam(':id', $id);
-        $query->bindParam(':user', $user);
-        $query->bindParam(':title', $title);
-        $query->bindParam(':mark', $mark);
-        $query->bindParam(':datefrom', $datefrom);
-        $query->bindParam(':dateto', $dateto);
-        $query->bindParam(':code', $code);
-        $query->execute();
-        $query->setFetchMode(PDO::FETCH_ASSOC);
-        $result = $query->fetchAll();
-        $results = array();
-        $i = 0;
-        foreach ($result as $row) {
-          array_push($results, array());
-          //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
-          $results[$i]["id"] = $row["id"];
-          $results[$i]["user"] = $row["user"];
-          $results[$i]["title"] = str_replace("_", " ", $row["title"]);
-          $results[$i]["mark"] = $row["mark"];
-          $results[$i]["date"] = $row["date"];
-          $i++;
-        }
-        return $results;
-      } catch(PDOException $e) {
-        if (PDOError($e)) {
-          return "internalError";
-        }
-      } finally {
-        $conn = null;
-      }
-    }
 
     /**
      * La funzione ricerca un report dando i seguenti parametri come filtri
@@ -753,7 +675,7 @@
      * @param $conn La connessione che stiamo usando
      * @param $id L'id del report che stiamo cercando
      * @param $user L'utente che ha caricato la report che stiamo cercando
-     * @param $title Il tiolo della nota sulla quale deve essere stato fatto il report
+     * @param $noteId L'ID della nota della quale deve essere fatto il report
      * @param $text Il testo che deve essere scritto dentro la nota
      * @param $datefrom La data minima in cui deve essere stata scritta la nota
      * @param $dateto La data massima entro la quale deve essere stata scritta la nota
@@ -762,7 +684,7 @@
      * @return array[x]['yyy'] In cui su x deve andare il numero di sorting della tupla nella query e su yyy ci va il nome dell'attributo di cui ogliamo conoscere il contenuto per la tupla numero x
      * @return string "internalError" Se viene sollevata una PDOException
      */
-    function searchRepo($conn, $id, $user, $title, $text, $datefrom, $dateto, $code){
+    function searchRepo($conn, $id, $user, $noteId, $text, $datefrom, $dateto, $code){
 
       if($conn == "null"){
         return -1;
@@ -773,10 +695,8 @@
       if($user == NULL){
         $user = '%';
       }
-      if($title == NULL){
-        $title = "%";
-      } else {
-        $title = str_replace(" ", "_", $title);
+      if($noteId == NULL){
+        $noteId = "%";
       }
       if($text == NULL){
         $text = "%";
@@ -791,10 +711,10 @@
         $code = "title";
       }
       try {
-        $query = $conn->prepare("SELECT * FROM repo WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (text LIKE :text) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :code");
+        $query = $conn->prepare("SELECT * FROM repo WHERE (id LIKE :id) AND (user LIKE :user) AND (note = :note) AND (text LIKE :text) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :code");
         $query->bindParam(':id', $id);
         $query->bindParam(':user', $user);
-        $query->bindParam(':title', $title);
+        $query->bindParam(':note', $noteId);
         $query->bindParam(':text', $text);
         $query->bindParam(':datefrom', $datefrom);
         $query->bindParam(':dateto', $dateto);
@@ -809,7 +729,7 @@
           //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
           $results[$i]["id"] = $row["id"];
           $results[$i]["user"] = $row["user"];
-          $results[$i]["title"] = str_replace("_", " ", $row["title"]);
+          $results[$i]["note"] = $row["note"];
           $results[$i]["text"] = $row["text"];
           $results[$i]["date"] = $row["date"];
           $i++;
@@ -829,7 +749,7 @@
      * @param $conn La connessione che stiam usando
      * @param $id L'id del commento che stiamo cercando
      * @param $user L'utent che ha creato il commento che stiamo cercando
-     * @param $title Il titolo della note di cui stiamo cercando il commento
+     * @param $noteId L'id della nora di cui ricercare il commento
      * @param $review Il contenuto del commento che stiamo cercando
      * @param $datefrom La data minima entro cui deve essere stata scritto il commento
      * @param $dateto La data entro la quale deve essere stata scritta la nota
@@ -839,7 +759,7 @@
      * @return array[x]['yyy'] In cui x è l'ordine di sorting in cui la tupla è stata ordinata e yyy l'attributo che vogliamo leggere della tupla x
      * @return string "internalError" Se viene sollevata una PDOException
      */
-    function searchRevw($conn, $id, $user, $title, $review, $datefrom, $dateto, $order, $v){
+    function searchRevw($conn, $id, $user, $noteId, $review, $datefrom, $dateto, $order, $v){
 
       if($conn == "null"){
         return -1;
@@ -850,10 +770,8 @@
       if($user == NULL){
         $user = '%';
       }
-      if($title == NULL){
-        $title = "%";
-      } else {
-        $title = str_replace(" ", "_", $title);
+      if($noteId == NULL){
+        $noteId = "%";
       }
       if($review == NULL){
         $review = "%";
@@ -875,10 +793,10 @@
         $v = "ASC";
       }
       try {
-        $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (title LIKE :title) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :ord :direction");
+        $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (note LIKE :noteId) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :ord :direction");
         $query->bindParam(':id', $id);
         $query->bindParam(':user', $user);
-        $query->bindParam(':title', $title);
+        $query->bindParam(':noteId', $noteId);
         $query->bindParam(':review', $review);
         $query->bindParam(':datefrom', $datefrom);
         $query->bindParam(':dateto', $dateto);
@@ -894,7 +812,7 @@
           //dobbiamo usare il _ perché nel where di delete non funzionerebbe usare spazi
           $results[$i]["id"] = $row["id"];
           $results[$i]["user"] = $row["user"];
-          $results[$i]["title"] = str_replace("_", " ", $row["title"]);
+          $results[$i]["note"] = $row["note"];
           $results[$i]["review"] = $row["review"];
           $results[$i]["date"] = $row["date"];
           $i++;
@@ -913,22 +831,21 @@
      *
      * @param $conn La connessione che vogliamo usare
      * @param $user L'utente che ha caricato il commento
-     * @param $title Il titolo della nota sulla quale è stato caricato il commento
+     * @param $noteId L'id della nota sulla quale è stato caricato il commento
      * @param $content Il contenuto del commento
      *
      * @return array[] dove posso scegliere fra tre colonne: "state" che è true se è andata a buon fine o false se non è stato così, "id" l'id che è stato associato al commento, "date" la data di pubblicazione del commento
      * @return false Se uno dei parametri è nullo
      * @return string "internalError" Se viene sollevata una PDOException
      */
-    function postComment($conn, String $user, String $title, String $content) {
-      if ($user == NULL || $content == NULL || $conn == "null" || $conn == NULL) {
+    function postComment($conn, String $user, int $noteId, String $content) {
+      if ($user == NULL || $content == NULL || $conn == "null" || $conn == NULL || $noteId == NULL) {
         return false;
       }
-      $title = str_replace(" ", "_", $title);
       try {
-        $query = $conn->prepare("INSERT INTO revw (user, title, review, date) VALUES (:user, :title, :review, NOW())");
+        $query = $conn->prepare("INSERT INTO revw (user, note, review, date) VALUES (:user, :noteId, :review, NOW())");
         $query->bindParam(":user", $user);
-        $query->bindParam(":title", $title);
+        $query->bindParam(":noteId", $noteId);
         $query->bindParam(":review", $content);
         $query->execute();
         //dobbiamo ritornare anche l'id per la cancellazione dei commenti postati nella pagina senza che sia ricaricata
@@ -980,33 +897,28 @@
      * Dice se un utente è il creatore della nota dati i parametri
      *
      * @param $conn La connessione che stiamo usando
-     * @param $title Il titolo della nota di cui dobbiamo verificare il proprietario
+     * @param $noteId L'id della nota di cui dobbiamo verificare il proprietario
      * @param $user L'utente che deve corrispondere al possessore della note per esserne il creatore
      *
      * @return false Se il titolo o il nome dell'utente della nota non è valido o se non è lui il possessore
      * @return true Se $user è il creatore della nota $title
      * @return string "itnernalError" Se viene sollevata una PDOException
      */
-    function isNoteOwner($conn, $title, $user) {
-      if ($conn == "null" || $conn == NULL || $title == NULL || $user == NULL) {
+    function isNoteOwner($conn, $noteId, $user) {
+      if ($conn == "null" || $conn == NULL || $noteId == NULL || $user == NULL) {
         return false;
       }
       try {
-        error_log("INO: $title, $username");
-        $title = str_replace(" ", "_", $title);
-        $query = $conn->prepare("SELECT user FROM note WHERE title LIKE :ttl");
-        $query->bindParam(":ttl", $title);
+        $query = $conn->prepare("SELECT user FROM note WHERE id = :id");
+        $query->bindParam(":id", $noteId);
         $query->execute();
         if (null !== ($result = $query->fetchAll()[0]["user"]) && !empty($result)) {
           if ($result === $user) {
-            error_log("INO: Y");
             return true;
           } else {
-            error_log("INO: N");
             return false;
           }
         } else {
-          error_log("INO: N");
           return false;
         }
       } catch(PDOException $e) {
@@ -1023,34 +935,33 @@
      *
      * @param $conn La connessione che stiamo usando
      * @param $user Il nome dell'utente che ha creato la nota
-     * @param $title Il vecchio titolo della nota da cambiare
+     * @param $noteId L'id della nota di cui modificare il titolo
      * @param $newTitle Il nuovo titolo della nota da aggiornare
      * @param $newContent Il nuovo contenuto della nota se vogliamo aggiorarlo
      *
      * @return true Se la nota viene aggiornata con successo
      * @return false Se per qualche ragione non viene aperto il file o se viene sollevata una PDOException
      */
-    function updateNote($conn, $user, $title, $newTitle, $newContent) {
-      $title = str_replace(" ", "_", $title);
+    function updateNote($conn, $user, $noteId, $newTitle, $newContent) {
       $newTitle = str_replace(" ", "_", $newTitle);
-      $newDir = "/notedb/$user/$newTitle.txt";
       try {
-        $query = $conn->prepare("SELECT dir FROM note WHERE title = :ttl");
-        $query->bindParam(":ttl", $title);
+        $query = $conn->prepare("SELECT dir FROM note WHERE id = :noteId");
+        $query->bindParam(":noteId", $noteId);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $dir = $query->fetchAll();
         $dir = $dir[0]["dir"];
         if ($dir !== $newDir) {
+          $newDir = "/notedb/$user/$noteId.txt";
           exec("mv ..$dir ..$newDir");
         }
         if ($content = fopen("..$newDir", "w+")) {
           //se usiamo r+ non possiamo eliminare caratteri, con w+ il file viene distrutto e riscritto.
           fwrite($content, $newContent);
           fclose($content);
-          $query = $conn->prepare("UPDATE note SET title = :newTtl WHERE title = :ttl");
+          $query = $conn->prepare("UPDATE note SET title = :newTtl WHERE id = :noteId");
           $query->bindParam(":newTtl", $newTitle);
-          $query->bindParam(":ttl", $title);
+          $query->bindParam(":noteId", $noteId);
           $query->execute();
           $query = $conn->prepare("UPDATE note SET dir = :newDir WHERE title = :newTtl");
           $query->bindParam(":newTtl", $newTitle);
@@ -1072,35 +983,34 @@
      * La funzione inserisce il rating di una nota se l'utente non l'aveva già inserito o se il rating che vuole inserire ora è diverso da quelle che aveva inserito in passato
      *
      * @param $username Lo username che vuole inserire la nota
-     * @param $title Il titolo della nota della quale si vuole inserire il rating
+     * @param $noteId L'id della nota della quale si vuole inserire il rating
      * @param $rating Il rating che si vuole isnerire (true per Mi piace e false per Non mi piace)
      *
      * @return true Se il rating viene aggiunto o aggiornato senza problemi
      * @return string "internalError" Se è stata sollevta una PDOexception
      * @return false Se il rating che si vuole inserire era già presente
      */
-    function rateNote(String $username, String $title, bool $rating) {
-      $title = str_replace(" ", "_", $title);
+    function rateNote(String $username, String $noteId, bool $rating) {
       if ($rating) {
         $rating = 1;
       } else {
         $rating = 0;
       }
       try {
-        if(alreadyRated($username, $title) == 0) {
+        if(alreadyRated($username, $noteId) == 0) {
            $conn = connectDb();
-           $query = $conn->prepare("INSERT INTO rate (user, note, rate, date)  VALUES (:username, :title, :rating, NOW())");
+           $query = $conn->prepare("INSERT INTO rate (user, note, rate, date)  VALUES (:username, :noteId, :rating, NOW())");
            $query->bindParam(":username", $username);
-           $query->bindParam(":title", $title);
+           $query->bindParam(":noteId", $noteId);
            $query->bindParam(":rating", $rating);
            $query->execute();
            return true;
-         } elseif((alreadyRated($username, $title) == 1) && (getRate($username, $title) != -1) && (getRate($username, $title) != $rating)) {
+         } elseif((alreadyRated($username, $noteId) == 1) && (getRate($username, $noteId) != -1) && (getRate($username, $noteId) != $rating)) {
            $conn = connectDb();
-           $query = $conn->prepare("UPDATE rate SET rate = :rating  WHERE (user = :username) AND (note = :title)");
+           $query = $conn->prepare("UPDATE rate SET rate = :rating  WHERE (user = :username) AND (note = :noteId)");
            $query->bindParam(":rating", $rating);
            $query->bindParam(":username", $username);
-           $query->bindParam(":title", $title);
+           $query->bindParam(":noteId", $noteId);
            $query->execute();
            return true;
          } else {
@@ -1118,18 +1028,17 @@
      * La funzione serve a verificare se l'utente ha già inserito un rating per la nota, ritorna il numero di rating già inseriti (dovrebbe essere fra 1 e 0)
      *
      * @param $username Lo username dell'utente di cui si vuole controllare il rate
-     * @param $title La nota sulla quale si cerca il possibile rate dell'utente
+     * @param $noteId L'id della nota sulla quale si cerca il possibile rate dell'utente
      *
-     * @return int Il numero di rate messi dall'utente alla nota $title (dovrebbe essere fra 0 e 1)
+     * @return int Il numero di rate messi dall'utente alla nota $noteId (dovrebbe essere fra 0 e 1)
      * @return int -1 Se è stata sollevata una eccezzione PDOException
      */
-    function alreadyRated(String $username, String $title) {
-      $title = str_replace(" ", "_", $title);
+    function alreadyRated(String $username, String $noteId) {
       try {
         $conn = connectDb();
-        $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (user = :username) AND (note = :title)");
+        $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (user = :username) AND (note = :id)");
         $query->bindParam(":username", $username);
-        $query->bindParam(":title", $title);
+        $query->bindParam(":id", $noteId);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $result = $query->fetchAll();
@@ -1146,22 +1055,21 @@
      * Restituisce il rate dato a una nota da un utente se c'è il rate, altrimenti restituisce -1
      *
      * @param $username Lo username del quale si vuole fare la ricerca
-     * @param $title Il titolo della nota sulla quale si deve cercare il rate
+     * @param $noteId L'id della nota sulla quale si deve cercare il rate
      *
      * @return int -1 Se non c'è alcun rate su quella nota da parte dell'utente o se è stata sollevata una PDOException
      * @return int 1 Se il rate è TRUE
      * @return int 0 Se il rate è FALSE
      */
-    function getRate(String $username, String $title){
-      $title = str_replace(" ", "_", $title);
+    function getRate(String $username, String $noteId){
       try {
-        if (alreadyRated($username, $title) != 1) {
+        if (alreadyRated($username, $noteId) != 1) {
           return -1;
         } else {
           $conn = connectDb();
-          $query = $conn->prepare("SELECT rate FROM rate WHERE (user = :username) AND (note = :title)");
+          $query = $conn->prepare("SELECT rate FROM rate WHERE (user = :username) AND (note = :noteId)");
           $query->bindParam(":username", $username);
-          $query->bindParam(":title", $title);
+          $query->bindParam(":noteId", $noteId);
           $query->execute();
           $query->setFetchMode(PDO::FETCH_ASSOC);
           $result = $query->fetchAll();
@@ -1176,19 +1084,18 @@
     }
 
     /**
-     * La funzione ritorna il numero di rate positivi sulla nota $note
+     * La funzione ritorna il numero di rate positivi sulla nota $noteId
      *
-     * @param $note Il nome della nota nella quale cercare i rate
+     * @param $noteId L'id della nota nella quale cercare i rate
      *
      * @return int Il numero di rate positivi
      * @return false In caso di errore se viene sollevata una PDOException
      */
-    function getLikes($note){
-      $note = str_replace(" ", "_", $note);
+    function getLikes($noteId){
       try{
         $conn = connectDb();
         $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (note = :note) AND (rate = 1)");
-        $query->bindParam(":note", $note);
+        $query->bindParam(":note", $noteId);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $result = $query->fetchAll();
@@ -1202,19 +1109,18 @@
     }
 
     /**
-     * La funzione ritorna il numero di rate negativi sulla nota $note
+     * La funzione ritorna il numero di rate negativi sulla nota $noteId
      *
-     * @param $note Il nome della nota nella quale cercare i rate
+     * @param $noteId L'id della nota nella quale cercare i rate
      *
      * @return int Il numero di rate negativi
      * @return false In caso di errore se viene sollevata una PDOException
      */
-    function getDislikes(String $note){
-      $note = str_replace(" ", "_", $note);
+    function getDislikes($noteId){
       try{
         $conn = connectDb();
         $query = $conn->prepare("SELECT COUNT(*) as num FROM rate WHERE (note = :note) AND (rate = 0)");
-        $query->bindParam(":note", $note);
+        $query->bindParam(":note", $noteId);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $result = $query->fetchAll();
@@ -1362,7 +1268,7 @@
           $tot_rates = 0;
           $list = searchNote(connectDb(), NULL, NULL, $user, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
           foreach($list as $element){
-            $tot_rates += (getLikes($element["title"]) + getDislikes($element["title"]));
+            $tot_rates += (getLikes($element["id"]) + getDislikes($element["id"]));
           }
           return $tot_rates;
         }catch(PDOException $e){
@@ -1379,7 +1285,7 @@
   /**
    * La funzione inserisce un'immagine nel DB verificando che il formato fornito sia tra quelli ammessi e verificando che esista la nota (non verifica l'autorizzazione o meno dell'utente)
    *
-   * @param $note Il nome della nota sulla quale aggiungere un immagine
+   * @param $noteId L'id della nota sulla quale aggiungere un immagine
    * @param $format Il formato dell'immagine
    * @param $dir La directory del server dentro cui abbiamo messo l'immagine
    * @param $picName Il nome dell'immagine
@@ -1389,19 +1295,19 @@
    * @return string "invalidFormat" Se il formato non è tra quelli concessi (scritti nell'array $formats)
    * @return string "non_existentNote" Se la nota sulla quale si sta cercando di inserire l'immagine non esiste
    */
-  function newImageEntry($note, $format, $dir, $picName) {
-    if (checkNote(connectDb(), $note)) {
+  function newImageEntry($noteId, $format, $dir, $picName) {
+    if (checkNote(connectDb(), $noteId)) {
       $formats = ["png", "gif", "jpg", "jpeg"];
       if (in_array($format, $formats)) {
-        $note = str_replace(" ", "_", $note);
-        $note = str_replace("'", "sc-a", $note);
-        $note = str_replace('"', "sc-q", $note);
+        $noteId = str_replace(" ", "_", $noteId);
+        $noteId = str_replace("'", "sc-a", $noteId);
+        $noteId = str_replace('"', "sc-q", $noteId);
         $picName = str_replace("'", "sc-a", $picName);
         $picName = str_replace('"', "sc-q", $picName);
         try {
           $conn = connectDb();
           $query = $conn->prepare("INSERT INTO pict (date, note, format, dir, name) VALUES (NOW(), :note, :format, :dir, :pic_name)");
-          $query->bindParam(":note", $note);
+          $query->bindParam(":note", $noteId);
           $query->bindParam(":format", $format);
           $query->bindParam(":dir", $dir);
           $query->bindParam(":pic_name", $picName);
@@ -1424,19 +1330,18 @@
   /**
    * La funzione ritorna in una matrice la dir e l'id di tutte le foto di una nota, non ritorna nulla se non è stata definita alcuna nota
    *
-   * @param $note La nota di cui cercare i dati delle immagini
+   * @param $noteId L'id di cui cercare i dati delle immagini
    *
    * @return array[x]["dir"/"id"] una matrice dove x è il numero dell'immagine (in base al sorting sql) e come seconda dimensione si può scegliere "dir" per la directory oppure "id" per l'id
    * @return string "internalError" Se è stata sollevata una PDOException
    */
-  function getPicsPathsAndIds($note) {
-    if ($note == NULL) {
+  function getPicsPathsAndIds($noteId) {
+    if ($noteId == NULL) {
       return;
     }
-    $note = str_replace(" ", "_", $note);
     try {
-      $query = connectDb()->prepare("SELECT dir,id FROM pict WHERE note = :note");
-      $query->bindParam(":note", $note);
+      $query = connectDb()->prepare("SELECT dir,id FROM pict WHERE note = :id");
+      $query->bindParam(":id", $noteId);
       $query->execute();
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $pics = $query->fetchAll();
@@ -1469,20 +1374,17 @@
    * La funzione rimuove un immagine dal DB e anche dalla sua directory nel server e prima di farlo verifica che l'immagine esista e che l'utente che ne chiede la rimozione sia autorizzato
    *
    * @param $conn La connessione che stiamo usando
-   * @param $note Il titolo della nota a cui deve appartenere l'immagine
+   * @param $noteId L'id della nota a cui deve appartenere l'immagine
    * @param $id L'id dell'immagine da cancellare
    * @param $user L'utente che chiede la cancellazione della foto (per essere autorizzato deve essere admin o il creatore della nota)
    *
-   * @return string "imgNotFound" Nel caso in cui l'immagine con $id dentro al $note non sia stata trovata
+   * @return string "imgNotFound" Nel caso in cui l'immagine con $id dentro al $noteId non sia stata trovata
    * @return string "notAuthorized" Nel caso in cui l'utente provi a cancellare un'immagine senza autorizzazione (no admin e no creatore nota)
-   * @return string "illegalDeletion" Se l'utente non è admin o creatore della nota e se non esiste immagine $id relativa a $note
+   * @return string "illegalDeletion" Se l'utente non è admin o creatore della nota e se non esiste immagine $id relativa a $noteId
    * @return string "illegalError" Se viene sollevata una PDOException, quindi errore tra la comunicazione con db (spesso errori nelle query)
    * @return string "done" Se tutto va come deve e non vengono sollevati errori
    */
-  function removeImage($conn, $note, $id, $user) {
-    $note = str_replace(" ", "_", test_input($_POST["note"]));
-    $note = str_replace("'", "sc-a", $note);
-    $note = str_replace('"', "sc-q", $note);
+  function removeImage($conn, $noteId, $id, $user) {
     $dir = null;
     $authorized = false;
     $picOnDb = false;
@@ -1490,19 +1392,19 @@
       $authorized = true;
     }
     try{
-      if(isNoteOwner(connectDb(), $note, $user)){
+      if(isNoteOwner(connectDb(), $noteId, $user)){
         $authorized = true;
       }
-      $findPic = $conn->prepare("SELECT COUNT(*) AS val FROM pict INNER JOIN note ON pict.note = note.title WHERE pict.id =:id AND note.title = :note");
+      $findPic = $conn->prepare("SELECT COUNT(*) AS val FROM pict INNER JOIN note ON pict.note = note.id WHERE pict.id =:id AND note.id = :note");
       $findPic->bindParam(":id", $id);
-      $findPic->bindParam(":note", $note);
+      $findPic->bindParam(":note", $noteId);
       $findPic->execute();
       $result = $findPic->fetchAll();
       if($result[0]["val"] == 1){
         $picOnDb = true;
       }
       if(($authorized == true) && ($picOnDb == true)){
-        $getDir = $conn->prepare("SELECT pict.dir FROM pict INNER JOIN note ON note.title = pict.note WHERE id= :id");
+        $getDir = $conn->prepare("SELECT pict.dir FROM pict INNER JOIN note ON note.id = pict.note WHERE id = :id");
         $getDir->bindParam(":id", $id);
         $getDir->execute();
         $result = $getDir->fetchAll();
@@ -1529,20 +1431,21 @@
 
 
   /**
+   * @deprecated La funzione da quando non usiamo più il titolo nell'url non viene più usata
    * La funzione ritorna il path leggibile dal browser con la parte del nome dell'immagine codificata secondo la funzione encode()
    *
    * @param $conn La connessione che stiamo usando
-   * @param $note La nota da cui prendiamo la foto di cui codificare il path
+   * @param $noteId La nota da cui prendiamo la foto di cui codificare il path
    * @param $pic_id L'id della foto dentro il DB (identificazione univoca)
    *
    * @return string "imgNotExisting" Se non esiste immagine con quell'id relativa alla nota
    * @return string "internalError" Se viene sollevata una PDOException
    * @return string $preImgName.encode($imgName) il path fino al nome dell'immagine in clear e il nome immagine encoded da encode()
    */
-  function String urlCodec($conn, $note, $pic_id){
+  function String urlCodec($conn, $noteId, $pic_id){
     try{
       $getPath = $conn->prepare("SELECT dir FROM pict WHERE note = :note AND id = :id");
-      $getPath->bindParam(":note", $note);
+      $getPath->bindParam(":note", $noteId);
       $getPath->bindParam(":id", $id);
       $getPath->execute();
       $result = $getPath->fetchAll();
@@ -1563,6 +1466,37 @@
 
   return $preImgName.urlencode($imgName);
 
+  }
+
+  /**
+  * La funzione restituisce l'Id di una nota dato il suo titolo
+  *
+  * @param $conn La connessione che stiamo usando
+  * @param $title Il titolo della nota passato allo stesso modo in cui è scritto nel DB
+  *
+  * @return int noteId L'ID della nota nel DB
+  * @return string "internalError" Se viene sollevata una PDOException
+  */
+  function getNoteId($conn, $title, $user, $date){
+    $title = str_replace(" ", "_", $title);
+    $title = str_replace("'", "sc-a", $title);
+    $title = str_replace('"', "sc-q", $title);
+    try{
+      $getId = $conn->prepare("SELECT id FROM note WHERE title = :title AND user LIKE :user AND date LIKE :date");
+      $getId->bindParam(":title", $title);
+      $getId->bindParam(":user", $user);
+      $getId->bindParam(":date", $date);
+      $getId->execute();
+      $id = $getId->fetchAll();
+      if(!empty($id[0]["id"])){
+        return $id[0]["id"];
+      }else{
+        return -1;
+      }
+    } catch(PDOException $e){
+      PDOErrors($e);
+      return "internalError";
+    }
   }
 
 ?>

@@ -16,16 +16,16 @@
       die(json_encode("COMMENTNV"));
     } elseif ($type == "write") {
       $content = test_input($_POST["content"]);
-      $title = test_input($_POST["title"]);
+      $noteId = test_input($_POST["noteId"]);
     }
     if ((empty($_POST["id"])) && $type == "delete") {
       die(json_encode("COMMENTNV"));
     } elseif ($type == "delete") {
-      $id = test_input($_POST["id"]);
+      $noteId = test_input($_POST["noteId"]);
     }
     switch ($type) {
       case 'write':
-      $postResult = postComment(connectDb(), $_SESSION["username"], $title, $content);
+      $postResult = postComment(connectDb(), $_SESSION["username"], $noteId, $content);
         if ($postResult["state"]) {
           $response = array();
           $response["state"] = "done";

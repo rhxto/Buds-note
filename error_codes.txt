@@ -32,6 +32,7 @@ NOTERNE = nota da valutare inesistente
 NOTERAE = rating di nota giá inserito
 NOTEREF = errore nel fetch dei likes e dislikes della nota
 NOTERWIE = errore nella scrittura della valutazione
+NOTEWIN = id nullo nella sua ricerca col titolo // da aggiungere al js
 
 COMMENTW = errore nella scrittura del commento
 COMMENTDE = errore nella cancellazione del commento

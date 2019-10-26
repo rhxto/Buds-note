@@ -16,37 +16,24 @@
 
     return $data;
   }
-  if (empty($_POST["note"])) {
+  if (empty($_POST["noteId"])) {
     die(json_encode(["status"=>"IMGUFTB"]));
   }
-  $note = str_replace("'", "sc-a", $_POST["note"]);
-  $note = str_replace('"', "sc-q", $note);
-  $note = str_replace(" ", "_", $note);
-  $note = test_input($note);
-  if (!isNoteOwner(connectDb(), $note, $_SESSION["username"])) {
+  $noteId = test_input($_GET["noteId"]);
+  if (!isNoteOwner(connectDb(), $noteId, $_SESSION["username"])) {
     die(json_encode(["status"=>"IMGUNO"]));
-  }
-  $noteCheck = str_replace("'", "sc-a", $_POST["note"]);
-  $noteCheck = str_replace('"', "sc-q", $noteCheck);
-  $noteCheck = str_replace(" ", "_", $noteCheck);
-  if ($noteCheck !== $note) {
-    die(json_encode(["status"=>"IMGUVNV"]));
   }
   if (empty($_SESSION["username"]) || !isset($_SESSION["username"]) || $_SESSION["logged_in"] === "0") {
     echo json_encode(["status"=>"IMGUNL"]);
   } else if (empty($note) || $note === "" || test_input($_FILES["uploadImage"]["name"]) !== $_FILES["uploadImage"]["name"]) {
     echo json_encode(["status"=>"IMGUVNV"]);
   } else if (($user = test_input($_SESSION["username"])) === $_SESSION["username"]) {
-    if (!checkNote(connectDb(), $note)) {
+    if (!checkNote(connectDb(), $noteId)) {
       die(json_encode(["status"=>"IMGUNEN"]));
     }
     if (checkDotIteration($_FILES["uploadImage"]["name"])) {
-      $file = str_replace(" ", "_", "../notedb/" . $user . "/uploads" . "/" . basename($note . "_" . $user . "_" . $_FILES["uploadImage"]["name"]));
-      $file = str_replace("'", "sc-a", $file);
-      $file = str_replace('"', "sc-q", $file);
-      $fileEncoded = str_replace(" ", "_", "../notedb/" . $user . "/uploads" . "/" . basename(urlencode($note) . "_" . urlencode($user) . "_" . urlencode($_FILES["uploadImage"]["name"])));
-      $fileEncoded = str_replace("'", "sc-a", $fileEncoded);
-      $fileEncoded = str_replace('"', "sc-q", $fileEncoded);
+      $file = "../notedb/" . $user . "/uploads" . "/" . basename($noteId . "_" . $user . "_" . $_FILES["uploadImage"]["name"]);
+      $fileEncoded = "../notedb/" . $user . "/uploads" . "/" . basename(urlencode($noteId) . "_" . urlencode($user) . "_" . urlencode($_FILES["uploadImage"]["name"])));
       //prendi l'estensione e mettila tutta lowercase
       $imageExtension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
       $check = getimagesize($_FILES["uploadImage"]["tmp_name"]);
@@ -62,7 +49,7 @@
             if($imageExtension != "jpg" && $imageExtension != "jpeg" && $imageExtension != "png" && $imageExtension != "gif" ) {
               echo json_encode(["status"=>"IMGUFNS"]);
             } else {
-              if (($status = newImageEntry($note, $imageExtension, $file, $_FILES["uploadImage"]["name"])) === "done") {
+              if (($status = newImageEntry($noteId, $imageExtension, $file, $_FILES["uploadImage"]["name"])) === "done") {
                 if (move_uploaded_file($_FILES["uploadImage"]["tmp_name"], $file)) {
                   $getPicId = connectDb()->prepare("SELECT id FROM pict WHERE dir = :dir");
                   $getPicId->bindParam(":dir", $file);
