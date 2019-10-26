@@ -373,7 +373,7 @@ function rateNote(rating) {
         $(".dislikes").html(parseInt($(".dislikes").html()) + 1);
       }
     } else {
-      error(response);
+      error(response["status"]);
     }
   });
 }

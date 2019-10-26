@@ -91,7 +91,7 @@
     require_once 'ips.php';
     try {
       $conn = connectDb();
-      $query = $conn->prepare("SELECT * FROM user WHERE username = :username");
+      $query = $conn->prepare("SELECT * FROM user WHERE BINARY username = :username");
       $query->bindParam(":username", $cnfUsr);
       $query->setFetchMode(PDO::FETCH_ASSOC);
       $query->execute();

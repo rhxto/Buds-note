@@ -34,7 +34,7 @@
     if ($type == "update") {
       if (isNoteOwner(connectDb(), test_input($_POST["noteId"]), $_SESSION["username"])) {
         if ((empty($_POST["noteId"]) || empty($_POST["newTitle"]) || empty($_POST["newContent"])) && $type == "update") {
-          die(json_encode("NOTEUNV"));
+          die(json_encode(["status"=>"NOTEUNV"]));
         } else {
           $noteId = test_input($_POST["noteId"]);
           $newTitle = test_input($_POST["newTitle"]);
@@ -43,17 +43,17 @@
       }
     } elseif ($type == "update") {
       error_log("**TENTATIVO DI AGGIORNAMENTO NOTA NON AUTORIZZATO DA: " . $_SERVER["REMOTE_ADDR"] . "**");
-      die(json_encode("NOTEUNA"));
+      die(json_encode(["status"=>"NOTEUNA"]));
     }
     if ((empty($_POST["type"]) || empty($_POST["noteId"])) && $type == "delete") {
       error_log("Nota non valida delete");
-      die(json_encode("NOTENV"));
+      die(json_encode(["status"=>"NOTENV"]));
     } elseif ($type == "delete") {
       $noteId = test_input($_POST["noteId"]);
     }
     if ((empty($_POST["noteId"]) || empty($_POST["rating"])) && $type == "rate") {
       error_log("nota non valida rate");
-      die(json_encode("NOTERNV"));
+      die(json_encode(["status"=>"NOTERNV"]));
     } elseif ($type == "rate") {
       $noteId = test_input($_POST["noteId"]);
       $rating = test_input($_POST["rating"]);
@@ -129,19 +129,19 @@
           if ($response = rateNote($_SESSION["username"], $noteId, $rating)) {
             echo json_encode(["status"=> "done", "type"=>$type]);
           } elseif ($response === "internalError") {
-            die(json_encode("NOTERWIE"));
+            die(json_encode(["status"=>"NOTERWIE"]));
           } else {
-            die(json_encode("NOTERAE"));
+            die(json_encode(["status"=>"NOTERAE"]));
           }
         } else {
-          die(json_encode("NOTERNE"));
+          die(json_encode(["status"=>"NOTERNE"]));
         }
         break;
       default:
-          die(json_encode("NOTEANV"));
+          die(json_encode(["status"=>"NOTEANV"]));
         break;
     }
   } else {
-    die(json_encode("NOTENL"));
+    die(json_encode(["status"=>"NOTENL"]));
   }
  ?>
