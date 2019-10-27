@@ -967,10 +967,6 @@
           $query->bindParam(":newTtl", $newTitle);
           $query->bindParam(":noteId", $noteId);
           $query->execute();
-          $query = $conn->prepare("UPDATE note SET dir = :newDir WHERE title = :newTtl");
-          $query->bindParam(":newTtl", $newTitle);
-          $query->bindParam(":newDir", $newDir);
-          $query->execute();
           return true;
         } else {
           return false;
