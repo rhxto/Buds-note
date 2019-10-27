@@ -32,8 +32,7 @@
       die(json_encode(["status"=>"IMGUNEN"]));
     }
     if (checkDotIteration($_FILES["uploadImage"]["name"])) {
-      $file = "../notedb/" . $user . "/uploads" . "/" . basename($noteId . "_" . $user . "_" . $_FILES["uploadImage"]["name"]);
-      $fileEncoded = "../notedb/" . $user . "/uploads" . "/" . basename(urlencode($noteId) . "_" . urlencode($user) . "_" . urlencode($_FILES["uploadImage"]["name"]));
+      $file = basename($_FILES["uploadImage"]["name"]);
       //prendi l'estensione e mettila tutta lowercase
       $imageExtension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
       $check = getimagesize($_FILES["uploadImage"]["tmp_name"]);
@@ -49,21 +48,19 @@
             if($imageExtension != "jpg" && $imageExtension != "jpeg" && $imageExtension != "png" && $imageExtension != "gif" ) {
               echo json_encode(["status"=>"IMGUFNS"]);
             } else {
-              if (($status = newImageEntry($noteId, $imageExtension, $file, $_FILES["uploadImage"]["name"])) === "done") {
-                if (move_uploaded_file($_FILES["uploadImage"]["tmp_name"], $file)) {
-                  $getPicId = connectDb()->prepare("SELECT id FROM pict WHERE dir = :dir");
-                  $getPicId->bindParam(":dir", $file);
-                  $getPicId->execute();
-		              $result = $getPicId->fetchAll();
-                  echo json_encode(["status"=>"success", "img_tag"=>"<img style='width: 100%;' src='" . $fileEncoded . "'/><button id='" . $result[0]["id"] . "' class='removeImage btn' onclick=removeImage('" . $result[0]["id"] .  "')>Rimuovi immagine</button>", "id"=>$result[0]["id"]]);
+              if (($status = newImageEntry($noteId, $imageExtension, $_FILES["uploadImage"]["name"], $_SESSION["username"]))["status"] === "done") {
+                $id = $status["id"];
+                $imageDir = "../notedb/$user/uploads/$id." . $imageExtension;
+                if (move_uploaded_file($_FILES["uploadImage"]["tmp_name"], $imageDir)) {
+                  echo json_encode(["status"=>"success", "img_tag"=>"<img style='width: 100%;' src='" . $imageDir . "'/><button id='" . $id . "' class='removeImage btn' onclick=removeImage('" . $id .  "')>Rimuovi immagine</button>", "id"=>$id]);
                 } else {
                   echo json_encode(["status"=>"IMGUIE"]);
                 }
-              } else if  ($status === "non-existentNote") {
+              } else if  ($status["status"] === "non-existentNote") {
                 echo json_encode(["status" => "IMGUMNEN"]);
-              } else if ($status === "invalidFormat") {
+              } else if ($status["status"] === "invalidFormat") {
                 echo json_encode(["status"=>"IMGUFNS"]);
-              } else if ($status === "internalError"){
+              } else if ($status["status"] === "internalError"){
                 echo json_encode(["status"=>"IMGUMIE"]);
               } else {
                 error_log("**ECCEZIONE INASPETTATA IN UPLOADIMG.PHP** status: " . $status);

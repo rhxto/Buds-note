@@ -1299,35 +1299,43 @@
    * @return string "invalidFormat" Se il formato non è tra quelli concessi (scritti nell'array $formats)
    * @return string "non_existentNote" Se la nota sulla quale si sta cercando di inserire l'immagine non esiste
    */
-  function newImageEntry($noteId, $format, $dir, $picName) {
+  function newImageEntry($noteId, $format, $picName, $user) {
     if (checkNote(connectDb(), $noteId)) {
       $formats = ["png", "gif", "jpg", "jpeg"];
       if (in_array($format, $formats)) {
-        $noteId = str_replace(" ", "_", $noteId);
-        $noteId = str_replace("'", "sc-a", $noteId);
-        $noteId = str_replace('"', "sc-q", $noteId);
         $picName = str_replace("'", "sc-a", $picName);
         $picName = str_replace('"', "sc-q", $picName);
+        $imageExtension = strtolower(pathinfo($picName, PATHINFO_EXTENSION));
         try {
+          $date = date("Y-m-d H:i:s");
           $conn = connectDb();
-          $query = $conn->prepare("INSERT INTO pict (date, note, format, dir, name) VALUES (NOW(), :note, :format, :dir, :pic_name)");
+          $query = $conn->prepare("INSERT INTO pict (date, note, format, name) VALUES (:date, :note, :format, :pic_name)");
           $query->bindParam(":note", $noteId);
           $query->bindParam(":format", $format);
-          $query->bindParam(":dir", $dir);
           $query->bindParam(":pic_name", $picName);
+          $query->bindParam(":date", $date);
           $query->execute();
-          return "done";
+          $getPicId = connectDb()->prepare("SELECT id FROM pict WHERE date = :date");
+          $getPicId->bindParam(":date", $date);
+          $getPicId->execute();
+          $id = $getPicId->fetchAll()[0]["id"];
+          $imageDir = "../notedb/$user/uploads/$id." . $imageExtension;
+          $query = $conn->prepare("UPDATE pict SET dir = :dir WHERE id = :id");
+          $query->bindParam(":id", $id);
+          $query->bindParam(":dir", $imageDir);
+          $query->execute();
+          return ["status"=>"done", "id"=>$id];
         } catch(PDOException $e){
           PDOError($e);
-          return "internalError";
+          return ["status"=>"internalError"];
         } finally {
           $conn = null;
         }
       } else {
-        return "invalidFormat";
+        return ["status"=>"invalidFormat"];
       }
     } else {
-      return "non-existentNote";
+      return ["status"=>"non-existentNote"];
     }
   }
 
