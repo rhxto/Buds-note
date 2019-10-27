@@ -499,11 +499,13 @@ $(document).ready(function() {
                 response = JSON.parse(response);
                 if (response["status"] !== "success") {
                   error(response["status"]);
+                  $("#addPic").val(""); //per svuotare il contenuto: issue #22
                 } else {
                   $("#pics").append("<div class='removeImageContainer' id='" + response["id"] + "'>" + response["img_tag"] + "</div>");
                   $("#warn").show();
                   $("#warn").attr("style", "background-color: lightblue;");
                   $("#warn").html("Immagine aggiunta!");
+                  $("#addPic").val(""); //per svuotare il contenuto: issue #22
                   setTimeout(function(){
                     $("#warn").attr("style", "background-color: red;");
                     $("#warn").hide();
