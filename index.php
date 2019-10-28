@@ -164,6 +164,7 @@
     <a onclick="man('on')" class="navbar-left">Avvia manutenzione</a>
     <a onclick="man('off')" class="navbar-left">Termina manutenzione</a>
     <a href="php/errorLog.php" class="navbar-left">Log errori</a>
+    <a href="php/sshSession.php" class="navbar-left">Sessioni ssh</a>
   </div>
   <button id="scriviNotaBtn" class="noteButton" onclick="mostraSpazioNote();" style="display: none;">Scrivi una nota</button>
   <div class="delNote" style="display: none;">
