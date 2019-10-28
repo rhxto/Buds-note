@@ -170,6 +170,7 @@
    * @param $user Lo username dell'utente del quale si vuole sapere l'acc_lvl
    *
    * @return int numero corrispondente all'acc_lvl
+   * @return string "IEAG" Se veiene sollevata una PDOException
    */
   function getAcclvl($user) {
     try {
@@ -224,6 +225,7 @@
    *
    * @return true Se è attivata la manutenzione
    * @return false Se è disattivata la manutenzione
+   * @return  aggiungere return dopo aver deciso cosa tornare definitivamente
    */
   function getManStatus() {
     try {
@@ -346,7 +348,7 @@
 
 
   /**
-   * La funzione serve a ricercare uno user dentro la tabella user inserrendo vari parametri, se alcuni di essi vengono lasciati NULL veranno considerati nella query come %, verranno poi restituite una o più tuple con gli elementi che rispettano i parametri
+   * La funzione serve a ricercare uno user dentro la tabella user inserendo vari parametri, se alcuni di essi vengono lasciati NULL veranno considerati nella query come %, verranno poi restituite una o più tuple con gli elementi che rispettano i parametri
    *
    * @param $conn La connessione con la quale stiamo lavorando
    * @param $username Lo username dell'utente di cui vogliamo le informazioni'(Se è "" diventa % nella query)
@@ -357,7 +359,7 @@
    * @param $last_log_to La data massima dell'ultimo login dell'utente di cui vogliamo le informazioni (Se è "" diventa TRUE nella query)
    *
    * @return array[x]["yyy"] Un array nel quale ci sono tutti gli user che rispettano i parametri ineriti dove x è l'ordine di sorting nella query (parte da 0) e yyy è il nome dell'attributo che vogliamo visualizzare
-   * @return string "internalError" Se viene sollevata una PDOException
+   * @return string "internalError" Se viene sollevata una PDOException o se non esiste la connesione $conn
    */
   function user($conn, $username, $mail, $acc_lvl, $fail_acc, $last_log_from, $last_log_to){
 
@@ -629,16 +631,16 @@
      * @param $conn La connessione che vogliamo usare
      * @param $noteId L'id della nota di cui vogliamo verificare la presenza
      *
-     * @return true Se una nota con titolo $title è già presente
-     * @return false Se non c'è nessuna nota con quel titolo o se è stato sollevata una PDOException
+     * @return true Se una nota id $noteId è già presente
+     * @return false Se non c'è nessuna nota con quell'id o se è stato sollevata una PDOException
      */
     function checkNote($conn, String $noteId) {
       try {
-        $query = $conn->prepare("SELECT user FROM note WHERE id = :noteId");
+        $query = $conn->prepare("SELECT COUNT(*) as num FROM note WHERE id=:noteId");
         $query->bindParam(":noteId", $noteId);
         $query->execute();
         $result = $query->fetchAll();
-        if (empty($result[0]["user"])) {
+        if ($result[0]["num"] != 1) {
           return false;
         } else {
   	      return true;
@@ -652,9 +654,9 @@
     }
 
     /**
-     * La funzione ritorna la nota sotto forma di array in cui in ogni elemento c'è una riga diversa del file comporeso il \n
+     * La funzione ritorna la nota sotto forma di array in cui in ogni elemento c'è una riga diversa del file compreso il \n
      * @param $conn La connessione che stiamo usando
-     * @param $title Il titolo della nota di cui vogliamo leggere il contenuto
+     * @param $noteId L'id della nota di cui vogliamo leggere il contenuto 
      *
      * @return array[] array in cui in ogni elemento c'è una riga del file seguito ovviamente dal suo \n
      * @return false Se viene sollevata una PDOException
@@ -761,7 +763,7 @@
      * @param $review Il contenuto del commento che stiamo cercando
      * @param $datefrom La data minima entro cui deve essere stata scritto il commento
      * @param $dateto La data entro la quale deve essere stata scritta la nota
-     * @param $order Il nome dell'attributo con il quale voglio ordinare il sorting order della query
+     * @param $order Il nome dell'attributo con il quale voglio ordinare il sorting order della query ("ascendente" o "discendente")
      * @param $v Se voglio ordinare il modo ascendente o discendente (ASC o DESC)
      *
      * @return array[x]['yyy'] In cui x è l'ordine di sorting in cui la tupla è stata ordinata e yyy l'attributo che vogliamo leggere della tupla x
@@ -795,21 +797,24 @@
       }
       if ($v == NULL) {
         $v = "DESC";
-      } elseif ($v == "discendente") {
-        $v = "DESC";
-      } else {
+      } elseif ($v == "ascendente" || $v == "asc") {
         $v = "ASC";
+      } else {
+        $v = "DESC";
       }
       try {
-	      //Ricordarsi di cancella AsC perchè è hard coded
-	      $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (note LIKE :noteId) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY " . $order  . " " . $v);
-        $query->bindParam(':id', $id);
+        if($v =="DESC"){
+	  $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (note LIKE :noteId) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :ord DESC");
+	}else{
+	  $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (note LIKE :noteId) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :ord ASC");
+	}
+	$query->bindParam(':id', $id);
         $query->bindParam(':user', $user);
         $query->bindParam(':noteId', $noteId);
         $query->bindParam(':review', $review);
         $query->bindParam(':datefrom', $datefrom);
         $query->bindParam(':dateto', $dateto);
-        //$query->bindParam(':direction', $v);
+        $query->bindParam(':ord', $order);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $result = $query->fetchAll();
