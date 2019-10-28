@@ -120,10 +120,31 @@
       <a href="register/" class="navbar-right log">REGISTER</a>
       <a id="logout" onclick="logout()"  class="navbar-right logout">LOGOUT</a>
     </div>
+    <div class="homePage" style="top: 10%; position: absolute;">
+      Ultima nota pubblicata<br/>
+      <?php
+        $notes = searchNote(connectDb(), NULL, NULL, NULL, NULL, NULL, ["true", "true", "true", "true", "true"], NULL, NULL, NULL, NULL, NULL);
+        $note = $notes[sizeOf($notes) - 1];
+        if ($note === NULL) {
+          echo "Nessuna nota pubblicata al momento!<br/>";
+          $note["title"] = "/";
+          $note["user"] = "/";
+          $note["dept"] = "/";
+          $note["subj"] = "/";
+          $note["year"] = "/";
+          $note["date"] = "/";
+        }
+      ?>
+      Titolo: <?php echo $note["title"]; ?><br/>
+      Autore: <?php echo $note["user"]; ?><br/>
+      Indirizzo: <?php echo $note["dept"]; ?><br/>
+      Materia: <?php echo $note["subj"]; ?><br/>
+      Anno: <?php echo $note["year"]; ?><br/>
+      Data: <?php echo $note["date"]; ?><br/>
+    </div>
       <span id="greet"></span>
     <div id="everythingAboutNote">
-      <div id="risultati" class="risultati">
-      </div>
+      <div id="risultati" class="risultati"></div>
       <div class="scriviNota" style="display:none;padding:5px 0px 5px 0px;">
         Titolo: <textarea rows="1" cols="100" id="writeNoteTitle" class="scriviNotaText"></textarea><br/>
         Materia: <select class="opzM" id="writeNoteSubj"><br/>

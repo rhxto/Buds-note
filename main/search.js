@@ -2,6 +2,7 @@ function openSearch() {
   $(".scriviNota").hide();
   $("#scriviNotaBtn").show();
   $(".searchUser").hide();
+  $(".homePage").hide();
   document.getElementById("Search").style.display = "block";
   document.getElementById("SearchDiv").style.display = "block";
 }

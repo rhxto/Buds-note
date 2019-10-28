@@ -154,7 +154,6 @@ function error(err) {
   setTimeout(function(){$("#warn").hide();}, 10000);
 }
 function cerca() {
-  hideSearch();
   $("#risultati").empty();
   var arg = $("#search").val();
   var ajaxurl = "../php/research.php";
@@ -201,6 +200,7 @@ function cerca() {
           $("#risultati").append(response + "<br/>");
         }
       }
+      hideSearch();
     });
   } else if (type == "note"){
     var title = arg;
@@ -249,6 +249,7 @@ function cerca() {
           $("#risultati").append("<a href='php/viewNote.php?noteId=" + response[i]["id"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       }
+      hideSearch();
     });
   } else {
     $("#risultati").html("Parametri di ricerca non validi");
@@ -409,6 +410,7 @@ function mostraSpazioNote() {
   hideSearch();
   $("#risultati").empty();
   $(".scriviNota").show();
+  $(".homePage").hide();
   $("#scriviNotaBtn").hide();
 }
 function searchUser() {
