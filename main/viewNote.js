@@ -179,6 +179,12 @@ function error(err) {
     case "IMGDNL":
       $("#warn").html("Per rimovere un'immagine devi eseguire il login! Codice: " + err);
       break;
+    case "COMMENTUIE":
+      $("#warn").html("Errore nell'aggiornamento dei commenti, riferisci questo messaggio agli amministratori. Codice: " + err);
+      break;
+    case "COMMENTUVNV":
+      $("#warn").html("Valori non validi per l'aggiornamento dei commenti, riferisci questo messaggio agli amministratori. Codice: " + err);
+      break;
     default:
       $("#warn").html("Abbiamo riscontrato un errore, se stai vedendo questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
     break;
