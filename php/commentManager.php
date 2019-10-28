@@ -5,12 +5,9 @@
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
-    if ($data == "") {
-      die(json_encode("COMMENTNV"));
-    }
     return $data;
   }
-  if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["username"]) && $_SESSION['logged_in'] == '1') {
+  if ($_SERVER["REQUEST_METHOD"] == "POST" && ((isset($_SESSION["username"]) && $_SESSION['logged_in'] == '1') || $_POST["type"] === "check")) {
     $type = test_input($_POST["type"]);
     if ((empty($_POST["content"]) || empty($_POST["noteId"])) && $type == "write")  {
       die(json_encode("COMMENTNV"));
@@ -23,6 +20,18 @@
     } elseif ($type == "delete") {
       $id = test_input($_POST["id"]);
     }
+    if ((empty(test_input($_POST["noteId"])) || empty($_POST["commentsIds"])) && $type == "check") {
+      die(json_encode(["status"=>"COMMENTUVNV"]));
+    } else {
+      $commentsIds = $_POST["commentsIds"];
+      foreach ($commentsIds as $commentId) {
+        if ($commentId !== test_input($commentId)) {
+          die(json_encode(["status"=>"COMMENTUVNV"]));
+        }
+      }
+      $noteId = test_input($_POST["noteId"]);
+    }
+
     switch ($type) {
       case 'write':
       $postResult = postComment(connectDb(), $_SESSION["username"], $noteId, $content);
@@ -50,6 +59,33 @@
         } else {
           error_log("**TENTATIVO DI CANCELLARE UN COMMENTO NON AUTORIZZATO** ip: " . $_SERVER["REMOTE_ADDR"]);
           die(json_encode("COMMENTDNA"));
+        }
+        break;
+      case 'check':
+        if ($commentsIds[0] === "null") {
+          $result = searchRevw(connectDb(), NULL, NULL, $noteId, NULL, NULL, NULL, NULL, NULL);
+          if (empty($result)) {
+            echo json_encode(["status"=>"up-to-date"]);
+          } else {
+            echo json_encode(["status"=>"outdated", "newComments"=>$result]);
+          }
+        } else {
+          $result = searchRevw(connectDb(), NULL, NULL, $noteId, NULL, NULL, NULL, NULL, NULL);
+          if (sizeOf($result) != sizeOf($commentsIds)) {
+            $newComments = array();
+            foreach ($result as $comment) {
+              if (!in_array($comment["id"], $commentsIds, true)) {
+                array_push($newComments, $comment);
+              }
+            }
+            if (empty($newComments)) {
+              die(json_encode(["status"=>"COMMENTUIE"]));
+            } else {
+              echo json_encode(["status"=>"outdated", "newComments"=>$newComments]);
+            }
+          } else {
+            echo json_encode(["status"=>"up-to-date"]);
+          }
         }
         break;
       default:

@@ -165,7 +165,7 @@
               foreach ($comments as $comment) {
                 $comment["review"] = str_replace("&lt;br&gt;", "<br>", $comment["review"]);
                 $comment = str_replace("'", "&#39;", $comment);
-                echo "<span id=" . $comment["id"] . "><div class=commentText><span class='revwText'>" . $comment['review'] . "</span><button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button></div><div class=commentInfo>" . $comment["user"] . " - " . $comment["date"] . "</div><br/></span>";
+                echo "<span id=" . $comment["id"] . "><div commentId=" . $comment["id"] . " class=commentText><span class='revwText'>" . $comment['review'] . "</span><button class=delCommentBtn onclick=delComment(" . $comment["id"] . ");>Elimina commento</button></div><div class=commentInfo>" . $comment["user"] . " - " . $comment["date"] . "</div><br/></span>";
               }
             }
           ?>

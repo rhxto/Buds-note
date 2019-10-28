@@ -42,6 +42,7 @@
         } else {
           //non accettiamo immagini troppo pesanti max = 5MB
           if ($_FILES["uploadImage"]["size"] > 22000000) {
+            error_log("size: " + $_FILES["uploadImage"]["size"]);
             echo json_encode(["status"=>"IMGUFTB"]);
           } else {
             //controlliamo che sia un immagine

@@ -41,6 +41,8 @@ COMMENTNL = tentativo di agire su un commento mentre non si é loggati
 COMMENTDNF = commento da cancellare non trovato
 COMMENTDNA = tentativo di cancellare il commento non autorizzato
 COMMENTANV = azione del commento non valida
+COMMENTUVNV = valori per il controllo dei commenti non validi
+COMMENTUIE = errore interno nel controllo (commenti nuovi nulli)
 
 USERNV = parametro per la ricerca dell'utente non valido
 USERNL = azione non valida perche' non loggati

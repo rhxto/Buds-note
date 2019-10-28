@@ -408,6 +408,40 @@ function hideImageRemoval() {
   $("#showImageRemoval").html("Rimuovi immagine");
   $("#showImageRemoval").attr("onclick", "showImageRemoval()");
 }
+
+function checkForNewComments() {
+  var ajaxurl = "commentManager.php";
+  var commentsIds = [];
+  var allComments = $(".commentText");
+  if (allComments.length !== 0) {
+    for (var i = 0; i < allComments.length; i++) {
+      comment = allComments[i];
+      commentsIds.push($(comment).attr("commentId") + "");
+    }
+  } else {
+    commentsIds = ["null"];
+  }
+  var data = {
+    'commentsIds' : commentsIds,
+    'noteId' : localStorage.getItem("noteId"),
+    'type' : 'check'
+  }
+  $.post(ajaxurl, data, function(response) {
+    response = JSON.parse(response);
+    if (response["status"] === "outdated") {
+      for (var i = 0; i < response["newComments"].length; i++) {
+        $(".localSpawn").append('<span id="' + response["newComments"][i]["id"] +  '"></span>');
+        $("#" + response["newComments"][i]["id"]).html("<div commentId=" + response["newComments"][i]["id"] +" class=commentText><span class='revwText'>" + response["newComments"][i]["review"] + '</span><button class="delCommentBtn" onclick="delComment(' + response["newComments"][i]["id"] + ');">Elimina commento</button></div>');
+        $("#" + response["newComments"][i]["id"]).append('<div class=commentInfo>' + response["newComments"][i]["user"] + " - " + response["newComments"][i]["date"] + "</div>");
+      }
+    } else if (Array.isArray(response) /* a causa dei codici diversi di risposta*/ && response["status"] !== "up-to-date") {
+      error(response["status"]);
+    } else if (response["status"] !== "up-to-date"){
+      error(response);
+    }
+  });
+}
+
 String.prototype.splice = function(idx, rem, str) {
     return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
 };
@@ -518,6 +552,7 @@ $(document).ready(function() {
       }
     }
   });
+  setInterval(function(){checkForNewComments();}, 10000);
 });
 //rifacciamo la procedura di sopra ogni volta che la dimesione del broswer é modificata
 var done = true;
