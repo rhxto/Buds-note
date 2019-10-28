@@ -796,22 +796,25 @@
         $order = "date";
       }
       if ($v == NULL) {
-        $v = "ASC";
-      } elseif ($v == "discendente") {
         $v = "DESC";
-      } else {
+      } elseif ($v == "ascendente" || $v == "asc") {
         $v = "ASC";
+      } else {
+        $v = "DESC";
       }
       try {
-        $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (note LIKE :noteId) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :ord :direction");
-        $query->bindParam(':id', $id);
+        if($v =="DESC"){
+	  $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (note LIKE :noteId) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :ord DESC");
+	}else{
+	  $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (note LIKE :noteId) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :ord ASC");
+	}
+	$query->bindParam(':id', $id);
         $query->bindParam(':user', $user);
         $query->bindParam(':noteId', $noteId);
         $query->bindParam(':review', $review);
         $query->bindParam(':datefrom', $datefrom);
         $query->bindParam(':dateto', $dateto);
         $query->bindParam(':ord', $order);
-        $query->bindParam(':direction', $v);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $result = $query->fetchAll();
