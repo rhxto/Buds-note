@@ -150,7 +150,9 @@
       </div>
       <?php
         if (!$display) {
-          echo "<h1>Nota non trovata ) :</h1>";
+          echo "<h1>Nota non trovata ) :</h1><script>localStorage.setItem('noteNotFound', true);</script>";
+        } else {
+          echo "<script>localStorage.setItem('noteNotFound', false);</script>";
         }
        ?>
       <div class="comments" style="display: none;">

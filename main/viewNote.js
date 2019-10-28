@@ -416,52 +416,54 @@ function hideImageRemoval() {
 }
 
 function checkForNewComments() {
-  var ajaxurl = "commentManager.php";
-  var commentsIds = [];
-  var allComments = $(".commentText");
-  if (allComments.length !== 0) {
-    for (var i = 0; i < allComments.length; i++) {
-      comment = allComments[i];
-      commentsIds.push($(comment).attr("commentId") + "");
+  if (localStorage.getItem('noteNotFound') === "false") {
+    var ajaxurl = "commentManager.php";
+    var commentsIds = [];
+    var allComments = $(".commentText");
+    if (allComments.length !== 0) {
+      for (var i = 0; i < allComments.length; i++) {
+        comment = allComments[i];
+        commentsIds.push($(comment).attr("commentId") + "");
+      }
+    } else {
+      commentsIds = ["null"];
     }
-  } else {
-    commentsIds = ["null"];
-  }
-  var data = {
-    'commentsIds' : commentsIds,
-    'noteId' : localStorage.getItem("noteId"),
-    'type' : 'check'
-  }
-  $.post(ajaxurl, data, function(response) {
-    response = JSON.parse(response);
-    if (response["status"] === "outdated") {
-      for (var i = 0; i < response["newComments"].length; i++) {
-        $(".localSpawn").append('<span id="' + response["newComments"][i]["id"] +  '"></span>');
-        $("#" + response["newComments"][i]["id"]).html("<div commentId=" + response["newComments"][i]["id"] +" class=commentText><span class='revwText'>" + response["newComments"][i]["review"] + '</span><button class="delCommentBtn" onclick="delComment(' + response["newComments"][i]["id"] + ');">Elimina commento</button></div>');
-        $("#" + response["newComments"][i]["id"]).append('<div class=commentInfo>' + response["newComments"][i]["user"] + " - " + response["newComments"][i]["date"] + "</div>");
-      }
-    } else if (response["status"] === "outdated-deletions") {
-      for (var i = 0; i < response["deletedCommentsIds"].length; i++) {
-        $("#" + response["deletedCommentsIds"][i]).remove();
-      }
-    } else if (response["status"] === "deleted") {
-      $("#warn").show();
-      $("#warn").html("Da un controllo la nota risulta rimossa, tornerai alla home in 5 secondi. Codice: " + response["status"] + "<button onclick='abortNoteDeletedRedirection()' class='btn'>Annulla</button>");
-      if (localStorage.getItem("abortNoteDeletedRedirection") !== "true") {
-        localStorage.setItem("abortNoteDeletedRedirection", false);
-      }
-      setTimeout(function(){
-        $("#warn").hide();
-        if (localStorage.getItem("abortNoteDeletedRedirection") === "false") {
-          window.location.href = "../..";
+    var data = {
+      'commentsIds' : commentsIds,
+      'noteId' : localStorage.getItem("noteId"),
+      'type' : 'check'
+    }
+    $.post(ajaxurl, data, function(response) {
+      response = JSON.parse(response);
+      if (response["status"] === "outdated") {
+        for (var i = 0; i < response["newComments"].length; i++) {
+          $(".localSpawn").append('<span id="' + response["newComments"][i]["id"] +  '"></span>');
+          $("#" + response["newComments"][i]["id"]).html("<div commentId=" + response["newComments"][i]["id"] +" class=commentText><span class='revwText'>" + response["newComments"][i]["review"] + '</span><button class="delCommentBtn" onclick="delComment(' + response["newComments"][i]["id"] + ');">Elimina commento</button></div>');
+          $("#" + response["newComments"][i]["id"]).append('<div class=commentInfo>' + response["newComments"][i]["user"] + " - " + response["newComments"][i]["date"] + "</div>");
         }
-      }, 5000);
-    }  else if (response["status"] !== undefined && response["status"] !== "up-to-date") {
-      error(response["status"]);
-    } else if (response["status"] === undefined && response["status"] !== "up-to-date"){
-      error(response);
-    }
-  });
+      } else if (response["status"] === "outdated-deletions") {
+        for (var i = 0; i < response["deletedCommentsIds"].length; i++) {
+          $("#" + response["deletedCommentsIds"][i]).remove();
+        }
+      } else if (response["status"] === "deleted") {
+        $("#warn").show();
+        $("#warn").html("Da un controllo la nota risulta rimossa, tornerai alla home in 5 secondi. Codice: " + response["status"] + "<button onclick='abortNoteDeletedRedirection()' class='btn'>Annulla</button>");
+        if (localStorage.getItem("abortNoteDeletedRedirection") !== "true") {
+          localStorage.setItem("abortNoteDeletedRedirection", false);
+        }
+        setTimeout(function(){
+          $("#warn").hide();
+          if (localStorage.getItem("abortNoteDeletedRedirection") === "false") {
+            window.location.href = "../..";
+          }
+        }, 5000);
+      }  else if (response["status"] !== undefined && response["status"] !== "up-to-date") {
+        error(response["status"]);
+      } else if (response["status"] === undefined && response["status"] !== "up-to-date"){
+        error(response);
+      }
+    });
+  }
 }
 
 function abortNoteDeletedRedirection() {
