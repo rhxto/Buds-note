@@ -62,30 +62,50 @@
         }
         break;
       case 'check':
-        if ($commentsIds[0] === "null") {
-          $result = searchRevw(connectDb(), NULL, NULL, $noteId, NULL, NULL, NULL, NULL, NULL);
-          if (empty($result)) {
-            echo json_encode(["status"=>"up-to-date"]);
+        if (checkNote(connectDb(), $noteId)) {
+          if ($commentsIds[0] === "null") {
+            $result = searchRevw(connectDb(), NULL, NULL, $noteId, NULL, NULL, NULL, NULL, NULL);
+            if (empty($result)) {
+              echo json_encode(["status"=>"up-to-date"]);
+            } else {
+              echo json_encode(["status"=>"outdated", "newComments"=>$result]);
+            }
           } else {
-            echo json_encode(["status"=>"outdated", "newComments"=>$result]);
-          }
-        } else {
-          $result = searchRevw(connectDb(), NULL, NULL, $noteId, NULL, NULL, NULL, NULL, NULL);
-          if (sizeOf($result) != sizeOf($commentsIds)) {
-            $newComments = array();
-            foreach ($result as $comment) {
-              if (!in_array($comment["id"], $commentsIds, true)) {
-                array_push($newComments, $comment);
+            $result = searchRevw(connectDb(), NULL, NULL, $noteId, NULL, NULL, NULL, NULL, NULL);
+            if (sizeOf($result) > sizeOf($commentsIds)) {
+              $newComments = array();
+              foreach ($result as $comment) {
+                if (!in_array($comment["id"], $commentsIds, true)) {
+                  array_push($newComments, $comment);
+                }
+              }
+              if (empty($newComments)) {
+                die(json_encode(["status"=>"COMMENTUIE"]));
+              } else {
+                echo json_encode(["status"=>"outdated", "newComments"=>$newComments]);
+              }
+            } elseif (sizeOf($result) === sizeOf($commentsIds)) {
+              echo json_encode(["status"=>"up-to-date"]);
+            } else {
+              $currentCommentsIds = array();
+              foreach ($result as $comment) {
+                array_push($currentCommentsIds, $comment["id"]);
+              }
+              $deletedCommentsIds = array();
+              foreach ($commentsIds as $commentId) {
+                if (!in_array($commentId, $currentCommentsIds, true)) {
+                  array_push($deletedCommentsIds, $commentId);
+                }
+              }
+              if (empty($deletedCommentsIds)) {
+                die(json_encode(["status"=>"COMMENTUIE"]));
+              } else {
+                echo json_encode(["status"=>"outdated-deletions", "deletedCommentsIds"=>$deletedCommentsIds]);
               }
             }
-            if (empty($newComments)) {
-              die(json_encode(["status"=>"COMMENTUIE"]));
-            } else {
-              echo json_encode(["status"=>"outdated", "newComments"=>$newComments]);
-            }
-          } else {
-            echo json_encode(["status"=>"up-to-date"]);
           }
+        } else {
+          echo json_encode(["status"=>"deleted"]);
         }
         break;
       default:
