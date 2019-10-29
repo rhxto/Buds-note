@@ -479,21 +479,31 @@
       if ($dateto == NULL) {
         $dateto = date("Y-m-d H:i:s");
       }
-      if ($order == NULL) {
-        $order = "date";
-      }elseif($order != "title" && $order != "user" && $order != "subj" && $order != "year" && $order != "dept" && $order != "date" ){
-        $order = "date";
-      }
-      if ($v == NULL) {
+      if ($v === NULL || $v === "decrescente") {
         $v = "DESC";
-      } elseif ($v == "decrescente") {
-        $v = "DESC";
-      } else {
+      }else{
         $v = "ASC";
       }
-
       try {
-        $query = $conn->prepare("SELECT * FROM note WHERE (id LIKE :id) AND (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND ((year LIKE :year1) OR (year LIKE :year2) OR (year LIKE :year3) OR (year LIKE :year4) OR (year LIKE :year5)) AND (dept LIKE :dept) AND (date BETWEEN :datefrom AND :dateto) ORDER BY :ord :direction");
+        //Leggo le varie colonne della tabella e le metto come possbili scelta per il codice siccome deve essere hardcoded o comunque non bindato
+        $query = $conn->prepare("SHOW COLUMNS FROM note");
+        $result = $query->fetchAll();
+        $allowed_codes = array_column($result, 'Field');
+        $valid_codes = array();
+        $i = 0;
+        foreach ($allowed_codes as $code) {
+          array_push($valid_codes, $allowed_codes[$i]);
+          $i++;
+        }
+
+        if(!in_array($order, $valid_codes)){
+          $order = "date";
+        }
+        error_log(print_r($valid_codes, true));
+        error_log($order);
+        $query = "SELECT * FROM note WHERE (id LIKE :id) AND (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND ((year LIKE :year1) OR (year LIKE :year2) OR (year LIKE :year3) OR (year LIKE :year4) OR (year LIKE :year5)) AND (dept LIKE :dept) AND (date BETWEEN :datefrom AND :dateto) ORDER BY $order $v)";
+        error_log($query);
+        $query = $conn->prepare($query);
         $title = str_replace(" ", "_", $title);
         $query->bindParam(":id", $noteId);
         $query->bindParam(":ttl", $title);
@@ -508,8 +518,6 @@
         $query->bindParam(":dept", $dept);
         $query->bindParam(":datefrom", $datefrom);
         $query->bindParam(":dateto", $dateto);
-        $query->bindParam(":ord", $order);
-        $query->bindParam(":direction", $v);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $result = $query->fetchAll();
@@ -656,7 +664,7 @@
     /**
      * La funzione ritorna la nota sotto forma di array in cui in ogni elemento c'è una riga diversa del file compreso il \n
      * @param $conn La connessione che stiamo usando
-     * @param $noteId L'id della nota di cui vogliamo leggere il contenuto 
+     * @param $noteId L'id della nota di cui vogliamo leggere il contenuto
      *
      * @return array[] array in cui in ogni elemento c'è una riga del file seguito ovviamente dal suo \n
      * @return false Se viene sollevata una PDOException
@@ -796,25 +804,22 @@
         $order = "date";
       }
       if ($v == NULL) {
-        $v = "DESC";
-      } elseif ($v == "ascendente" || $v == "asc") {
         $v = "ASC";
-      } else {
+      } elseif ($v == "discendente") {
         $v = "DESC";
+      } else {
+        $v = "ASC";
       }
       try {
-        if($v =="DESC"){
-	  $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (note LIKE :noteId) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :ord DESC");
-	}else{
-	  $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (note LIKE :noteId) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :ord ASC");
-	}
-	$query->bindParam(':id', $id);
+        $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (note LIKE :noteId) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :ord :direction");
+        $query->bindParam(':id', $id);
         $query->bindParam(':user', $user);
         $query->bindParam(':noteId', $noteId);
         $query->bindParam(':review', $review);
         $query->bindParam(':datefrom', $datefrom);
         $query->bindParam(':dateto', $dateto);
         $query->bindParam(':ord', $order);
+        $query->bindParam(':direction', $v);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $result = $query->fetchAll();
