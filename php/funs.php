@@ -479,14 +479,15 @@
       if ($dateto == NULL) {
         $dateto = date("Y-m-d H:i:s");
       }
-      if ($v === NULL || $v === "decrescente") {
+      if ($v === NULL || $v === "Decrescente") {
         $v = "DESC";
       }else{
         $v = "ASC";
       }
       try {
         //Leggo le varie colonne della tabella e le metto come possbili scelta per il codice siccome deve essere hardcoded o comunque non bindato
-        $query = $conn->prepare("SHOW COLUMNS FROM note");
+        $query = connectDb()->prepare("SHOW COLUMNS FROM note");
+        $query->execute();
         $result = $query->fetchAll();
         $allowed_codes = array_column($result, 'Field');
         $valid_codes = array();
@@ -495,15 +496,10 @@
           array_push($valid_codes, $allowed_codes[$i]);
           $i++;
         }
-
         if(!in_array($order, $valid_codes)){
           $order = "date";
         }
-        error_log(print_r($valid_codes, true));
-        error_log($order);
-        $query = "SELECT * FROM note WHERE (id LIKE :id) AND (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND ((year LIKE :year1) OR (year LIKE :year2) OR (year LIKE :year3) OR (year LIKE :year4) OR (year LIKE :year5)) AND (dept LIKE :dept) AND (date BETWEEN :datefrom AND :dateto) ORDER BY $order $v)";
-        error_log($query);
-        $query = $conn->prepare($query);
+        $query = $conn->prepare("SELECT * FROM note WHERE (id LIKE :id) AND (title LIKE :ttl) AND (dir LIKE :dir) AND (user LIKE :usr) AND (subj LIKE :subj) AND ((year LIKE :year1) OR (year LIKE :year2) OR (year LIKE :year3) OR (year LIKE :year4) OR (year LIKE :year5)) AND (dept LIKE :dept) AND (date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
         $title = str_replace(" ", "_", $title);
         $query->bindParam(":id", $noteId);
         $query->bindParam(":ttl", $title);
