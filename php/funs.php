@@ -283,7 +283,7 @@
       $id = "%";
     }
     try {
-      $query = $conn->prepare("SELECT * FROM dept WHERE (name LIKE :dept_name) AND (code  LIKE :id) ORDER BY code");
+      $query = $conn->prepare("SELECT * FROM dept WHERE (name LIKE :dept_name) AND (code  LIKE :id) ORDER BY name");
       $query->bindParam(':dept_name', $name);
       $query->bindParam(':id', $id);
       $query->execute();
@@ -325,7 +325,7 @@
       $id = "%";
     }
     try {
-      $query = $conn->prepare("SELECT * FROM subj WHERE (name LIKE :subj_name) AND (code LIKE :id) ORDER BY code");
+      $query = $conn->prepare("SELECT * FROM subj WHERE (name LIKE :subj_name) AND (code LIKE :id) ORDER BY name");
       $query->bindParam(':subj_name', $name);
       $query->bindParam(':id', $id);
       $query->execute();
@@ -485,7 +485,6 @@
         $v = "ASC";
       }
       try {
-        //Leggo le varie colonne della tabella e le metto come possbili scelta per il codice siccome deve essere hardcoded o comunque non bindato
         $query = connectDb()->prepare("SHOW COLUMNS FROM note");
         $query->execute();
         $result = $query->fetchAll();
@@ -693,12 +692,12 @@
      * @param $text Il testo che deve essere scritto dentro la nota
      * @param $datefrom La data minima in cui deve essere stata scritta la nota
      * @param $dateto La data massima entro la quale deve essere stata scritta la nota
-     * @param $code L'attributo secondo cui dobbiamo ordinare i risultati della query
+     * @param $order L'attributo secondo cui dobbiamo ordinare i risultati della query
      *
      * @return array[x]['yyy'] In cui su x deve andare il numero di sorting della tupla nella query e su yyy ci va il nome dell'attributo di cui ogliamo conoscere il contenuto per la tupla numero x
      * @return string "internalError" Se viene sollevata una PDOException
      */
-    function searchRepo($conn, $id, $user, $noteId, $text, $datefrom, $dateto, $code){
+    function searchRepo($conn, $id, $user, $noteId, $text, $datefrom, $dateto, $order){
 
       if($conn == "null"){
         return -1;
@@ -721,18 +720,27 @@
       if ($dateto == NULL) {
         $dateto = date("Y-m-d H:i:s");
       }
-      if($code == NULL){
-        $code = "title";
-      }
       try {
-        $query = $conn->prepare("SELECT * FROM repo WHERE (id LIKE :id) AND (user LIKE :user) AND (note = :note) AND (text LIKE :text) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :code");
+        $query = connectDb()->prepare("SHOW COLUMNS FROM repo");
+        $query->execute();
+        $result = $query->fetchAll();
+        $allowed_codes = array_column($result, 'Field');
+        $valid_codes = array();
+        $i = 0;
+        foreach ($allowed_codes as $code) {
+          array_push($valid_codes, $allowed_codes[$i]);
+          $i++;
+        }
+        if(!in_array($order, $valid_codes)){
+          $order = "date";
+        }
+        $query = $conn->prepare("SELECT * FROM repo WHERE (id LIKE :id) AND (user LIKE :user) AND (note = :note) AND (text LIKE :text) AND(date BETWEEN :datefrom AND :dateto) ORDER BY $order");
         $query->bindParam(':id', $id);
         $query->bindParam(':user', $user);
         $query->bindParam(':note', $noteId);
         $query->bindParam(':text', $text);
         $query->bindParam(':datefrom', $datefrom);
         $query->bindParam(':dateto', $dateto);
-        $query->bindParam(':code', $code);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $result = $query->fetchAll();
@@ -796,9 +804,6 @@
       if ($dateto == NULL) {
         $dateto = date("Y-m-d H:i:s");
       }
-      if($order == NULL){
-        $order = "date";
-      }
       if ($v == NULL) {
         $v = "ASC";
       } elseif ($v == "discendente") {
@@ -807,15 +812,26 @@
         $v = "ASC";
       }
       try {
-        $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (note LIKE :noteId) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY :ord :direction");
+        $query = connectDb()->prepare("SHOW COLUMNS FROM revw");
+        $query->execute();
+        $result = $query->fetchAll();
+        $allowed_codes = array_column($result, 'Field');
+        $valid_codes = array();
+        $i = 0;
+        foreach ($allowed_codes as $code) {
+          array_push($valid_codes, $allowed_codes[$i]);
+          $i++;
+        }
+        if(!in_array($order, $valid_codes)){
+          $order = "date";
+        }
+        $query = $conn->prepare("SELECT * FROM revw WHERE (id LIKE :id) AND (user LIKE :user) AND (note LIKE :noteId) AND (review LIKE :review) AND(date BETWEEN :datefrom AND :dateto) ORDER BY $order $v");
         $query->bindParam(':id', $id);
         $query->bindParam(':user', $user);
         $query->bindParam(':noteId', $noteId);
         $query->bindParam(':review', $review);
         $query->bindParam(':datefrom', $datefrom);
         $query->bindParam(':dateto', $dateto);
-        $query->bindParam(':ord', $order);
-        $query->bindParam(':direction', $v);
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $result = $query->fetchAll();
