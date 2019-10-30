@@ -805,11 +805,11 @@
         $dateto = date("Y-m-d H:i:s");
       }
       if ($v == NULL) {
-        $v = "ASC";
-      } elseif ($v == "discendente") {
         $v = "DESC";
-      } else {
+      } elseif ($v == "ascendente") {
         $v = "ASC";
+      } else {
+        $v = "DESC";
       }
       try {
         $query = connectDb()->prepare("SHOW COLUMNS FROM revw");
