@@ -20,9 +20,9 @@
     } elseif ($type == "delete") {
       $id = test_input($_POST["id"]);
     }
-    if ((empty(test_input($_POST["noteId"])) || empty($_POST["commentsIds"])) && $type == "check") {
+    if ((empty(test_input($_POST["noteId"])) || empty($_POST["commentsIds"])) && $type === "check") {
       die(json_encode(["status"=>"COMMENTUVNV"]));
-    } else {
+    } elseif ($type === "check"){
       $commentsIds = $_POST["commentsIds"];
       foreach ($commentsIds as $commentId) {
         if ($commentId !== test_input($commentId)) {
