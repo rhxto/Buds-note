@@ -202,14 +202,19 @@
   } elseif ($m == true) {
     echo "<script>error('man');</script>";
   }
+  $noteExists = false;
   if (checkNote(connectDb(), $noteId)) {
     echo "<script> $('.comments').show();</script>";
+    $noteExists = true;
   }
   if (isset($_SESSION['logged_in'])) {
     if ($_SESSION['logged_in'] == '1') {
       echo "<script>$('.log').attr('hidden', true); $('#scriviNotaBtn').show();</script>";
       if(getAcclvl($_SESSION["username"]) == 1) {
-        echo "<script>$('.adminTools').show(); $('.admin').show();</script>";
+        echo "<script>$('.admin').show();</script>";
+        if ($noteExists) {
+          echo "<script>$('.adminTools').show();</script>";
+        }
       }
       if (checkNote(connectDb(), $noteId)) {
         echo "<script> $('.postCommentElms').show();</script>";
