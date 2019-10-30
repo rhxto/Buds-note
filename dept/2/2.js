@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var ajaxurl = "../../php/research.php";
   var type = "noteDept";
-  arg = "Liceo classico";
+  arg = "Liceo linguistico";
   data =  {'phrase': arg,
     'type': type};
     $.post(ajaxurl, data, function (response) {
@@ -10,7 +10,7 @@ $(document).ready(function() {
         for (var i = 0; i < response.length; i++) {
           response[i]["title"] = response[i]["title"].replace(/sc-a/g, "&apos;");
           response[i]["title"] = response[i]["title"].replace(/sc-q/g, "&quot;");
-          $("#risultati").append("<a href='../../php/viewNote.php?title=" + encodeURIComponent(response[i]["title"].replace(/&quot;/g, "sc-q").replace(/&apos;/g, "sc-a")) + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
+          $("#risultati").append("<a href='../../php/viewNote.php?noteId=" + response[i]["id"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
         }
       } else {
         error("Nrt");

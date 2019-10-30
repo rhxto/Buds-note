@@ -283,7 +283,7 @@
       $id = "%";
     }
     try {
-      $query = $conn->prepare("SELECT * FROM dept WHERE (name LIKE :dept_name) AND (code  LIKE :id) ORDER BY name");
+      $query = $conn->prepare("SELECT * FROM dept WHERE (name LIKE :dept_name) AND (code  LIKE :id) ORDER BY code");
       $query->bindParam(':dept_name', $name);
       $query->bindParam(':id', $id);
       $query->execute();

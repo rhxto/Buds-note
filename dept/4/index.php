@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <title>Buds_note</title>
     <script src="../../jquery/jquery.min.js"></script>
-    <script src="0.js"></script>
+    <script src="4.js"></script>
     <link rel="stylesheet" type="text/css" href="../../main/stylesheets/positions.css" />
     <link rel="stylesheet/less" type="text/css" href="../../main/stylesheets/main.less" />
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
