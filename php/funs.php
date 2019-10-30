@@ -1192,7 +1192,7 @@
      *
      * @return datetime La data e l'ora dell'ultimo log secondo il formato in cui esso è salvato dentro il database
      * @return false Se viene sollevata una PDOException di qualche tipo
-     * @return string "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+     * @return string "Utente non esistente" Nel caso in cui l'utente non sia presente nel database
      */
     function getLastLog(String $user){
       if (mysqlChckUsr($user)) {
@@ -1222,7 +1222,7 @@
      *
      * @return int Il numero di commenti lasciati dall'utente (non i commenti che gli altri lasciano sotto le sue note ma quelli che lui lascia in tutte le note del database)
      * @return false In caso di errore se viene sollevata una PDOException
-     * @return string "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+     * @return string "Utente non esistente" Nel caso in cui l'utente non sia presente in database
      */
     function getLeftComm(String $user){
       if (mysqlChckUsr($user)) {
@@ -1252,7 +1252,7 @@
      *
      * @return int Il numero di note create dall'utente e ancora presenti nel database
      * @return false In caso di errore se viene sollevata una PDOException
-     * @return string "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+     * @return string "Utente non esistente" Nel caso in cui l'utente non sia presente in database-
      */
     function getNoteNum(String $user){
       if (mysqlChckUsr($user)) {
@@ -1282,13 +1282,13 @@
      *
      * @return int Il numero totale di rate ricevuti
      * @return false In caso di errore se viene sollevata una PDOException
-     * @return string "Utente non esistente" Returniamo questa stringa perché se stampiamo direttamente quello che la funzione ci restituisce non dobbiamo usare qualche switch o altra roba per displayare gli errori
+     * @return string "Utente non esistente" Nel caso in cui l'utente non sia presente in database
      */
     function getReceivedRate(String $user){
       if (mysqlChckUsr($user)) {
         try{
           $tot_rates = 0;
-          $list = searchNote(connectDb(), NULL, NULL, $user, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+          $list = searchNote(connectDb(), NULL, NULL, NULL, $user, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
           foreach($list as $element){
             $tot_rates += (getLikes($element["id"]) + getDislikes($element["id"]));
           }
@@ -1313,9 +1313,9 @@
    * @param $picName Il nome dell'immagine
    *
    * @return string "done" Se tutto è andato bene e se non sono state sollevate eccezioni
-   * @return string "internalError" Se è stata sollevata un'eccezione PDOException
-   * @return string "invalidFormat" Se il formato non è tra quelli concessi (scritti nell'array $formats)
-   * @return string "non_existentNote" Se la nota sulla quale si sta cercando di inserire l'immagine non esiste
+   * @return string "internalError" Se è stata sollevata un'eccezione PDOException (array associativo in cui la stringa è sotto il campo "status")
+   * @return string "invalidFormat" Se il formato non è tra quelli concessi (scritti nell'array $formats) (array associativo in cui la stringa è sotto il campo "status")
+   * @return string "non_existentNote" Se la nota sulla quale si sta cercando di inserire l'immagine non esiste (array associativo in cui la stringa è sotto il campo "status")
    */
   function newImageEntry($noteId, $format, $picName, $user) {
     if (checkNote(connectDb(), $noteId)) {
@@ -1505,6 +1505,7 @@
   * @param $title Il titolo della nota passato allo stesso modo in cui è scritto nel DB
   *
   * @return int noteId L'ID della nota nel DB
+  * @return int -1 Nel caso in cui la query non ritorna nulla
   * @return string "internalError" Se viene sollevata una PDOException
   */
   function getNoteId($conn, $title, $user, $date){
