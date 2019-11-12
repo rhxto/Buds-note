@@ -124,8 +124,8 @@
       Ultima nota pubblicata<br/>
       <?php
         $notes = searchNote(connectDb(), NULL, NULL, NULL, NULL, NULL, ["true", "true", "true", "true", "true"], NULL, NULL, NULL, NULL, NULL);
-        $note = $notes[0];
-        if ($note === NULL) {
+
+        if ($notes[0] === NULL) {
           echo "Nessuna nota pubblicata al momento!<br/>";
           $note["title"] = "/";
           $note["user"] = "/";
@@ -133,6 +133,8 @@
           $note["subj"] = "/";
           $note["year"] = "/";
           $note["date"] = "/";
+        } else {
+          $note = $notes[0];
         }
       ?>
       Titolo: <?php echo $note["title"]; ?><br/>
