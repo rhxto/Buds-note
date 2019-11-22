@@ -479,7 +479,7 @@
       if ($dateto == NULL) {
         $dateto = date("Y-m-d H:i:s");
       }
-      if ($v === NULL || $v === "Decrescente") {
+      if ($v === NULL || $v === "Decrescente" || $v = "DESC") {
         $v = "DESC";
       }else{
         $v = "ASC";
