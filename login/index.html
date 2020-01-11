@@ -7,6 +7,7 @@
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="../bootstrap/js/bootstrap.min.js"></script>
   <script src="../jQuery.js"></script>
+  <script src="login.js"></script>
 
   <style>
 
@@ -274,23 +275,15 @@ input[type=text]:placeholder {
 
   </style>
 </head>
-<!------ Include the above in your HEAD tag ---------->
 <body>
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <!-- Tabs Titles -->
-
-    <!-- Icon -->
     <div class="fadeIn first">
       <img src="../bootstrap/Logotest.png" id="icon" alt="User Icon" />
     </div>
-
-    <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
-    </form>
+    <input type="text" id="Username" class="fadeIn second" name="login" placeholder="Username">
+    <input type="text" id="Password" class="fadeIn third" name="login" placeholder="Password">
+    <input type="submit" class="fadeIn fourth" value="Log In" onclick="testInput()">
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
