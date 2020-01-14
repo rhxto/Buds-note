@@ -1,4 +1,4 @@
-ar errThrown = false;
+var errThrown = false;
 function submitform() {
     var username = $("#Username").val();
     var password = $("#Password").val();

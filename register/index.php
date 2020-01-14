@@ -1,3 +1,10 @@
+<?php session_start();
+  header("Expires: 0");
+  header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+  header("Cache-Control: no-store, no-cache, must-revalidate");
+  header("Cache-Control: post-check=0, pre-check=0", false);
+  header("Pragma: no-cache");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +14,7 @@
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="../jquery/jquery.min.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
+  <script src="register.js"></script>
 
   <style>
 
