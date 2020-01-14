@@ -4,7 +4,7 @@
   header("Cache-Control: no-store, no-cache, must-revalidate");
   header("Cache-Control: post-check=0, pre-check=0", false);
   header("Pragma: no-cache");
-  if (isset($_SESSION["logged_in"])) {}
+  if (isset($_SESSION["logged_in"])) {
   	if ($_SESSION["logged_in"] === "1" && $_SESSION["username"] != null) {
   		echo "<script>window.location.href='home/';</script>";
   	}
