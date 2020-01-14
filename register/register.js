@@ -83,7 +83,7 @@ $(document).ready( function() {
       testInput();
     }
   });
-  document.getElementById("Conferma_Password").addEventListener("keyup", function(event) {
+  document.getElementById("RepeatPassword").addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
       testInput();
     }
