@@ -1,3 +1,13 @@
+<?php session_start();
+  header("Expires: 0");
+  header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+  header("Cache-Control: no-store, no-cache, must-revalidate");
+  header("Cache-Control: post-check=0, pre-check=0", false);
+  header("Pragma: no-cache");
+	if ($_SESSION["logged_in"] === "1") {
+		echo "<script>window.location.href='home/'";
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -252,7 +262,6 @@
 	</style>
 </head>
 <body>
-
 	<div class="container-fluid">
 		<div class="wrapper fadeInDown">
 			<div class="row">
@@ -270,12 +279,12 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12 text-center with-padding">
-						<button onclick="window.location.href='login.html'" type="button" class="btn btn-info btn-lg button">Login</button>
+						<button onclick="window.location.href='login/" type="button" class="btn btn-info btn-lg button">Login</button>
 					</div>
 				</div>
 				<div class="row">
 				<div class="col-sm-12 text-center">
-						<button onclick="window.location.href='register.html'" type="button" class="btn btn-info btn-lg button">Register</button>
+						<button onclick="window.location.href='register'" type="button" class="btn btn-info btn-lg button">Register</button>
 					</div>
 				</div>
 			</br>
