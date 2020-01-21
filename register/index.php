@@ -17,15 +17,12 @@
   <script src="register.js"></script>
   <link rel="stylesheet" href="register.css" type="text/css" />
 </head>
-<!-- Include the above in your HEAD tag ---------->
 <body>
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <!-- Tabs Titles -->
     <div class="fadeIn first">
       <img src="../bootstrap/Logotest.png" id="icon" alt="User Icon" />
     </div>
-    <!-- Login Form -->
     <br/>
     <input type="text" id="Username" class="fadeIn second" name="username" placeholder="Username" />
     <input type="text" id="Email" class="fadeIn third" name="e-mail" placeholder="E-mail" />
