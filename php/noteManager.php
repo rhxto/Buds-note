@@ -63,7 +63,7 @@
     }
     if (((empty($_POST["year"]) || $_POST["year"] == NULL) || !in_array($year, [1,2,3,4,5])) && $type === "write") {
       error_log("Anno non valido" . $year);
-      die(json_encode("NOTEWYNV"));
+      die(json_encode(["status"=>"NOTEWYNV"]));
     }
     switch ($type) {
       case 'write':

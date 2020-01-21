@@ -580,7 +580,7 @@
 
         if ($noteFile == false) {
           error_log("CASO IN FUNS ERRORE");
-          die(json_encode("NOTEW"));
+          die(json_encode(["status"=>"NOTEW"]));
         }
         error_log("noteFile: " . $noteFile);
         fwrite($noteFile, $content);
@@ -590,7 +590,7 @@
       } catch (PDOException $e) {
         PDOError($e);
         error_log("CASO IN FUNS ERRORE PDO");
-        die(json_encode("NOTEW"));
+        die(json_encode(["status"=> "NOTEW"]));
       } finally {
         $conn = null;
       }

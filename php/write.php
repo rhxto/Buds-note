@@ -1,5 +1,5 @@
 <?php
-  $registerDisabled = true; //degli idioti registrano account che non vanno bene
+  $registerDisabled = false; //degli idioti registrano account che non vanno bene
   if ($registerDisabled) {
     die("REGD");
   }
