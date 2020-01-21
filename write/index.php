@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="../jQuery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
+
 
   <style>
 
@@ -292,40 +294,64 @@ input[type=text]:placeholder {
 <body>
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <!-- Tabs Titles -->
-
-    <!-- Login Form -->
+  </br>
+    <h4>Upload your note!</h4>
     <form>
       <br/>
-      <input type="text" id="title" class="fadeIn second" name="title" placeholder="Titolo:"/>
+      <input type="text" id="title" class="fadeIn second" name="title" placeholder="Title:"/>
       <br/>
+    <div class="container">
+      <p>Year:</p>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-info">
+          <input type="radio" name="options" id="1" autocomplete="off" checked> 1
+        </label>
+        <label class="btn btn-info">
+          <input type="radio" name="options" id="2" autocomplete="off"> 2
+        </label>
+        <label class="btn btn-info">
+          <input type="radio" name="options" id="3" autocomplete="off"> 3
+        </label>
+        <label class="btn btn-info">
+          <input type="radio" name="options" id="4" autocomplete="off"> 4
+        </label>
+        <label class="btn btn-info">
+          <input type="radio" name="options" id="5" autocomplete="off"> 5
+        </label>
+      </div>
+    </br>
+    </div>
+    <div class="dropdown">
+      <br/>
+        <button type="button" class="btn btn-primary dropdown-toggle" id="subject" data-toggle="dropdown">
+          Subject
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <!--Qui vanno messi in modo dinamici i nomi delle materie possibili-->
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <br/>
+      <button type="button" class="btn btn-primary dropdown-toggle" id="dept" data-toggle="dropdown">
+        Department
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <!--Qui vanno messi in modo dinamici i nomi dei possibili indirizzi-->
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </div>
     <br/>
-    <p>Year:</p>
-    <div class="form-check form-check-inline">
-      <input id="year1" type="checkbox" checked="checked">
-        <label for="year1">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input id="year2" type="checkbox" checked="checked">
-        <label for="year2">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input id="year3" type="checkbox" checked="checked">
-        <label for="year3">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input id="year4" type="checkbox" checked="checked">
-        <label for="year4">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input id="year5" type="checkbox" checked="checked">
-        <label for="year5">5</label>
-    </div>
-      <textarea class="form-control" rows="25" id="comment" placeholder="Write here yout note..."></textarea>
-      <input type="submit" class="fadeIn fifth" value="Register">
+      <textarea class="form-control" rows="25" id="comment" placeholder="Write here your note..."></textarea>
+      <!--Qui ci va il form di upload delle foto-->
+      <input type="submit" class="fadeIn fifth" value="Upload">
     </form>
 
-  </div>
+
 </div>
 
 </body>
