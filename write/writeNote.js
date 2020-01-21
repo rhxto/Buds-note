@@ -123,6 +123,10 @@ function uploadImage() {
 }
 
 $(document).ready(function() {
+  var check = false;
+  if (check) {
+    localError("mobile");
+  }
   $(".custom-file-input").on("change", function() {
     var fileName = $(this).val().split("\\").pop();
     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
@@ -166,6 +170,9 @@ function localError(err) {
       break;
     case "sNv":
       txt = "Selezionare una materia.";
+      break;
+    case "mobile":
+      txt = "La pagina é instabile su broswers per telefoni, ne sconsigliamo l'uso fino alla rimozione di questo avviso.";
       break;
   }
   $("#localWarn").html(txt);
