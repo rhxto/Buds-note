@@ -11,6 +11,7 @@ function submitform() {
     if (response == "passed") {
       window.location.href = "../login/";
     } else {
+      console.log(response);
       errore(response);
     }
   });
@@ -41,14 +42,14 @@ function testInput() {
 
   if(usr == null || pswd == null|| rpswd == null || mail == null || usr == undefined || pswd == undefined || rpswd == undefined || mail == undefined || usr == "" || pswd == "" || rpswd == "" || mail == "" || mail.endsWith(".") || mail.endsWith(" ") || mail.endsWith("@") || mail.endsWith("'") || usr.length > 30 || pswd.length > 30 || usr.includes("'") || usr.includes(")"))  {
     if (errThrown == false) {
-      $("#Warning").html("Inserire dati validi!");
+      $("#localWarn").html("Inserire dati validi!");
       errThrown = true;
     }
   } else if (hasWhiteSpace(usr) == false && hasWhiteSpace(pswd) == false && testMail(mail) && pswd == rpswd) {
     submitform();
   } else {
     if (errThrown == false) {
-      $("#Warning").html("Inserire dati validi!");
+      $("#localWarn").html("Inserire dati validi!");
       errThrown = true;
     }
   }
