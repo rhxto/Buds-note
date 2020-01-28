@@ -60,21 +60,12 @@
         Year
       </button>
       <p/>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <div class="funkyradio">
-          <div class="funkyradio-primary">
-              <input type="checkbox" name="checkbox" id="inputyear_1" checked/>
-              <label for="checkbox2">1</label>
-              <input type="checkbox" name="checkbox" id="inputyear_2" checked/>
-              <label for="checkbox2">2</label>
-              <input type="checkbox" name="checkbox" id="inputyear_3" checked/>
-              <label for="checkbox2">3</label>
-              <input type="checkbox" name="checkbox" id="inputyear_4" checked/>
-              <label for="checkbox2">4</label>
-              <input type="checkbox" name="checkbox" id="inputyear_5" checked/>
-              <label for="checkbox2">5</label>
-          </div>
-        </div>
+      <div class="row d-flex justify-content-center">
+        <label class="checkbox-inline"><input type="checkbox" value="1">1</label>
+        <label class="checkbox-inline"><input type="checkbox" value="2">2</label>
+        <label class="checkbox-inline"><input type="checkbox" value="3">3</label>
+        <label class="checkbox-inline"><input type="checkbox" value="4">4</label>
+        <label class="checkbox-inline"><input type="checkbox" value="5">5</label>
       </div>
     </div>
 
