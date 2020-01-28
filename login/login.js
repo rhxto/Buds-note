@@ -22,6 +22,7 @@ function testInput() {
 
   if(usr == null || pswd == null|| usr == undefined || pswd == undefined || usr == "" || pswd == "" || usr.length > 30 || pswd.length > 30 || usr.includes("'") || usr.includes(")")) {
     if (errThrown == false) {
+      $(".localWarn").show();
       $("#localWarn").html("Inserire dati validi!");
       errThrown = true;
     }
@@ -29,12 +30,14 @@ function testInput() {
     submitform();
   } else {
     if (errThrown == false) {
+      $(".localWarn").show();
       $("#localWarn").html("Inserire dati validi!");
       errThrown = true;
     }
   }
 }
 function errore(err) {
+  $(".localWarn").show();
   switch (err) {
     case "credenziali":
       $("#localWarn").html("Username o password non corretti!");

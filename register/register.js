@@ -42,6 +42,7 @@ function testInput() {
 
   if(usr == null || pswd == null|| rpswd == null || mail == null || usr == undefined || pswd == undefined || rpswd == undefined || mail == undefined || usr == "" || pswd == "" || rpswd == "" || mail == "" || mail.endsWith(".") || mail.endsWith(" ") || mail.endsWith("@") || mail.endsWith("'") || usr.length > 30 || pswd.length > 30 || usr.includes("'") || usr.includes(")"))  {
     if (errThrown == false) {
+      $(".localWarn").show();
       $("#localWarn").html("Inserire dati validi!");
       errThrown = true;
     }
@@ -49,12 +50,14 @@ function testInput() {
     submitform();
   } else {
     if (errThrown == false) {
+      $(".localWarn").show();
       $("#localWarn").html("Inserire dati validi!");
       errThrown = true;
     }
   }
 }
 function errore(err) {
+  $(".localWarn").show();
   switch (err) {
     case "usernameEsiste":
     $("#localWarn").html("Username giá esistente!");
