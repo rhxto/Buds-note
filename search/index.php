@@ -22,12 +22,13 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <div class="fadeIn first">
-      <p>Search note</p>
+      <br/>
+      <h4>Search note:</h4>
     </div>
     <input type="text" id="Title" class="fadeIn second" name="login" placeholder="Title">
     <p/>
     <div class="dropdown">
-      <button type="button" class="btn btn-primary dropdown-toggle" id="Subject" data-toggle="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" onclick="selectSubj(this);" id="Subject" data-toggle="dropdown">
         Subject
       </button>
       <div class="dropdown-menu dropdown-menu-right">
@@ -42,7 +43,7 @@
       </div>
     </div><p/>
     <div class="dropdown">
-      <button type="button" class="btn btn-primary dropdown-toggle" id="Dept" data-toggle="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" onclick="selectDept(this);" id="Dept" data-toggle="dropdown">
         Department
       </button>
       <div class="dropdown-menu dropdown-menu-right">
