@@ -22,7 +22,7 @@
 </head>
 <body>
 <div class="wrapper fadeInDown">
-  <div class="localWarn alert alert-danger alert-dismissible" hidden>
+  <div class="localWarn alert alert-danger alert-dismissible" style="display: none;">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Warning! </strong><span id="localWarn"></span>
   </div>
