@@ -9,6 +9,7 @@ function submitform() {
     if (response == "passed") {
       window.location.href = "../";
     } else {
+      console.log(response);
       errore(response);
     }
   });
