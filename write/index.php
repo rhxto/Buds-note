@@ -1,3 +1,8 @@
+<?php
+  require '../php/ips.php';
+  $ip = $_SERVER['REMOTE_ADDR'];
+  loginCheck($ip);
+ ?>
 <!DOCTYPE html>
 <html>
 <head>

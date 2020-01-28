@@ -4,6 +4,9 @@
   header("Cache-Control: no-store, no-cache, must-revalidate");
   header("Cache-Control: post-check=0, pre-check=0", false);
   header("Pragma: no-cache");
+  require '../php/ips.php';
+  $ip = $_SERVER['REMOTE_ADDR'];
+  loginCheck($ip);
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,6 +22,10 @@
 </head>
 <body>
 <div class="wrapper fadeInDown">
+  <div class="localWarn alert alert-danger alert-dismissible" style="display: none;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Warning! </strong><span id="localWarn"></span>
+  </div>
   <div id="formContent">
     <div class="fadeIn first">
       <img src="../bootstrap/Logotest.png" id="icon" alt="User Icon" />
@@ -31,6 +38,5 @@
     <input type="submit" onclick="testInput()" class="fadeIn fifth" value="Register">
   </div>
 </div>
-
 </body>
 </html>

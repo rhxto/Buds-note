@@ -9,6 +9,7 @@ function submitform() {
     if (response == "passed") {
       window.location.href = "../";
     } else {
+      console.log(response);
       errore(response);
     }
   });
@@ -22,34 +23,37 @@ function testInput() {
 
   if(usr == null || pswd == null|| usr == undefined || pswd == undefined || usr == "" || pswd == "" || usr.length > 30 || pswd.length > 30 || usr.includes("'") || usr.includes(")")) {
     if (errThrown == false) {
-      $("#Warning").html("Inserire dati validi!");
+      $(".localWarn").show();
+      $("#localWarn").html("Inserire dati validi!");
       errThrown = true;
     }
   } else if (hasWhiteSpace(usr) == false && hasWhiteSpace(pswd) == false) {
     submitform();
   } else {
     if (errThrown == false) {
-      $("#Warning").html("Inserire dati validi!");
+      $(".localWarn").show();
+      $("#localWarn").html("Inserire dati validi!");
       errThrown = true;
     }
   }
 }
 function errore(err) {
+  $(".localWarn").show();
   switch (err) {
     case "credenziali":
-    $("#Warning").html("Username o password non corretti!");
+      $("#localWarn").html("Username o password non corretti!");
     break;
     case "nonAN":
-    $("#Warning").html("Inserire dati validi (senza caratteri speciali)!");
+      $("#localWarn").html("Inserire dati validi (senza caratteri speciali)!");
     break;
     case "internalError":
-    $("#Warning").html("Errore interno");
+      $("#localWarn").html("Errore interno");
     break;
     case "bannato":
-    window.location.href = "../ban";
+      window.location.href = "../ban";
     break;
     default:
-    $("#Warning").html("Errore interno codice sconosciuto (se vedi questo messaggio riferiscilo agli amministratori)");
+      $("#localWarn").html("Errore interno codice sconosciuto (se vedi questo messaggio riferiscilo agli amministratori)");
     break;
   }
 }

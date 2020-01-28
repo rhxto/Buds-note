@@ -11,6 +11,7 @@ function submitform() {
     if (response == "passed") {
       window.location.href = "../login/";
     } else {
+      console.log(response);
       errore(response);
     }
   });
@@ -41,34 +42,37 @@ function testInput() {
 
   if(usr == null || pswd == null|| rpswd == null || mail == null || usr == undefined || pswd == undefined || rpswd == undefined || mail == undefined || usr == "" || pswd == "" || rpswd == "" || mail == "" || mail.endsWith(".") || mail.endsWith(" ") || mail.endsWith("@") || mail.endsWith("'") || usr.length > 30 || pswd.length > 30 || usr.includes("'") || usr.includes(")"))  {
     if (errThrown == false) {
-      $("#Warning").html("Inserire dati validi!");
+      $(".localWarn").show();
+      $("#localWarn").html("Inserire dati validi!");
       errThrown = true;
     }
   } else if (hasWhiteSpace(usr) == false && hasWhiteSpace(pswd) == false && testMail(mail) && pswd == rpswd) {
     submitform();
   } else {
     if (errThrown == false) {
-      $("#Warning").html("Inserire dati validi!");
+      $(".localWarn").show();
+      $("#localWarn").html("Inserire dati validi!");
       errThrown = true;
     }
   }
 }
 function errore(err) {
+  $(".localWarn").show();
   switch (err) {
     case "usernameEsiste":
-    $("#Warning").html("Username giá esistente!");
+    $("#localWarn").html("Username giá esistente!");
       break;
     case "nonAN":
-    $("#Warning").html("Username o password non validi (niente caratteri speciali)!");
+    $("#localWarn").html("Username o password non validi (niente caratteri speciali)!");
       break;
     case "UWFE":
-      $("#Warning").html("Errore nella creazione dell'utente (riferisci il messaggio agli amministratori). Codice: UWFE");
+      $("#localWarn").html("Errore nella creazione dell'utente (riferisci il messaggio agli amministratori). Codice: UWFE");
       break;
     case "REGD":
-      $("#Warning").html("Le registrazioni sono temporaneamente disabilitate a causa di persone troppo simpatiche.");
+      $("#localWarn").html("Le registrazioni sono temporaneamente disabilitate a causa di persone troppo simpatiche.");
       break;
     default:
-      $("#Warning").html("Errore (riferisci questo messaggio agli amministratori)" + " Codice: " + err);
+      $("#localWarn").html("Errore (riferisci questo messaggio agli amministratori)" + " Codice: " + err);
       break;
   }
 }
