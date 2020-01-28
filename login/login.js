@@ -37,19 +37,19 @@ function testInput() {
 function errore(err) {
   switch (err) {
     case "credenziali":
-    $("#Warning").html("Username o password non corretti!");
+      $("#localWarn").html("Username o password non corretti!");
     break;
     case "nonAN":
-    $("#Warning").html("Inserire dati validi (senza caratteri speciali)!");
+      $("#localWarn").html("Inserire dati validi (senza caratteri speciali)!");
     break;
     case "internalError":
-    $("#Warning").html("Errore interno");
+      $("#localWarn").html("Errore interno");
     break;
     case "bannato":
-    window.location.href = "../ban";
+      window.location.href = "../ban";
     break;
     default:
-    $("#Warning").html("Errore interno codice sconosciuto (se vedi questo messaggio riferiscilo agli amministratori)");
+      $("#localWarn").html("Errore interno codice sconosciuto (se vedi questo messaggio riferiscilo agli amministratori)");
     break;
   }
 }

@@ -56,19 +56,19 @@ function testInput() {
 function errore(err) {
   switch (err) {
     case "usernameEsiste":
-    $("#Warning").html("Username giá esistente!");
+    $("#localWarn").html("Username giá esistente!");
       break;
     case "nonAN":
-    $("#Warning").html("Username o password non validi (niente caratteri speciali)!");
+    $("#localWarn").html("Username o password non validi (niente caratteri speciali)!");
       break;
     case "UWFE":
-      $("#Warning").html("Errore nella creazione dell'utente (riferisci il messaggio agli amministratori). Codice: UWFE");
+      $("#localWarn").html("Errore nella creazione dell'utente (riferisci il messaggio agli amministratori). Codice: UWFE");
       break;
     case "REGD":
-      $("#Warning").html("Le registrazioni sono temporaneamente disabilitate a causa di persone troppo simpatiche.");
+      $("#localWarn").html("Le registrazioni sono temporaneamente disabilitate a causa di persone troppo simpatiche.");
       break;
     default:
-      $("#Warning").html("Errore (riferisci questo messaggio agli amministratori)" + " Codice: " + err);
+      $("#localWarn").html("Errore (riferisci questo messaggio agli amministratori)" + " Codice: " + err);
       break;
   }
 }

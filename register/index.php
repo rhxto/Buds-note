@@ -19,6 +19,10 @@
 </head>
 <body>
 <div class="wrapper fadeInDown">
+  <div class="localWarn alert alert-danger alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Warning! </strong><span id="localWarn"></span>
+  </div>
   <div id="formContent">
     <div class="fadeIn first">
       <img src="../bootstrap/Logotest.png" id="icon" alt="User Icon" />
@@ -31,6 +35,5 @@
     <input type="submit" onclick="testInput()" class="fadeIn fifth" value="Register">
   </div>
 </div>
-
 </body>
 </html>
