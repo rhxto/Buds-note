@@ -27,7 +27,7 @@
     <input type="text" id="Username" class="fadeIn second" name="username" placeholder="Username" />
     <input type="text" id="Email" class="fadeIn third" name="e-mail" placeholder="E-mail" />
     <input type="text" id="Password" class="fadeIn fourth" name="password" placeholder="Password" />
-    <input type="text" id="RepeatPassword" class="fadeIn fourth" name="password" placeholder="Ripeti password" />
+    <input type="text" id="RepeatPassword" class="fadeIn fourth" name="password" placeholder="Repeat password" />
     <input type="submit" onclick="testInput()" class="fadeIn fifth" value="Register">
   </div>
 </div>
