@@ -25,25 +25,52 @@
       <p>Search note</p>
     </div>
     <input type="text" id="Title" class="fadeIn second" name="login" placeholder="Title">
-    <input type="text" id="Subject" class="fadeIn third" name="login" placeholder="Subject">
-    <input type="text" id="Dept" class="fadeIn third" name="login" placeholder="Dept">
-
+    <p/>
+    <div class="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" id="Subject" data-toggle="dropdown">
+        Subject
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <?php
+          require_once "../php/core.php";
+          require_once '../php/funs.php';
+          $response = subj(connectDb(), NULL, NULL);
+          foreach ($response[1] as $subj) {
+            echo "<a class='dropdown-item' onclick='selectSubj(this)'>" . $subj . "</a>";
+          }
+        ?>
+      </div>
+    </div><p/>
+    <div class="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" id="Dept" data-toggle="dropdown">
+        Department
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <?php
+          $response = dept(connectDb(), NULL, NULL);
+          foreach ($response[1] as $dept) {
+            echo "<a class='dropdown-item' onclick='selectDept(this)'>" . $dept . "</a>";
+          }
+        ?>
+      </div>
+    </div><p/>
     <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle fadeIn third" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Year
       </button>
+      <p/>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <div class="funkyradio">
           <div class="funkyradio-primary">
-              <input type="checkbox" name="checkbox" id="checkbox2" checked/>
+              <input type="checkbox" name="checkbox" id="inputyear_1" checked/>
               <label for="checkbox2">1</label>
-              <input type="checkbox" name="checkbox" id="checkbox2" checked/>
+              <input type="checkbox" name="checkbox" id="inputyear_2" checked/>
               <label for="checkbox2">2</label>
-              <input type="checkbox" name="checkbox" id="checkbox2" checked/>
+              <input type="checkbox" name="checkbox" id="inputyear_3" checked/>
               <label for="checkbox2">3</label>
-              <input type="checkbox" name="checkbox" id="checkbox2" checked/>
+              <input type="checkbox" name="checkbox" id="inputyear_4" checked/>
               <label for="checkbox2">4</label>
-              <input type="checkbox" name="checkbox" id="checkbox2" checked/>
+              <input type="checkbox" name="checkbox" id="inputyear_5" checked/>
               <label for="checkbox2">5</label>
           </div>
         </div>

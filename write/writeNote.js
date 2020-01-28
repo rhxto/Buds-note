@@ -158,7 +158,7 @@ function startAnimation() {
 }
 
 function localError(err) {
-  $("#localWarn").show();
+  $(".localWarn").show();
   switch (err) {
     case "cntNv":
       txt = "Il titolo o il contenuto non possono essere solamente composti da spazi.";
@@ -178,6 +178,6 @@ function localError(err) {
   }
   $("#localWarn").html(txt);
   setTimeout(function(){
-    $("#localWarn").hide();
+    $(".localWarn").hide();
   }, 5000);
 }

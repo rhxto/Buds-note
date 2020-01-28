@@ -13,7 +13,10 @@
   <script src="writeNote.js"></script>
 </head>
 <body>
-  <span id="localWarn"></span>
+  <div class="localWarn alert alert-danger alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Warning! </strong><span id="localWarn"></span>
+  </div>
   <div id="animation">
   </div>
   <div class="pageContainer">
@@ -75,12 +78,13 @@
           ?>
         </div>
       </div>
+      <br/>
       <p/>
         <textarea class="form-control" rows="25" id="Content" placeholder="Write here your note..."></textarea>
         <div id="file-upload" class="container">
           <div class="custom-file">
             <input type="file" class="custom-file-input" id="uploadImage">
-            <label class="custom-file-label" for="uploadImage">Upload image</label>
+            <label class="custom-file-label" for="uploadImage">Upload here your images...</label>
           </div>
         </div>
         <input onclick="submitNote();" type="submit" class="fadeIn fifth" value="Upload">
