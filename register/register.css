@@ -6,7 +6,7 @@
     }
 
     body {
-      font-family: "Poppins", sans-serif;
+      font-family: "Poppins", 'helvetica neue', sans-serif;
       height: 100vh;
       background-color: #a3d6f0;
     }
