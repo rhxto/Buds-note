@@ -12,7 +12,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Bud's note login</title>
+  <title>Bud registration</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="../jquery/jquery.min.js"></script>
