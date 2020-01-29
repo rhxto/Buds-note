@@ -21,14 +21,12 @@
 	<body>
 		<div class="container-fluid">
 			<div class="wrapper fadeInDown">
-				<div class="row">
-					<div class="col-sm-12">
-						<img src="bootstrap/Logotest.png" alt="Logo di Bud's note" class="logo"></img>
-					</div>
-				</div>
-			</br>
-				<div id="formContent">
-				</br>
+        <div id="formContent">
+				  </br>
+          <div class="row">
+            <img src="bootstrap/Logotest.png" alt="Logo di Bud's note" class="logo" width="100%"></img>
+          </div>
+          </br>
 					<div class="row">
 						<div class="col-sm-12">
 							<p class="text-center">Welcome to Bud's Note!</p>
