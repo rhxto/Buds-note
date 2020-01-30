@@ -7,7 +7,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Bud's note login</title>
+  <title>Bud's note upload</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="../jquery/jquery.min.js"></script>
@@ -30,9 +30,9 @@
       </br>
         <h4>Upload your note!</h4>
         <br/>
-        <input type="text" id="Title" class="fadeIn second" placeholder="Title:"/>
+        <input type="text" id="Title" class="fadeIn first" placeholder="Title:"/>
         <br/>
-      <div class="container">
+      <div class="container fadeIn second">
         <p>Year:</p>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-info">
@@ -53,7 +53,7 @@
         </div>
       </br>
       </div>
-      <div class="dropdown">
+      <div class="dropdown fadeIn third">
         <br/>
           <button type="button" class="btn btn-primary dropdown-toggle" id="Subject" data-toggle="dropdown">
             Subject
@@ -69,7 +69,7 @@
           ?>
         </div>
       </div>
-      <div class="dropdown">
+      <div class="dropdown fadeIn third">
         <br/>
         <button type="button" class="btn btn-primary dropdown-toggle" id="Dept" data-toggle="dropdown">
           Department
@@ -85,14 +85,14 @@
       </div>
       <br/>
       <p/>
-        <textarea class="form-control" rows="25" id="Content" placeholder="Write here your note..."></textarea>
+        <textarea class="form-control fadeIn third" rows="25" id="Content" placeholder="Write here your note..."></textarea>
         <div id="file-upload" class="container">
-          <div class="custom-file">
+          <div class="custom-file fadeIn fourth">
             <input type="file" class="custom-file-input" id="uploadImage">
             <label class="custom-file-label" for="uploadImage">Upload here your images...</label>
           </div>
         </div>
-        <input onclick="submitNote();" type="submit" class="fadeIn fifth" value="Upload">
+        <input onclick="submitNote();" type="submit" class="fadeIn fourth" value="Upload">
       </div>
     </div>
   </div>
