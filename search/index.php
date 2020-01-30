@@ -21,13 +21,13 @@
 <body>
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <div class="fadeIn first">
+    <div>
       <br/>
       <h4>Search note:</h4>
     </div>
-    <input type="text" id="Title" class="fadeIn second" name="login" placeholder="Title">
+    <input type="text" id="Title" class="fadeIn first" name="login" placeholder="Title">
     <p/>
-    <div class="dropdown">
+    <div class="dropdown fadeIn second">
       <button type="button" class="btn btn-primary dropdown-toggle" onclick="selectSubj(this);" id="Subject" data-toggle="dropdown">
         Subject
       </button>
@@ -42,7 +42,7 @@
         ?>
       </div>
     </div><p/>
-    <div class="dropdown">
+    <div class="dropdown fadeIn second">
       <button type="button" class="btn btn-primary dropdown-toggle" onclick="selectDept(this);" id="Dept" data-toggle="dropdown">
         Department
       </button>
@@ -55,23 +55,30 @@
         ?>
       </div>
     </div><p/>
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle fadeIn third" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Year
-      </button>
-      <p/>
-      <div class="row d-flex justify-content-center">
-        <label class="checkbox-inline"><input type="checkbox" value="1">1</label>
-        <label class="checkbox-inline"><input type="checkbox" value="2">2</label>
-        <label class="checkbox-inline"><input type="checkbox" value="3">3</label>
-        <label class="checkbox-inline"><input type="checkbox" value="4">4</label>
-        <label class="checkbox-inline"><input type="checkbox" value="5">5</label>
+      <div class="container fadeIn third">
+        <p>Year:</p>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-info">
+            <input type="radio" name="options" id="year_1" autocomplete="off"> 1
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="options" id="year_2" autocomplete="off"> 2
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="options" id="year_3" autocomplete="off"> 3
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="options" id="year_4" autocomplete="off"> 4
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="options" id="year_5" autocomplete="off"> 5
+          </label>
+        </div>
+      </br>
       </div>
-    </div>
-
+    </p>
     <input type="text" id="User" class="fadeIn third" name="login" placeholder="User">
     <input type="submit" class="fadeIn fourth" value="Search" onclick="testInput()">
-
   </div>
 </div>
 
