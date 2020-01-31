@@ -1,5 +1,5 @@
 function error(err) {
-  $("#localWarn").show();
+  $(".localWarn").show();
   switch (err) {
     case "sessione":
       $("#localWarn").html("Errore nel logout, se hai visto questo messaggio riferiscilo agli amministratori." + " Codice: " + err);
