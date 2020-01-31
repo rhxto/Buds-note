@@ -53,7 +53,7 @@
         </div>
       </br>
       </div>
-      <div class="dropdown fadeIn third">
+      <div class="dropdown">
         <br/>
           <button type="button" class="btn btn-primary dropdown-toggle" id="Subject" data-toggle="dropdown">
             Subject
@@ -69,7 +69,7 @@
           ?>
         </div>
       </div>
-      <div class="dropdown fadeIn third">
+      <div class="dropdown">
         <br/>
         <button type="button" class="btn btn-primary dropdown-toggle" id="Dept" data-toggle="dropdown">
           Department
