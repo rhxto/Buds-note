@@ -18,9 +18,11 @@
   <script src="writeNote.js"></script>
 </head>
 <body>
-  <div class="localWarn alert alert-danger alert-dismissible">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <div class="localWarn alert alert-danger alert-dismissible fade show">
     <strong>Warning! </strong><span id="localWarn"></span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div id="animation">
   </div>
