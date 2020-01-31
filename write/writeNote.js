@@ -151,6 +151,7 @@ $(document).ready(function() {
   });
 });
 
+/* Questa funzione non servirà più perchè non essendo una animazione invasiva può restare sullo schermo anche da spenta*/
 function startAnimation() {
   $("#animation").show();
 }
