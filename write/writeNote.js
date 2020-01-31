@@ -152,9 +152,7 @@ $(document).ready(function() {
 });
 
 function startAnimation() {
-  $("#animation").html("<span class='back'><span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span></span><br/><span id='warn'></span>");
   $("#animation").show();
-  $(".pageContainer").hide();
 }
 
 function localError(err) {
