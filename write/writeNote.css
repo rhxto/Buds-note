@@ -268,10 +268,8 @@ input[type=text]:placeholder {
 }
 
 #animation {
-  position: absolute;
-  top: 5%;
+  position: relative;
   background-color: inherit;
-  left: 10%;
   z-index: 100;
 }
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);

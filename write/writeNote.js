@@ -95,7 +95,9 @@ function uploadImage() {
               var xhr = new window.XMLHttpRequest();
               xhr.upload.addEventListener("progress", function(event) {
                 if (localStorage.getItem("uploadStatus") !== "done") {
-                  $("#imageUploadProgress").attr("style", "width: " + (event.loaded/event.total*100) + "%");
+                  var value = (event.loaded/event.total*100);
+                  $("#imageUploadProgress").attr("style", "width: " + value + "%");
+                  $("#imageUploadProgress").html(value + "%");
                 }
               }, false);
               xhr.addEventListener("load", function(event) {
