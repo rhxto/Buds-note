@@ -87,10 +87,10 @@
       <hr>
         <div class="row">
           <div class="col-md-6 float-left">
-            <a id="noteName" href="Note page link" class="text-decoration-none fadeIn second">Here note name</a>
+            <a href="Note page link" class="text-decoration-none fadeIn second">Here note name</a>
           </div>
           <div class="col-md-6 float-right">
-            <a id="noteOwner" href="User page link" class="text-decoration-none fadeIn second">User name here</a>
+            <a href="User page link" class="text-decoration-none fadeIn second">User name here</a>
           </div>
         </div>
         <div class="row">
