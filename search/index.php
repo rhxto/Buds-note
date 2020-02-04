@@ -27,7 +27,7 @@
     </div>
     <input type="text" id="Title" class="fadeIn first" name="login" placeholder="Title">
     <p/>
-    <div class="dropdown fadeIn second">
+    <div class="dropdown">
       <button type="button" class="btn btn-primary dropdown-toggle" onclick="selectSubj(this);" id="Subject" data-toggle="dropdown">
         Subject
       </button>
@@ -42,7 +42,7 @@
         ?>
       </div>
     </div><p/>
-    <div class="dropdown fadeIn second">
+    <div class="dropdown">
       <button type="button" class="btn btn-primary dropdown-toggle" onclick="selectDept(this);" id="Dept" data-toggle="dropdown">
         Department
       </button>
@@ -81,7 +81,7 @@
     <input type="submit" class="fadeIn fourth" value="Search" onclick="search()">
   </div>
   <h2>Your note feed:</h2>
-  <div id="formContent results" style="visibility : visible">
+  <div id="formContent" class="results" style="visibility : visible">
     <!-- Da qui fino alla fine del div metteremo la parte per le risposte con le anteprime delle note -->
     <!-- Ora creo un esempio di come dovrà essere una nota -->
       <!-- <div>

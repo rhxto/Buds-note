@@ -31,19 +31,19 @@ function search() {
     "order": order
   }
   $.post(ajaxurl, data, function (response) {
-    $("#results").empty();
+    $(".results").empty();
     var response = JSON.parse(response);
     console.log(response);
     if (response == "Nrt") {
-      $("#results").append("<div class='row'><div class='col-md-12'>Nessun risultato trovato</div></div>");
+      $(".results").append("<div class='row'><div class='col-md-12'>Nessun risultato trovato</div></div>");
     } else if (response == "IES" || response == "IE" || response == "NOTESYNV") {
       error(response);
     } else {
       for (i = 0; i < response.length; i++) {
         if (i != 0) {
-          $("#results").append("<hr/>");
+          $(".results").append("<hr/>");
         }
-        $("#results").append("<div class='row'><div class='col-md-6'><a href='php/viewNote.php?noteId=" + response[i]["id"] + "'>" + response[i]["title"] + "</a></div><div class='col-md-6'><a>" + response[i]["user"] + "</a></div></div><div class='row'><div class='col-md-6'><a>" + response[i]["date"] + "</a></div></div>");
+        $(".results").append("<div class='row'><div class='col-md-6'><a href='php/viewNote.php?noteId=" + response[i]["id"] + "'>" + response[i]["title"] + "</a></div><div class='col-md-6'><a>" + response[i]["user"] + "</a></div></div><div class='row'><div class='col-md-6'><a>" + response[i]["date"] + "</a></div></div>");
       }
     }
   });
