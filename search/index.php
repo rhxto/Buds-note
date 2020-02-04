@@ -78,12 +78,13 @@
       </div>
     </p>
     <input type="text" id="User" class="fadeIn third" name="login" placeholder="User">
-    <input type="submit" class="fadeIn fourth" value="Search" onclick="testInput()">
+    <input type="submit" class="fadeIn fourth" value="Search" onclick="search()">
   </div>
   <h2>Your note feed:</h2>
-  <div id="formContent" style="visibility : visible">
+  <div id="formContent results" style="visibility : visible">
     <!-- Da qui fino alla fine del div metteremo la parte per le risposte con le anteprime delle note -->
     <!-- Ora creo un esempio di come dovrà essere una nota -->
+      <!-- <div>
         <div class="row">
           <div class="col-md-6 float-left">
             <a href="Note page link" class="text-decoration-none fadeIn second">Here note name</a>
@@ -93,9 +94,10 @@
           </div>
         </div>
         <div class="col-md-3 float-left">
-          <p class="noteDate"></p>
+          <a class="text-decoration-none fadeIn second">00/00/0000</a>
         </div>
-        <hr>
+      </div>
+    <hr/> -->
   </div>
 </div>
 
