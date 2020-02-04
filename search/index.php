@@ -86,8 +86,12 @@
     <!-- Ora creo un esempio di come dovrà essere una nota -->
       <hr>
         <div class="row">
-          <a id="noteName" href="Note page link" class="text-decoration-none text-left fadeIn second">Here note name</a>
-          <a id="noteOwner" href="User page link" class="text-decoration-none text-right fadeIn second">User name here</a>
+          <div class="col-md-6 float-left">
+            <a id="noteName" href="Note page link" class="text-decoration-none fadeIn second">Here note name</a>
+          </div>
+          <div class="col-md-6 float-right">
+            <a id="noteOwner" href="User page link" class="text-decoration-none fadeIn second">User name here</a>
+          </div>
         </div>
         <div class="row">
           <p class="noteDate"></p>

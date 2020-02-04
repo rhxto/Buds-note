@@ -61,18 +61,6 @@ h2 {
   border-radius: 0 0 10px 10px;
 }
 
-#noteName{
-  text-align: left;
-}
-
-#noteOwner{
-  text-align: right;
-}
-
-#noteDate{
-  text-align: right;
-}
-
 /* TABS */
 
 h2.inactive {
