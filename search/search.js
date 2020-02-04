@@ -33,16 +33,16 @@ function search() {
   $.post(ajaxurl, data, function (response) {
     $("#risultati").empty();
     var response = JSON.parse(response);
-    if (response == "Nrt") {
-      $("#risultati").html("Nessun risultato trovato");
-    } else if (response == "IES" || response == "IE" || response == "NOTESYNV") {
-      error(response);
-    } else {
-      $("#scriviNotaBtn").hide();
-      for (i = 0; i < response.length; i++) {
-        $("#risultati").append("<a href='php/viewNote.php?noteId=" + response[i]["id"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
-      }
-    }
+    console.log(response);
+    // if (response == "Nrt") {
+    //   $("#risultati").html("Nessun risultato trovato");
+    // } else if (response == "IES" || response == "IE" || response == "NOTESYNV") {
+    //   error(response);
+    // } else {
+    //   for (i = 0; i < response.length; i++) {
+    //     $("#risultati").append("<a href='php/viewNote.php?noteId=" + response[i]["id"] + "'>" + response[i]["title"] + " Autore: " + response[i]["user"] + " Data: " + response[i]["date"] + "</a><br/>");
+    //   }
+    // }
   });
 }
 

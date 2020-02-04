@@ -18,7 +18,7 @@ h2 {
   text-transform: uppercase;
   display:inline-block;
   margin: 40px 8px 10px 8px;
-  color: #cccccc;
+  color: #ffffff;
 }
 
 
@@ -61,9 +61,17 @@ h2 {
   border-radius: 0 0 10px 10px;
 }
 
+#noteName{
+  text-align: left;
+}
 
+#noteOwner{
+  text-align: right;
+}
 
-
+#noteDate{
+  text-align: right;
+}
 
 /* TABS */
 

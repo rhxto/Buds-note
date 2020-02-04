@@ -81,14 +81,17 @@
     <input type="submit" class="fadeIn fourth" value="Search" onclick="testInput()">
   </div>
   <h2>Your note feed:</h2>
-  <div id="noteFeed" style="visibility : visible">
+  <div id="formContent" style="visibility : visible">
     <!-- Da qui fino alla fine del div metteremo la parte per le risposte con le anteprime delle note -->
     <!-- Ora creo un esempio di come dovrà essere una nota -->
-    <div id="formContent fadeIn first">
-      <a id="noteName" href="Note page link" class="text-decoration-none text-left fadeIn second">Here note name</a>
-      <a id="noteOwner" href="User page link" class="text-decoration-none text-right fadeIn second">User name here</a>
-    </div>
-
+      <hr>
+        <div class="row">
+          <a id="noteName" href="Note page link" class="text-decoration-none text-left fadeIn second">Here note name</a>
+          <a id="noteOwner" href="User page link" class="text-decoration-none text-right fadeIn second">User name here</a>
+        </div>
+        <div class="row">
+          <p class="noteDate"></p>
+        </div>
   </div>
 </div>
 

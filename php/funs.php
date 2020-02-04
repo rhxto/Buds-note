@@ -572,21 +572,20 @@
 
         $dir = "/notedb/$user/$noteId.txt";
         $noteFile = fopen("../notedb/$user/$noteId.txt", "w+");
-
-        $query= $conn->prepare("UPDATE note SET dir = :dir WHERE id = :id");
-        $query->bindParam(":dir", $dir);
-        $query->bindParam(":id", $noteId);
-        $query->execute();
-
         if ($noteFile == false) {
-          error_log("CASO IN FUNS ERRORE");
-          die(json_encode(["status"=>"NOTEW"]));
-        }
-        error_log("noteFile: " . $noteFile);
-        fwrite($noteFile, $content);
-        fclose($noteFile);
+          return ["status"=>"NOTEW"];
+        } else {
+          $query= $conn->prepare("UPDATE note SET dir = :dir WHERE id = :id");
+          $query->bindParam(":dir", $dir);
+          $query->bindParam(":id", $noteId);
+          $query->execute();
 
-        return ["status"=>"done", "date"=>$date];
+          error_log("noteFile: " . $noteFile);
+          fwrite($noteFile, $content);
+          fclose($noteFile);
+
+          return ["status"=>"done", "date"=>$date];
+        }
       } catch (PDOException $e) {
         PDOError($e);
         error_log("CASO IN FUNS ERRORE PDO");

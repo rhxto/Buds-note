@@ -25,8 +25,6 @@
       die(json_encode(["status"=>"NOTENV"]));
     } elseif ($type == "write") {
       $title = test_input($_POST["title"]);
-      $title = str_replace("'", "sc-a", $title);
-      $title = str_replace('"', "sc-q", $title);
       $content = test_input($_POST["content"]);
       $subj = test_input($_POST["subj"]);
       $dept = test_input($_POST["dept"]);
@@ -40,10 +38,10 @@
           $newTitle = test_input($_POST["newTitle"]);
           $newContent = test_input($_POST["newContent"]);
         }
+      } elseif ($type == "update") {
+        error_log("**TENTATIVO DI AGGIORNAMENTO NOTA NON AUTORIZZATO DA: " . $_SERVER["REMOTE_ADDR"] . "**");
+        die(json_encode(["status"=>"NOTEUNA"]));
       }
-    } elseif ($type == "update") {
-      error_log("**TENTATIVO DI AGGIORNAMENTO NOTA NON AUTORIZZATO DA: " . $_SERVER["REMOTE_ADDR"] . "**");
-      die(json_encode(["status"=>"NOTEUNA"]));
     }
     if ((empty($_POST["type"]) || empty($_POST["noteId"])) && $type == "delete") {
       error_log("Nota non valida delete");
