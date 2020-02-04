@@ -84,7 +84,6 @@
   <div id="formContent" style="visibility : visible">
     <!-- Da qui fino alla fine del div metteremo la parte per le risposte con le anteprime delle note -->
     <!-- Ora creo un esempio di come dovrà essere una nota -->
-      <hr>
         <div class="row">
           <div class="col-md-6 float-left">
             <a href="Note page link" class="text-decoration-none fadeIn second">Here note name</a>
@@ -93,9 +92,10 @@
             <a href="User page link" class="text-decoration-none fadeIn second">User name here</a>
           </div>
         </div>
-        <div class="row">
+        <div class="col-md-3 float-left">
           <p class="noteDate"></p>
         </div>
+        <hr>
   </div>
 </div>
 
