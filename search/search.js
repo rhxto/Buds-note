@@ -4,11 +4,14 @@ function search() {
   var subj = $("#Subject").val();
   var years = [];
   for (var i = 0; i < 5; i++) {
-    if ($("#inputyear_" + (i + 1)).prop("checked")) {
+    if ($("#year_" + (i + 1)).prop("checked")) {
       years[i] = true;
     } else {
       years[i] = false;
     }
+  }
+  if (!years.includes(true)) {
+    years = [true, true, true, true, true];
   }
   var dept = $("#filtroIndirizzo").val();
   var teacher = user;
@@ -18,7 +21,7 @@ function search() {
   var order = $("#filtroOrdine").val();
 
   data = {
-    "type": type,
+    "type": "note",
     "title": title,
     "user": user,
     "subj": subj,
@@ -30,7 +33,7 @@ function search() {
     "orderby": orderby,
     "order": order
   }
-  $.post(ajaxurl, data, function (response) {
+  $.post("https://budsnote.ddns.net/php/research.php", data, function (response) {
     $(".results").empty();
     var response = JSON.parse(response);
     console.log(response);
@@ -43,7 +46,7 @@ function search() {
         if (i != 0) {
           $(".results").append("<hr/>");
         }
-        $(".results").append("<div class='row'><div class='col-md-6'><a href='php/viewNote.php?noteId=" + response[i]["id"] + "'>" + response[i]["title"] + "</a></div><div class='col-md-6'><a>" + response[i]["user"] + "</a></div></div><div class='row'><div class='col-md-6'><a>" + response[i]["date"] + "</a></div></div>");
+        $(".results").append("<br/><div class='row'><div class='col-md-6'><a class='text-decoration-none' href='php/viewNote.php?noteId=" + response[i]["id"] + "'>" + response[i]["title"] + "</a></div><div class='col-md-6'><a class='text-decoration-none'>" + response[i]["user"] + "</a></div></div><div class='row'><div class='col-md-6'><a class='text-decoration-none'>" + response[i]["date"] + "</a></div></div>");
       }
     }
   });
