@@ -70,7 +70,11 @@
         } else {
           if(($result = writeNote(connectDb(), $title, $_SESSION["username"], $subj, $dept, $year, $content))["status"] === "done") {
             if (($id = getNoteId(connectDb(), $title, $_SESSION["username"], $result["date"])) != "internalError") {
-              echo json_encode(["status"=>"done", "id"=>$id]);
+              if ($id === -1) {
+                echo json_encode(["status"=>"NOTEWNFAW"]);
+              } else {
+                echo json_encode(["status"=>"done", "id"=>$id]);
+              }
             } else if ($id === "internalError"){
               echo json_encode(["status"=>"NOTEW"]);
             } else {

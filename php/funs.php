@@ -569,6 +569,9 @@
         $query->bindParam(":date", $date);
         $query->execute();
         $noteId = getNoteId(connectDb(), $title, $user, $date);
+        if ($noteIf === -1) {
+          die(json_encode(["status"=>"NOTEWNFAW"]));
+        }
 
         $dir = "/notedb/$user/$noteId.txt";
         $noteFile = fopen("../notedb/$user/$noteId.txt", "w+");
@@ -1508,9 +1511,6 @@
   * @return string "internalError" Se viene sollevata una PDOException
   */
   function getNoteId($conn, $title, $user, $date){
-    $title = str_replace(" ", "_", $title);
-    $title = str_replace("'", "sc-a", $title);
-    $title = str_replace('"', "sc-q", $title);
     try{
       $getId = $conn->prepare("SELECT id FROM note WHERE title = :title AND user LIKE :user AND date LIKE :date");
       $getId->bindParam(":title", $title);

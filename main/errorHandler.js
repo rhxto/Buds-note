@@ -67,6 +67,9 @@ function error(err) {
     case "NOTEUNE":
       $("#localWarn").html("La nota che volevi aggiornare non é stata trovata, copia le modifiche e prova a ricaricare la pagina. Se il problema persiste contatta gli amministratori.");
       break;
+    case "NOTEWNFAW":
+      $("#localWarn").html("Abbiamo riscontrato un errore nella scrittura della nota. Codice: " + err);
+      break;
     case "FIREFOX":
       $("#localWarn").html("A causa di errori nel broswer, alcuni elementi del sito potrebbero non funzionare correttamente in Firefox (consigliamo Chrome o Edge). Vedi: https://support.mozilla.org/en-US/questions/1191898 <button class='mozErrorDeactivation' onclick='mozShown()'>Ok</button>");
       break;
