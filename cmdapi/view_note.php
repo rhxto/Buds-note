@@ -37,7 +37,7 @@
                 "code"=> "800_rating_fetch_failure"
               ];
             } else {
-              $tmp = [
+              $result = [
                 "status"=> "success",
                 "Title"=> $note[0]["title"],
                 "Author"=> $note[0]["user"],
@@ -48,7 +48,6 @@
                 "Likes"=> $likes,
                 "Dislikes"=> $dislikes
               ];
-              array_push($result, $tmp);
             }
           } else {
             //nota non trovata
